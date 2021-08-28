@@ -1,0 +1,377 @@
+1630116035318	geckodriver	INFO	Listening on 127.0.0.1:58905
+1630116038367	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofileRYkrY5"
+1630116039039	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofileRYkrY5\\search.json.mozlz4", (void 0)))
+1630116041815	Marionette	INFO	Listening on port 58914
+1630116042083	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1630116051481	Marionette	INFO	Stopped listening on port 58914
+JavaScript error: resource:///modules/Interactions.jsm, line 209: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIUserIdleService.removeIdleObserver]
+[Parent 26300, IPC I/O Parent] WARNING: file /builds/worker/checkouts/gecko/ipc/chromium/src/base/process_util_win.cc:167
+1630116152166	geckodriver	INFO	Listening on 127.0.0.1:58998
+1630116155229	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofileusEbmm"
+1630116156038	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofileusEbmm\\search.json.mozlz4", (void 0)))
+1630116159343	Marionette	INFO	Listening on port 59010
+1630116159472	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1630116160862	Marionette	INFO	Stopped listening on port 59010
+JavaScript error: resource:///modules/Interactions.jsm, line 209: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIUserIdleService.removeIdleObserver]
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1630116162510	geckodriver	INFO	Listening on 127.0.0.1:59046
+1630116165556	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofile09cKxm"
+1630116166406	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofile09cKxm\\search.json.mozlz4", (void 0)))
+1630116169958	Marionette	INFO	Listening on port 59056
+1630116170393	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.error: services.settings: 
+  main/doh-providers Signature failed  InvalidSignatureError: Invalid content signature (main/doh-providers)
+console.error: services.settings: 
+  main/doh-providers local data was corrupted
+console.warn: services.settings: main/doh-providers Signature verified failed. Retry from scratch
+console.error: services.settings: 
+  main/doh-config Signature failed  InvalidSignatureError: Invalid content signature (main/doh-config)
+console.error: services.settings: 
+  main/doh-config local data was corrupted
+console.warn: services.settings: main/doh-config Signature verified failed. Retry from scratch
+console.log: WebExtensions: reset-default-search: starting.
+console.log: WebExtensions: reset-default-search: No addons in our list are installed.
+1630117363738	Marionette	INFO	Stopped listening on port 59056
+JavaScript error: resource:///modules/Interactions.jsm, line 209: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIUserIdleService.removeIdleObserver]
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+ror: Phase "profile-before-change" is finished, it is too late to register completion condition "DoHController: clear state and remove observers"
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1630116249544	geckodriver	INFO	Listening on 127.0.0.1:59168
+1630116252587	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofileoV4eNS"
+1630116253085	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofileoV4eNS\\search.json.mozlz4", (void 0)))
+1630116255581	Marionette	INFO	Listening on port 59179
+1630116255799	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://www.linkedin.com"
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://www.linkedin.com"
+1630116561079	Marionette	INFO	Stopped listening on port 59179
+JavaScript error: resource:///modules/Interactions.jsm, line 209: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIUserIdleService.removeIdleObserver]
+[Parent 25180, IPC I/O Parent] WARNING: file /builds/worker/checkouts/gecko/ipc/chromium/src/base/process_util_win.cc:167
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1630116581580	geckodriver	INFO	Listening on 127.0.0.1:59450
+1630116584652	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofile9RKX2g"
+1630116585137	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofile9RKX2g\\search.json.mozlz4", (void 0)))
+1630116587620	Marionette	INFO	Listening on port 59458
+1630116587861	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1630116607368	Marionette	INFO	Stopped listening on port 59458
+JavaScript error: resource:///modules/Interactions.jsm, line 209: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIUserIdleService.removeIdleObserver]
+[Parent 12508, IPC I/O Parent] WARNING: file /builds/worker/checkouts/gecko/ipc/chromium/src/base/process_util_win.cc:167
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1630116609528	geckodriver	INFO	Listening on 127.0.0.1:59540
+1630116612567	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofileyKLvbB"
+1630116613033	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofileyKLvbB\\search.json.mozlz4", (void 0)))
+1630116615530	Marionette	INFO	Listening on port 59548
+1630116615786	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1630116617633	Marionette	INFO	Stopped listening on port 59548
+JavaScript error: resource:///actors/ContentMetaChild.jsm, line 179: InvalidStateError: JSWindowActorChild.sendAsyncMessage: JSWindowActorChild cannot send at the moment
+JavaScript error: resource:///modules/FaviconLoader.jsm, line 596: InvalidStateError: JSWindowActorChild.sendAsyncMessage: JSWindowActorChild cannot send at the moment
+JavaScript error: resource:///modules/FaviconLoader.jsm, line 596: InvalidStateError: JSWindowActorChild.sendAsyncMessage: JSWindowActorChild cannot send at the moment
+JavaScript error: chrome://remote/content/marionette/cert.js, line 55: NS_ERROR_NOT_AVAILABLE: Component returned failure code: 0x80040111 (NS_ERROR_NOT_AVAILABLE) [nsICertOverrideService.setDisableAllSecurityChecksAndLetAttackersInterceptMyData]
+JavaScript error: , line 0: NotFoundError: No such JSWindowActor 'MarionetteEvents'
+JavaScript error: , line 0: NotFoundError: No such JSWindowActor 'MarionetteEvents'
+JavaScript error: , line 0: NotFoundError: No such JSWindowActor 'MarionetteEvents'
+JavaScript error: , line 0: NotFoundError: No such JSWindowActor 'MarionetteEvents'
+JavaScript error: , line 0: NotFoundError: No such JSWindowActor 'MarionetteEvents'
+JavaScript error: resource:///modules/Interactions.jsm, line 209: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIUserIdleService.removeIdleObserver]
+[Parent 12444, IPC I/O Parent] WARNING: file /builds/worker/checkouts/gecko/ipc/chromium/src/base/process_util_win.cc:167
+[Parent 12444, IPC I/O Parent] WARNING: file /builds/worker/checkouts/gecko/ipc/chromium/src/base/process_util_win.cc:167
+1630116648459	geckodriver	INFO	Listening on 127.0.0.1:59603
+1630116651540	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofile2V6t15"
+1630116652013	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofile2V6t15\\search.json.mozlz4", (void 0)))
+1630116654501	Marionette	INFO	Listening on port 59611
+1630116654742	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1630116676320	Marionette	INFO	Stopped listening on port 59611
+JavaScript error: resource:///modules/Interactions.jsm, line 209: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIUserIdleService.removeIdleObserver]
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1630116679355	geckodriver	INFO	Listening on 127.0.0.1:59698
+1630116682431	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofileLZ6DpI"
+1630116682899	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofileLZ6DpI\\search.json.mozlz4", (void 0)))
+1630116685231	Marionette	INFO	Listening on port 59707
+1630116685628	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://static-exp1.licdn.com/sc/h/bm7ulu6wokwmsve5k9ytew4vz, line 5061: unreachable code after return statement
+JavaScript warning: https://static-exp1.licdn.com/sc/h/9cs65iqn04mu4j0qqx20dlrrq, line 6507: unreachable code after return statement
+JavaScript warning: https://static-exp1.licdn.com/sc/h/1w5q96dsq8dvz7xiae9ekmbyq, line 6: unreachable code after return statement
+JavaScript warning: https://static-exp1.licdn.com/sc/h/1w5q96dsq8dvz7xiae9ekmbyq, line 6: unreachable code after return statement
+JavaScript warning: https://static-exp1.licdn.com/sc/h/rczt8r0350jb818zqew6zwp5, line 6: unreachable code after return statement
+JavaScript warning: https://static-exp1.licdn.com/sc/h/713twpe74fl4xx84p36anyqad, line 6: unreachable code after return statement
+JavaScript warning: https://static-exp1.licdn.com/sc/h/5o3sm4tw777ejtrc4i1h0e4sj, line 6: unreachable code after return statement
+1630116713008	Marionette	INFO	Stopped listening on port 59707
+JavaScript error: resource:///modules/Interactions.jsm, line 209: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIUserIdleService.removeIdleObserver]
+
+###!!! [Parent][RunMessage] Error: Channel error: cannot send/recv
+
+
+###!!! [Parent][RunMessage] Error: Channel error: cannot send/recv
+
+
+###!!! [Parent][RunMessage] Error: Channel error: cannot send/recv
+
+
+###!!! [Parent][RunMessage] Error: Channel error: cannot send/recv
+
+
+###!!! [Parent][RunMessage] Error: Channel error: cannot send/recv
+
+
+###!!! [Parent][RunMessage] Error: Channel error: cannot send/recv
+
+1630116714352	geckodriver	INFO	Listening on 127.0.0.1:59825
+1630116717430	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofiletXZ79W"
+1630116717902	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofiletXZ79W\\search.json.mozlz4", (void 0)))
+1630116720184	Marionette	INFO	Listening on port 59834
+1630116720621	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://static-exp1.licdn.com/sc/h/9cs65iqn04mu4j0qqx20dlrrq, line 6507: unreachable code after return statement
+JavaScript warning: https://static-exp1.licdn.com/sc/h/1w5q96dsq8dvz7xiae9ekmbyq, line 6: unreachable code after return statement
+JavaScript warning: https://static-exp1.licdn.com/sc/h/1w5q96dsq8dvz7xiae9ekmbyq, line 6: unreachable code after return statement
+JavaScript warning: https://static-exp1.licdn.com/sc/h/rczt8r0350jb818zqew6zwp5, line 6: unreachable code after return statement
+JavaScript warning: https://static-exp1.licdn.com/sc/h/713twpe74fl4xx84p36anyqad, line 6: unreachable code after return statement
+JavaScript warning: https://static-exp1.licdn.com/sc/h/5o3sm4tw777ejtrc4i1h0e4sj, line 6: unreachable code after return statement
+1630116746636	Marionette	INFO	Stopped listening on port 59834
+JavaScript error: resource:///modules/Interactions.jsm, line 209: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIUserIdleService.removeIdleObserver]
+1630116813068	geckodriver	INFO	Listening on 127.0.0.1:59996
+1630116816128	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofilejHTO2q"
+1630116816796	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofilejHTO2q\\search.json.mozlz4", (void 0)))
+1630116819782	Marionette	INFO	Listening on port 60007
+1630116819854	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://static-exp1.licdn.com/sc/h/9cs65iqn04mu4j0qqx20dlrrq, line 6507: unreachable code after return statement
+JavaScript warning: https://static-exp1.licdn.com/sc/h/1w5q96dsq8dvz7xiae9ekmbyq, line 6: unreachable code after return statement
+JavaScript warning: https://static-exp1.licdn.com/sc/h/1w5q96dsq8dvz7xiae9ekmbyq, line 6: unreachable code after return statement
+JavaScript warning: https://static-exp1.licdn.com/sc/h/rczt8r0350jb818zqew6zwp5, line 6: unreachable code after return statement
+JavaScript warning: https://static-exp1.licdn.com/sc/h/713twpe74fl4xx84p36anyqad, line 6: unreachable code after return statement
+JavaScript warning: https://static-exp1.licdn.com/sc/h/5o3sm4tw777ejtrc4i1h0e4sj, line 6: unreachable code after return statement
+1630116841589	Marionette	INFO	Stopped listening on port 60007
+JavaScript error: resource:///modules/Interactions.jsm, line 209: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIUserIdleService.removeIdleObserver]
+[Parent 22200, IPC I/O Parent] WARNING: file /builds/worker/checkouts/gecko/ipc/chromium/src/base/process_util_win.cc:167
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1630116885479	geckodriver	INFO	Listening on 127.0.0.1:60153
+1630116888529	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofileRCqNNE"
+1630116889034	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofileRCqNNE\\search.json.mozlz4", (void 0)))
+1630116891610	Marionette	INFO	Listening on port 60162
+1630116891712	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://static-exp1.licdn.com/sc/h/9cs65iqn04mu4j0qqx20dlrrq, line 6507: unreachable code after return statement
+JavaScript warning: https://static-exp1.licdn.com/sc/h/1w5q96dsq8dvz7xiae9ekmbyq, line 6: unreachable code after return statement
+JavaScript warning: https://static-exp1.licdn.com/sc/h/1w5q96dsq8dvz7xiae9ekmbyq, line 6: unreachable code after return statement
+JavaScript warning: https://static-exp1.licdn.com/sc/h/rczt8r0350jb818zqew6zwp5, line 6: unreachable code after return statement
+JavaScript warning: https://static-exp1.licdn.com/sc/h/713twpe74fl4xx84p36anyqad, line 6: unreachable code after return statement
+JavaScript warning: https://static-exp1.licdn.com/sc/h/5o3sm4tw777ejtrc4i1h0e4sj, line 6: unreachable code after return statement
+JavaScript warning: https://static-exp1.licdn.com/sc/h/ulmencdww31074jmflt88m2k, line 6: unreachable code after return statement
+JavaScript warning: https://static-exp1.licdn.com/sc/h/713twpe74fl4xx84p36anyqad, line 6: unreachable code after return statement
+JavaScript warning: https://static-exp1.licdn.com/sc/h/5o3sm4tw777ejtrc4i1h0e4sj, line 6: unreachable code after return statement
+JavaScript error: resource://devtools/server/actors/network-monitor/network-event-actor.js, line 109: Error: Got a request https://static-exp1.licdn.com/sc/h/70bgrnbsde52g2ny3hvagytfm without a browsingContextID set
+JavaScript error: resource://devtools/server/actors/network-monitor/network-event-actor.js, line 109: Error: Got a request https://static-exp1.licdn.com/sc/h/1rahwcyyrt0g7k959sfiporx6 without a browsingContextID set
+JavaScript error: resource://devtools/server/actors/network-monitor/network-event-actor.js, line 109: Error: Got a request https://static-exp1.licdn.com/sc/h/31q2w57z8adc8sloy2pqcty2s without a browsingContextID set
+JavaScript error: resource://devtools/server/actors/network-monitor/network-event-actor.js, line 109: Error: Got a request https://static-exp1.licdn.com/sc/h/31q2w57z8adc8sloy2pqcty2s without a browsingContextID set
+console.error: (new TypeError("parent is null", "resource://devtools/client/inspector/shared/style-change-tracker.js", 67))
+TypeError: parent is null: canMutationImpactCurrentStyles@resource://devtools/client/inspector/shared/style-change-tracker.js:67:24
+onMutations@resource://devtools/client/inspector/shared/style-change-tracker.js:84:41
+_emit@resource://devtools/shared/event-emitter.js:226:34
+emit@resource://devtools/shared/event-emitter.js:172:18
+emit@resource://devtools/shared/event-emitter.js:324:18
+getMutations@resource://devtools/client/fronts/walker.js:311:10
+
+1630117270249	Marionette	INFO	Stopped listening on port 60162
+JavaScript error: resource:///modules/Interactions.jsm, line 209: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIUserIdleService.removeIdleObserver]
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1630117272924	geckodriver	INFO	Listening on 127.0.0.1:60476
+1630117275979	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofileZlR3Sc"
+1630117276481	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofileZlR3Sc\\search.json.mozlz4", (void 0)))
+1630117278977	Marionette	INFO	Listening on port 60484
+1630117279174	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://static-exp1.licdn.com/sc/h/9cs65iqn04mu4j0qqx20dlrrq, line 6507: unreachable code after return statement
+JavaScript warning: https://static-exp1.licdn.com/sc/h/1w5q96dsq8dvz7xiae9ekmbyq, line 6: unreachable code after return statement
+JavaScript warning: https://static-exp1.licdn.com/sc/h/1w5q96dsq8dvz7xiae9ekmbyq, line 6: unreachable code after return statement
+JavaScript warning: https://static-exp1.licdn.com/sc/h/rczt8r0350jb818zqew6zwp5, line 6: unreachable code after return statement
+JavaScript warning: https://static-exp1.licdn.com/sc/h/713twpe74fl4xx84p36anyqad, line 6: unreachable code after return statement
+JavaScript warning: https://static-exp1.licdn.com/sc/h/5o3sm4tw777ejtrc4i1h0e4sj, line 6: unreachable code after return statement
+1630117362508	Marionette	INFO	Stopped listening on port 60484
+JavaScript error: resource:///modules/Interactions.jsm, line 209: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIUserIdleService.removeIdleObserver]
+[Parent 24684, IPC I/O Parent] WARNING: file /builds/worker/checkouts/gecko/ipc/cconsole.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofileKQuiGq\\search.json.mozlz4", (void 0)))
+1630117364269	Marionette	INFO	Listening on port 60660
+1630117364533	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://static-exp1.licdn.com/sc/h/9cs65iqn04mu4j0qqx20dlrrq, line 6507: unreachable code after return statement
+JavaScript warning: https://static-exp1.licdn.com/sc/h/1w5q96dsq8dvz7xiae9ekmbyq, line 6: unreachable code after return statement
+JavaScript warning: https://static-exp1.licdn.com/sc/h/1w5q96dsq8dvz7xiae9ekmbyq, line 6: unreachable code after return statement
+JavaScript warning: https://static-exp1.licdn.com/sc/h/rczt8r0350jb818zqew6zwp5, line 6: unreachable code after return statement
+JavaScript warning: https://static-exp1.licdn.com/sc/h/713twpe74fl4xx84p36anyqad, line 6: unreachable code after return statement
+JavaScript warning: https://static-exp1.licdn.com/sc/h/5o3sm4tw777ejtrc4i1h0e4sj, line 6: unreachable code after return statement
+1630117545033	Marionette	INFO	Stopped listening on port 60661630117545510	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofileYbScN7"
+1630117546402	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofileYbScN7\\search.json.mozlz4", (void 0)))
+1630117549090	Marionette	INFO	Listening on port 51714
+1630117549222	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[Parent 1384, IPC I/O Parent] WARNING: file /builds/worker/checkouts/gecko/ipc/chromium/src/base/process_util_win.cc:167
+1630117557256	Marionette	INFO	Stopped listening on port 51714
+JavaScript error: resource:///modules/Interactions.jsm, line 209: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIUserIdleService.removeIdleObserver]
+1630117619980	geckodriver	INFO	Listening on 127.0.0.1:51837
+1630117623041	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofileJjbtvY"
+1630117623677	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofileJjbtvY\\search.json.mozlz4", (void 0)))
+1630117626378	Marionette	INFO	Listening on port 51845
+1630117626726	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1630117635468	Marionette	INFO	Stopped listening on port 51845
+JavaScript error: resource:///modules/Interactions.jsm, line 209: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIUserIdleService.removeIdleObserver]
+1630117664694	geckodriver	INFO	Listening on 127.0.0.1:51933
+1630117667757	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofileNKzoEK"
+1630117668424	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofileNKzoEK\\search.json.mozlz4", (void 0)))
+1630117671173	Marionette	INFO	Listening on port 51942
+1630117671476	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1630117673930	Marionette	INFO	Stopped listening on port 51942
+JavaScript error: resource:///modules/Interactions.jsm, line 209: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIUserIdleService.removeIdleObserver]
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1630117690469	geckodriver	INFO	Listening on 127.0.0.1:51999
+1630117693525	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofileehXASl"
+1630117694172	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofileehXASl\\search.json.mozlz4", (void 0)))
+1630117696836	Marionette	INFO	Listening on port 52007
+1630117697220	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1630117699539	Marionette	INFO	Stopped listening on port 52007
+JavaScript error: resource:///modules/Interactions.jsm, line 209: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIUserIdleService.removeIdleObserver]
+1630117828482	geckodriver	INFO	Listening on 127.0.0.1:52112
+1630117831553	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofilex80iPo"
+1630117832218	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofilex80iPo\\search.json.mozlz4", (void 0)))
+1630117835036	Marionette	INFO	Listening on port 52120
+1630117835272	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1630117835288	Marionette	INFO	Stopped listening on port 52120
+JavaScript error: resource:///modules/Interactions.jsm, line 209: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIUserIdleService.removeIdleObserver]
+[Parent 25128, IPC I/O Parent] WARNING: file /builds/worker/checkouts/gecko/ipc/chromium/src/base/process_util_win.cc:167
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1630118108083	geckodriver	INFO	Listening on 127.0.0.1:64828
+1630118111160	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofilew8hpzo"
+1630118111795	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofilew8hpzo\\search.json.mozlz4", (void 0)))
+1630118114666	Marionette	INFO	Listening on port 64839
+1630118114873	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1630118116666	Marionette	INFO	Stopped listening on port 64839
+JavaScript error: resource:///modules/Interactions.jsm, line 209: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIUserIdleService.removeIdleObserver]
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1630118152272	geckodriver	INFO	Listening on 127.0.0.1:64898
+1630118155337	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofile4RrX44"
+1630118156004	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofile4RrX44\\search.json.mozlz4", (void 0)))
+1630118158749	Marionette	INFO	Listening on port 64908
+1630118159028	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1630118205064	Marionette	INFO	Stopped listening on port 64908
+JavaScript error: resource:///modules/Interactions.jsm, line 209: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIUserIdleService.removeIdleObserver]
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1630118207006	geckodriver	INFO	Listening on 127.0.0.1:65003
+1630118210079	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofileCaycIT"
+1630118210706	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofileCaycIT\\search.json.mozlz4", (void 0)))
+1630118213360	Marionette	INFO	Listening on port 65012
+1630118213796	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://static-exp1.licdn.com/sc/h/9cs65iqn04mu4j0qqx20dlrrq, line 6507: unreachable code after return statement
+JavaScript warning: https://static-exp1.licdn.com/sc/h/1w5q96dsq8dvz7xiae9ekmbyq, line 6: unreachable code after return statement
+JavaScript warning: https://static-exp1.licdn.com/sc/h/1w5q96dsq8dvz7xiae9ekmbyq, line 6: unreachable code after return statement
+JavaScript warning: https://static-exp1.licdn.com/sc/h/rczt8r0350jb818zqew6zwp5, line 6: unreachable code after return statement
+JavaScript warning: https://static-exp1.licdn.com/sc/h/713twpe74fl4xx84p36anyqad, line 6: unreachable code after return statement
+JavaScript warning: https://static-exp1.licdn.com/sc/h/5o3sm4tw777ejtrc4i1h0e4sj, line 6: unreachable code after return statement
+JavaScript warning: https://static-exp1.licdn.com/sc/h/713twpe74fl4xx84p36anyqad, line 6: unreachable code after return statement
+JavaScript error: resource://devtools/server/actors/network-monitor/network-event-actor.js, line 109: Error: Got a request https://static-exp1.licdn.com/sc/h/70bgrnbsde52g2ny3hvagytfm without a browsingContextID set
+JavaScript error: resource://devtools/server/actors/network-monitor/network-event-actor.js, line 109: Error: Got a request https://static-exp1.licdn.com/sc/h/1rahwcyyrt0g7k959sfiporx6 without a browsingContextID set
+JavaScript error: resource://devtools/server/actors/network-monitor/network-event-actor.js, line 109: Error: Got a request https://static-exp1.licdn.com/sc/h/31q2w57z8adc8sloy2pqcty2s without a browsingContextID set
+JavaScript error: resource://devtools/server/actors/network-monitor/network-event-actor.js, line 109: Error: Got a request https://static-exp1.licdn.com/sc/h/31q2w57z8adc8sloy2pqcty2s without a browsingContextID set
+1630118454366	Marionette	INFO	Stopped listening on port 65012
+JavaScript error: resource:///modules/Interactions.jsm, line 209: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIUserIdleService.removeIdleObserver]
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+30118379394	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofilejhlh4d\\search.json.mozlz4", (void 0)))
+1630118381923	Marionette	INFO	Listening on port 54351
+1630118382045	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://static-exp1.licdn.com/sc/h/9cs65iqn04mu4j0qqx20dlrrq, line 6507: unreachable code after return statement
+JavaScript warning: https://static-exp1.licdn.com/sc/h/1w5q96dsq8dvz7xiae9ekmbyq, line 6: unreachable code after return statement
+1630118399327	Marionette	INFO	Stopped listening on port 54351
+JavaScript error: resource:///modules/Interactions.jsm, line 209: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIUserIdleService.removeIdleObserver]
+1630118450465	geckodriver	INFO	Listening on 127.0.0.1:54455
+1630118453516	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofileM56fbl"
+1630118454090	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofileM56fbl\\search.json.mozlz4", (void 0)))
+1630118456589	Marionette	INFO	Listening on port 54464
+1630118456738	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://static-exp1.licdn.com/sc/h/9cs65iqn04mu4j0qqx20dlrrq, line 6507: unreachable code after return statement
+JavaScript warning: https://static-exp1.licdn.com/sc/h/1w5q96dsq8dvz7xiae9ekmbyq, line 6: unreachable code after return statement
+JavaScript warning: https://static-exp1.licdn.com/sc/h/1w5q96dsq8dvz7xiae9ekmbyq, line 6: unreachable code after return statement
+JavaScript warning: https://static-exp1.licdn.com/sc/h/rczt8r0350jb818zqew6zwp5, line 6: unreachable code after return statement
+JavaScript warning: https://static-exp1.licdn.com/sc/h/713twpe74fl4xx84p36anyqad, line 6: unreachable code after return statement
+JavaScript warning: https://static-exp1.licdn.com/sc/h/5o3sm4tw777ejtrc4i1h0e4sj, line 6: unreachable code after return statement
+1630118488945	Marionette	INFO	Stopped listening on port 54464
+JavaScript error: resource:///modules/Interactions.jsm, line 209: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIUserIdleService.removeIdleObserver]
+1630118489848	geckodriver	INFO	Listening on 127.0.0.1:54627
+1630118492907	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofileh2LbIN"
+1630118493555	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofileh2LbIN\\search.json.mozlz4", (void 0)))
+1630118496403	Marionette	INFO	Listening on port 54635
+1630118496614	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://static-exp1.licdn.com/sc/h/9cs65iqn04mu4j0qqx20dlrrq, line 6507: unreachable code after return statement
+JavaScript warning: https://static-exp1.licdn.com/sc/h/1w5q96dsq8dvz7xiae9ekmbyq, line 6: unreachable code after return statement
+JavaScript warning: https://static-exp1.licdn.com/sc/h/1w5q96dsq8dvz7xiae9ekmbyq, line 6: unreachable code after return statement
+JavaScript warning: https://static-exp1.licdn.com/sc/h/rczt8r0350jb818zqew6zwp5, line 6: unreachable code after return statement
+JavaScript warning: https://static-exp1.licdn.com/sc/h/713twpe74fl4xx84p36anyqad, line 6: unreachable code after return statement
+JavaScript warning: https://static-exp1.licdn.com/sc/h/5o3sm4tw777ejtrc4i1h0e4sj, line 6: unreachable code after return statement
+1630118517870	Marionette	INFO	Stopped listening on port 54635
+JavaScript error: resource:///modules/Interactions.jsm, line 209: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIUserIdleService.removeIdleObserver]
+[Parent 18956, IPC I/O Parent] WARNING: file /builds/worker/checkouts/gecko/ipc/chromium/src/base/process_util_win.cc:167
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1630118521361	geckodriver	INFO	Listening on 127.0.0.1:54786
+1630118524408	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofilelRitnr"
+1630118525036	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofilelRitnr\\search.json.mozlz4", (void 0)))
+1630118528116	Marionette	INFO	Listening on port 54794
+1630118528621	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1630118536258	Marionette	INFO	Stopped listening on port 54794
+JavaScript error: resource:///modules/Interactions.jsm, line 209: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIUserIdleService.removeIdleObserver]
+JavaScript error: chrome://remote/content/marionette/cert.js, line 55: NS_ERROR_NOT_AVAILABLE: Component returned failure code: 0x80040111 (NS_ERROR_NOT_AVAILABLE) [nsICertOverrideService.setDisableAllSecurityChecksAndLetAttackersInterceptMyData]
+[Parent 24292, IPC I/O Parent] WARNING: file /builds/worker/checkouts/gecko/ipc/chromium/src/base/process_util_win.cc:167
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1630118538167	geckodriver	INFO	Listening on 127.0.0.1:54876
+1630118541253	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofileIlJKjl"
+1630118541980	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofileIlJKjl\\search.json.mozlz4", (void 0)))
+1630118544796	Marionette	INFO	Listening on port 54885
+1630118544983	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1630118552554	Marionette	INFO	Stopped listening on port 54885
+JavaScript error: resource:///modules/Interactions.jsm, line 209: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIUserIdleService.removeIdleObserver]
+JavaScript error: chrome://remote/content/marionette/cert.js, line 55: NS_ERROR_NOT_AVAILABLE: Component returned failure code: 0x80040111 (NS_ERROR_NOT_AVAILABLE) [nsICertOverrideService.setDisableAllSecurityChecksAndLetAttackersInterceptMyData]
+[Parent 4192, IPC I/O Parent] WARNING: file /builds/worker/checkouts/gecko/ipc/chromium/src/base/process_util_win.cc:167
