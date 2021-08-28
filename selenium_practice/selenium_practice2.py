@@ -16,7 +16,7 @@ search = driver.find_element_by_name('pwd_password')
 search.send_keys('bryitkids')
 
 login = driver.find_element_by_xpath("//input[@value='Login']")
-print(login)
+print(login) 
 
 login.click()
 
