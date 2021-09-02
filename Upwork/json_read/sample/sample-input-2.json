@@ -1,0 +1,14 @@
+{
+   "key1":"val1",
+   "key2":"val2",
+   "key3":{
+      "nkey1":{
+         "nkey2":"nval2",
+         "nkey3":"nval3",
+         "nkey5":"nval5"
+      },
+      "nkey10":{
+         "nkey11":"nval11"
+      }
+   }
+}

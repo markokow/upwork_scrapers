@@ -1,0 +1,196 @@
+{
+   "Selected Plans":{
+      
+   },
+   "Product Overview":{
+      "Product SPIN":"SPIN Not Known",
+      "USI":"",
+      "Plan Subtype":"Allocated Pension",
+      "Open for New Business":"No",
+      "Commencement Year":"",
+      "Number of Members (approx)":"Not Disclosed",
+      "Funds under Management":"Not Disclosed",
+      "Public Offer":"Yes"
+   },
+   "Product Details":{
+      "Contribution Payment Options":{
+         "Employer Contributions":"No",
+         "Personal (pre-tax) Contributions":"No",
+         "Personal (post-tax) Contributions":"No",
+         "Rollover Contributions":"Yes",
+         "Spouse Contributions":"No",
+         "Contribution Splitting":"No"
+      },
+      "Payment Facilities":{
+         "B-Pay":"No",
+         "POSTbillpay":"No",
+         "Cheque":"Yes",
+         "Direct Debit":"No",
+         "Payroll":"No",
+         "Direct Credit / EFT":"No"
+      },
+      "Investment Rules":{
+         "Minimum Initial Investment (excluding Pensions)":"$2,500",
+         "Minimum Initial Investment with Savings Plan":"$0.00",
+         "Minimum One Off Investment":"$0.00",
+         "Minimum Regular Contributions":"$100 per month",
+         "Minimum One Off Withdrawal":"$0",
+         "Minimum Regular Withdrawal":"$0.00",
+         "Minimum Account Balance":"$0.00",
+         "Maximum Investment":"",
+         "Margin Lending Available":"No"
+      },
+      "Investment Minimums":{
+         "Managed Fund Minimum":"$0.00",
+         "Term Deposit Investment":"$0.00",
+         "Listed Investment Minimum":"$0.00",
+         "Switch Minimum":"$0.00"
+      },
+      "Estate Planning":{
+         "Binding Nomination - Lapsing":"No",
+         "Binding Nomination - Non-Lapsing":"Yes",
+         "Binding Nomination - Non-Binding":"Yes",
+         "Binding Nomination - Reversionary Pension":"No",
+         "Binding Nomination - None":"Yes",
+         "Anti-detriment Payments":"No",
+         "Associated Costs":"No"
+      },
+      "Ongoing Reporting and Transactions":{
+         "Annual Report":"Yes",
+         "Half Yearly Statement":"No",
+         "Online Account Balance":"Yes",
+         "Update Details Online":"No",
+         "Switch Investments Online":"No",
+         "Adviser Authorised to Transact":"No"
+      },
+      "Education and Advice":{
+         "Regular Newsletter":"No",
+         "Seminars":"No",
+         "Website Tools & Education":"No",
+         "In-House Related Financial Planners Available":"No",
+         "External Financial Planning Allowable":"No",
+         "Advice at No Cost":"No",
+         "Fee Basis for Advice":"No"
+      },
+      "Ancillary Services":{
+         "Home Loans":"No",
+         "Personal Loans":"No",
+         "Credit Cards":"No",
+         "General Insurance":"No",
+         "Health Insurance":"No",
+         "Acceptance of UK Pension Transfers":"No",
+         "Discounts Available":"No",
+         "Other Complimentary Services":"No"
+      },
+      "Pensions":{
+         "Fortnightly Payment":"NA",
+         "Monthly Payment":"NA",
+         "Quarterly Payment":"NA",
+         "Yearly Payment":"NA",
+         "Reversionary Nominations":"NA",
+         "Capital Gains Transfer":"No",
+         "Online Pension Calculator":"NA",
+         "Transition To Retirement":"NA",
+         "Drawdown ProRata":"NA",
+         "Drawdown Proportional":"NA",
+         "Drawdown Priority":"NA",
+         "Minimum Initial Investment":"$10,000.00"
+      }
+   },
+   "Product Costs":{
+      "Ongoing costs":{
+         "Administration Fees":"Fee calculated on total allocation for set0.25%",
+         "Adviser Commission":"0.00%",
+         "Adviser Service Fee":"0.00%Range: No",
+         "Contribution Fee":"0.00%Range: No",
+         "Expense Recovery Fee":"$95.00",
+         "Membership Fee":"$0.00",
+         "Operational Risk Reserve Levy":"0.03%",
+         "SMA Administration Access Fee":"$0.00",
+         "Trustee Fees":"0.0836% for the first $2,000,000.000.00% for the remaining balance"
+      },
+      "Rebates":{
+         "Contribution Commission Rebate":"0.00%",
+         "Portfolio Balance Rebate":"0.00%",
+         "Trail Commission Rebate":"0.00%"
+      },
+      "Transactional Costs":{
+         "Brokerage Fee":"0.00%",
+         "Exit Fees":"$0.00",
+         "External Brokerage Fee":"0.00%",
+         "Initial Contribution Fee":"0.00%Range: No",
+         "Less Initial Contribution Commission Rebate":"0.00%",
+         "Listed Securities Fees":"$0.00",
+         "Managed Funds Fee":"$0.00",
+         "Portfolio Construction Fee":"$0.00",
+         "Supplementary Brokerage fee":"$0.00",
+         "Withdrawal Fees":"$0.00"
+      },
+      "Commission Details":{
+         "Contribution Commission":"0.00%",
+         "Initial Commission":"0.00%Range: 0% - 5.000%",
+         "Insurance Commission":"0.00%",
+         "Trail Commission":"0.00%"
+      },
+      "Switching Fees":{
+         "Number Of Free Switches":"Unlimited",
+         "Switching Fees":"No"
+      }
+   },
+   "Investment Details":{
+      "Number of Investment Options(excl Direct Shares/Listed Investments)":"16",
+      "Diversified Options":"10",
+      "Sector Options":"6",
+      "Multi-manager Options":"7",
+      "No of Avail Direct Shares/Listed Investments":"0",
+      "Ethical Investments":"1",
+      "SMA Investments":"0",
+      "Re-directions of Contributions":"Yes",
+      "Investment Reserving":"No",
+      "Automatic Re-Balancing":"Yes",
+      "Direct Shares/Listed Investments":"No",
+      "Unit Pricing Frequency":"Varies",
+      "Investment Consultant":"Unknown",
+      "Default Option":"Not applicable",
+      "Important Investment Details Notes":"- Capital Protection",
+      "Cash Holding Details":"Cash account fee ranges from 0% - 2%. Please contact product provider to confirm the current fee that is being charged for this client and edit this investment to enter the fee as an ICR.",
+      "Ability to Transfer Existing Assets (in-specie)":"No"
+   },
+   "Insurance Details":{
+      "Death And TPD":{
+         "Death Cover Available":"No",
+         "Death Cover Issue Ages":"",
+         "Death Cover Cease Age":"0",
+         "Maximum Death Cover":"No",
+         "TPD Cover Available":"No",
+         "TPD Cover Issue Ages":"",
+         "TPD Cover Cease Age":"0",
+         "Maximum TPD Cover":"No",
+         "Eligibility For Auto Acceptance":"No",
+         "Auto Acceptance Defaults & Limits":"No",
+         "Terminal Illness Benefit":"No",
+         "Guaranteed Future Insurability":"No",
+         "Waiver Of Premium":"No",
+         "Continuation Option":"No",
+         "Exclusions":"No"
+      },
+      "Salary Continuance":{
+         "Group Salary Continuance Available":"No",
+         "Issue Ages":"",
+         "Cease Age":"0",
+         "Maximum Benefit Cover":"No",
+         "Waiver Of Premium":"No",
+         "Continuation Option":"No",
+         "Waiting Periods":"No",
+         "Benefit Periods":"No",
+         "Eligibility For Auto Acceptance":"No",
+         "Auto Acceptance Defaults & Limits":"No",
+         "Benefit Offsets":"No",
+         "Exclusions":"No"
+      },
+      "Definitions":{
+         "TPD Definition":"",
+         "Temporary Disablement Definition":"No"
+      }
+   }
+}

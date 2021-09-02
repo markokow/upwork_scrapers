@@ -1,0 +1,186 @@
+{
+   "Selected Plans":{
+      
+   },
+   "Product Overview":{
+      "Product SPIN":"ASG0020AU",
+      "USI":"",
+      "Plan Subtype":"Wrap",
+      "Open for New Business":"Yes",
+      "Commencement Year":"",
+      "Number of Members (approx)":"Not Disclosed",
+      "Funds under Management":"Not Disclosed",
+      "Public Offer":"Yes"
+   },
+   "Product Details":{
+      "Contribution Payment Options":{
+         "Employer Contributions":"Yes",
+         "Personal (pre-tax) Contributions":"No",
+         "Personal (post-tax) Contributions":"Yes",
+         "Rollover Contributions":"Yes",
+         "Spouse Contributions":"Yes",
+         "Contribution Splitting":"Yes"
+      },
+      "Payment Facilities":{
+         "B-Pay":"Yes",
+         "POSTbillpay":"No",
+         "Cheque":"Yes",
+         "Direct Debit":"Yes",
+         "Payroll":"No",
+         "Direct Credit / EFT":"No"
+      },
+      "Investment Rules":{
+         "Minimum Initial Investment (excluding Pensions)":"$0",
+         "Minimum Initial Investment with Savings Plan":"$0.00",
+         "Minimum One Off Investment":"$0.00",
+         "Minimum Regular Contributions":"$100 per deposit",
+         "Minimum One Off Withdrawal":"$0",
+         "Minimum Regular Withdrawal":"$0.00",
+         "Minimum Account Balance":"$0.00",
+         "Maximum Investment":"",
+         "Margin Lending Available":"No"
+      },
+      "Investment Minimums":{
+         "Managed Fund Minimum":"$0.00",
+         "Term Deposit Investment":"$0.00",
+         "Listed Investment Minimum":"$0.00",
+         "Switch Minimum":"$0.00"
+      },
+      "Estate Planning":{
+         "Binding Nomination - Lapsing":"Yes",
+         "Binding Nomination - Non-Lapsing":"No",
+         "Binding Nomination - Non-Binding":"Yes",
+         "Binding Nomination - Reversionary Pension":"No",
+         "Binding Nomination - None":"No",
+         "Anti-detriment Payments":"No",
+         "Associated Costs":"No"
+      },
+      "Ongoing Reporting and Transactions":{
+         "Annual Report":"Yes",
+         "Half Yearly Statement":"No",
+         "Online Account Balance":"Yes",
+         "Update Details Online":"No",
+         "Switch Investments Online":"No",
+         "Adviser Authorised to Transact":"No"
+      },
+      "Education and Advice":{
+         "Regular Newsletter":"No",
+         "Seminars":"No",
+         "Website Tools & Education":"No",
+         "In-House Related Financial Planners Available":"No",
+         "External Financial Planning Allowable":"No",
+         "Advice at No Cost":"No",
+         "Fee Basis for Advice":"No"
+      },
+      "Pension Availability":{
+         "Allocated":"Yes",
+         "Part of Same Super Plan":"Yes"
+      },
+      "Ancillary Services":{
+         "Home Loans":"No",
+         "Personal Loans":"No",
+         "Credit Cards":"No",
+         "General Insurance":"No",
+         "Health Insurance":"No",
+         "Acceptance of UK Pension Transfers":"No",
+         "Discounts Available":"No",
+         "Other Complimentary Services":"No"
+      }
+   },
+   "Product Costs":{
+      "Ongoing costs":{
+         "Administration Fees":"Fee calculated on balance of members accounts0.533% for the first $100,000.000.3998% for the next $150,000.000.1999% for the next $500,000.000.0666% for the next $2,250,000.000.00% for the remaining balanceMinimum fee $533.04",
+         "Adviser Commission":"0.00%",
+         "Adviser Service Fee":"0.00%Range: 0% - 5.5%",
+         "Contribution Fee":"0.00%Range: 0% - 5.125%",
+         "Expense Recovery Fee":"$155.00",
+         "Membership Fee":"$0.00",
+         "Operational Risk Reserve Levy":"0.03%",
+         "SMA Administration Access Fee":"$0.00",
+         "Trustee Fees":"0.1045% for the first $3,000,000.000.00% for the remaining balance"
+      },
+      "Rebates":{
+         "Contribution Commission Rebate":"0.00%",
+         "Portfolio Balance Rebate":"0.00%",
+         "Trail Commission Rebate":"0.00%"
+      },
+      "Transactional Costs":{
+         "Brokerage Fee":"0.08333% for the first $30,000.000.1025% for the remaining balanceMinimum fee $25.00 (Set A, per option)",
+         "Exit Fees":"$0.00",
+         "External Brokerage Fee":"0.00%",
+         "Initial Contribution Fee":"0.00%Range: 0% - 5.125%",
+         "Less Initial Contribution Commission Rebate":"0.00%",
+         "Listed Securities Fees":"$0.00",
+         "Managed Funds Fee":"$0.00",
+         "Portfolio Construction Fee":"$0.00",
+         "Supplementary Brokerage fee":"$0.00",
+         "Withdrawal Fees":"$0.00"
+      },
+      "Commission Details":{
+         "Contribution Commission":"0.00%",
+         "Initial Commission":"0.00%",
+         "Insurance Commission":"0.00%",
+         "Trail Commission":"0.00%"
+      },
+      "Switching Fees":{
+         "Number Of Free Switches":"Unlimited",
+         "Switching Fees":"Nil"
+      }
+   },
+   "Investment Details":{
+      "Number of Investment Options(excl Direct Shares/Listed Investments)":"566",
+      "Diversified Options":"95",
+      "Sector Options":"471",
+      "Multi-manager Options":"0",
+      "No of Avail Direct Shares/Listed Investments":"Not Stated",
+      "Ethical Investments":"15",
+      "SMA Investments":"2",
+      "Re-directions of Contributions":"Yes",
+      "Investment Reserving":"No",
+      "Automatic Re-Balancing":"Yes",
+      "Direct Shares/Listed Investments":"Yes",
+      "Unit Pricing Frequency":"Daily",
+      "Investment Consultant":"Not Stated",
+      "Default Option":"Not Stated",
+      "Important Investment Details Notes":"No",
+      "Cash Holding Details":"Minimum Cash Balance is as follows: Where Account Balance is under $100,000/ $2,000; $100,000 - $500,000/2%; Over $500,000/$10,000.Please note the old Cash Account has been listed as Closed/Suspended in WealthSolver, and has been replaced by a new Cash Holding option with an APIR of FC51317AU.",
+      "Ability to Transfer Existing Assets (in-specie)":"Yes"
+   },
+   "Insurance Details":{
+      "Death And TPD":{
+         "Death Cover Available":"Yes",
+         "Death Cover Issue Ages":"11 - 75",
+         "Death Cover Cease Age":"100",
+         "Maximum Death Cover":"No Maximum",
+         "TPD Cover Available":"Yes",
+         "TPD Cover Issue Ages":"16 - 64",
+         "TPD Cover Cease Age":"100",
+         "Maximum TPD Cover":"$5,000,000",
+         "Eligibility For Auto Acceptance":"No",
+         "Auto Acceptance Defaults & Limits":"No",
+         "Terminal Illness Benefit":"Yes",
+         "Guaranteed Future Insurability":"Yes",
+         "Waiver Of Premium":"No",
+         "Continuation Option":"If you cease to hold an Asgard Super Account, you may continue to hold the equivalent insurance cover on a stand-alone basis. See 'Stand-alone (non-superannuation) insurance' on pages 33 and 34. You can continue your equivalent insurance cover if you:are under 65 years of age;have not joined the armed forces; andhave not left the employment of an employer for reason of total and permanent disablement or made a claim for a benefit due to total and permanent disablement or because you are terminally ill.The continuation process is simple and doesn't require you to provide any additional information or undergo further medical examinations, provided you don't want to increase the amount of your insurance cover. To effect the continuation option, you must apply in writing to Asgard within 0 days of ceasing to hold an Asgard Super Account.",
+         "Exclusions":"A Death Benefit won't be paid where death is the result of:- an intentional self-inflicted injury (whether you were sane or insane) within 12 months of the commencement or reinstatement of cover; or- an exclusion which is specific to you and noted on your Policy Information Statement.A TPD Benefit won't be paid where your disability is:- directly or indirectly caused by any intentional self-inflicted injury or any attempt at suicide; or- due to an exclusion which is specific to you and noted on your Policy Information Statement."
+      },
+      "Salary Continuance":{
+         "Group Salary Continuance Available":"Yes",
+         "Issue Ages":"16 - 64",
+         "Cease Age":"65",
+         "Maximum Benefit Cover":"$60,000 per month",
+         "Waiver Of Premium":"Yes",
+         "Continuation Option":"No",
+         "Waiting Periods":"30, 60 and 90 days",
+         "Benefit Periods":"2 yearsto age 65",
+         "Eligibility For Auto Acceptance":"No",
+         "Auto Acceptance Defaults & Limits":"Not Applicable",
+         "Benefit Offsets":"May include:- Sick Leave- Workers Compensation- Other Insurance",
+         "Exclusions":"The Insurer won't pay a benefit that arises in connection with:- war or an act of war (whether declared or not);- any intentional self-inflicted injury or any attempt at suicide;- normal and uncomplicated pregnancy or childbirth, including multiple pregnancy, threatenedmiscarriage, participation in an IVF or similar program, and conditions commonly associated with pregnancy such as morning sickness, backache, varicose veins,ankle swelling, bladder problems or post-natal depression; or- an exclusion which is specific to you and noted on your Policy Information Statement."
+      },
+      "Definitions":{
+         "TPD Definition":"In order to comply with the SIS Act, a TPD benefit may only be payable where the Insured is taken to be permanently incapacitated to the extent that their ill-health (whether physical or mental) makes it unlikely that the Insured will engage in gainful employment for which the Insured is reasonably qualified by education, training or experience",
+         "Temporary Disablement Definition":"you're unable to perform any occupation for which you are reasonably suited by education or training;you're following the advice of a medical practitioner; andyou're not working."
+      }
+   }
+}

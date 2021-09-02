@@ -20,8 +20,8 @@ class InstagramScraper:
         self.driver = webdriver.Firefox()
 
         #Credentials
-        USERNAME = 'rexvon.apaap@gmail.com'
-        PASSWORD = 'bryitkids920'
+        self.USERNAME = 'rexvon.apaap@gmail.com'
+        self.PASSWORD = 'bryitkids920'
 
         # self.unprocessed_urls = deque([])
         self.processed_urls: List[str] = []

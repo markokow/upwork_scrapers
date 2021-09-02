@@ -1,0 +1,397 @@
+1630381429667	geckodriver	INFO	Listening on 127.0.0.1:50921
+1630381432761	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofileOe7rxU"
+1630381433462	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofileOe7rxU\\search.json.mozlz4", (void 0)))
+1630381436322	Marionette	INFO	Listening on port 50934
+1630381436459	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1630381456423	Marionette	INFO	Stopped listening on port 50934
+JavaScript error: resource:///modules/Interactions.jsm, line 209: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIUserIdleService.removeIdleObserver]
+[Parent 21308, IPC I/O Parent] WARNING: file /builds/worker/checkouts/gecko/ipc/chromium/src/base/process_util_win.cc:167
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1630381458881	geckodriver	INFO	Listening on 127.0.0.1:50995
+1630381461944	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofileXYbmDr"
+1630381462597	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofileXYbmDr\\search.json.mozlz4", (void 0)))
+1630381465385	Marionette	INFO	Listening on port 51005
+1630381465646	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1630381522512	Marionette	INFO	Stopped listening on port 51001630381524412	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofileijBasZ"
+1630381525013	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofileijBasZ\\search.json.mozlz4", (void 0)))
+1630381527741	Marionette	INFO	Listening on port 51094
+1630381528129	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: "Resource  of root-node was not found."
+1630381582823	Marionette	INFO	Stopped listening on port 51094
+JavaScript error: resource:///modules/Interactions.jsm, line 209: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIUserIdleService.removeIdleObserver]
+1630381586527	geckodriver	INFO	Listening on 127.0.0.1:51188
+1630381589584	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofiles4VApv"
+1630381590242	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofiles4VApv\\search.json.mozlz4", (void 0)))
+1630381593026	Marionette	INFO	Listening on port 51196
+1630381593281	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://www1.nseindia.com/common/js/js.js, line 85: ReferenceError: getTopGainersData is not defined
+JavaScript error: https://www1.nseindia.com/common/js/js.js, line 85: ReferenceError: getTopGainersData is not defined
+1630381749276	Marionette	INFO	Stopped listening on port 51196
+JavaScript error: resource:///modules/Interactions.jsm, line 209: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIUserIdleService.removeIdleObserver]
+1630381752929	geckodriver	INFO	Listening on 127.0.0.1:51331
+1630381755984	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofileMXLzlK"
+1630381756702	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofileMXLzlK\\search.json.mozlz4", (void 0)))
+1630381759833	Marionette	INFO	Listening on port 51340
+1630381760200	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1630381769325	Marionette	INFO	Stopped listening on port 51340
+JavaScript error: resource:///modules/Interactions.jsm, line 209: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIUserIdleService.removeIdleObserver]
+1630381771612	geckodriver	INFO	Listening on 127.0.0.1:51405
+1630381774682	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofileS9sKkm"
+1630381775347	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofileS9sKkm\\search.json.mozlz4", (void 0)))
+1630381778143	Marionette	INFO	Listening on port 51414
+1630381778373	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: resource:///modules/UrlbarInput.jsm, line 1630381814806	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofilemETGik"
+1630381815474	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofilemETGik\\search.json.mozlz4", (void 0)))
+1630381818291	Marionette	INFO	Listening on port 51484
+1630381818519	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://www1.nseindia.com/common/js/js.js, line 85: ReferenceError: getTopGainersData is not defined
+JavaScript error: https://www1.nseindia.com/common/js/js.js, line 85: ReferenceError: getTopGainersData is not defined
+JavaScript error: https://www1.nseindia.com/common/js/js.js, line 85: ReferenceError: getTopGainersData is not defined
+JavaScript error: https://www1.nseindia.com/common/js/js.js, line 85: ReferenceError: getTopGainersData is not defined
+JavaScript error: https://www1.nseindia.com/common/js/js.js, line 85: ReferenceError: getTopGainersData is not defined
+JavaScript error: https://www1.nseindia.com/common/js/js.js, line 85: ReferenceError: getTopGainersData is not defined
+console.error: services.settings: 
+  main/doh-providers Signature failed  InvalidSignatureError: Invalid content signature (main/doh-providers)
+console.error: services.settings: 
+  main/doh-providers local data was corrupted
+console.warn: services.settings: main/doh-providers Signature verified failed. Retry from scratch
+console.error: services.settings: 
+  main/doh-config Signature failed  InvalidSignatureError: Invalid content signature (main/doh-config)
+console.error: services.settings: 
+  main/doh-config local data was corrupted
+console.warn: services.setJavaScript error: https://www1.nseindia.com/common/js/js.js, line 85: JavaScript error: https://www1.nseindia.com/commonconsole.error: services.settings: 
+  main/doh-providers Signature fai1630382252615	Marionette	INFO	Stopped listening on port 51484
+JavaScript error: resource:///modules/Interactions.jsm, line 209: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIUserIdleService.removeIdleObserver]
+[Parent 10520, IPC I/O Parent] WARNING: file /builds/worker/checkouts/gecko/ipc/chromium/src/base/process_util_win.cc:167
+ture (main/doh-config)
+console.error: services.settings: 
+  main/doh-config local data was corrupted
+console.warn: services.settings: main/doh-config Signature verified failed. Retry from scratch
+1630382250136	Marionette	INFO	Stopped listening on port 51556
+JavaScript error: resource:///modules/Interactions.jsm, line 209: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIUserIdleService.removeIdleObserver]
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+nored for this session
+1630381921440	Marionette	INFO	Stopped listening on port 51706
+JavaScript error: resource:///modules/Interactions.jsm, line 209: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIUserIdleService.removeIdleObserver]
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1630381924637	geckodriver	INFO	Listening on 127.0.0.1:51773
+1630381927680	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofileUH1wZT"
+1630381928176	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofileUH1wZT\\search.json.mozlz4", (void 0)))
+1630381930501	Marionette	INFO	Listening on port 51781
+1630381930862	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1630381944928	Marionette	INFO	Stopped listening on port 51781
+JavaScript error: resource:///modules/Interactions.jsm, line 209: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIUserIdleService.removeIdleObserver]
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1630381952059	geckodriver	INFO	Listening on 127.0.0.1:51849
+1630381955108	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofilenb5gJX"
+1630381955601	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofilenb5gJX\\search.json.mozlz4", (void 0)))
+1630381957863	Marionette	INFO	Listening on port 51858
+1630381958292	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1630381964875	Marionette	INFO	Stopped listening on port 51858
+JavaScript error: resource:///modules/Interactions.jsm, line 209: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIUserIdleService.removeIdleObserver]
+1630382222366	geckodriver	INFO	Listening on 127.0.0.1:52181
+1630382225407	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofilelTUBpe"
+1630382225928	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofilelTUBpe\\search.json.mozlz4", (void 0)))
+1630382228288	Marionette	INFO	Listening on port 52197
+1630382228608	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1630382234351	Marionette	INFO	Stopped listening on port 52197
+JavaScript error: resource:///modules/Interactions.jsm, line 209: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIUserIdleService.removeIdleObserver]
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1630382241482	geckodriver	INFO	Listening on 127.0.0.1:52258
+1630382248126	geckodriver	INFO	Listening on 127.0.0.1:52276
+1630382251180	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofile1WJrrO"
+1630382251798	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofile1WJrrO\\search.json.mozlz4", (void 0)))
+1630382254469	Marionette	INFO	Listening on port 52284
+1630382254881	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1630382259009	Marionette	INFO	Stopped listening on port 52284
+JavaScript error: resource:///modules/Interactions.jsm, line 209: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIUserIdleService.removeIdleObserver]
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1630382263808	geckodriver	INFO	Listening on 127.0.0.1:52344
+1630382266852	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofilejvdkyo"
+1630382267489	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofilejvdkyo\\search.json.mozlz4", (void 0)))
+1630382270186	Marionette	INFO	Listening on port 52353
+1630382270547	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1630382279789	Marionette	INFO	Stopped listening on port 52353
+JavaScript error: resource:///modules/Interactions.jsm, line 209: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIUserIdleService.removeIdleObserver]
+[Parent 16404, IPC I/O Parent] WARNING: file /builds/worker/checkouts/gecko/ipc/chromium/src/base/process_util_win.cc:167
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1630382356935	geckodriver	INFO	Listening on 127.0.0.1:52437
+1630382359975	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofileuH5qrl"
+1630382360828	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofileuH5qrl\\search.json.mozlz4", (void 0)))
+1630382363999	Marionette	INFO	Listening on port 52453
+1630382371735	Marionette	INFO	Stopped listening on port 52453
+JavaScript error: resource:///modules/Interactions.jsm, line 209: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIUserIdleService.removeIdleObserver]
+1630382374065	geckodriver	INFO	Listening on 127.0.0.1:55925
+1630382377132	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofileIK1Cc8"
+1630382377816	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofileIK1Cc8\\search.json.mozlz4", (void 0)))
+1630382380667	Marionette	INFO	Listening on port 55934
+1630382380849	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://www1.nseindia.com/common/js/js.js, line 85: ReferenceError: getTopGainersData is not defined
+JavaScript error: https://www1.nseindia.com/common/js/js.js, line 85: ReferenceError: getTopGainersData is not defined
+JavaScript error: https://www1.nseindia.com/common/js/js.js, line 85: ReferenceError: getTopGainersData is not defined
+1630382601264	Marionette	INFO	Stopped listening on port 55934
+JavaScript error: resource:///modules/Interactions.jsm, line 209: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIUserIdleService.removeIdleObserver]
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+ettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofileZNttMQ\\search.json.mozlz4", (void 0)))
+1630382574969	Marionette	INFO	Listening on port 56185
+1630382575233	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1630382600549	Marionette	INFO	Stopped listening on port 56185
+JavaScript error: resource:///modules/Interactions.jsm, line 209: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIUserIdleService.removeIdleObserver]
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1630382608555	geckodriver	INFO	Listening on 127.0.0.1:56264
+1630382611605	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofilelgBzxg"
+1630382612258	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofilelgBzxg\\search.json.mozlz4", (void 0)))
+1630382615052	Marionette	INFO	Listening on port 56275
+1630382615314	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1630382621626	Marionette	INFO	Stopped listening on port 56275
+JavaScript error: resource:///modules/Interactions.jsm, line 209: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIUserIdleService.removeIdleObserver]
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1630387468688	geckodriver	INFO	Listening on 127.0.0.1:56758
+1630387471748	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofileSwVlfF"
+1630387472397	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofileSwVlfF\\search.json.mozlz4", (void 0)))
+1630387475223	Marionette	INFO	Listening on port 56766
+1630387475472	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1630387482469	Marionette	INFO	Stopped listening on port 56766
+JavaScript error: resource:///modules/Interactions.jsm, line 209: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIUserIdleService.removeIdleObserver]
+[Parent 11252, IPC I/O Parent] WARNING: file /builds/worker/checkouts/gecko/ipc/chromium/src/base/process_util_win.cc:167
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1630387489159	geckodriver	INFO	Listening on 127.0.0.1:56822
+1630387492215	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofileZFO8el"
+1630387492901	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofileZFO8el\\search.json.mozlz4", (void 0)))
+1630387495570	Marionette	INFO	Listening on port 56830
+1630387495933	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1630387499200	Marionette	INFO	Stopped listening on port 56830
+JavaScript error: resource:///modules/Interactions.jsm, line 209: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIUserIdleService.removeIdleObserver]
+[Parent 30352, IPC I/O Parent] WARNING: file /builds/worker/checkouts/gecko/ipc/chromium/src/base/process_util_win.cc:167
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1630387545833	geckodriver	INFO	Listening on 127.0.0.1:55270
+1630387548903	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofileSasUqx"
+1630387549552	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofileSasUqx\\search.json.mozlz4", (void 0)))
+1630387552268	Marionette	INFO	Listening on port 55278
+1630387552612	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1630387563931	Marionette	INFO	Stopped listening on port 55278
+JavaScript error: resource:///modules/Interactions.jsm, line 209: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIUserIdleService.removeIdleObserver]
+[Parent 36320, IPC I/O Parent] WARNING: file /builds/worker/checkouts/gecko/ipc/chromium/src/base/process_util_win.cc:167
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1630392227607	geckodriver	INFO	Listening on 127.0.0.1:51712
+1630392230675	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofileDE4oph"
+1630392231276	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofileDE4oph\\search.json.mozlz4", (void 0)))
+1630392233784	Marionette	INFO	Listening on port 51721
+1630392233856	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://www1.nseindia.com/common/js/js.js, line 85: ReferenceError: getTopGainersData is not defined
+JavaScript error: https://www1.nseindia.com/common/js/js.js,1630392356022	mozrunner::runner	INFO	Running command: "C:\\P1630392357937	Marionette	INFO	Stopped listening on port 51721
+JavaScript error: resource:///modules/Interactions.jsm, line 209: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nconsole.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofile36xxjh\\search.json.mozlz4", (void 0)))
+1630392359973	Marionette	INFO	Listening on port 51849
+1630392360253	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://www1.nseindia.com/common/js/subNav.js, line 14: TypeError: xmlDoc is null
+JavaScript error: https://www1.nseindia.com/common/js/jquery-1.4.4.min.js, line 29: NS_ERROR_NOT_INITIALIZED: 
+1630392361387	Marionette	INFO	Stopped listening on port 51849
+JavaScript error: resource:///modules/Interactions.jsm, line 209: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIUserIdleService.removeIdleObserver]
+JavaScript error: chrome://remote/content/marionette/cert.js, line 55: NS_ERROR_NOT_AVAILABLE: Component returned failure code: 0x80040111 (NS_ERROR_NOT_AVAILABLE) [nsICertOverrideService.setDisableAllSecurityChecksAndLetAttackersInterceptMyData]
+[Parent 13480, IPC I/O Parent] WARNING: file /builds/worker/checkouts/gecko/ipc/chromium/src/base/process_util_win.cc:167
+1630392403007	geckodriver	INFO	Listening on 127.0.0.1:51915
+1630392406052	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofileaUr1Wp"
+1630392406670	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofileaUr1Wp\\search.json.mozlz4", (void 0)))
+1630392409347	Marionette	INFO	Listening on port 51923
+1630392409772	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://www1.nseindia.com/common/js/js.js, line 85: ReferenceError: getTopGainersData is not defined
+JavaScript error: https://www1.nseindia.com/common/js/js.js, line 85: ReferenceError: getTopGainersData is not defined
+JavaScript error: https://www1.nseindia.com/common/js/js.js, line 85: ReferenceError: getTopGainersData is not defined
+JavaScript error: https://www1.nseindia.com/common/js/js.js, line 85: ReferenceError: getTopGainersData is not defined
+JavaScript error: https://www1.nseindia.com/common/js/js.js, line 85: ReferenceError: getTopGainersData is not defined
+JavaScript error: https://www1.nseindia.com/common/js/js.js, line 85: ReferenceError: getTopGainersData is not defined
+console.error: services.settings: 
+  main/doh-providers Signature failed  InvalidSignatureError: Invalid content signature (main/doh-providers)
+console.error: services.settings: 
+  main/doh-providers local data was corrupted
+console.warn: services.settings: main/doh-providers Signature verified failed. Retry from scratch
+console.error: services.settings: 
+  main/doh-config Signature failed  InvalidSignatureError: Invalid content signature (main/doh-config)
+console.error: services.settings: 
+  main/doh-config local data was corrupted
+console.warn: services.settings: main/doh-config Signature verified failed. Retry from scratch
+JavaScript error: https://www1.nseindia.com/common/js/js.js, line 85: ReferenceError: getTopGainersData is not defined
+JavaScript error: https://www1.nseindia.com/common/js/js.js, line 85: ReferenceError: getTopGainersData is not defined
+console.log: WebExtensions: reset-default-search: starting.
+console.log: WebExtensions: reset-default-search: No addons in our list are installed.
+JavaScript error: https://www1.nseindia.com/common/js/js.js, line 85: ReferenceError: getTopGainersData is not defined
+JavaScript error: https://www1.nseindia.com/common/js/js.js, line 85: ReferenceError: getTopGainersData is not defined
+JavaScript error: https://www1.nseindia.com/common/js/js.js, line 85: ReferenceError: getTopGainersData is not defined
+JavaScript error: https://www1.nseindia.com/common/js/js.js, line 85: ReferenceError: getTopGainersData is not defined
+JavaScript error: https://www1.nseindia.com/common/js/js.js, line 85: ReferenceError: getTopGainersData is not defined
+JavaScript error: https://www1.nseindia.com/common/js/js.js, line 85: ReferenceError: getTopGainersData is not defined
+JavaScript error: https://www1.nseindia.com/common/js/js.js, line 85: ReferenceError: getTopGainersData is not defined
+JavaScript error: https://www1.nseindia.com/common/js/js.js, line 85: ReferenceError: getTopGainersData is not defined
+JavaScript error: https://www1.nseindia.com/common/js/js.js, line 85: ReferenceError: getTopGainersData is not defined
+JavaScript error: https://www1.nseindia.com/common/js/js.js, line 85: ReferenceError: getTopGainersData is not defined
+JavaScript error: https://www1.nseindia.com/common/js/js.js, line 85: ReferenceError: getTopGainersData is not defined
+JavaScript error: https://www1.nseindia.com/common/js/js.js, line 85: ReferenceError: getTopGainersData is not defined
+JavaScript error: https://www1.nseindia.com/common/js/js.js, line 85: ReferenceError: getTopGainersData is not defined
+JavaScript error: https://www1.nseindia.com/common/js/js.js, line 85: ReferenceError: getTopGainersData is not defined
+JavaScript error: https://www1.nseindia.com/common/js/js.js, line 85: ReferenceError: getTopGainersData is not defined
+JavaScript error: https://www1.nseindia.com/common/js/js.js, line 85: ReferenceError: getTopGainersData is not defined
+JavaScript error: https://www1.nseindia.com/common/js/js.js, line 85: ReferenceError: getTopGainersData is not defined
+JavaScript error: https://www1.nseindia.com/common/js/js.js, line 85: ReferenceError: getTopGainersData is not defined
+JavaScript error: https://www1.nseindia.com/common/js/js.js, line 85: ReferenceError: getTopGainersData is not defined
+JavaScript error: https://www1.nseindia.com/common/js/js.js, line 85: ReferenceError: getTopGainersData is not defined
+JavaScript error: https://www1.nseindia.com/common/js/js.js, line 85: ReferenceError: getTopGainersData is not defined
+JavaScript error: https://www1.nseindia.com/common/js/js.js, line 85: ReferenceError: getTopGainersData is not defined
+JavaScript error: https://www1.nseindia.com/common/js/js.js, line 85: ReferenceError: getTopGainersData is not defined
+JavaScript error: https://www1.nseindia.com/common/js/js.js, line 85: ReferenceError: getTopGainersData is not defined
+JavaScript error: https://www1.nseindia.com/common/js/js.js, line 85: ReferenceError: getTopGainersData is not defined
+JavaScript error: https://www1.nseindia.com/common/js/js.js, line 85: ReferenceError: getTopGainersData is not defined
+JavaScript error: https://www1.nseindia.com/common/js/js.js, line 85: ReferenceError: getTopGainersData is not defined
+JavaScript error: https://www1.nseindia.com/common/js/js.js, line 85: ReferenceError: getTopGainersData is not defined
+JavaScript error: https://www1.nseindia.com/common/js/js.js, line 85: ReferenceError: getTopGainersData is not defined
+JavaScript error: https://www1.nseindia.com/common/js/js.js, line 85: ReferenceError: getTopGainersData is not defined
+JavaScript error: https://www1.nseindia.com/common/js/js.js, line 85: ReferenceError: getTopGainersData is not defined
+1630394795196	Marionette	INFO	Stopped listening on port 51923
+JavaScript error: resource:///modules/Interactions.jsm, line 209: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIUserIdleService.removeIdleObserver]
+[Parent 1492, IPC I/O Parent] WARNING: file /builds/worker/checkouts/gecko/ipc/chromium/src/base/process_util_win.cc:167
+[Parent 1492, IPC I/O Parent] WARNING: file /builds/worker/checkouts/gecko/ipc/chromium/src/base/process_util_win.cc:167
+te enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofileDiVEe8\\search.json.mozlz4", (void 0)))
+1630394796778	Marionette	INFO	Listening on port 56651
+1630394796863	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://www1.nseindia.com/common/js/js.js, line 85: ReferenceError: getTopGainersData is not defined
+JavaScript error: https://www1.nseindia.com/common/js/js.js, line 85: ReferenceError: getTopGainersData is not defined
+JavaScript error: https://www1.nseindia.com/common/js/js.js, line 85: ReferenceError: getTopGainersData is not defined
+JavaScript error: https://www1.nseindia.com/common/js/js.js, line 85: ReferenceError: getTopGainersData is not defined
+JavaScript error: https://www1.nseindia.com/common/js/js.js, line 85: ReferenceError: getTopGainersData is not defined
+JavaScript error: https://www1.nseindia.com/common/js/js.js, line 85: ReferenceError: getTopGainersData is not defined
+console.error: services.settings: 
+  main/doh-providers Signature failed  InvalidSignatureError: Invalid content signature (main/doh-providers)
+console.error: services.settings: 
+  main/doh-providers local data was corrupted
+console.warn: services.settings: main/doh-providers Signature verified failed. Retry from scratch
+console.error: services.settings: 
+  main/doh-config Signature failed  InvalidSignatureError: Invalid content signature (main/doh-config)
+console.error: services.settings: 
+  main/doh-config local data was corrupted
+console.warn: services.settings: main/doh-config Signature verified failed. Retry from scratch
+JavaScript error: https://www1.nseindia.com/common/js/js.js, line 85: ReferenceError: getTopGainersData is not defined
+JavaScript error: https://www1.nseindia.com/common/js/js.js, line 85: ReferenceError: getTopGainersData is not defined
+console.log: WebExtensions: reset-default-search: starting.
+console.log: WebExtensions: reset-default-search: No addons in our list are installed.
+JavaScript error: https://www1.nseindia.com/common/js/js.js, line 85: ReferenceError: getTopGainersData is not defined
+JavaScript error: https://www1.nseindia.com/common/js/js.js, line 85: ReferenceError: getTopGainersData is not defined
+JavaScript error: https://www1.nseindia.com/common/js/js.js, line 85: ReferenceError: getTopGainersData is not defined
+JavaScript error: https://www1.nseindia.com/common/js/js.js, line 85: ReferenceError: getTopGainersData is not defined
+JavaScript error: https://www1.nseindia.com/common/js/js.js, line 85: ReferenceError: getTopGainersData is not defined
+JavaScript error: https://www1.nseindia.com/common/js/js.js, line 85: ReferenceError: getTopGainersData is not defined
+JavaScript error: https://www1.nseindia.com/common/js/js.js, line 85: ReferenceError: getTopGainersData is not defined
+JavaScript error: https://www1.nseindia.com/common/js/js.js, line 85: ReferenceError: getTopGainersData is not defined
+JavaScript error: https://www1.nseindia.com/common/js/js.js, line 85: ReferenceError: getTopGainersData is not defined
+JavaScript error: https://www1.nseindia.com/common/js/js.js, line 85: ReferenceError: getTopGainersData is not defined
+JavaScript error: https://www1.nseindia.com/common/js/js.js, line 85: ReferenceError: getTopGainersData is not defined
+JavaScript error: https://www1.nseindia.com/common/js/js.js, line 85: ReferenceError: getTopGainersData is not defined
+JavaScript error: https://www1.nseindia.com/common/js/js.js, line 85: ReferenceError: getTopGainersData is not defined
+JavaScript error: https://www1.nseindia.com/common/js/js.js, line 85: ReferenceError: getTopGainersData is not defined
+JavaScript error: https://www1.nseindia.com/common/js/js.js, line 85: ReferenceError: getTopGainersData is not defined
+JavaScript error: https://www1.nseindia.com/common/js/js.js, line 85: ReferenceError: getTopGainersData is not defined
+JavaScript error: https://www1.nseindia.com/common/js/js.js, line 85: ReferenceError: getTopGainersData is not defined
+JavaScript error: https://www1.nseindia.com/common/js/js.js, line 85: ReferenceError: getTopGainersData is not defined
+JavaScript error: https://www1.nseindia.com/common/js/js.js, line 85: ReferenceError: getTopGainersData is not defined
+JavaScript error: https://www1.nseindia.com/common/js/js.js, line 85: ReferenceError: getTopGainersData is not defined
+JavaScript error: https://www1.nseindia.com/common/js/js.js, line 85: ReferenceError: getTopGainersData is not defined
+JavaScript error: https://www1.nseindia.com/common/js/js.js, line 85: ReferenceError: getTopGainersData is not defined
+JavaScript error: https://www1.nseindia.com/common/js/js.js, line 85: ReferenceError: getTopGainersData is not defined
+JavaScript error: https://www1.nseindia.com/common/js/js.js, line 85: ReferenceError: getTopGainersData is not defined
+JavaScript error: https://www1.nseindia.com/common/js/js.js, line 85: ReferenceError: getTopGainersData is not defined
+JavaScript error: https://www1.nseindia.com/common/js/js.js, line 85: ReferenceError: getTopGainersData is not defined
+JavaScript error: https://www1.nseindia.com/common/js/js.js, line 85: ReferenceError: getTopGainersData is not defined
+JavaScript error: https://www1.nseindia.com/common/js/js.js, line 85: ReferenceError: getTopGainersData is not defined
+JavaScript error: https://www1.nseindia.com/common/js/js.js, line 85: ReferenceError: getTopGainersData is not defined
+JavaScript error: https://www1.nseindia.com/common/js/js.js, line 85: ReferenceError: getTopGainersData is not defined
+JavaScript error: https://www1.nseindia.com/common/js/js.js, line 85: ReferenceError: getTopGainersData is not defined
+JavaScript error: https://www1.nseindia.com/common/js/js.js, line 85: ReferenceError: getTopGainersData is not defined
+JavaScript error: https://www1.nseindia.com/common/js/js.js, line 85: ReferenceError: getTopGainersData is not defined
+JavaScript error: https://www1.nseindia.com/common/js/js.js, line 85: ReferenceError: getTopGainersData is not defined
+JavaScript error: https://www1.nseindia.com/common/js/js.js, line 85: ReferenceError: getTopGainersData is not defined
+JavaScript error: https://www1.nseindia.com/common/js/js.js, line 85: ReferenceError: getTopGainersData is not defined
+JavaScript error: https://www1.nseindia.com/common/js/js.js, line 85: ReferenceError: getTopGainersData is not defined
+JavaScript error: https://www1.nseindia.com/common/js/js.js, line 85: ReferenceError: getTopGainersData is not defined
+1630397598518	Marionette	INFO	Stopped listening on port 56651
+JavaScript error: resource:///modules/Interactions.jsm, line 209: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIUserIdleService.removeIdleObserver]
+1630400909915	geckodriver	INFO	Listening on 127.0.0.1:65199
+1630400912965	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofileb0QgR4"
+1630400913636	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofileb0QgR4\\search.json.mozlz4", (void 0)))
+1630400916572	Marionette	INFO	Listening on port 65207
+1630400916670	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1630400922462	Marionette	INFO	Stopped listening on port 65207
+JavaScript error: resource:///modules/Interactions.jsm, line 209: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIUserIdleService.removeIdleObserver]
+JavaScript error: chrome://remote/content/marionette/cert.js, line 55: NS_ERROR_NOT_AVAILABLE: Component returned failure code: 0x80040111 (NS_ERROR_NOT_AVAILABLE) [nsICertOverrideService.setDisableAllSecurityChecksAndLetAttackersInterceptMyData]
+[Parent 17124, IPC I/O Parent] WARNING: file /builds/worker/checkouts/gecko/ipc/chromium/src/base/process_util_win.cc:167
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1630400946194	geckodriver	INFO	Listening on 127.0.0.1:65352
+1630400949255	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofilexI5pjF"
+1630400949895	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofilexI5pjF\\search.json.mozlz4", (void 0)))
+1630400952874	Marionette	INFO	Listening on port 65360
+1630400952980	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.error: services.settings: 
+  main/doh-providers Signature failed  InvalidSignatureError: Invalid content signature (main/doh-providers)
+console.error: services.settings: 
+  main/doh-providers local data was corrupted
+console.warn: services.settings: main/doh-providers Signature verified failed. Retry from scratch
+console.error: services.settings: 
+  main/doh-config Signature failed  InvalidSignatureError: Invalid content signature (main/doh-config)
+console.error: services.settings: 
+  main/doh-config local data was corrupted
+console.warn: services.settings: main/doh-config Signature verified failed. Retry from scratch
+console.log: WebExtensions: reset-default-search: starting.
+console.log: WebExtensions: reset-default-search: No addons in our list are installed.
+1630401947696	Marionette	INFO	Stopped listening on port 65360
+JavaScript error: resource:///modules/Interactions.jsm, line 209: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIUserIdleService.removeIdleObserver]
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
