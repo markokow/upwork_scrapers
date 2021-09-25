@@ -11,7 +11,18 @@ results = []
 def get_links(page_url):
     global pages
     #   pattern = re.compile("^(/)")
-    html = requests.get(page_url).text # fstrings require Python 3.6+
+    _headers = {
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:92.0) Gecko/20100101 Firefox/92.0'
+    }
+
+    proxy = {
+        # 'https': 'https://41.217.219.53:31398'
+    }
+    html = requests.get(page_url, headers=_headers, proxies=proxy) # fstrings require Python 3.6+
+    
+
+    print(html.status_code)
+
     soup = BeautifulSoup(html, "html.parser")
     for link in soup.find_all("a", href=True):
 
@@ -48,6 +59,6 @@ def write_csv():
 
 
 
-get_links('https://www.merriam-webster.com/')
+get_links('https://www.sustainablesupply.com/')
 write_csv()
         
