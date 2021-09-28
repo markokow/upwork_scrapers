@@ -9,7 +9,7 @@ import json
 class LefiGaro(scrapy.Spider):
 
     name = '_lefigaro'
-
+  
     headers = {'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:92.0) Gecko/20100101 Firefox/92.0'}
     
     _base_url = 'https://api-graphql.lefigaro.fr/graphql?id=widget-comments_commentsQuery2_31d9f1fd61a3568936b76800aef3aade1b9002eee01930e2b9c499ceca28192e&variables={"id":"bGVmaWdhcm8uZnJfX2I0NjZhMTE2LTFjNzktMTFlYy04ZmYwLWEwMzY5ZjkxZjMwNF9fQXJ0aWNsZQ==","page":'
@@ -25,9 +25,6 @@ class LefiGaro(scrapy.Spider):
                 yield scrapy.Request(url = _url, headers = self.headers, callback=self.parse)
             except:
                 pass
-
-
-
 
 
     def parse(self, response, **kwargs):

@@ -53,6 +53,7 @@ class GoogleScraper:
         self.pagination_params['oq'] = self.keyword
 
         response = requests.get(self.base_url, params = self.pagination_params, headers = self.headers)
+        # response = requests.get(self.base_url, params = self.pagination_params, headers = self.headers)
 
         return response
 
@@ -125,7 +126,7 @@ if __name__ == '__main__':
     # keyword = input('Enter your keyword: ')
     # pages = input('Number of pages: ')
     keyword = 'hey'
-    pages = 3
+    pages = 1000
     #Run scraper
     scraper = GoogleScraper(keyword, pages)
     scraper.run()
