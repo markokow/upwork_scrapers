@@ -47,17 +47,15 @@ class Adon_Segal(scrapy.Spider):
     # parse response
     def parse(self, res):
 
-
         _features: dict = {}
         _data: list = []
 
-        _namepattern = r"<p class=\\\"shop-name\\\">.{0,50}<\\/p>"
+        _namepattern = r"<p class=\\\"shop-name\\\">.{0,100}<\\/p>"
         _names = re.findall(_namepattern, res.text)
 
-        _addresspattern = r"<p>.{0,80}<\\/p>\\n"
+        _addresspattern = r"<p>.{0,300}<\\/p>\\n"
         _address = re.findall(_addresspattern, res.text)
 
-        # _numberspattern = r"<li><a href=\\\"tel:[0-9]+\\\"><span class=\\\"call-icon\\"
         _numberspattern = r"<span class=\\\"call-icon\\.{0,300}<\\/a><\\/li>"
         _numbers = re.findall(_numberspattern, res.text)
         _parsed_nums: list = []
@@ -69,7 +67,7 @@ class Adon_Segal(scrapy.Spider):
         for val in _numbers:
             pattern = r"\d{9,100}"
             num = re.findall(pattern, val)
-            num = [x.replace(',','') for x in num]
+            num = [x.replace(',','').strip() for x in num]
             if not num:
                 _parsed_nums.append("No data")
             else:
@@ -82,7 +80,7 @@ class Adon_Segal(scrapy.Spider):
             if not email:
                 _parsed_emails.append("No data")
             else:
-                _parsed_emails.append(email[-1])
+                _parsed_emails.append(email[-1].strip())
         
         for a,b,c,d in zip(_names, _address, _parsed_nums, _parsed_emails):
 
