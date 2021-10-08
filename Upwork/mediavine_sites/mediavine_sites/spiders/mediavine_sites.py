@@ -10,6 +10,7 @@ import winsound
 from urllib.parse import urlparse
 
 from requests.models import cookiejar_from_dict
+
 class GoogleScraper:
 
     def __init__(self, keyword = 'google', pages = 1, cookies = '') -> None:
