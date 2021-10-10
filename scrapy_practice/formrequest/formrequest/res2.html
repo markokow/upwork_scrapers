@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html  lang="en-US">
+<head id="Head"><meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+<meta name="REVISIT-AFTER" content="1 DAYS" />
+<meta name="RATING" content="GENERAL" />
+<meta name="RESOURCE-TYPE" content="DOCUMENT" />
+<meta content="text/javascript" http-equiv="Content-Script-Type" />
+<meta content="text/css" http-equiv="Content-Style-Type" />
+<title>
+	UNSPSC > Search-Code
+</title><meta id="MetaRobots" name="ROBOTS" content="INDEX, FOLLOW" /><link href="/Resources/Shared/stylesheets/dnndefault/7.0.0/default.css?cdv=931" type="text/css" rel="stylesheet"/><link href="/DesktopModules/WillStrohl.Injection/module.css?cdv=931" type="text/css" rel="stylesheet"/><link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css?cdv=931" type="text/css" rel="stylesheet"/><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css?cdv=931" type="text/css" rel="stylesheet"/><link href="/Portals/_default/Containers/Corporat60/container.css?cdv=931" type="text/css" rel="stylesheet"/><link href="/Portals/3/portal.css?cdv=931" type="text/css" rel="stylesheet"/><link href="/Portals/_default/Skins/Corporat60/Superfish/superfish.css?cdv=931" type="text/css" rel="stylesheet"/><script src="/Resources/libraries/jQuery/03_02_01/jquery.js?cdv=931" type="text/javascript"></script><script src="/Resources/libraries/jQuery-Migrate/03_00_00/jquery-migrate.js?cdv=931" type="text/javascript"></script><script src="/Resources/libraries/jQuery-UI/01_12_01/jquery-ui.js?cdv=931" type="text/javascript"></script><link rel='SHORTCUT ICON' href='/Portals/3/favicon (1).ico?ver=2012-12-05-125650-000' type='image/x-icon' /><!-- BEGIN WillStrohl.Injection Header Injections --><script type="text/javascript"> function miniclick(var1) { var str = '?'; var codenumber = document.getElementById('CSS'); var codeName = document.getElementById('SS'); str = str + 'CSS=' + codenumber.value + '&Type=' + var1 + '&SS=' + codeName.value;var url = location.href; var a = url.slice(0, url.lastIndexOf("/")); var b = a + "/search-code/default.aspx" + str; window.open(a+"/search-code/default.aspx" + str,'_self'); return false; } </script><!-- END WillStrohl.Injection Header Injections -->
+
+          <script type="text/javascript">
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-427259-24', 'auto', {'legacyCookieDomain': 'none'});
+            
+			var dimensionName = localStorage.getItem('Analytics.Page.PageVariantDimension');
+
+			if (dimensionName != undefined && dimensionName != '') { ga('set', dimensionName, 'Default'); }
+
+            ga('send', 'pageview');	
+          </script>
+
+        <meta name="viewport" content="width=device-width" /><!--[if lt IE 9]><script type="text/javascript" src="http://html5shiv.googlecode.com/svn/trunk/html5.js"> </script><![endif]--><script type="text/javascript" src="/Portals/_default/Skins/Corporat60/javascripts/modernizr.foundation.js"> </script><link type="text/css" rel="stylesheet" href="/Portals/_default/Skins/Corporat60/stylesheets/foundation.css" /><link type="text/css" rel="stylesheet" href="/Portals/_default/Skins/Corporat60/stylesheets/default.css" /><!--[if lt IE 9]><link type="text/css" rel="stylesheet" href="/Portals/_default/Skins/Corporat60/stylesheets/ie.css" /><![endif]--><link type="text/css" rel="stylesheet" href="/Portals/_default/Skins/Corporat60/stylesheets/Skin.css" /></head>
+<body id="Body">
+    
+    <form method="post" action="/search-code" id="Form" enctype="multipart/form-data">
+<div class="aspNetHidden">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="5EDGdWI7VTFvHhvn6QQlFpymc2EJ/+iXZpwmAQpDpQUeB0zf1C3yiagPwVdI/lptIx7DHNsec/btT+CflBLNmPqvpM2TCMpFaMkZolOtLuYKKVYJ2deoj2D798rTVwaAoh8mXvt3tCVAW1L0HPgpkE1e87UbR1hEYpRZ65l0k0k4Zo3RSg2kfFBr2mfYFBZdh8+jQduzKEZDzDnOcnmq/xMz+ZHdpsqPrGVo5f1Ba4uNA6Ng7TAEExtbrfjwV6WjcM+r4hFAd6mzlhS+6UcKIRm+5Bvo914NPvt3CWAQJxm1ZN3CJfsqXR85aIVV3vPFRmW1Xj32HNTaMBG5gDa6QHRwibTQvRv35ueSmjK6LkDLqAWNRydlpYAq84Yf7ehpUw0mlZLk9LKzvYiN0OZbEtC0//WxZCUp7SNAcDoGhUc0ZxzBRscfzj+CDIpH/offko9jVlcQyMXbGn2cYKVN8OtzaCBU/6znKb+PFAkcDKIRz9cmCw0vberP/itRzkQzBHmmQKiG82oEjxFtKuUPbETjUBN3ruIFoZOZYn1H3WlhPXNye10iOy2Y8QFYZHBgSH5lrmiG/OkLTX7ymH/F6PyseitiG9PFoXfhj8hbTSLDqjXcBOw5Hx/zkKU9cMaL5KHr3NN+hzI3wSRVnqpOt0cjCVXGhKoGEwH6R3fD/FEfeo/v8veJ5Y2X0cT2eVXh9sY6tLqlpdphzVDqhT+KSzUwY/D2gOR7HlsGunowN5BvGKM7bEAz1Rtu/B7XH2kv7vT5eLuLEXzScMUmcoj76StUT409x01dg6+vj61z1HQub9Ohv+xzWnc20YonXRPOGDSD0ST1CPB7ZYc1kNeG4+SBFUS6QGUbjuhEARRJH16qq7e0lYJoB/s1epL33YzY775ZueVNjX6SBNYR4rnySBD0H5J2DDGiPvjmI+OWUsxmk9LwveiI7dVS1rqztlPfRylm2NFX8/Hh3Sm0f8OlmsTkh+b1Ectv+T7I/0Sh8s44RUtBtcDH643cKCGzCxIJ+tQmjhpPxXlcojiCZP1dyPm/LaYHf/ocrRmDQPl3AooWFppai8pt6LbbnGPyJf4b1WhX8yw4UI83TAzIvA4x2ldhZ6NXRK7w4HL1K/4gWvMz4C1U5wjfxNNtc6TaQG4lvdqELKc+G6WwYr5VX+59kzJqeftWuhPVCXTqVQ5+L/zZjE/GDYW9FASMx1b70h+GutQBS+PzWBLu/u5SJicMM3HBzVx7oFYjCXfNr3NAoglyjXKI3Q523byGTfU4xVSvEq3RUpB5ktTgZwOD1qeGIZkCaoKNmO0VTurvnssgMpB7G5S8UkO9eO4Xg/vG3atJ/lpN7Kn/A2cTbkFriPXZOnCqgIUACIhzsoikCdPrj2D37orNnjB6rvunWp7kH1UX44LlnreFy3VmpZxc36PnZPQWzt71pbwPDz+uGgDQa69hEa4PMiLN6dtxl0MsEY0IB4EHZHJy0PdXGmfzOEV5rYgLXttyV7RWPkkvy8fSIrgxO0MHusXHlb+UDX0DORfP0JShE90Uha0UQYVp4VCcJ6Hhn41bDOBU8soqdZZR6/EUibxxn0SNz1Km6G4j4qB2pLHiMjNBvuV7JkCfrjuOOItk0bs0Uk5CxIVjzieK57vFUtSepGzpES47lquMZJMBb5481wmAV5fjAxxhMwXhizXu+odv8h/HnIUuQpy/IP8p5+bM+hcKHF9wJxd32wlEqbJWV5NezxuK90n+dg79Kw+wK69MS1cRWhYC7Bgwp0yukE3prBpUn+SztZxevySoaHD19LXOfvteXGlWTXCu0i/86o8eKZn1PWrOhZVHW+TKrng7GL298j2SgONjk3kCUVQH/CrND/jx6UVfK8DIXY+M1JWRkhfoFDK9zW6I+AsLSEOUUibwpE4QrqlxQ/souy21MJOzWumsNONeOv6i4sGeHI5U3ZtNDNpcPI3SfXcRg+na4UrQb7jW4xM272PGK1JjLe+Ft9LjuIri1YVy3pV412d2hUMb1N36GgXHt9bUeyLiFBM3T/vHBciigkjchYpe2GKOvce2r5yqo1sKyhWJtsFqkqrQCZTDXyQMbdgJLY/EAa7ZvzpNP2fUi+JFW1CUBhY8iVwXSHY+HGFeZX4T4Agm1tvS/GdRGsUlZxdpz7xoPWceZVjYvGZL3HctZ4UEFlB5Yf5k0zp2XRCk/ZNiaZWT0VWHHBEh3WJRGYuMZR9jcrG8Om9+bTnBjpDft2ESeMEy2Wf1BaTjs4Zc0oDdcd3Ss03OmCTnsj+UKztw5m+dUh703FYbk/+AKMGelXg0kxGx05BeB/KsR+VWx1aKCRbF/KWH47iq1p8fR8tg/S+Q3jEmX2mmfB/t7Y7Ko3mAzGEbuKnzn+IH5NLUW4FPwR2i9tdnkSP6fPu3YolG4js2b6E115/VJDOnOBAVFvYNLJQPmQZ5boVDU0VcI/OfgIu9zbX9wY2eEQn1EdfLHhvrK2E8xD32g1WC/StgLbThp80jMkSfyESvm8vBQP1NuTDuxoWe4OShWTQ5B8dVYGc7NVytuw3iQlqTLAh/F90EyKQIGR1BjeL2SweONgnyCOUhHmgcKI42/oWs5MZR/hCgPvRTUkoiA5IgY2jcVEKSB1IgpBCe1lp1GCNeyDPJYKJA2Y5JoKbHHB89eqC3LacDrtPuZjhjLB2hRDx/rDNQVfgTk2tUM8Py05nuRR8gWmeOoK5JrfHBjoaiHuChk1+rz5GRwYmQ68vrwX9f9/j1YyjHGzXgsyIXpttJ34SBnGbAUMOmCulNvJLpQiFIz/PDb1k5cDh374+Y6wx91SWBupot4Y++/rHa+bv2Sy6bt4nSST1rYMySmo8rHJLYKck0hSeIBirdvhyKZ1wPgXmHUhjBao7N+Cny0xeLCyj6noPJMyMTRdgaN2Dy1FwDkNsrgyydG+0O8soshqP9MOp5PUcvPh+x3wzi8lN4ITU+mZYljpy7KYNknN3s/X2QAf3RdlhPMbha4HyvScDyS5R9M6MbHGU7f9OSqrCyW+RP7N6WN63skNpv7ltyTABlSF2XU/GshXEOWxJxNLYWasLXOJg5jMCKvlXoxrTx0co/CNertBuV6mrc8LbpC6WMDV/FVis+w7LAjZ08Z//s0FwoFL43Z1i7+i/m/zVehPz/+F5jh3MzI+O2qaPatwZ3TpZM37uHy5pA3sE4kai3/TxcmW/rzoL0TJ5Iqut3/p+tM638WuEIpyAXLc8xkYHIRk14Lgfc17xPDkmznAyAVNeRGe3C8ms0UBpfuhZxhx+1acuwinpVkPzQostdHyyfVWPB75DYxT5jxTB+6fJrD/YSDRv6Jh5oGY65kIUYcNU97+ayJiJoKN5eXlmQl6aPxlJdE31/ie4m9Gm+nh2wXbaY0LIXmjvFE0h/vskA9x/G9FlNqcNwWwKKPg23JBJnfO8OQ9KRanLrVyxGzRVnMJQmuj/jp3u7wComizqDo1vljRlQzyYRsX1HvCczn7lidbv5z8ixv0JrRp4THdnuadquW9Ea8lmdynVQmIaz5kT5ufj55ddAzStQ42BSE/DzaXHu9LywnaVSTxeV9E9UVyvDldh55Mqf+A9LHOiEbdVQN2wqbq/GBr9BVH11JYX1eV5dFmkzFhksoYhjHaTSr0XiMOa1sksqyXvO2MpIp+69oKiHCQPgn+YdhEgJM3agPUQzymhOj4p4ZfU5G/qteFLVC+Y4i+smqAN+uJ/vLGkSXu4Malsv9FhKxjWTi8akTQq3Zir6mw1oXj7MyCLnMn4HAUME9hoMM+Takc1/I3Nedag0g5Cwgvpw2Wt104NcU8RMppW5B1NNU8b5idh75TgZctgUiGJ2HnU43fT5ZeWfssxYP+h+GhOhVAklbqNE5eJm1zTSFhAzwTJ/+warezIShJONx4yx1oHeD9ZpqJ7DgZSESmlwUMODvtiHjqIcfb5btbpsyjLRg7TYIJX0O2bLO/36PTyD4rhiqr9BBT1sSDPrTNPy+Q+pN+4xifeeFPgkNTJN6nxgaVi8mLURgbVL1M4SAnDNKMxJEBmUtp1Jr17ZJvd9SPaSwGggol22BDb26z5KTA4SpUp+JJxkP1anFGblF1DR2hHx1yz9Dt7j8gxJeyyMUgblmqHd/tH6tXtnpCAh4bpwUZxO5NlOEpy2StODuilnt8ssFgX1LEg+8S/IXKtfvuS6IMW+D43yS1NrdkhqImJ/KgM6h3FYFzMPp5NoSPOytDXMbXVKDl9yYAQ+WdH1OAW/t0JDmlgJ0TTFLoeDGJDEnj4AIHkh5ZLzY/hS/Oag7MQzqICbws2I2OQ4wXLvK+em1rjnFxq/rMGt+cQGfMoYnPzxKcTWimtDy0Lwz55lFowZrA7R2mfsQJ9JxdM/gH0KFlooRVAb44bzMyIFG1fXiTkBxJgsTkzaR3lFPhjzYFjyWiVx3vhkEs0AeONO8IeLvwkC2+QBHy1Jxi/jGQn3GzVaiiEPteuOoRQN6GuiOeAHMn53CcgmR3sIU2XwC25BlIMghbpA0az92ZJOVJjdHy+pK5WeF6GAlD2FAaQ2akv+vgOETXaxYX396S4i93PRX+KuMY2+ZA0q+bZPLgiPPqFlVhPk0j0tMNwHQtCKzCq1oQNL1xYuS/ID0cOeOdtB90K4vPAEERiEB0TxKNPG/l8ooD64hFl3LLdHFngzl9Ip31TDizhYnfbBUASX+kQlVjdLv1PsWaAz/bLsNGaUgxq/Phc+9XdYf4fe7J03CErXigGrR7gB8mVlCq7nJgcLvW+bqkomJVnG76SpAlcEEc5r/Qbg7KRnwbFbypBMUEMDoopLLJSGzBa6lz9/2BHzjZe3t7NW4YSUc3QwNdXpL7KNUqGRyy3iMD55GLNGJi0eHO7Uxb231Eh3psAF4WAxe6E6ApXLdMgWmRB+igd6td6/So8J01Nw/qHQ91myBOmvjzE5HSaFbO3LF9RoUmzfB0ccbRwO2fEdPH943zqMtOgV5Qvfj5CRJAK3PMEeeCMjMR3YMEaR5ccI3S70I84eXtwRU0JjLQvsJKR0sbAmQ2lnUvOPNEsK1+Tgm+YQD72pA8lcOD6XSHgKv2eYfeEdk7InL+5s1MDMmo6TxsSSD6uxY3rmKFR9PKjuBGkyCazpwSEi2AP7sYaKV31vubLAiDp/qjRbrxO2T0xdzEzNC6dGg6N1hmGoTAhd6zmJxhL6LD82cadi8+R0fUIj8pFz/PFxN/WvtNQaFSJZtAEOVBMjM/NN2nqxTwd+01r+OwKJ05Laukl22tDTOs4MHfKcUI6CgvKKTGNaYX7Jz7sG5AHxHz7x0q7QkGnPVGvXbrjpl/Zch4yR08nNHb9qRIf6Lv9dr4ZuSDe2xkneAi5CNNlSem9y41bgqfxzhmzFuk7B37EjginfDShZhnFYX654lSDCOhNqC0fKZNyb9bjeLd7icxlFFqO8/ehu4oLdqKTaz3udiInj+y+2WBlnobvmHrCkpIT4oXCp996v87cNZu2keqdFw89IS1oICtiJdFgyi0PUtgHlImebxtlhcYSh1QpkyDxWEcmoPFI1zK3aiyTXZjXpOo/qZGmaDhoR14vkQBnHt58H2PpCJCuThAIlP2qhxA0puIwG8Jpp+qLaNW96Ul+wjcvs/MenVV1v+7C7VaXEiWbYcVzM32zYZYE4L7dt9rjkelYMt1G9GofyqvpC6B/oibIkdvxQhJbnXrPszjN2zPevinqG6jB78sU8IVRlIF10DqOahakabuaQr/DvOQH59vx9f60Fge0pvXX8OOQ5BMU56rzXJzNMqfhdDoLPwGLIp5hao49Mn1/BHcRINClHMbCXwCC3hIcIfGV5XhN9r9ilJXdPvIvWZr3zYvJnd2Odg9yzqI77ub2ng8W7pjXNh6PJe02tyIYqbY5oLe13O1kMNeEoAqKTJU9c8ZIN/ZwkUBPkznc5b+OdXbdRcHcHKIddbMyNio0kER9Ce/Ir6I1DYaF5jTZ2cgx1ap6LGwlV9W4hLAcXxOcj1L0BJVvxcSLrQK9DBnb1o9Lnvx/gVwB7f7YLF7tAdQsjwoKfYrtjct5AgJXJW319PjI/nNGjLzJEVMO7ThsrTw5I5TDGkDEUeLtLiGzcCySzsjVjJ8FrM516f8AHBUMAt4oBk26pAbIQbuXEnNFadeGd4xSp93eJRAUcuTJGSCw30vO4i4vtul0b/mwW8f6PMEqlJ7958AWL65aIWlbHsC27a6fTTRlzEgHspnBh3TjA2C5Wj/S0oncYb+zr4sMPTuXPiTvpV1V2ELt34sFDrU0L+3PMpnaDxtHPYFPwe+3ktTBxVbhzmVZ75wH6IXrXTii8anQEzgq6X6mGcnKI4Yj9PQs34QTWqRlMtWPT10BTwjnGiiqR8F1ZJuanxRrLCWBX5oqa/am+bGBeI4ScjRbBphh7ptcO6XmJgEG5alVnn+qtvkYj7nl5XCVVoq1C/7IeeO3SFSeZOTMeI/5YJ+vHBj5TV4p9RwjVo8jBZBAxlmcjUvs539ezMQtoxP+f8LSfocxzIYkDDIcSlGl7q0aKGvrdHouR3P/I4KvMegHcMwzTjGYT1YOlr1jfMqgjQesnCt9fbpZtCdqyU8N9RkMoqwFQ+tlhQYdICIcRVDwUag8g2SaZhU8HEN578OW9uMcF/NLJzdGdIZGJ4ZqH5jSCfuLR5s2J/tEI6KdVGt2kP+6KMYsgMJVnSkS8zQWJrj4oWQ+zb+kWoBRQdb/SnaB/n5Nf/QIIb/dH0O4julozX7YZg4/OXfUwkvuG/gHhlEd6pyxrtfw3wNuogQ+J0+VuuitzoH8mHXTgb2yEXIABx/QfOAgIDJPOX58sULIRExifX8eRQMG0fGYaPcaVTuOAmR+rNSiVIE22dXLanlxCVcnZwoD3SPem51noqc3yX8BkR+P+SArEwP9q/GVYyCkubweKxxvKffRFudNH1M19ANHqjmDNx+F26d4A8voxfsz+h+hUYR0TSz1Hzr7qai8/CMCFoVmhlJSjLS8U9XnOgv79oMYQpIy0Vng3GG7qYyNthQx4iWWiIja0yKGrBuwt7Fjn7/+75hMUHErFYIoDaNvh2HyA9owR7Mj97vga70CJo6eGw3rTn/NByAlq/sZT1Oyq2rclZ8a3fzJtcg/SSgbRW+JWRETLnbqO8mvOTvqJfusGrF8Ts86toJ70rDYEXy5z6F58msPs5ErWRyEqYHMrxqhV6A4U59os06nL3jRGN4WAnJ3kDy5CUY90Bm+C7Pgdo3JBoa9yW1s9MxIqIi8u9vl+T0kyLjHXmHcFhVHAF6OqnjscFNZMgErrVUkaa1RtbASbOQxfzfIV09zSc9KzZvY/KWSEXjs0UlRg8mtwuWvYDu8FK6ooZVCoezJsjovkOZKTVCQmCeHwULnhoRvGLZg0HOFh/Qhx8Pko41f0N4iZJuCSuh8F3AOWq2uRDJDFtGVQBNgcmbqcgG/+SiVGPGjwKVc5UcGnIAi1L30iSERIg9vDZ7W10Sc2M5tIZNSW72QFDwbgtX5lAmQ+NRkcklQuPrcvCRaCzHIQ115polsrdjFWonY92z9lFUM9iAsdfgKwuDJiXpp4E58cDBarEPcqQnPG9RaW4w9qRaofsNA7+sOZVadCoNXLMv9SQwyCBR/KsqMooW/X8J/dzNwbjEoezZsUdCYgE9FZ4ScYk8nIv3ucV2tg5YIcGurc+uWu97uS6/RYBbLCg2hgm2Sj8Q4AkJX+AqTAanEokAkf3n3jZCd6IcNZU0Gh07eIWAH1C6b+iwCuDUMP/nQQiYQk8c1xWiNiqtv/oN51t/78AWAYt1a2R1Uivq1Ytf3hJnczCTZSecobU9CYCKdGJ25jA1oobFyJSufwNl8s5CJJvtUEHum1t3KrLzTyrehU2W/QXcfOlJSthDvrqty9oIs7qhPIZjl7/5/hb/QXtNnDuX9NA1W9SonQfv5ifqJiyv4rHA8w5p3w0tsTtt77wg/ywpD4VcjLEuhAaVyLyiSnePKirWA4W0iPoGeSAiUcCSIUpsxWPSoHJ44SutJzVAM6RPJfVqj+mGCbRCdn0LqwQtkN4vuoqtnxoeb5e4eyBr3uSPZcIYvPERYpK7wCUWosgWOiHRvrMYw+myg7QiTeXLm0NDPb3pcE1v3R5HNGyzAYWahVwFv5bOu90r3N2Iy1cQCSfZvmkDnKDe3k4y1CqsH82KMnaqX5y70VwVx5krXDWkyMQkkLJ+YVyur1CF3irpnXWm0rQVj7XrQrQxOMS2JE+C/AUZxb2olMMRUMTSkdYiJyaWR1vFFkxGGwoc4ghVJlOEO9cd+1yhLXmT605aeTgPRPuf9TqM/AQUhiAhaDTxx/0rTWlzgi7fjeDZlvbgsPsBM+C8VKdDgiUWiJHeEnndhNWRLgAsoFEutyAtuPLlSU7NMPJVA5VuAC16ukErDg08VO/Z5813HPzvsMq/643StVP9ZQKzuNYkeS/CJUMLJ7gsM7Qpmrr6aIz39n9rasLHVEtLl3uZvhPF8kOVCPfpCNaX9CCaFFplS03DlMef/rZHwioAxrsffIo8z/FI5OYiqfqjPkoFTSuykhp9AA0/ImadrIqwysFEm9xmrkmXBkoWd6UyK6yrCFUlChKw/PHpWDdPcBC4zTQ6aeO1xsqzcpHP2+dkQulXeylEr5sB3A1mVO5DU7kalRIg==" />
+</div>
+
+<script type="text/javascript">if (!(window.jQuery && window.jQuery.fn && window.jQuery.fn.hoverIntent)) document.write(unescape('%3Cscript src="/Portals/_default/Skins/Corporat60/Superfish/hoverIntent.js" type="text/javascript"%3E%3C/script%3E'));</script><script type="text/javascript">if (!(window.jQuery && window.jQuery.fn && window.jQuery.fn.superfish)) document.write(unescape('%3Cscript src="/Portals/_default/Skins/Corporat60/Superfish/superfish.js" type="text/javascript"%3E%3C/script%3E'));</script>
+<script src="/ScriptResource.axd?d=NJmAwtEo3IqDKqc0jdWt_d5qNsC4ORhv2M5v4a2Fy_oe81PAfC5Knij3ZeDTXdfPUSnZYYCfbkOUKkhHNhH1MM3DHTQK1XgBuYLcv0phrhILAtwTpysxrMuBimZTBu40sBSDkQ2&amp;t=363be08" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=dwY9oWetJoL_cQEu0jmCcsFXlmHYqIOWBe3Pl8vxTIs78ygUvxNZJdu1GtVAKxnzcyykwO2NniFWQQ8h0CaTxzWUWEDG2KVmz42I9QMqQDJIRmnzlugVP2rFWANFFn4_ZQnhXbnNqPff8-rr0&amp;t=363be08" type="text/javascript"></script>
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="CA0B0334" />
+	<input type="hidden" name="__VIEWSTATEENCRYPTED" id="__VIEWSTATEENCRYPTED" value="" />
+</div><script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js?cdv=931" type="text/javascript"></script><script src="/js/dnn.js?cdv=931" type="text/javascript"></script><script src="/js/dnn.modalpopup.js?cdv=931" type="text/javascript"></script><script src="/Resources/Shared/Scripts/jquery/jquery.hoverIntent.min.js?cdv=931" type="text/javascript"></script><script src="/js/dnncore.js?cdv=931" type="text/javascript"></script><script src="/js/dnn.servicesframework.js?cdv=931" type="text/javascript"></script><script src="/Resources/Shared/Scripts/dnn.jquery.js?cdv=931" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+Sys.WebForms.PageRequestManager._initialize('ScriptManager', 'Form', [], [], [], 90, '');
+//]]>
+</script>
+
+        
+        
+        
+<!--
+SpeedyApplication.com Responsive Mobile Web Framework For DotNetNuke
+Copyright (c) 2012 SpeedyApplication.com .
+All Rights Reserved.
+-->
+
+<!--CDF(Javascript|https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js?cdv=931|DnnBodyProvider|10)-->
+<!--CDF(Css|https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css?cdv=931|DnnPageHeaderProvider|14)-->
+<!--CDF(Css|https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css?cdv=931|DnnPageHeaderProvider|15)-->
+
+ 
+
+
+
+
+
+
+
+<!-- START HTML FROM HERE --> 
+
+<!-- container -->
+<div id="container">
+
+<div class="row">
+    <div id="wrapper" class="Wpapper_shadow">
+        <div class="row"> <div id="HeaderTop"></div> </div>
+
+    <div class="row">
+        <div class="eleven columns centered Header">
+            <div class="row">
+                <div id="Logo" class="columns spmodule mobile-centered"><a id="dnn_dnnLogo_hypLogo" title="UNSPSC" href="https://www.unspsc.org/"><img id="dnn_dnnLogo_imgLogo" src="/Portals/3/main_banner_short.gif?ver=2012-12-05-100253-647" alt="UNSPSC" /></a></div> <!-- close logo  -->
+
+                <div class="five columns AddPane">
+                    <div class="row">
+                        <div id="dnn_AdPane" class="twelve columns spmodule DNNEmptyPane"></div>
+                    </div> 
+                </div>
+
+                              
+            </div> <!-- close row  -->                    
+        </div> <!-- close Header  -->
+    </div> <!-- close Header Row  -->
+
+    <div class="row">                     
+         <div id="Mainmenu" class="twelve columns Menu spmodule hide-on-phones"> <nav class="main-navigation"><script type="text/javascript">
+        jQuery(function($) {
+        if ($(window).width() >= 700)
+        {
+          $("#dnn_MENU1").superfish(
+          {onShow:function() { if ($.browser.msie) this[0].style.removeAttribute('filter'); },MenuStyle:"Superfish"}
+          );
+        }
+        });
+      </script><ul class="sf-menu" id="dnn_MENU1">
+    <li class="first"><a href="https://www.unspsc.org/">Home</a></li>
+    <li class=""><a href="https://www.unspsc.org/faqs">FAQs</a></li>
+    <li class=""><a href="https://www.unspsc.org/subscribe">Subscribe</a></li>
+    <li class=""><a href="https://www.unspsc.org/library">Library</a></li>
+    <li class=""><a href="https://store.unspsc.org/collections/codeset-downloads">Codeset-Downloads</a></li>
+    <li class=""><a href="https://www.unspsc.org/initiatives">Initiatives</a></li>
+    <li class=" last&#xA;        "><a href="https://www.unspsc.org/education">Education</a></li>
+  </ul></nav></div>                                       
+    </div> <!-- close Row Menu -->
+
+
+<div id="MainPage">       
+   <div class="row">	
+        <div id="dnn_Slider" class="eight columns slider spmodule DNNEmptyPane"> </div>
+        <div id="dnn_SidebarTop" class="four columns spmodule DNNEmptyPane"> </div>
+   </div><!-- close row FullA  -->
+
+    <div id="PageBody">   
+        <div class="row">    
+            <div class="eleven columns centered">
+                <div class="row">
+                    <div id="dnn_ContentPane" class="twelve columns spmodule"><div class="DnnModule DnnModule-DNN_HTML DnnModule-1537 DnnVersionableControl"><a name="1537"></a>
+<div class="Invisible"><div id="dnn_ctr1537_ContentPane"><!-- Start_Module_1537 --><div id="dnn_ctr1537_ModuleContent" class="DNNModuleContent ModDNNHTMLC">
+	<div id="dnn_ctr1537_HtmlModule_lblContent"><p> 
+</p>
+<p><strong>Version 23.0701</strong>
+</p></div>
+
+
+
+
+</div><!-- End_Module_1537 --></div></div>
+
+</div><div class="DnnModule DnnModule-UNSPSC_Search DnnModule-1535"><a name="1535"></a>
+<div class="Invisible"><div id="dnn_ctr1535_ContentPane"><!-- Start_Module_1535 --><div id="dnn_ctr1535_ModuleContent" class="DNNModuleContent ModUNSPSCSearchC">
+	
+<style type="text/css">
+    .RequiredFieldVlidator
+    {
+        color: Red;
+    }
+    .pagination span
+{
+  padding: 5px;
+  border: solid 1px #477B0E;
+  text-decoration: none;
+  white-space: nowrap;
+  background: #F7F6F3;
+}
+
+.pagination a, 
+.pagination a:visited
+{
+  text-decoration: none;
+  padding: 6px;
+  white-space: nowrap;
+}
+.pagination a:hover, 
+.pagination a:active
+{
+  padding: 5px;
+  border: solid 1px #9ECDE7;
+  text-decoration: none;
+  white-space: nowrap;
+  background: #F7F6F3;
+}
+   
+</style>
+<div>
+    
+    <table>
+        <tr>
+            <td>
+                <span id="dnn_ctr1535_UNSPSCSearch_lblSearchCode">Search Code</span>
+            </td>
+            <td>
+                <input name="dnn$ctr1535$UNSPSCSearch$txtsearchCode" type="text" maxlength="10" id="dnn_ctr1535_UNSPSCSearch_txtsearchCode" style="margin-left: 0px" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span id="dnn_ctr1535_UNSPSCSearch_lblSearchTitle">Search Title</span>
+            </td>
+            <td>
+                <input name="dnn$ctr1535$UNSPSCSearch$txtSearchTitle" type="text" value="test" maxlength="20" id="dnn_ctr1535_UNSPSCSearch_txtSearchTitle" />
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input type="submit" name="dnn$ctr1535$UNSPSCSearch$btnSearch" value="Search" id="dnn_ctr1535_UNSPSCSearch_btnSearch" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <div>
+		<table cellspacing="0" cellpadding="4" id="dnn_ctr1535_UNSPSCSearch_gvDetailsSearchView" style="color:#333333;font-family:Arial;font-size:12px;text-decoration:none;border-collapse:collapse;">
+			<tr style="color:White;background-color:#5D7B9D;border-color:activeborder;border-width:5px;border-style:Solid;font-weight:bold;">
+				<th scope="col"><a href="javascript:__doPostBack(&#39;dnn$ctr1535$UNSPSCSearch$gvDetailsSearchView&#39;,&#39;Sort$Code&#39;)" style="color:White;">Code</a></th><th scope="col"><a href="javascript:__doPostBack(&#39;dnn$ctr1535$UNSPSCSearch$gvDetailsSearchView&#39;,&#39;Sort$Title&#39;)" style="color:White;">Title</a></th>
+			</tr><tr style="color:#333333;background-color:#F7F6F3;">
+				<td align="center" style="width:300px;">14121510</td><td align="center" style="width:400px;">Test liner paperboard</td>
+			</tr><tr style="color:#284775;background-color:White;">
+				<td align="center" style="width:300px;">20121406</td><td align="center" style="width:400px;">Completion test equipment</td>
+			</tr><tr style="color:#333333;background-color:#F7F6F3;">
+				<td align="center" style="width:300px;">20121913</td><td align="center" style="width:400px;">Well logging downhole test equipment</td>
+			</tr><tr style="color:#284775;background-color:White;">
+				<td align="center" style="width:300px;">20122000</td><td align="center" style="width:400px;">Fixturing and test equipment</td>
+			</tr><tr style="color:#333333;background-color:#F7F6F3;">
+				<td align="center" style="width:300px;">20122004</td><td align="center" style="width:400px;">Test fixtures</td>
+			</tr><tr style="color:#284775;background-color:White;">
+				<td align="center" style="width:300px;">20122005</td><td align="center" style="width:400px;">Test nipples</td>
+			</tr><tr style="color:#333333;background-color:#F7F6F3;">
+				<td align="center" style="width:300px;">20122006</td><td align="center" style="width:400px;">Test plugs</td>
+			</tr><tr style="color:#284775;background-color:White;">
+				<td align="center" style="width:300px;">20122200</td><td align="center" style="width:400px;">Well testing equipment</td>
+			</tr><tr style="color:#333333;background-color:#F7F6F3;">
+				<td align="center" style="width:300px;">20122203</td><td align="center" style="width:400px;">Cased hole test tools</td>
+			</tr><tr style="color:#284775;background-color:White;">
+				<td align="center" style="width:300px;">20122213</td><td align="center" style="width:400px;">Well testing separators</td>
+			</tr><tr style="color:#333333;background-color:#F7F6F3;">
+				<td align="center" style="width:300px;">20122214</td><td align="center" style="width:400px;">Well testing surface piping</td>
+			</tr><tr style="color:#284775;background-color:White;">
+				<td align="center" style="width:300px;">20122216</td><td align="center" style="width:400px;">Well testing downhole tools</td>
+			</tr><tr style="color:#333333;background-color:#F7F6F3;">
+				<td align="center" style="width:300px;">20122358</td><td align="center" style="width:400px;">Test dart</td>
+			</tr><tr style="color:#284775;background-color:White;">
+				<td align="center" style="width:300px;">20122403</td><td align="center" style="width:400px;">Hipot testers</td>
+			</tr><tr style="color:#333333;background-color:#F7F6F3;">
+				<td align="center" style="width:300px;">20122406</td><td align="center" style="width:400px;">Oil dielectric testers</td>
+			</tr><tr style="color:#284775;background-color:White;">
+				<td align="center" style="width:300px;">21101915</td><td align="center" style="width:400px;">Pig backfat tester</td>
+			</tr><tr style="color:#333333;background-color:#F7F6F3;">
+				<td align="center" style="width:300px;">23121616</td><td align="center" style="width:400px;">Dyeing tester</td>
+			</tr><tr style="color:#284775;background-color:White;">
+				<td align="center" style="width:300px;">23151704</td><td align="center" style="width:400px;">Lens testing equipment</td>
+			</tr><tr style="color:#333333;background-color:#F7F6F3;">
+				<td align="center" style="width:300px;">23151811</td><td align="center" style="width:400px;">Tablet or capsule testing machines</td>
+			</tr><tr style="color:#284775;background-color:White;">
+				<td align="center" style="width:300px;">23151818</td><td align="center" style="width:400px;">Sterility test devices</td>
+			</tr><tr style="color:#333333;background-color:#F7F6F3;">
+				<td align="center" style="width:300px;">23151819</td><td align="center" style="width:400px;">Filter integrity testers</td>
+			</tr><tr style="color:#284775;background-color:White;">
+				<td align="center" style="width:300px;">23152203</td><td align="center" style="width:400px;">Engine or component test stands</td>
+			</tr><tr style="color:#333333;background-color:#F7F6F3;">
+				<td align="center" style="width:300px;">23153408</td><td align="center" style="width:400px;">Fill test</td>
+			</tr><tr style="color:#284775;background-color:White;">
+				<td align="center" style="width:300px;">25191502</td><td align="center" style="width:400px;">Ground support test or maintenance systems</td>
+			</tr><tr style="color:#333333;background-color:#F7F6F3;">
+				<td align="center" style="width:300px;">25191518</td><td align="center" style="width:400px;">Aeronautical sensor test equipment</td>
+			</tr><tr style="color:#284775;background-color:White;">
+				<td align="center" style="width:300px;">25191520</td><td align="center" style="width:400px;">Environmental test chamber</td>
+			</tr><tr style="color:#333333;background-color:#F7F6F3;">
+				<td align="center" style="width:300px;">25191739</td><td align="center" style="width:400px;">Steering gear simulation tester</td>
+			</tr><tr style="color:#284775;background-color:White;">
+				<td align="center" style="width:300px;">25191800</td><td align="center" style="width:400px;">Vehicle testing and measuring equipment</td>
+			</tr><tr style="color:#333333;background-color:#F7F6F3;">
+				<td align="center" style="width:300px;">25191801</td><td align="center" style="width:400px;">Growler tester</td>
+			</tr><tr style="color:#284775;background-color:White;">
+				<td align="center" style="width:300px;">25191803</td><td align="center" style="width:400px;">Diesel smoke tester</td>
+			</tr><tr style="color:#333333;background-color:#F7F6F3;">
+				<td align="center" style="width:300px;">25191804</td><td align="center" style="width:400px;">Radiator tester</td>
+			</tr><tr style="color:#284775;background-color:White;">
+				<td align="center" style="width:300px;">25191805</td><td align="center" style="width:400px;">Engine distributor tester</td>
+			</tr><tr style="color:#333333;background-color:#F7F6F3;">
+				<td align="center" style="width:300px;">25191808</td><td align="center" style="width:400px;">Brake tester</td>
+			</tr><tr style="color:#284775;background-color:White;">
+				<td align="center" style="width:300px;">25191809</td><td align="center" style="width:400px;">Side slip tester</td>
+			</tr><tr style="color:#333333;background-color:#F7F6F3;">
+				<td align="center" style="width:300px;">25191811</td><td align="center" style="width:400px;">Speedometer tester</td>
+			</tr><tr style="color:#284775;background-color:White;">
+				<td align="center" style="width:300px;">25191812</td><td align="center" style="width:400px;">Stall tester</td>
+			</tr><tr style="color:#333333;background-color:#F7F6F3;">
+				<td align="center" style="width:300px;">25191814</td><td align="center" style="width:400px;">Spark plug tester</td>
+			</tr><tr style="color:#284775;background-color:White;">
+				<td align="center" style="width:300px;">25191815</td><td align="center" style="width:400px;">Armature tester</td>
+			</tr><tr style="color:#333333;background-color:#F7F6F3;">
+				<td align="center" style="width:300px;">25191816</td><td align="center" style="width:400px;">Compression type spring tester</td>
+			</tr><tr style="color:#284775;background-color:White;">
+				<td align="center" style="width:300px;">25191818</td><td align="center" style="width:400px;">Air cleaner element tester</td>
+			</tr><tr style="color:#333333;background-color:#F7F6F3;">
+				<td align="center" style="width:300px;">25191819</td><td align="center" style="width:400px;">Anti lock braking system ABS simulation tester</td>
+			</tr><tr style="color:#284775;background-color:White;">
+				<td align="center" style="width:300px;">25191821</td><td align="center" style="width:400px;">Engine simulation tester</td>
+			</tr><tr style="color:#333333;background-color:#F7F6F3;">
+				<td align="center" style="width:300px;">25191822</td><td align="center" style="width:400px;">Engine injector tester</td>
+			</tr><tr style="color:#284775;background-color:White;">
+				<td align="center" style="width:300px;">25191823</td><td align="center" style="width:400px;">Engine test bed</td>
+			</tr><tr style="color:#333333;background-color:#F7F6F3;">
+				<td align="center" style="width:300px;">25191824</td><td align="center" style="width:400px;">Engine tune up tester</td>
+			</tr><tr style="color:#284775;background-color:White;">
+				<td align="center" style="width:300px;">25191826</td><td align="center" style="width:400px;">Oil leakage tester</td>
+			</tr><tr style="color:#333333;background-color:#F7F6F3;">
+				<td align="center" style="width:300px;">25191827</td><td align="center" style="width:400px;">Electronic control suspension ECS simulation tester</td>
+			</tr><tr style="color:#284775;background-color:White;">
+				<td align="center" style="width:300px;">25191828</td><td align="center" style="width:400px;">Automatic transmission tester</td>
+			</tr><tr style="color:#333333;background-color:#F7F6F3;">
+				<td align="center" style="width:300px;">25191830</td><td align="center" style="width:400px;">Headlight tester</td>
+			</tr><tr style="color:#284775;background-color:White;">
+				<td align="center" style="width:300px;">25191831</td><td align="center" style="width:400px;">Vehicle window regulator tester</td>
+			</tr><tr style="color:#333333;background-color:#F7F6F3;">
+				<td align="center" style="width:300px;">25191834</td><td align="center" style="width:400px;">Coil condenser resistance or ohm tester</td>
+			</tr><tr style="color:#284775;background-color:White;">
+				<td align="center" style="width:300px;">26111719</td><td align="center" style="width:400px;">Battery testers</td>
+			</tr><tr style="color:#333333;background-color:#F7F6F3;">
+				<td align="center" style="width:300px;">26142005</td><td align="center" style="width:400px;">Irradiation testing capsules</td>
+			</tr><tr style="color:#284775;background-color:White;">
+				<td align="center" style="width:300px;">27111738</td><td align="center" style="width:400px;">Voltage tester screwdriver</td>
+			</tr><tr style="color:#333333;background-color:#F7F6F3;">
+				<td align="center" style="width:300px;">31242107</td><td align="center" style="width:400px;">Optical test board</td>
+			</tr><tr style="color:#284775;background-color:White;">
+				<td align="center" style="width:300px;">41000000</td><td align="center" style="width:400px;">Laboratory and Measuring and Observing and Testing Equipment</td>
+			</tr><tr style="color:#333333;background-color:#F7F6F3;">
+				<td align="center" style="width:300px;">41102512</td><td align="center" style="width:400px;">Insect test kits</td>
+			</tr><tr style="color:#284775;background-color:White;">
+				<td align="center" style="width:300px;">41102608</td><td align="center" style="width:400px;">Animal testing equipment</td>
+			</tr><tr style="color:#333333;background-color:#F7F6F3;">
+				<td align="center" style="width:300px;">41102610</td><td align="center" style="width:400px;">Animal for research testing</td>
+			</tr><tr style="color:#284775;background-color:White;">
+				<td align="center" style="width:300px;">41102613</td><td align="center" style="width:400px;">Research animal physiological test kit</td>
+			</tr><tr style="color:#333333;background-color:#F7F6F3;">
+				<td align="center" style="width:300px;">41105003</td><td align="center" style="width:400px;">Test sieves</td>
+			</tr><tr style="color:#284775;background-color:White;">
+				<td align="center" style="width:300px;">41110000</td><td align="center" style="width:400px;">Measuring and observing and testing instruments</td>
+			</tr><tr style="color:#333333;background-color:#F7F6F3;">
+				<td align="center" style="width:300px;">41111637</td><td align="center" style="width:400px;">Conical cup tester</td>
+			</tr><tr style="color:#284775;background-color:White;">
+				<td align="center" style="width:300px;">41111638</td><td align="center" style="width:400px;">Cigarette circumference tester</td>
+			</tr><tr style="color:#333333;background-color:#F7F6F3;">
+				<td align="center" style="width:300px;">41111809</td><td align="center" style="width:400px;">Leak testing equipment</td>
+			</tr><tr style="color:#284775;background-color:White;">
+				<td align="center" style="width:300px;">41111810</td><td align="center" style="width:400px;">Hot testing equipment station</td>
+			</tr><tr style="color:#333333;background-color:#F7F6F3;">
+				<td align="center" style="width:300px;">41111811</td><td align="center" style="width:400px;">Cold testing equipment station</td>
+			</tr><tr style="color:#284775;background-color:White;">
+				<td align="center" style="width:300px;">41111819</td><td align="center" style="width:400px;">Wire rope tester</td>
+			</tr><tr style="color:#333333;background-color:#F7F6F3;">
+				<td align="center" style="width:300px;">41111917</td><td align="center" style="width:400px;">Digital testers</td>
+			</tr><tr style="color:#284775;background-color:White;">
+				<td align="center" style="width:300px;">41111974</td><td align="center" style="width:400px;">Heating sensor tester</td>
+			</tr><tr style="color:#333333;background-color:#F7F6F3;">
+				<td align="center" style="width:300px;">41112231</td><td align="center" style="width:400px;">Oil cloud and pour point tester</td>
+			</tr><tr style="color:#284775;background-color:White;">
+				<td align="center" style="width:300px;">41112236</td><td align="center" style="width:400px;">Asphalt softening point tester</td>
+			</tr><tr style="color:#333333;background-color:#F7F6F3;">
+				<td align="center" style="width:300px;">41112238</td><td align="center" style="width:400px;">Dropping point tester</td>
+			</tr><tr style="color:#284775;background-color:White;">
+				<td align="center" style="width:300px;">41112303</td><td align="center" style="width:400px;">Temperature humidity testers</td>
+			</tr><tr style="color:#333333;background-color:#F7F6F3;">
+				<td align="center" style="width:300px;">41112307</td><td align="center" style="width:400px;">Cement water retentivity tester</td>
+			</tr><tr style="color:#284775;background-color:White;">
+				<td align="center" style="width:300px;">41112416</td><td align="center" style="width:400px;">Bursting pressure tester</td>
+			</tr><tr style="color:#333333;background-color:#F7F6F3;">
+				<td align="center" style="width:300px;">41112418</td><td align="center" style="width:400px;">Capillary pressure tester</td>
+			</tr><tr style="color:#284775;background-color:White;">
+				<td align="center" style="width:300px;">41112421</td><td align="center" style="width:400px;">Fruit hardness tester</td>
+			</tr><tr style="color:#333333;background-color:#F7F6F3;">
+				<td align="center" style="width:300px;">41112422</td><td align="center" style="width:400px;">Hydraulic pressure tester</td>
+			</tr><tr style="color:#284775;background-color:White;">
+				<td align="center" style="width:300px;">41112518</td><td align="center" style="width:400px;">Pump efficiency testing equipment</td>
+			</tr><tr style="color:#333333;background-color:#F7F6F3;">
+				<td align="center" style="width:300px;">41112522</td><td align="center" style="width:400px;">Water meter tester</td>
+			</tr><tr style="color:#284775;background-color:White;">
+				<td align="center" style="width:300px;">41112600</td><td align="center" style="width:400px;">Hygiene monitoring and testing equipment</td>
+			</tr><tr style="color:#333333;background-color:#F7F6F3;">
+				<td align="center" style="width:300px;">41112601</td><td align="center" style="width:400px;">Manual swab test kits</td>
+			</tr><tr style="color:#284775;background-color:White;">
+				<td align="center" style="width:300px;">41112602</td><td align="center" style="width:400px;">Automated swab test kits</td>
+			</tr><tr style="color:#333333;background-color:#F7F6F3;">
+				<td align="center" style="width:300px;">41112700</td><td align="center" style="width:400px;">Laboratory seed and feed testing equipment</td>
+			</tr><tr style="color:#284775;background-color:White;">
+				<td align="center" style="width:300px;">41112808</td><td align="center" style="width:400px;">Electric rail car tester</td>
+			</tr><tr style="color:#333333;background-color:#F7F6F3;">
+				<td align="center" style="width:300px;">41112809</td><td align="center" style="width:400px;">Taximeter tester</td>
+			</tr><tr style="color:#284775;background-color:White;">
+				<td align="center" style="width:300px;">41113034</td><td align="center" style="width:400px;">pH test strips or papers</td>
+			</tr><tr style="color:#333333;background-color:#F7F6F3;">
+				<td align="center" style="width:300px;">41113035</td><td align="center" style="width:400px;">Chemical test strips or papers</td>
+			</tr><tr style="color:#284775;background-color:White;">
+				<td align="center" style="width:300px;">41113045</td><td align="center" style="width:400px;">Oil film tester</td>
+			</tr><tr style="color:#333333;background-color:#F7F6F3;">
+				<td align="center" style="width:300px;">41113046</td><td align="center" style="width:400px;">Adhesion tester</td>
+			</tr><tr style="color:#284775;background-color:White;">
+				<td align="center" style="width:300px;">41113047</td><td align="center" style="width:400px;">Oil foaming characteristics tester</td>
+			</tr><tr style="color:#333333;background-color:#F7F6F3;">
+				<td align="center" style="width:300px;">41113048</td><td align="center" style="width:400px;">Color fastness tester</td>
+			</tr><tr style="color:#284775;background-color:White;">
+				<td align="center" style="width:300px;">41113051</td><td align="center" style="width:400px;">Oxidation reduction tester</td>
+			</tr><tr style="color:#333333;background-color:#F7F6F3;">
+				<td align="center" style="width:300px;">41113052</td><td align="center" style="width:400px;">Chalking tester</td>
+			</tr><tr style="color:#284775;background-color:White;">
+				<td align="center" style="width:300px;">41113053</td><td align="center" style="width:400px;">Rust prevention tester</td>
+			</tr><tr style="color:#333333;background-color:#F7F6F3;">
+				<td align="center" style="width:300px;">41113054</td><td align="center" style="width:400px;">Demulsibility tester</td>
+			</tr><tr style="color:#284775;background-color:White;">
+				<td align="center" style="width:300px;">41113055</td><td align="center" style="width:400px;">Fuel gum tester</td>
+			</tr><tr style="color:#333333;background-color:#F7F6F3;">
+				<td align="center" style="width:300px;">41113123</td><td align="center" style="width:400px;">Smoke tester</td>
+			</tr><tr style="color:#284775;background-color:White;">
+				<td align="center" style="width:300px;">41113313</td><td align="center" style="width:400px;">Mineral oil testing instruments</td>
+			</tr><tr class="pagination" align="center" style="background-color:White;">
+				<td colspan="2"><table>
+					<tr>
+						<td><span>1</span></td><td><a href="javascript:__doPostBack(&#39;dnn$ctr1535$UNSPSCSearch$gvDetailsSearchView&#39;,&#39;Page$2&#39;)" style="color:#333333;">2</a></td><td><a href="javascript:__doPostBack(&#39;dnn$ctr1535$UNSPSCSearch$gvDetailsSearchView&#39;,&#39;Page$3&#39;)" style="color:#333333;">3</a></td><td><a href="javascript:__doPostBack(&#39;dnn$ctr1535$UNSPSCSearch$gvDetailsSearchView&#39;,&#39;Page$4&#39;)" style="color:#333333;">4</a></td><td><a href="javascript:__doPostBack(&#39;dnn$ctr1535$UNSPSCSearch$gvDetailsSearchView&#39;,&#39;Page$5&#39;)" style="color:#333333;">5</a></td><td><a href="javascript:__doPostBack(&#39;dnn$ctr1535$UNSPSCSearch$gvDetailsSearchView&#39;,&#39;Page$6&#39;)" style="color:#333333;">6</a></td><td><a href="javascript:__doPostBack(&#39;dnn$ctr1535$UNSPSCSearch$gvDetailsSearchView&#39;,&#39;Page$7&#39;)" style="color:#333333;">7</a></td><td><a href="javascript:__doPostBack(&#39;dnn$ctr1535$UNSPSCSearch$gvDetailsSearchView&#39;,&#39;Page$8&#39;)" style="color:#333333;">8</a></td><td><a href="javascript:__doPostBack(&#39;dnn$ctr1535$UNSPSCSearch$gvDetailsSearchView&#39;,&#39;Page$9&#39;)" style="color:#333333;">9</a></td><td><a href="javascript:__doPostBack(&#39;dnn$ctr1535$UNSPSCSearch$gvDetailsSearchView&#39;,&#39;Page$10&#39;)" style="color:#333333;">10</a></td><td><a href="javascript:__doPostBack(&#39;dnn$ctr1535$UNSPSCSearch$gvDetailsSearchView&#39;,&#39;Page$11&#39;)" style="color:#333333;">...</a></td>
+					</tr>
+				</table></td>
+			</tr>
+		</table>
+	</div>
+                
+            </td>
+        </tr>
+    </table>
+</div>
+
+</div><!-- End_Module_1535 --></div></div>
+
+</div></div>
+                </div>
+
+                <div class="row">
+                    <div id="dnn_FullA" class="twelve columns LeftC spmodule DNNEmptyPane"></div>
+                </div><!-- close row Full  -->
+
+                <div class="row">
+                    <div id="dnn_PromoA" class="nine columns LeftC spmodule DNNEmptyPane"></div>   
+                    <div id="dnn_SidebarA" class="three columns LeftC spmodule DNNEmptyPane"></div>  
+                </div><!-- close Sidebar -->
+
+                <div class="row">
+                    <div id="dnn_FullB" class="twelve columns LeftC spmodule DNNEmptyPane"></div>
+                </div><!-- close row Full  -->
+                
+                <div id="RR2Page" class="row">
+                    <div id="dnn_SidebarB" class="three columns LeftC spmodule DNNEmptyPane"></div>
+                    <div id="dnn_OfferB" class="nine columns LeftC spmodule"><div class="DnnModule DnnModule-WillStrohlInjection DnnModule-21222"><a name="21222"></a></div></div>
+                </div> <!-- close 2Columns row  -->               
+                  
+    
+                <div id="R3Page" class="row">
+                    <div id="dnn_FeatureA" class="four columns LeftC spmodule DNNEmptyPane"></div>
+                    <div id="dnn_FeatureB" class="four columns LeftC spmodule DNNEmptyPane"></div>
+                    <div id="dnn_FeatureC" class="four columns LeftC spmodule DNNEmptyPane"></div>
+                </div> <!-- close 3Columns row  -->
+
+                <div class="row">
+                    <div id="dnn_FullC" class="twelve columns LeftC spmodule DNNEmptyPane"></div>
+                </div> <!-- close 1Columns row  -->
+               
+
+                <div id="R2Page" class="row">
+                    <div id="dnn_PromoB" class="eight columns LeftC spmodule DNNEmptyPane"></div>
+                    <div id="dnn_SidebarC" class="four columns LeftC spmodule DNNEmptyPane"></div>
+                </div> <!-- close 2Columns row  --> 
+
+                <div id="RR3Page" class="row">
+                    <div id="dnn_ArticleA" class="four columns LeftC spmodule DNNEmptyPane"></div>
+                    <div id="dnn_ArticleB" class="four columns LeftC spmodule DNNEmptyPane"></div>
+                    <div id="dnn_ArticleC" class="four columns LeftC spmodule DNNEmptyPane"></div>
+                </div> <!-- close 3Columns row  -->    
+                
+                <div id="RR2Page1" class="row">
+                    <div id="dnn_FullD" class="twelve columns LeftC spmodule DNNEmptyPane"></div>
+                </div> <!-- close 1Columns row  -->
+
+                <div class="row">
+                    <div id="dnn_ContactInquery" class="twelve columns centered spmodule DNNEmptyPane"></div>
+                </div>              
+            </div>    
+        </div><!-- close Content -->	
+    </div><!-- close PageBody -->
+
+
+    <div id="MainFooterA">
+        <div class="row">
+            <div class="eleven columns centered">
+                <div class="row">
+                    <div id="dnn_FooterA" class="four columns spmodule DNNEmptyPane"></div>
+                    <div id="dnn_FooterB" class="five columns spmodule DNNEmptyPane"></div>
+                    <div id="dnn_SocialPane" class="three columns centered1 centered2 SocialIcon spmodule DNNEmptyPane"> </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- close MainFooterA -->
+
+    <div id="MainFooterB">
+        <div class="row">
+             <div class="four columns">
+                <div class="row"> 
+                    <div class="eleven columns Copyright offset-by-one spmodule">&copy2021 UNSPSC.  All rights reserved.</div>
+                </div> 
+             </div>
+             <div id="dnn_FooterNavPane" class="eight columns FooterNav FooterMenu spmodule"> <div class="DnnModule DnnModule-DNN_HTML DnnModule-1507 DnnVersionableControl"><a name="1507"></a>
+<div class="Invisible"><div id="dnn_ctr1507_ContentPane"><!-- Start_Module_1507 --><div id="dnn_ctr1507_ModuleContent" class="DNNModuleContent ModDNNHTMLC">
+	<div id="dnn_ctr1507_HtmlModule_lblContent"><p align="right"> <br><span style="font-size: 12px;"> <a class="footer" href="/terms-of-use">UNSPSC Terms of Use</a> | <a class="footer" href="https://www.gs1us.org/home/terms-of-use">GS1 US Terms of Use</a> |  <a class="footer" href="/privacy-policy">Privacy Policy</a> | <a class="footer" href="/contact-us">Contact Us</a>  </span>
+</p></div>
+
+
+
+
+</div><!-- End_Module_1507 --></div></div>
+
+</div></div>                                  
+        </div> <!-- close row --> 
+    </div> <!-- close MainFooterB -->                
+
+</div><!-- MainPage -->
+</div> <!-- wrapper -->
+</div> <!-- Row wrapper  -->
+</div><!-- container -->
+<!--END HTML HERE -->  
+ 
+
+ <script type="text/javascript" src="/Portals/_default/Skins/Corporat60/javascripts/foundation.js" ></script> 
+ <script type="text/javascript" src="/Portals/_default/Skins/Corporat60/javascripts/app.js" ></script> 
+ <script type="text/javascript" src="/Portals/_default/Skins/Corporat60/javascripts/mobile_dropdownmenu.js" ></script> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <input name="ScrollTop" type="hidden" id="ScrollTop" value=" " />
+        <input name="__dnnVariable" type="hidden" id="__dnnVariable" autocomplete="off" value="`{`trackLinks`:`false`,`__scdoff`:`1`,`sf_siteRoot`:`/`,`sf_tabId`:`902`,`evoq_TabId`:`902`,`evoq_PageLanguage`:`en-US`,`evoq_ContentItemId`:`-1`,`evoq_UrlReferrer`:`//Search-Code`,`evoq_UrlPath`:`https%3a%2f%2fwww.unspsc.org%2fsearch-code`,`evoq_UrlQuery`:`%3fTabId%3d902%26language%3den-US`,`evoq_ContentItemReferrer`:`-1`,`evoq_PersonalizedUrlReferrer`:`-1`,`evoq_DisableAnalytics`:`False`}" />
+        <input name="__RequestVerificationToken" type="hidden" value="Uju8aOLqVPETM74kiQJqBm61pMciiiga-bxlypvPm7_L-z1NbWX4T9CzLYxGloi0voFAIg2" />
+    <!-- BEGIN WillStrohl.Injection Footer Injections --><!-- END WillStrohl.Injection Footer Injections -->
+
+<script type="text/javascript">
+//<![CDATA[
+__dnn_setScrollTop();//]]>
+</script>
+</form>
+    <!--CDF(Javascript|/js/dnncore.js?cdv=931|DnnBodyProvider|100)--><!--CDF(Javascript|/js/dnn.modalpopup.js?cdv=931|DnnBodyProvider|50)--><!--CDF(Css|/Resources/Shared/stylesheets/dnndefault/7.0.0/default.css?cdv=931|DnnPageHeaderProvider|5)--><!--CDF(Css|/Portals/_default/Containers/Corporat60/container.css?cdv=931|DnnPageHeaderProvider|25)--><!--CDF(Css|/Portals/_default/Containers/Corporat60/container.css?cdv=931|DnnPageHeaderProvider|25)--><!--CDF(Css|/Portals/_default/Containers/Corporat60/container.css?cdv=931|DnnPageHeaderProvider|25)--><!--CDF(Css|/Portals/_default/Containers/Corporat60/container.css?cdv=931|DnnPageHeaderProvider|25)--><!--CDF(Css|/DesktopModules/WillStrohl.Injection/module.css?cdv=931|DnnPageHeaderProvider|10)--><!--CDF(Css|/DesktopModules/WillStrohl.Injection/module.css?cdv=931|DnnPageHeaderProvider|10)--><!--CDF(Css|/Portals/3/portal.css?cdv=931|DnnPageHeaderProvider|35)--><!--CDF(Javascript|/js/dnn.js?cdv=931|DnnBodyProvider|12)--><!--CDF(Javascript|/js/dnn.servicesframework.js?cdv=931|DnnBodyProvider|100)--><!--CDF(Css|/Portals/_default/Skins/Corporat60/Superfish/superfish.css?cdv=931|DnnPageHeaderProvider|100)--><!--CDF(Javascript|/Resources/Shared/Scripts/jquery/jquery.hoverIntent.min.js?cdv=931|DnnBodyProvider|55)--><!--CDF(Javascript|/Resources/Shared/Scripts/dnn.jquery.js?cdv=931|DnnBodyProvider|100)--><!--CDF(Javascript|/Resources/Shared/Scripts/jquery/jquery.hoverIntent.min.js?cdv=931|DnnBodyProvider|55)--><!--CDF(Javascript|/Resources/libraries/jQuery/03_02_01/jquery.js?cdv=931|DnnPageHeaderProvider|5)--><!--CDF(Javascript|/Resources/libraries/jQuery-UI/01_12_01/jquery-ui.js?cdv=931|DnnPageHeaderProvider|10)--><!--CDF(Javascript|/Resources/libraries/jQuery-Migrate/03_00_00/jquery-migrate.js?cdv=931|DnnPageHeaderProvider|6)-->
+    
+<script async type="text/javascript" src="/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=1&cb=2028367385"></script>
+</body>
+</html>
