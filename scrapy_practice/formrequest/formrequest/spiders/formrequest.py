@@ -35,7 +35,7 @@ class Colleges(scrapy.Spider):
         _viewstategenerator = response.css('input[id=__VIEWSTATEGENERATOR]::attr(value)').get()
         __VIEWSTATEENCRYPTED = response.css('input[id=__VIEWSTATEENCRYPTED]::attr(value)').get()
         _search_code = response.css('input[id="dnn$ctr1535$UNSPSCSearch$txtsearchCode"]::attr(value)').get()
-        _search_title = 'test'
+        _search_title = 'God'
         _search = 'Search'
         _scrolltop = response.css('input[id=ScrollTop]::attr(value)').get()
         __dnnVariable = response.css('input[id=__dnnVariable]::attr(value)').get()

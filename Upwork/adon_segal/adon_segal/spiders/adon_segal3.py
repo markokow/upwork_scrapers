@@ -28,26 +28,44 @@ class Adon_Segal(scrapy.Spider):
     # scraper name
     name = 'adon_segal3'
     
-    base_url = 'https://www.deldure.com/s?query=wipro+lighting+distributors&page=1&state=andaman+and+nicobar+islands&city=port+blair&country=india'
+    base_url = 'https://www.deldure.com/api/search?query=wipro%20lighting%20distributors&page=1&state=Andhra%20Pradesh&country=India'
 
     allowed_domains = ["https://www.deldure.com"]
 
 
-    headers = {
+#     headers = {
 # 'Host': 'www.deldure.com',
-'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:92.0) Gecko/20100101 Firefox/92.0',
-# 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+# 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:93.0) Gecko/20100101 Firefox/93.0',
+# 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8',
 # 'Accept-Language': 'en-US,en;q=0.5',
 # 'Accept-Encoding': 'gzip, deflate, br',
 # 'Alt-Used': 'www.deldure.com',
 # 'Connection': 'keep-alive',
-# 'Cookie': 'JSESSIONID=o2IB_8-oiOhsiEZdyTjt9ZO0xGOsBgJ2a5r925n-.localhost',
+# 'Cookie': 'JSESSIONID=OJW7Vi_mdHleKgd1KIZlftbsplJ9eSctf0oI1PM3.localhost',
 # 'Upgrade-Insecure-Requests': '1',
 # 'Sec-Fetch-Dest': 'document',
 # 'Sec-Fetch-Mode': 'navigate',
-# 'Sec-Fetch-Site': 'same-origin',
-'Cache-Control': 'max-age=0',
+# 'Sec-Fetch-Site': 'none',
+# 'Sec-Fetch-User': '?1',
 
+#     }
+
+
+    headers = {
+'Host': 'www.deldure.com',
+'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:93.0) Gecko/20100101 Firefox/93.0',
+'Accept': '*/*',
+'Accept-Language': 'en-US,en;q=0.5',
+'Accept-Encoding': 'gzip, deflate, br',
+'apiKey': 'a13c17f7-c898-5c74-c0e2-3ba04ca942c6',
+'X-Requested-With': 'XMLHttpRequest',
+'Alt-Used': 'www.deldure.com',
+'Connection': 'keep-alive',
+'Referer': 'https://www.deldure.com/s?query=wipro+lighting+distributors&page=1&state=andhra+pradesh&country=india',
+'Cookie': 'JSESSIONID=OJW7Vi_mdHleKgd1KIZlftbsplJ9eSctf0oI1PM3.localhost',
+'Sec-Fetch-Dest': 'empty',
+'Sec-Fetch-Mode': 'cors',
+'Sec-Fetch-Site': 'same-origin',
     }
 
     
@@ -59,8 +77,10 @@ class Adon_Segal(scrapy.Spider):
 
     # parse response
     def parse(self, res):
-        print(res.text)
 
-        with open ('deldure1.html', 'w') as file:
+        print(json.loads(res.text))
+        # print(res.text)
 
-            file.write(res.text)
+        # with open ('deldure1.html', 'w') as file:
+
+        #     file.write(res.text)
