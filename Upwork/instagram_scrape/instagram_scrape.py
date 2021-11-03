@@ -7,9 +7,9 @@ from googleapiclient.discovery import build
 from google.oauth2 import service_account
 
 # os.system("pip install instagram-scraper")
-account: str = 'e.r.pods'
+account: str = 'fritzhansen'
 
-os.system(f"instagram-scraper {account} -u rexvon.apaap@gmail.com -p Bryitkids92073 --media-metadata --include-location --profile-metadata -m 10")
+os.system(f"instagram-scraper {account} -u rexvon.apaap@gmail.com -p Bryitkids92073 --media-metadata --include-location --profile-metadata -m 20")
 
 file = open(f'{account}/{account}.json', encoding='utf-8')
 
@@ -64,8 +64,8 @@ service = build('sheets', 'v4', credentials=credentials)
 # Call the Sheets API
 sheet = service.spreadsheets()
 
-result = service.spreadsheets().values().update(
-    spreadsheetId=SAMPLE_SPREADSHEET_ID, range=SAMPLE_RANGE_NAME,
-    valueInputOption="USER_ENTERED", body={"values": result}).execute()
+# result = service.spreadsheets().values().update(
+#     spreadsheetId=SAMPLE_SPREADSHEET_ID, range=SAMPLE_RANGE_NAME,
+#     valueInputOption="USER_ENTERED", body={"values": result}).execute()
 
-print(result)
+# print(result)
