@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "dev-monolith-331102",
+  "private_key_id": "d5754db1b0f812324ceff65f1dc11432e49956cb",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCaVgCQBZxylXnR\nHi5i+e9nprF8JFuDol4pI/4Psoa3o4Cwx6r7OZJNo5u56K8j6c8gcvgOCKjQ0i4O\nuj5g1ZmPPeYd2Qa5yRHAaR3MfzEBYvSmaoPFZva1RDyGJPSQIOzodcFfa0YGPUBn\n3qJOSH5Z3dLmIt6hBR9jWkjKL8yrA2QWvNiMwxlmT6PS1dGe9745Y7aGva+Cnnve\nHIdeOdeLy6rPHdXDYf71zz47o/sEkn3Ee7no6cD3eYlPcpiHh0yeNunEqJQjiO7v\nTadHnSUgVsCyW5WAs8c4CERBO4Tm/pozUYcdBJUaArWhg7JAZQ2qWsbCvY6ZzRcl\nMmEBeupjAgMBAAECggEAOUaYb9p9PHLnoelK+rVZmQReUr1lbv0XZ7oxQ58T6tvV\nWwXGmPQ9LO3+UWiecrwG/7pa/05MZC7UI+gPVT1//w5QM5yCp/kMSvVXtzguth6E\nv6vA2kYDYbMAqSHW1xQ5B24IBQLZGmCp4cJYRqgVqAEwDvM63tP5WZQ8djh2ArKs\nbXtkHFudBFypwXB+Ho15TSyVdx1e8+oNAti9AibdnS3/t6OUSJaXd60TzflzBYo5\nDWOUbTzeXuEM5UA7IGEk6PvzurO8FKYjJ0jNX64M2ZtC9nw4iZlaYz+qJhDhXQJj\nm7vwqWTBPu0flpPhwEj8cdoFnk6KH3UPoc68gWvzxQKBgQDHzWSzZTLigyhsUAAk\nG3OYypBlLVEfu13Tn1WD2BAeCUneCCyKGsGtXrU69mbNsDKuxtJoSbpg1UbtW5ox\naa7p9xrD7s7wPBfeb7SyxG7sUYJ88PulKpiZMutDh1u+7pqb9BskKPWVh1yfBdpG\nlsZCdvLzAK1hvoIFueunogmZpwKBgQDFvtbHSLYpJs4VkepUGl0iZmPtrf/gzqLj\nhuAmjKSSeZHOJjZnEi8oHGyrySzvniKzaZW+N4/hAzNPv7B25g5ufifx36/QRAXr\nph3bFSVioqF2OS0MBqja+gYhs1e2yx3284r82HoZzQfgekpddNjssfdvNqN3hT0c\nLXtBIZbI5QKBgDdBKfQirGvP8cHibeeOX+2FN2GDosevvUbk7XVEr1BfKTpp8EdR\nFvanFl9z/QItFBcZjN6iZRSaZr8FciLwIxs45wIAbOIq/D7bjZFSmYppEDkVO8J1\ngTX8yusl581plwBCBa9+VExB3u9rYu3ajIGc+5sQOOKrGLIUtILrYNRJAoGAazLx\nrEc2uUhYIEliBwXjx2pKcecJ+A0NMNtFWKCV9vIAoQkGJQoulkgSgW4l9iB8H1b1\n3pCwZwMdJfZ863f8CtpJPU5OOVEnBIChXssv4TDY5wZH7WUO1OcFu+9FdcrXC7Er\nf7a7OpFz27Vv6woVLvurb5bnNzv7zPK7Bqv22iECgYBzdnhaEUJ40xJgZQXhwT3i\nwKaPtR/QIF3+0eafRuihAB89vvsrAeRq9OkZroM1Ljr6OzIidHzAxPp21m6PZOeV\nEhcNcPpjazALRzb1q12UlLXb9lLYQtCQ//JGyCGmKxx8i4E3nOB7JhOwcgO1pVI7\nnHW5tH9wizghFVCLLEsXrQ==\n-----END PRIVATE KEY-----\n",
+  "client_email": "upwork-james-scaife@dev-monolith-331102.iam.gserviceaccount.com",
+  "client_id": "105098402210911264645",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/upwork-james-scaife%40dev-monolith-331102.iam.gserviceaccount.com"
+}
