@@ -1,0 +1,2 @@
+2021-11-09 00:43:59,266 - instagram_scraper.app - ERROR - Login failed for jamesscaifeupwork2@gmail.com
+2021-11-09 00:43:59,267 - instagram_scraper.app - ERROR - {"user": true, "authenticated": false, "status": "ok"}
