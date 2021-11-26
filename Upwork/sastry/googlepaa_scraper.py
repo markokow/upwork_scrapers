@@ -1,62 +1,47 @@
 import csv
 import requests
-from bs4 import BeautifulSoup
 import io
-from datetime import datetime
-from urllib.request import urlopen, Request
-from typing import Any, Union, List
+from bs4 import BeautifulSoup
+from typing import List
 
 
-class GoogleScraper:
+class PAA_Scraper:
 
-    def __init__(self, *,keyword: str = 'google') -> None:
+    def __init__(self, *,keyword: str = 'google', max_questions: int = 5) -> None:
         '''Initialize variables used for scraping.'''
         self.keyword: str = keyword
-        self.pages: int = pages
-        self.base_url: str = 'https://www.google.com/search'
-        self.keyword_list: List = []
-        self.result: List = []
-        self._taken: List = []
-        self._done: List = []
-        self._counter: int = 0
+        self.query: str = keyword
+        self.max_questions: int = max_questions
 
-        self.pagination_params = {
-            'q':'query',
-            'oq':'none',
-            'gs_lcp':'Cgdnd3Mtd2l6EAMyBwgAEEcQsAMyBwgAEEcQsAMyBwgAEEcQsAMyBwgAEEcQsAMyBwgAEEcQsAMyBwgAEEcQsAMyBwgAEEcQsAMyBwgAEEcQsAMyBwgAELADEEMyCgguEMgDELADEEMyCgguEMgDELADEEMyCgguEMgDELADEEMyCgguEMgDELADEENKBQg4EgExSgQIQRgAUABYAGCNog5oAXACeACAAZ8FiAGfBZIBAzUtMZgBAMgBDcABAQ',
-            'sclient':'gws-wiz',
-            'start': '0',
-            'uact':'5',
-        }
+        self.base_url: str = 'https://www.google.com/search'
+        self.result: List = []
+
+        self.snippets_total: List = [self.keyword]
+        self.parsed_snippet: List = []
 
         self.headers = {
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:91.0) Gecko/20100101 Firefox/91.0',
-            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
-            'Accept-Language': 'en-US,en;q=0.5',
-            # 'Accept-Encoding': 'gzip, deflate, br',
-            'Alt-Used': 'www.google.com',
-            'Connection': 'keep-alive',
-
-            'Upgrade-Insecure-Requests': '1',
-            'Sec-Fetch-Dest': 'document',
-            'Sec-Fetch-Mode': 'navigate',
-            'Sec-Fetch-Site': 'none',
-            'Sec-Fetch-User': '?1',
-            'TE': 'trailers',
+            'User-Agent': 'Mozilla/5.0',
         }
 
-    def fetch(self, *,page):
+    def fetch(self):
         '''Fetch the url and returns bs4 object.'''
-        self.pagination_params['q'] = self.keyword
-        self.pagination_params['oq'] = self.keyword
-
-        response = requests.get(self.base_url, params = self.pagination_params, headers = self.headers)
+        response = requests.get(f"https://www.google.com/search?q='+{self.keyword}", headers = self.headers)
 
         return response
 
-    def parse(self, *,html):
+
+    def parse(self, *, html) -> str:
         '''Parse the urls contained in the page and append to results.'''
         content = BeautifulSoup(html, 'lxml')
+
+        answer = content.find_all("div", {"class": "BNeawe s3v9rd AP7Wnd"})[0]
+        snippet_block = content.find_all("div", {"class": "xpc"})
+
+        for snippet in snippet_block:
+            self.snippets_total.append(snippet.text)
+
+        return answer.text if answer else ""
+
 
 
     def write_csv(self):
@@ -112,15 +97,43 @@ class GoogleScraper:
     def run(self):
         '''Run all cases using the keyword'''
 
-        # #Run all pages
-        resp = self.fetch(0)
-        self.parse(resp.content)
-        self.store_response(resp,0)
+        current_total: int  = 0
+        output_dict: dict = {}
+        output_dict['keyword'] = self.query
 
+        while True:
+
+            for snip in self.snippets_total:
+                if snip not in self.parsed_snippet:
+                    self.keyword = snip
+                    break
+                else:
+                    continue
+                    
+            resp = self.fetch()
+            ans = self.parse(html  = resp.content)
+            self.parsed_snippet.append(self.keyword)
+
+
+            if self.keyword == self.query:
+                continue
+            else:
+                current_total += 1
+                output_dict['question_' + str(current_total)] = self.keyword
+                output_dict['answer_' + str(current_total)] = ans
+
+
+            if current_total == self.max_questions:
+                break
+
+        self.result.append(output_dict)
+        self.write_csv()
 
 if __name__ == '__main__':
 
-    keyword = 'what is the real purpose of life'
+    keyword = 'what is life?'
+    max_questions: int = 25
+
     #Run scraper
-    scraper = GoogleScraper(keyword= keyword)
+    scraper = PAA_Scraper(keyword= keyword, max_questions = max_questions)
     scraper.run()
