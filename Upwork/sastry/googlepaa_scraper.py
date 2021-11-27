@@ -7,10 +7,10 @@ from typing import List
 
 class PAA_Scraper:
 
-    def __init__(self, *,keyword: str = 'google', max_questions: int = 5) -> None:
+    def __init__(self, *,keywords: List = [], max_questions: int = 5) -> None:
         '''Initialize variables used for scraping.'''
-        self.keyword: str = keyword
-        self.query: str = keyword
+        self.keyword: str = keywords[0]
+        self.query: str = keywords[0]
         self.max_questions: int = max_questions
 
         self.base_url: str = 'https://www.google.com/search'
@@ -28,8 +28,7 @@ class PAA_Scraper:
         response = requests.get(f"https://www.google.com/search?q='+{self.keyword}", headers = self.headers)
 
         return response
-
-
+        
     def parse(self, *, html) -> str:
         '''Parse the urls contained in the page and append to results.'''
         content = BeautifulSoup(html, 'lxml')
@@ -37,12 +36,23 @@ class PAA_Scraper:
         answer = content.find_all("div", {"class": "BNeawe s3v9rd AP7Wnd"})[0]
         snippet_block = content.find_all("div", {"class": "xpc"})
 
+        print(self.keyword)
+        heading = answer.find("div", {"class":"Ey4n2"})
+
+        try:
+            lists = "\n".join([val.text for val in  answer.find("ul", {"class":"yRG22b v7pIac"}).find_all("div", {"class":"BNeawe s3v9rd AP7Wnd"}) if val])
+        except AttributeError:
+            lists = ""
+
         for snippet in snippet_block:
-            self.snippets_total.append(snippet.text)
+            self.snippets_total.append(snippet.text if snippet else "")
 
-        return answer.text if answer else ""
+        _answer = (heading.text if heading else "") + "\n" + lists
 
+        if _answer.strip() == "":
+            _answer = answer.text
 
+        return _answer
 
     def write_csv(self):
         '''Save results to csv.'''
@@ -59,7 +69,7 @@ class PAA_Scraper:
         print("Saved to results.xlsx")
     
     def open_csv(self):
-
+        '''Opens a csv.'''
         print("opening csv")
         with open('results.csv', 'r', newline = '', encoding= 'utf-8') as csv_file:
             _dict_reader = csv.DictReader(csv_file)
@@ -116,6 +126,7 @@ class PAA_Scraper:
 
 
             if self.keyword == self.query:
+                self.store_response(response=resp, page = 0)
                 continue
             else:
                 current_total += 1
@@ -132,8 +143,14 @@ class PAA_Scraper:
 if __name__ == '__main__':
 
     keyword = 'what is life?'
+
+    file =  open('keywords.txt', 'r', encoding='utf-8')
+    keywords: List = [acc.strip() for acc in file.readlines()]
+
+    # print(keywords)
+
     max_questions: int = 25
 
     #Run scraper
-    scraper = PAA_Scraper(keyword= keyword, max_questions = max_questions)
+    scraper = PAA_Scraper(keywords= keywords, max_questions = max_questions)
     scraper.run()
