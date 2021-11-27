@@ -104,7 +104,7 @@ class PAA_Scraper:
         
 
     def run(self):
-        '''Run all cases using the keyword'''
+        '''Run all cases using the keyword'''   
         current_total: int  = 0
         output_dict: dict = {}
         output_dict['keyword'] = self.query
