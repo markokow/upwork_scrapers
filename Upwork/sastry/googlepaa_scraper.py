@@ -28,7 +28,7 @@ class PAA_Scraper:
         response = requests.get(f"https://www.google.com/search?q='+{self.keyword}", headers = self.headers)
 
         return response
-        
+
     def parse(self, *, html) -> str:
         '''Parse the urls contained in the page and append to results.'''
         content = BeautifulSoup(html, 'lxml')
@@ -96,7 +96,6 @@ class PAA_Scraper:
   
     def load_response(self):   
         '''Load an html file.'''
-
         html = ''
         with open('res.html', 'r') as html_file:
             for line in html_file.read():
@@ -106,7 +105,6 @@ class PAA_Scraper:
 
     def run(self):
         '''Run all cases using the keyword'''
-
         current_total: int  = 0
         output_dict: dict = {}
         output_dict['keyword'] = self.query
@@ -124,7 +122,6 @@ class PAA_Scraper:
             ans = self.parse(html  = resp.content)
             self.parsed_snippet.append(self.keyword)
 
-
             if self.keyword == self.query:
                 self.store_response(response=resp, page = 0)
                 continue
@@ -132,7 +129,6 @@ class PAA_Scraper:
                 current_total += 1
                 output_dict['question_' + str(current_total)] = self.keyword
                 output_dict['answer_' + str(current_total)] = ans
-
 
             if current_total == self.max_questions:
                 break
