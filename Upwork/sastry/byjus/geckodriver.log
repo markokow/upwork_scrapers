@@ -1,0 +1,14 @@
+1638283278517	geckodriver	INFO	Listening on 127.0.0.1:58559
+1638283281565	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofilePK2y88"
+1638283282223	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofilePK2y88\\search.json.mozlz4", (void 0)))
+1638283285035	Marionette	INFO	Listening on port 58567
+1638283285287	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://byjus.com/question-answer/_next/static/chunks/main-f9e7c8c92d29e88d4acf.js, line 1: unreachable code after return statement
+JavaScript error: , line 0: uncaught exception: undefined
+JavaScript error: , line 0: uncaught exception: undefined
+JavaScript error: , line 0: uncaught exception: undefined
+1638283287561	Marionette	INFO	Stopped listening on port 58567
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
