@@ -69,16 +69,6 @@ class PAA_Scraper:
         print('Saving to csv....')
 
         now = str(datetime.today()).replace(':','-')
-
-        if self.result: 
-            with open(f'{now}.csv', 'w', newline = '', encoding = 'utf-8') as csv_file:
-                writer_object = csv.DictWriter(csv_file, fieldnames = self.result[0].keys())
-                writer_object.writeheader()
-
-                for row in self.result:
-                    writer_object.writerow(row)
-
-        print(f"Saved to {now}.xlsx")
     
     def open_csv(self):
         '''Opens a csv.'''
