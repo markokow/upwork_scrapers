@@ -136,7 +136,6 @@ class Google_Related_Search:
         df = df.style.applymap(lambda x: ("background-color: " + multi_match_color[x]) if x in multi_match.keys() else '')
         df.to_excel(f'{self.query}.xlsx', engine = 'openpyxl', index=False)
 
-
     def run(self):
         '''Run all cases using the keyword'''   
         headers: List = []
