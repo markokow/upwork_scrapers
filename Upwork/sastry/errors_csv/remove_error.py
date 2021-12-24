@@ -18,6 +18,7 @@ def clean_df(df: pd.DataFrame, errors: List):
 
 for dat in data:
     df = pd.read_csv(dat)
+    df = df.loc[:, ~df.columns.str.contains('^Unnamed')]
     df = clean_df(df = df, errors=errors)
     df.to_csv(dat)
 
