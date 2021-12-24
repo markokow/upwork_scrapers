@@ -60,8 +60,7 @@ class Google_Related_Search:
         with open('results.csv', 'r', newline = '', encoding= 'utf-8') as csv_file:
             _dict_reader = csv.DictReader(csv_file)
             self._taken = list(_dict_reader)
-        
-
+    
         self._done = [_val['valid_urls'] for _val in self._taken]
 
         self.result = self._taken
