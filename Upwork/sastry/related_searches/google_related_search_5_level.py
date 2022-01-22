@@ -74,7 +74,7 @@ class Google_Related_Search:
                 html_file.write(response.text)
             print('Done')
         else:
-            print('Bad response!')
+            print('Bad response!') 
   
     def load_response(self):   
         '''Load an html file.'''

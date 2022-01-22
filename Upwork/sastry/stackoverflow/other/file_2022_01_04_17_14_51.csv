@@ -1,0 +1,1491 @@
+URL,Title,Best_Answer_5,Best_Answer_6,Best_Answer_7
+https://stackoverflow.com/questions/22636826/notice-trying-to-get-property-of-non-object-error,Notice: Trying to get property of non-object error,"<p>i am trying to get data from:</p>
+
+<p><a href=""http://api.convoytrucking.net/api.php?api_key=public&amp;show=player&amp;player_name=Mick_Gibson"">http://api.convoytrucking.net/api.php?api_key=public&amp;show=player&amp;player_name=Mick_Gibson</a></p>
+
+<p>but if i want to get player_name variable with this code:</p>
+
+<pre><code>&lt;?  
+$js = file_get_contents('http://api.convoytrucking.net/api.php?api_key=public&amp;show=player&amp;player_name=Mick_Gibson');
+  $pjs = json_decode($js);
+  var_dump($pjs-&gt;{'player_name'});
+?&gt;
+</code></pre>
+
+<p>i get error:</p>
+
+<blockquote>
+  <p>Notice: Trying to get property of non-object in **\htdocs\index.php on
+  line 9  + var_dump() returns: NULL</p>
+</blockquote>
+
+<p><code>var_dump($pjs)</code> returns:</p>
+
+<pre><code>array(1) { [0]=&gt; object(stdClass)#52 (15) { [""player_name""]=&gt; string(11) ""Mick_Gibson"" [""player_id""]=&gt; int(88) [""rank""]=&gt; string(12) ""FIRE TURTLEE"" [""lastseen""]=&gt; int(1393797692) [""registration_date""]=&gt; string(19) ""2012-08-10 17:01:34"" [""last_mission_date""]=&gt; string(19) ""2014-03-02 21:41:50"" [""time_offset""]=&gt; int(1) [""house_id""]=&gt; int(611) [""fines""]=&gt; int(0) [""wanted""]=&gt; int(0) [""police_badge""]=&gt; bool(true) [""vip""]=&gt; bool(false) [""staff""]=&gt; NULL [""stats""]=&gt; object(stdClass)#53 (23) { [""score""]=&gt; int(2941) [""convoy_score""]=&gt; int(818) [""ARTIC""]=&gt; int(515) [""DUMPER""]=&gt; int(565) [""TANKER""]=&gt; int(56) [""CEMENT""]=&gt; int(163) [""TRASH""]=&gt; int(7) [""ARMORED""]=&gt; int(9) [""VAN""]=&gt; int(501) [""TOW""]=&gt; int(502) [""COACH""]=&gt; int(4) [""LIMO""]=&gt; int(97) [""ARRESTS""]=&gt; int(272) [""GTA""]=&gt; int(67) [""BURGLAR""]=&gt; int(122) [""HEIST""]=&gt; int(1) [""PLANE""]=&gt; int(48) [""HELI""]=&gt; int(12) [""FAILED""]=&gt; int(312) [""OVERLOADS""]=&gt; int(160) [""TRUCK_LOADS""]=&gt; int(1275) [""ODOMETER""]=&gt; int(28320798) [""TIME""]=&gt; int(2078450) } [""achievements""]=&gt; array(4) { [0]=&gt; string(20) ""Professional Trucker"" [1]=&gt; string(13) ""Gravel Hauler"" [2]=&gt; string(12) ""Delivery Boy"" [3]=&gt; string(7) ""Wrecker"" } } }
+</code></pre>","<p>i am trying to get data from:</p>
+
+<p><a href=""http://api.convoytrucking.net/api.php?api_key=public&amp;show=player&amp;player_name=Mick_Gibson"">http://api.convoytrucking.net/api.php?api_key=public&amp;show=player&amp;player_name=Mick_Gibson</a></p>
+
+<p>but if i want to get player_name variable with this code:</p>
+
+<pre><code>&lt;?  
+$js = file_get_contents('http://api.convoytrucking.net/api.php?api_key=public&amp;show=player&amp;player_name=Mick_Gibson');
+  $pjs = json_decode($js);
+  var_dump($pjs-&gt;{'player_name'});
+?&gt;
+</code></pre>
+
+<p>i get error:</p>
+
+<blockquote>
+  <p>Notice: Trying to get property of non-object in **\htdocs\index.php on
+  line 9  + var_dump() returns: NULL</p>
+</blockquote>
+
+<p><code>var_dump($pjs)</code> returns:</p>
+
+<pre><code>array(1) { [0]=&gt; object(stdClass)#52 (15) { [""player_name""]=&gt; string(11) ""Mick_Gibson"" [""player_id""]=&gt; int(88) [""rank""]=&gt; string(12) ""FIRE TURTLEE"" [""lastseen""]=&gt; int(1393797692) [""registration_date""]=&gt; string(19) ""2012-08-10 17:01:34"" [""last_mission_date""]=&gt; string(19) ""2014-03-02 21:41:50"" [""time_offset""]=&gt; int(1) [""house_id""]=&gt; int(611) [""fines""]=&gt; int(0) [""wanted""]=&gt; int(0) [""police_badge""]=&gt; bool(true) [""vip""]=&gt; bool(false) [""staff""]=&gt; NULL [""stats""]=&gt; object(stdClass)#53 (23) { [""score""]=&gt; int(2941) [""convoy_score""]=&gt; int(818) [""ARTIC""]=&gt; int(515) [""DUMPER""]=&gt; int(565) [""TANKER""]=&gt; int(56) [""CEMENT""]=&gt; int(163) [""TRASH""]=&gt; int(7) [""ARMORED""]=&gt; int(9) [""VAN""]=&gt; int(501) [""TOW""]=&gt; int(502) [""COACH""]=&gt; int(4) [""LIMO""]=&gt; int(97) [""ARRESTS""]=&gt; int(272) [""GTA""]=&gt; int(67) [""BURGLAR""]=&gt; int(122) [""HEIST""]=&gt; int(1) [""PLANE""]=&gt; int(48) [""HELI""]=&gt; int(12) [""FAILED""]=&gt; int(312) [""OVERLOADS""]=&gt; int(160) [""TRUCK_LOADS""]=&gt; int(1275) [""ODOMETER""]=&gt; int(28320798) [""TIME""]=&gt; int(2078450) } [""achievements""]=&gt; array(4) { [0]=&gt; string(20) ""Professional Trucker"" [1]=&gt; string(13) ""Gravel Hauler"" [2]=&gt; string(12) ""Delivery Boy"" [3]=&gt; string(7) ""Wrecker"" } } }
+</code></pre>","<p>i am trying to get data from:</p>
+
+<p><a href=""http://api.convoytrucking.net/api.php?api_key=public&amp;show=player&amp;player_name=Mick_Gibson"">http://api.convoytrucking.net/api.php?api_key=public&amp;show=player&amp;player_name=Mick_Gibson</a></p>
+
+<p>but if i want to get player_name variable with this code:</p>
+
+<pre><code>&lt;?  
+$js = file_get_contents('http://api.convoytrucking.net/api.php?api_key=public&amp;show=player&amp;player_name=Mick_Gibson');
+  $pjs = json_decode($js);
+  var_dump($pjs-&gt;{'player_name'});
+?&gt;
+</code></pre>
+
+<p>i get error:</p>
+
+<blockquote>
+  <p>Notice: Trying to get property of non-object in **\htdocs\index.php on
+  line 9  + var_dump() returns: NULL</p>
+</blockquote>
+
+<p><code>var_dump($pjs)</code> returns:</p>
+
+<pre><code>array(1) { [0]=&gt; object(stdClass)#52 (15) { [""player_name""]=&gt; string(11) ""Mick_Gibson"" [""player_id""]=&gt; int(88) [""rank""]=&gt; string(12) ""FIRE TURTLEE"" [""lastseen""]=&gt; int(1393797692) [""registration_date""]=&gt; string(19) ""2012-08-10 17:01:34"" [""last_mission_date""]=&gt; string(19) ""2014-03-02 21:41:50"" [""time_offset""]=&gt; int(1) [""house_id""]=&gt; int(611) [""fines""]=&gt; int(0) [""wanted""]=&gt; int(0) [""police_badge""]=&gt; bool(true) [""vip""]=&gt; bool(false) [""staff""]=&gt; NULL [""stats""]=&gt; object(stdClass)#53 (23) { [""score""]=&gt; int(2941) [""convoy_score""]=&gt; int(818) [""ARTIC""]=&gt; int(515) [""DUMPER""]=&gt; int(565) [""TANKER""]=&gt; int(56) [""CEMENT""]=&gt; int(163) [""TRASH""]=&gt; int(7) [""ARMORED""]=&gt; int(9) [""VAN""]=&gt; int(501) [""TOW""]=&gt; int(502) [""COACH""]=&gt; int(4) [""LIMO""]=&gt; int(97) [""ARRESTS""]=&gt; int(272) [""GTA""]=&gt; int(67) [""BURGLAR""]=&gt; int(122) [""HEIST""]=&gt; int(1) [""PLANE""]=&gt; int(48) [""HELI""]=&gt; int(12) [""FAILED""]=&gt; int(312) [""OVERLOADS""]=&gt; int(160) [""TRUCK_LOADS""]=&gt; int(1275) [""ODOMETER""]=&gt; int(28320798) [""TIME""]=&gt; int(2078450) } [""achievements""]=&gt; array(4) { [0]=&gt; string(20) ""Professional Trucker"" [1]=&gt; string(13) ""Gravel Hauler"" [2]=&gt; string(12) ""Delivery Boy"" [3]=&gt; string(7) ""Wrecker"" } } }
+</code></pre>"
+https://stackoverflow.com/questions/20019512/double-free-or-corruption-fasttop,double free or corruption (fasttop),"<p>The following section of my code gives me this messege when executing <strong>* glibc detected <em></em></strong> ./a.out: double free or corruption (fasttop): 0x08e065d0 **</p>
+
+<p>i have gone through the code many times but i cant clealry see how i am misusing the <code>free (temp2)</code></p>
+
+<pre><code>bool found= false;
+int x=0;
+for ( x=0; x&lt;=312500; x++)
+{
+    while (count &lt;=32)
+    {
+        fscanf (file, ""%d"", &amp;temp-&gt;num);  
+
+        temp-&gt;ptr=NULL;
+
+        newNode = (NODE *)malloc(sizeof(NODE));
+        newNode-&gt;num=temp-&gt;num;
+        newNode-&gt;ptr=NULL;
+
+        if (first != NULL)
+        {
+            temp2=(NODE *)malloc(sizeof(NODE));
+
+            temp2=first;
+            while (temp2 != NULL &amp;&amp; !found)
+            {
+                if (temp2-&gt;num == newNode-&gt;num) 
+                {found=true;}
+
+                temp2= temp2-&gt;ptr;
+            }
+
+            free(temp2);
+
+            if (!found)
+            { 
+                last-&gt;ptr=newNode;
+                last=newNode;
+                count=count+1;
+            }   
+        }   
+        else  
+        {
+            first = newNode;
+            last = newNode;
+            count=count+1;
+        }
+
+        fflush(stdin);
+    }
+</code></pre>",,
+https://stackoverflow.com/questions/32056324/there-is-no-tracking-information-for-the-current-branch,There is no tracking information for the current branch,"<p>I've been using github from a relatively short period, and I've always used the client to perform commits and pulls. I decided to try it from the git bash yesterday, and I successfully created a new repo and committed files.</p>
+
+<p>Today I did changes to the repository from another computer, I've committed the changes and now I'm back home and performed a <code>git pull</code> to update my local version and I get this:</p>
+
+<pre><code>There is no tracking information for the current branch.
+    Please specify which branch you want to merge with.
+    See git-pull(1) for details
+
+    git pull &lt;remote&gt; &lt;branch&gt;
+
+If you wish to set tracking information for this branch you can do so with:
+
+    git branch --set-upstream develop origin/&lt;branch&gt;
+</code></pre>
+
+<p>the only contributor to this repo is me and there are no branches (just a master). I'm on windows and I've performed the pull from git bash:</p>
+
+<p><a href=""https://i.stack.imgur.com/AeyH8.png"" rel=""noreferrer""><img src=""https://i.stack.imgur.com/AeyH8.png"" alt=""enter image description here""></a></p>
+
+<p>git status:</p>
+
+<pre><code>$ git status
+# On branch master
+nothing to commit, working directory clean
+</code></pre>
+
+<p>git branch:</p>
+
+<pre><code>$ git branch
+* master
+</code></pre>
+
+<p>What am I doing wrong?</p>","<p>I've been using github from a relatively short period, and I've always used the client to perform commits and pulls. I decided to try it from the git bash yesterday, and I successfully created a new repo and committed files.</p>
+
+<p>Today I did changes to the repository from another computer, I've committed the changes and now I'm back home and performed a <code>git pull</code> to update my local version and I get this:</p>
+
+<pre><code>There is no tracking information for the current branch.
+    Please specify which branch you want to merge with.
+    See git-pull(1) for details
+
+    git pull &lt;remote&gt; &lt;branch&gt;
+
+If you wish to set tracking information for this branch you can do so with:
+
+    git branch --set-upstream develop origin/&lt;branch&gt;
+</code></pre>
+
+<p>the only contributor to this repo is me and there are no branches (just a master). I'm on windows and I've performed the pull from git bash:</p>
+
+<p><a href=""https://i.stack.imgur.com/AeyH8.png"" rel=""noreferrer""><img src=""https://i.stack.imgur.com/AeyH8.png"" alt=""enter image description here""></a></p>
+
+<p>git status:</p>
+
+<pre><code>$ git status
+# On branch master
+nothing to commit, working directory clean
+</code></pre>
+
+<p>git branch:</p>
+
+<pre><code>$ git branch
+* master
+</code></pre>
+
+<p>What am I doing wrong?</p>","<p>I've been using github from a relatively short period, and I've always used the client to perform commits and pulls. I decided to try it from the git bash yesterday, and I successfully created a new repo and committed files.</p>
+
+<p>Today I did changes to the repository from another computer, I've committed the changes and now I'm back home and performed a <code>git pull</code> to update my local version and I get this:</p>
+
+<pre><code>There is no tracking information for the current branch.
+    Please specify which branch you want to merge with.
+    See git-pull(1) for details
+
+    git pull &lt;remote&gt; &lt;branch&gt;
+
+If you wish to set tracking information for this branch you can do so with:
+
+    git branch --set-upstream develop origin/&lt;branch&gt;
+</code></pre>
+
+<p>the only contributor to this repo is me and there are no branches (just a master). I'm on windows and I've performed the pull from git bash:</p>
+
+<p><a href=""https://i.stack.imgur.com/AeyH8.png"" rel=""noreferrer""><img src=""https://i.stack.imgur.com/AeyH8.png"" alt=""enter image description here""></a></p>
+
+<p>git status:</p>
+
+<pre><code>$ git status
+# On branch master
+nothing to commit, working directory clean
+</code></pre>
+
+<p>git branch:</p>
+
+<pre><code>$ git branch
+* master
+</code></pre>
+
+<p>What am I doing wrong?</p>"
+https://stackoverflow.com/questions/11656761/git-please-tell-me-who-you-are-error,"Git: ""please tell me who you are"" error","<p>I have app servers that I bootstrap together using Chef + some ad-hoc bash scripts. The problem is, when I want to run an update on one of these app servers, I get:</p>
+
+<pre><code>19:00:28: *** Please tell me who you are.
+
+Run
+
+  git config --global user.email ""you@example.com""
+  git config --global user.name ""Your Name""
+</code></pre>
+
+<p>Do I really need to set this for doing a simple <code>git pull origin master</code> every time I update an app server? Is there anyway to override this behavior so it doesn't error out when name and email are not set?</p>","<p>I have app servers that I bootstrap together using Chef + some ad-hoc bash scripts. The problem is, when I want to run an update on one of these app servers, I get:</p>
+
+<pre><code>19:00:28: *** Please tell me who you are.
+
+Run
+
+  git config --global user.email ""you@example.com""
+  git config --global user.name ""Your Name""
+</code></pre>
+
+<p>Do I really need to set this for doing a simple <code>git pull origin master</code> every time I update an app server? Is there anyway to override this behavior so it doesn't error out when name and email are not set?</p>","<p>I have app servers that I bootstrap together using Chef + some ad-hoc bash scripts. The problem is, when I want to run an update on one of these app servers, I get:</p>
+
+<pre><code>19:00:28: *** Please tell me who you are.
+
+Run
+
+  git config --global user.email ""you@example.com""
+  git config --global user.name ""Your Name""
+</code></pre>
+
+<p>Do I really need to set this for doing a simple <code>git pull origin master</code> every time I update an app server? Is there anyway to override this behavior so it doesn't error out when name and email are not set?</p>"
+https://stackoverflow.com/questions/7209110/java-util-nosuchelementexception-no-line-found,java.util.NoSuchElementException: No line found,"<p>I got an run time exception in my program while I am reading a file through a Scanner.  </p>
+
+<pre><code>java.util.NoSuchElementException: No line found     
+   at java.util.Scanner.nextLine(Unknown Source)    
+   at Day1.ReadFile.read(ReadFile.java:49)  
+   at Day1.ParseTree.main(ParseTree.java:17) 
+</code></pre>
+
+<p>My code is:</p>
+
+<pre><code>while((str=sc.nextLine())!=null){
+    i=0;
+    if(str.equals(""Locations""))
+    {
+        size=4;
+        t=3;
+        str=sc.nextLine();
+        str=sc.nextLine();
+    }
+    if(str.equals(""Professions""))
+    {
+        size=3;
+        t=2;
+        str=sc.nextLine();
+        str=sc.nextLine();
+    }
+    if(str.equals(""Individuals""))
+    {
+        size=4;
+        t=4;
+        str=sc.nextLine();
+        str=sc.nextLine();
+    }
+
+int j=0;
+String loc[]=new String[size];
+while(j&lt;size){
+    beg=0;
+    end=str.indexOf(',');
+    if(end!=-1){
+        tmp=str.substring(beg, end);
+        beg=end+2;
+    }
+    if(end==-1)
+    {
+        tmp=str.substring(beg);
+    }
+    if(beg&lt;str.length())
+        str=str.substring(beg);
+    loc[i]=tmp;
+    i++;
+
+    if(i==size ){
+        if(t==3)
+        {
+            location.add(loc);
+        }
+        if(t==2)
+        {
+            profession.add(loc);
+        }
+        if(t==4)
+        {
+            individual.add(loc);
+        }
+        i=0;
+    }
+    j++;
+    System.out.print(""\n"");
+}
+</code></pre>","<p>I got an run time exception in my program while I am reading a file through a Scanner.  </p>
+
+<pre><code>java.util.NoSuchElementException: No line found     
+   at java.util.Scanner.nextLine(Unknown Source)    
+   at Day1.ReadFile.read(ReadFile.java:49)  
+   at Day1.ParseTree.main(ParseTree.java:17) 
+</code></pre>
+
+<p>My code is:</p>
+
+<pre><code>while((str=sc.nextLine())!=null){
+    i=0;
+    if(str.equals(""Locations""))
+    {
+        size=4;
+        t=3;
+        str=sc.nextLine();
+        str=sc.nextLine();
+    }
+    if(str.equals(""Professions""))
+    {
+        size=3;
+        t=2;
+        str=sc.nextLine();
+        str=sc.nextLine();
+    }
+    if(str.equals(""Individuals""))
+    {
+        size=4;
+        t=4;
+        str=sc.nextLine();
+        str=sc.nextLine();
+    }
+
+int j=0;
+String loc[]=new String[size];
+while(j&lt;size){
+    beg=0;
+    end=str.indexOf(',');
+    if(end!=-1){
+        tmp=str.substring(beg, end);
+        beg=end+2;
+    }
+    if(end==-1)
+    {
+        tmp=str.substring(beg);
+    }
+    if(beg&lt;str.length())
+        str=str.substring(beg);
+    loc[i]=tmp;
+    i++;
+
+    if(i==size ){
+        if(t==3)
+        {
+            location.add(loc);
+        }
+        if(t==2)
+        {
+            profession.add(loc);
+        }
+        if(t==4)
+        {
+            individual.add(loc);
+        }
+        i=0;
+    }
+    j++;
+    System.out.print(""\n"");
+}
+</code></pre>","<p>I got an run time exception in my program while I am reading a file through a Scanner.  </p>
+
+<pre><code>java.util.NoSuchElementException: No line found     
+   at java.util.Scanner.nextLine(Unknown Source)    
+   at Day1.ReadFile.read(ReadFile.java:49)  
+   at Day1.ParseTree.main(ParseTree.java:17) 
+</code></pre>
+
+<p>My code is:</p>
+
+<pre><code>while((str=sc.nextLine())!=null){
+    i=0;
+    if(str.equals(""Locations""))
+    {
+        size=4;
+        t=3;
+        str=sc.nextLine();
+        str=sc.nextLine();
+    }
+    if(str.equals(""Professions""))
+    {
+        size=3;
+        t=2;
+        str=sc.nextLine();
+        str=sc.nextLine();
+    }
+    if(str.equals(""Individuals""))
+    {
+        size=4;
+        t=4;
+        str=sc.nextLine();
+        str=sc.nextLine();
+    }
+
+int j=0;
+String loc[]=new String[size];
+while(j&lt;size){
+    beg=0;
+    end=str.indexOf(',');
+    if(end!=-1){
+        tmp=str.substring(beg, end);
+        beg=end+2;
+    }
+    if(end==-1)
+    {
+        tmp=str.substring(beg);
+    }
+    if(beg&lt;str.length())
+        str=str.substring(beg);
+    loc[i]=tmp;
+    i++;
+
+    if(i==size ){
+        if(t==3)
+        {
+            location.add(loc);
+        }
+        if(t==2)
+        {
+            profession.add(loc);
+        }
+        if(t==4)
+        {
+            individual.add(loc);
+        }
+        i=0;
+    }
+    j++;
+    System.out.print(""\n"");
+}
+</code></pre>"
+https://stackoverflow.com/questions/948135/how-to-write-a-switch-statement-in-ruby,How to write a switch statement in Ruby,<p>How do I write a <code>switch</code> statement in Ruby?</p>,<p>How do I write a <code>switch</code> statement in Ruby?</p>,<p>How do I write a <code>switch</code> statement in Ruby?</p>
+https://stackoverflow.com/questions/4469929/could-not-load-file-or-assembly-or-one-of-its-dependencies,Could not load file or assembly or one of its dependencies,"<p>I'm having another of these ""Could not load file or assembly or one of its dependencies"" problems.</p>
+
+<blockquote>
+  <p>Additional information: Could not load
+  file or assembly
+  'Microsoft.Practices.Unity,
+  Version=1.2.0.0, Culture=neutral,
+  PublicKeyToken=31bf3856ad364e35' or
+  one of its dependencies. The located
+  assembly's manifest definition does
+  not match the assembly reference.
+  (Exception from HRESULT: 0x80131040)</p>
+</blockquote>
+
+<p>I have no idea what is causing this or how I could debug it to find the cause.</p>
+
+<p>I've done a search in my solution catalogs .csproj files, and every where I have Unity I have:</p>
+
+<blockquote>
+  <p>Reference
+  Include=""Microsoft.Practices.Unity,
+  Version=2.0.414.0, Culture=neutral,
+  PublicKeyToken=31bf3856ad364e35,
+  processorArchitecture=MSIL""</p>
+</blockquote>
+
+<p>Can't find any reference anywhere which goes against 1.2.0.0 in any of my projects.</p>
+
+<p>Any ideas how I should go about solving this?</p>
+
+<p>I would also appreciate tips on how to debug problems like this in general.</p>","<p>I'm having another of these ""Could not load file or assembly or one of its dependencies"" problems.</p>
+
+<blockquote>
+  <p>Additional information: Could not load
+  file or assembly
+  'Microsoft.Practices.Unity,
+  Version=1.2.0.0, Culture=neutral,
+  PublicKeyToken=31bf3856ad364e35' or
+  one of its dependencies. The located
+  assembly's manifest definition does
+  not match the assembly reference.
+  (Exception from HRESULT: 0x80131040)</p>
+</blockquote>
+
+<p>I have no idea what is causing this or how I could debug it to find the cause.</p>
+
+<p>I've done a search in my solution catalogs .csproj files, and every where I have Unity I have:</p>
+
+<blockquote>
+  <p>Reference
+  Include=""Microsoft.Practices.Unity,
+  Version=2.0.414.0, Culture=neutral,
+  PublicKeyToken=31bf3856ad364e35,
+  processorArchitecture=MSIL""</p>
+</blockquote>
+
+<p>Can't find any reference anywhere which goes against 1.2.0.0 in any of my projects.</p>
+
+<p>Any ideas how I should go about solving this?</p>
+
+<p>I would also appreciate tips on how to debug problems like this in general.</p>","<p>I'm having another of these ""Could not load file or assembly or one of its dependencies"" problems.</p>
+
+<blockquote>
+  <p>Additional information: Could not load
+  file or assembly
+  'Microsoft.Practices.Unity,
+  Version=1.2.0.0, Culture=neutral,
+  PublicKeyToken=31bf3856ad364e35' or
+  one of its dependencies. The located
+  assembly's manifest definition does
+  not match the assembly reference.
+  (Exception from HRESULT: 0x80131040)</p>
+</blockquote>
+
+<p>I have no idea what is causing this or how I could debug it to find the cause.</p>
+
+<p>I've done a search in my solution catalogs .csproj files, and every where I have Unity I have:</p>
+
+<blockquote>
+  <p>Reference
+  Include=""Microsoft.Practices.Unity,
+  Version=2.0.414.0, Culture=neutral,
+  PublicKeyToken=31bf3856ad364e35,
+  processorArchitecture=MSIL""</p>
+</blockquote>
+
+<p>Can't find any reference anywhere which goes against 1.2.0.0 in any of my projects.</p>
+
+<p>Any ideas how I should go about solving this?</p>
+
+<p>I would also appreciate tips on how to debug problems like this in general.</p>"
+https://stackoverflow.com/questions/36577020/php-failed-to-open-stream-no-such-file-or-directory,PHP - Failed to open stream : No such file or directory,"<p>In PHP scripts, whether calling <code>include()</code>, <code>require()</code>, <code>fopen()</code>, or their derivatives such as <code>include_once</code>, <code>require_once</code>, or even, <code>move_uploaded_file()</code>, one often runs into an error or warning: </p>
+
+<blockquote>
+  <p>Failed to open stream : No such file or directory.</p>
+</blockquote>
+
+<p>What is a good process to quickly find the root cause of the problem?</p>","<p>In PHP scripts, whether calling <code>include()</code>, <code>require()</code>, <code>fopen()</code>, or their derivatives such as <code>include_once</code>, <code>require_once</code>, or even, <code>move_uploaded_file()</code>, one often runs into an error or warning: </p>
+
+<blockquote>
+  <p>Failed to open stream : No such file or directory.</p>
+</blockquote>
+
+<p>What is a good process to quickly find the root cause of the problem?</p>","<p>In PHP scripts, whether calling <code>include()</code>, <code>require()</code>, <code>fopen()</code>, or their derivatives such as <code>include_once</code>, <code>require_once</code>, or even, <code>move_uploaded_file()</code>, one often runs into an error or warning: </p>
+
+<blockquote>
+  <p>Failed to open stream : No such file or directory.</p>
+</blockquote>
+
+<p>What is a good process to quickly find the root cause of the problem?</p>"
+https://stackoverflow.com/questions/47612580/react-scripts-command-not-found/49171609answertab=votes,react-scripts: command not found,"<p>I am currently trying to use create-react-app which uses three different packages: react, react-scripts and react-dom. I have installed create-react-app and then when I change into the directory and hit <code>npm start</code> I get a <code>react-scripts: command not found</code>. I've ran into a lot of problems with this. I can see <code>react-scripts</code> is in my <code>node_modules</code> folder but I keep getting <code>command not found</code> when trying to run <code>npm start</code>. I tried to delete and re-install all of my <code>node_modules</code> but it didn't work. Anyone else having this issue?</p>
+
+<pre><code> ✘ ✝  Node/toDoApp/my-test   master±  npm start
+
+&gt; my-test@0.1.0 start /Users/jzilch/Desktop/Web 
+Projects/Node:Express/Node/toDoApp/my-test
+&gt; react-scripts start
+
+sh: react-scripts: command not found
+npm ERR! file sh
+npm ERR! code ELIFECYCLE
+npm ERR! errno ENOENT
+npm ERR! syscall spawn
+npm ERR! my-test@0.1.0 start: `react-scripts start`
+npm ERR! spawn ENOENT
+npm ERR!
+npm ERR! Failed at the my-test@0.1.0 start script.
+npm ERR! This is probably not a problem with npm. There is likely 
+additional logging output above.
+</code></pre>","<p>I am currently trying to use create-react-app which uses three different packages: react, react-scripts and react-dom. I have installed create-react-app and then when I change into the directory and hit <code>npm start</code> I get a <code>react-scripts: command not found</code>. I've ran into a lot of problems with this. I can see <code>react-scripts</code> is in my <code>node_modules</code> folder but I keep getting <code>command not found</code> when trying to run <code>npm start</code>. I tried to delete and re-install all of my <code>node_modules</code> but it didn't work. Anyone else having this issue?</p>
+
+<pre><code> ✘ ✝  Node/toDoApp/my-test   master±  npm start
+
+&gt; my-test@0.1.0 start /Users/jzilch/Desktop/Web 
+Projects/Node:Express/Node/toDoApp/my-test
+&gt; react-scripts start
+
+sh: react-scripts: command not found
+npm ERR! file sh
+npm ERR! code ELIFECYCLE
+npm ERR! errno ENOENT
+npm ERR! syscall spawn
+npm ERR! my-test@0.1.0 start: `react-scripts start`
+npm ERR! spawn ENOENT
+npm ERR!
+npm ERR! Failed at the my-test@0.1.0 start script.
+npm ERR! This is probably not a problem with npm. There is likely 
+additional logging output above.
+</code></pre>","<p>I am currently trying to use create-react-app which uses three different packages: react, react-scripts and react-dom. I have installed create-react-app and then when I change into the directory and hit <code>npm start</code> I get a <code>react-scripts: command not found</code>. I've ran into a lot of problems with this. I can see <code>react-scripts</code> is in my <code>node_modules</code> folder but I keep getting <code>command not found</code> when trying to run <code>npm start</code>. I tried to delete and re-install all of my <code>node_modules</code> but it didn't work. Anyone else having this issue?</p>
+
+<pre><code> ✘ ✝  Node/toDoApp/my-test   master±  npm start
+
+&gt; my-test@0.1.0 start /Users/jzilch/Desktop/Web 
+Projects/Node:Express/Node/toDoApp/my-test
+&gt; react-scripts start
+
+sh: react-scripts: command not found
+npm ERR! file sh
+npm ERR! code ELIFECYCLE
+npm ERR! errno ENOENT
+npm ERR! syscall spawn
+npm ERR! my-test@0.1.0 start: `react-scripts start`
+npm ERR! spawn ENOENT
+npm ERR!
+npm ERR! Failed at the my-test@0.1.0 start script.
+npm ERR! This is probably not a problem with npm. There is likely 
+additional logging output above.
+</code></pre>"
+https://stackoverflow.com/questions/212466/what-is-a-bus-error-is-it-different-from-a-segmentation-fault,What is a bus error? Is it different from a segmentation fault?,"<p>What does the ""bus error"" message mean, and how does it differ from a <a href=""https://en.wikipedia.org/wiki/Segmentation_fault"" rel=""noreferrer"">segmentation fault</a>?</p>","<p>What does the ""bus error"" message mean, and how does it differ from a <a href=""https://en.wikipedia.org/wiki/Segmentation_fault"" rel=""noreferrer"">segmentation fault</a>?</p>","<p>What does the ""bus error"" message mean, and how does it differ from a <a href=""https://en.wikipedia.org/wiki/Segmentation_fault"" rel=""noreferrer"">segmentation fault</a>?</p>"
+https://stackoverflow.com/questions/13195814/trying-to-git-pull-with-error-cannot-open-git-fetch-head-permission-denied,Trying to git pull with error: cannot open .git/FETCH_HEAD: Permission denied,"<p>Help me please, I am trying to run this in my terminal:</p>
+
+<pre><code>asgard@asgard-A7N8X2-0:~/CollegePortal$ git pull
+error: cannot open .git/FETCH_HEAD: Permission denied
+</code></pre>
+
+<p>Then I try this one</p>
+
+<pre><code>asgard@asgard-A7N8X2-0:~/CollegePortal$ sudo git pull
+Permission denied (publickey).
+fatal: The remote end hung up unexpectedly
+</code></pre>
+
+<p>Help me, I don't understand this problem.</p>","<p>Help me please, I am trying to run this in my terminal:</p>
+
+<pre><code>asgard@asgard-A7N8X2-0:~/CollegePortal$ git pull
+error: cannot open .git/FETCH_HEAD: Permission denied
+</code></pre>
+
+<p>Then I try this one</p>
+
+<pre><code>asgard@asgard-A7N8X2-0:~/CollegePortal$ sudo git pull
+Permission denied (publickey).
+fatal: The remote end hung up unexpectedly
+</code></pre>
+
+<p>Help me, I don't understand this problem.</p>","<p>Help me please, I am trying to run this in my terminal:</p>
+
+<pre><code>asgard@asgard-A7N8X2-0:~/CollegePortal$ git pull
+error: cannot open .git/FETCH_HEAD: Permission denied
+</code></pre>
+
+<p>Then I try this one</p>
+
+<pre><code>asgard@asgard-A7N8X2-0:~/CollegePortal$ sudo git pull
+Permission denied (publickey).
+fatal: The remote end hung up unexpectedly
+</code></pre>
+
+<p>Help me, I don't understand this problem.</p>"
+https://stackoverflow.com/questions/7334199/getaddrinfo-failed-what-does-that-mean,"""getaddrinfo failed"", what does that mean?","<pre><code>  File ""C:\Python27\lib\socket.py"", line 224, in meth
+    return getattr(self._sock,name)(*args)   gaierror: [Errno 11004]
+getaddrinfo failed
+</code></pre>
+
+<p>Getting this error when launching the hello world sample from here:</p>
+
+<p><a href=""http://bottlepy.org/docs/dev/"" rel=""noreferrer"">http://bottlepy.org/docs/dev/</a></p>","<pre><code>  File ""C:\Python27\lib\socket.py"", line 224, in meth
+    return getattr(self._sock,name)(*args)   gaierror: [Errno 11004]
+getaddrinfo failed
+</code></pre>
+
+<p>Getting this error when launching the hello world sample from here:</p>
+
+<p><a href=""http://bottlepy.org/docs/dev/"" rel=""noreferrer"">http://bottlepy.org/docs/dev/</a></p>","<pre><code>  File ""C:\Python27\lib\socket.py"", line 224, in meth
+    return getattr(self._sock,name)(*args)   gaierror: [Errno 11004]
+getaddrinfo failed
+</code></pre>
+
+<p>Getting this error when launching the hello world sample from here:</p>
+
+<p><a href=""http://bottlepy.org/docs/dev/"" rel=""noreferrer"">http://bottlepy.org/docs/dev/</a></p>"
+https://stackoverflow.com/questions/48342143/how-to-resolve-this-valueerror-only-2-non-keyword-arguments-accepted-sklearn-py,how to resolve this ValueError: only 2 non-keyword arguments accepted sklearn python,"<p>hello i am new to sklearn in python and iam trying to learn it and use this module to predict some numbers based on two features here is the error i am getting:  </p>
+
+<blockquote>
+  <p>ValueError: only 2 non-keyword arguments accepted</p>
+</blockquote>
+
+<p>and here is my code:</p>
+
+<pre><code>    from sklearn.linear_model import LinearRegression
+    import numpy as np
+
+    trainingData = np.array([[861, 16012018], [860, 12012018], [859, 9012018], [858, 5012018], [857, 2012018], [856, 29122017], [855, 26122017], [854, 22122017], [853, 19122017]])
+    trainingScores = np.array([11,18,23,33,34,6],[10,19,21,33,34,1], [14,18,22,23,31,6],[16,22,29,31,33,10],[21,24,27,30,31,6],[1,14,15,20,27,7],[1,9,10,11,15,8],[2,9,27,31,35,1],[7,13,18,22,33,2])
+
+    clf = LinearRegression(fit_intercept=True)
+    clf.fit(trainingScores,trainingData)
+
+   predictionData = np.array([862, 19012018 ])
+   x=clf.predict(predictionData)
+   print(x)
+</code></pre>","<p>hello i am new to sklearn in python and iam trying to learn it and use this module to predict some numbers based on two features here is the error i am getting:  </p>
+
+<blockquote>
+  <p>ValueError: only 2 non-keyword arguments accepted</p>
+</blockquote>
+
+<p>and here is my code:</p>
+
+<pre><code>    from sklearn.linear_model import LinearRegression
+    import numpy as np
+
+    trainingData = np.array([[861, 16012018], [860, 12012018], [859, 9012018], [858, 5012018], [857, 2012018], [856, 29122017], [855, 26122017], [854, 22122017], [853, 19122017]])
+    trainingScores = np.array([11,18,23,33,34,6],[10,19,21,33,34,1], [14,18,22,23,31,6],[16,22,29,31,33,10],[21,24,27,30,31,6],[1,14,15,20,27,7],[1,9,10,11,15,8],[2,9,27,31,35,1],[7,13,18,22,33,2])
+
+    clf = LinearRegression(fit_intercept=True)
+    clf.fit(trainingScores,trainingData)
+
+   predictionData = np.array([862, 19012018 ])
+   x=clf.predict(predictionData)
+   print(x)
+</code></pre>",
+https://stackoverflow.com/questions/33607188/there-is-no-argument-given-that-corresponds-to-the-required-formal-parameter,,,,
+https://stackoverflow.com/questions/6939864/what-is-the-difference-between-section-and-div,What is the difference between <section> and <div>?,<p>What is the difference between <code>&lt;section&gt;</code> and <code>&lt;div&gt;</code> in <code>HTML</code>? <br>Aren't we defining sections in both cases?</p>,<p>What is the difference between <code>&lt;section&gt;</code> and <code>&lt;div&gt;</code> in <code>HTML</code>? <br>Aren't we defining sections in both cases?</p>,<p>What is the difference between <code>&lt;section&gt;</code> and <code>&lt;div&gt;</code> in <code>HTML</code>? <br>Aren't we defining sections in both cases?</p>
+https://stackoverflow.com/questions/16554801/class-is-not-abstract-and-does-not-override-error-in-java,Class is not Abstract and does not Override error in Java,"<p>I am getting a compile time error with Java:</p>
+
+<pre><code>MyClass is not abstract and does not override abstract method
+onClassicControllerRemovedEvent(
+wiiusej.wiiusejevents.wiiuseapievents.ClassicControllerRemovedEvent)
+in wiiusejevents.utils.WiimoteListener)
+</code></pre>
+
+<p>Here is the class:</p>
+
+<pre><code>import wiiusej.WiiUseApiManager;
+import wiiusej.Wiimote;
+import wiiusej.wiiusejevents.physicalevents.ExpansionEvent;
+import wiiusej.wiiusejevents.physicalevents.IREvent;
+import wiiusej.wiiusejevents.physicalevents.MotionSensingEvent;
+import wiiusej.wiiusejevents.physicalevents.WiimoteButtonsEvent;
+import wiiusej.wiiusejevents.utils.WiimoteListener;
+import wiiusej.wiiusejevents.wiiuseapievents.DisconnectionEvent;
+import wiiusej.wiiusejevents.wiiuseapievents.NunchukInsertedEvent;
+import wiiusej.wiiusejevents.wiiuseapievents.NunchukRemovedEvent;
+import wiiusej.wiiusejevents.wiiuseapievents.StatusEvent;
+
+
+public class MyClass implements WiimoteListener{
+
+    public void onButtonsEvent(WiimoteButtonsEvent arg0) {
+        System.out.println(arg0);
+        if (arg0.isButtonAPressed()){
+            WiiUseApiManager.shutdown();
+        }
+    }
+
+    public void onIrEvent(IREvent arg0) {
+        System.out.println(arg0);
+    }
+
+    public void onMotionSensingEvent(MotionSensingEvent arg0) {
+        System.out.println(arg0);
+    }
+
+    public void onExpansionEvent(ExpansionEvent arg0) {
+        System.out.println(arg0);
+    }
+
+    public void onStatusEvent(StatusEvent arg0) {
+        System.out.println(arg0);
+    }
+
+    public void onDisconnectionEvent(DisconnectionEvent arg0) {
+        System.out.println(arg0);
+    }
+
+    public void onNunchukInsertedEvent(NunchukInsertedEvent arg0) {
+        System.out.println(arg0);
+    }
+
+    public void onNunchukRemovedEvent(NunchukRemovedEvent arg0) {
+        System.out.println(arg0);
+    }
+
+    public static void main(String[] args) {
+        Wiimote[] wiimotes = WiiUseApiManager.getWiimotes(1, true);
+        Wiimote wiimote = wiimotes[0];
+        wiimote.activateIRTRacking();
+        wiimote.activateMotionSensing();
+        wiimote.addWiiMoteEventListeners(new MyClass());
+    }
+}
+</code></pre>
+
+<p>Can I get a better explanation of what this error means?</p>","<p>I am getting a compile time error with Java:</p>
+
+<pre><code>MyClass is not abstract and does not override abstract method
+onClassicControllerRemovedEvent(
+wiiusej.wiiusejevents.wiiuseapievents.ClassicControllerRemovedEvent)
+in wiiusejevents.utils.WiimoteListener)
+</code></pre>
+
+<p>Here is the class:</p>
+
+<pre><code>import wiiusej.WiiUseApiManager;
+import wiiusej.Wiimote;
+import wiiusej.wiiusejevents.physicalevents.ExpansionEvent;
+import wiiusej.wiiusejevents.physicalevents.IREvent;
+import wiiusej.wiiusejevents.physicalevents.MotionSensingEvent;
+import wiiusej.wiiusejevents.physicalevents.WiimoteButtonsEvent;
+import wiiusej.wiiusejevents.utils.WiimoteListener;
+import wiiusej.wiiusejevents.wiiuseapievents.DisconnectionEvent;
+import wiiusej.wiiusejevents.wiiuseapievents.NunchukInsertedEvent;
+import wiiusej.wiiusejevents.wiiuseapievents.NunchukRemovedEvent;
+import wiiusej.wiiusejevents.wiiuseapievents.StatusEvent;
+
+
+public class MyClass implements WiimoteListener{
+
+    public void onButtonsEvent(WiimoteButtonsEvent arg0) {
+        System.out.println(arg0);
+        if (arg0.isButtonAPressed()){
+            WiiUseApiManager.shutdown();
+        }
+    }
+
+    public void onIrEvent(IREvent arg0) {
+        System.out.println(arg0);
+    }
+
+    public void onMotionSensingEvent(MotionSensingEvent arg0) {
+        System.out.println(arg0);
+    }
+
+    public void onExpansionEvent(ExpansionEvent arg0) {
+        System.out.println(arg0);
+    }
+
+    public void onStatusEvent(StatusEvent arg0) {
+        System.out.println(arg0);
+    }
+
+    public void onDisconnectionEvent(DisconnectionEvent arg0) {
+        System.out.println(arg0);
+    }
+
+    public void onNunchukInsertedEvent(NunchukInsertedEvent arg0) {
+        System.out.println(arg0);
+    }
+
+    public void onNunchukRemovedEvent(NunchukRemovedEvent arg0) {
+        System.out.println(arg0);
+    }
+
+    public static void main(String[] args) {
+        Wiimote[] wiimotes = WiiUseApiManager.getWiimotes(1, true);
+        Wiimote wiimote = wiimotes[0];
+        wiimote.activateIRTRacking();
+        wiimote.activateMotionSensing();
+        wiimote.addWiiMoteEventListeners(new MyClass());
+    }
+}
+</code></pre>
+
+<p>Can I get a better explanation of what this error means?</p>","<p>I am getting a compile time error with Java:</p>
+
+<pre><code>MyClass is not abstract and does not override abstract method
+onClassicControllerRemovedEvent(
+wiiusej.wiiusejevents.wiiuseapievents.ClassicControllerRemovedEvent)
+in wiiusejevents.utils.WiimoteListener)
+</code></pre>
+
+<p>Here is the class:</p>
+
+<pre><code>import wiiusej.WiiUseApiManager;
+import wiiusej.Wiimote;
+import wiiusej.wiiusejevents.physicalevents.ExpansionEvent;
+import wiiusej.wiiusejevents.physicalevents.IREvent;
+import wiiusej.wiiusejevents.physicalevents.MotionSensingEvent;
+import wiiusej.wiiusejevents.physicalevents.WiimoteButtonsEvent;
+import wiiusej.wiiusejevents.utils.WiimoteListener;
+import wiiusej.wiiusejevents.wiiuseapievents.DisconnectionEvent;
+import wiiusej.wiiusejevents.wiiuseapievents.NunchukInsertedEvent;
+import wiiusej.wiiusejevents.wiiuseapievents.NunchukRemovedEvent;
+import wiiusej.wiiusejevents.wiiuseapievents.StatusEvent;
+
+
+public class MyClass implements WiimoteListener{
+
+    public void onButtonsEvent(WiimoteButtonsEvent arg0) {
+        System.out.println(arg0);
+        if (arg0.isButtonAPressed()){
+            WiiUseApiManager.shutdown();
+        }
+    }
+
+    public void onIrEvent(IREvent arg0) {
+        System.out.println(arg0);
+    }
+
+    public void onMotionSensingEvent(MotionSensingEvent arg0) {
+        System.out.println(arg0);
+    }
+
+    public void onExpansionEvent(ExpansionEvent arg0) {
+        System.out.println(arg0);
+    }
+
+    public void onStatusEvent(StatusEvent arg0) {
+        System.out.println(arg0);
+    }
+
+    public void onDisconnectionEvent(DisconnectionEvent arg0) {
+        System.out.println(arg0);
+    }
+
+    public void onNunchukInsertedEvent(NunchukInsertedEvent arg0) {
+        System.out.println(arg0);
+    }
+
+    public void onNunchukRemovedEvent(NunchukRemovedEvent arg0) {
+        System.out.println(arg0);
+    }
+
+    public static void main(String[] args) {
+        Wiimote[] wiimotes = WiiUseApiManager.getWiimotes(1, true);
+        Wiimote wiimote = wiimotes[0];
+        wiimote.activateIRTRacking();
+        wiimote.activateMotionSensing();
+        wiimote.addWiiMoteEventListeners(new MyClass());
+    }
+}
+</code></pre>
+
+<p>Can I get a better explanation of what this error means?</p>"
+https://stackoverflow.com/questions/44026548/getting-typeerror-init-missing-1-required-positional-argument-on-delete,Getting TypeError: __init__() missing 1 required positional argument: 'on_delete' when trying to add parent table after child table with entries,"<p>I have two classes in my sqlite database, a parent table named <code>Categorie</code> and the child table called <code>Article</code>. I created first the child table class and addes entries. So first I had this:</p>
+
+<pre><code>class Article(models.Model):
+    titre=models.CharField(max_length=100)
+    auteur=models.CharField(max_length=42)
+    contenu=models.TextField(null=True)
+    date=models.DateTimeField(
+        auto_now_add=True,
+        auto_now=False,
+        verbose_name=""Date de parution""
+    )
+
+    def __str__(self):
+        return self.titre
+</code></pre>
+
+<p>And after I have added parent table, and now my <code>models.py</code> looks like this:</p>
+
+<pre><code>from django.db import models
+
+# Create your models here.
+class Categorie(models.Model):
+    nom = models.CharField(max_length=30)
+
+    def __str__(self):
+        return self.nom
+
+
+class Article(models.Model):
+    titre=models.CharField(max_length=100)
+    auteur=models.CharField(max_length=42)
+    contenu=models.TextField(null=True)
+    date=models.DateTimeField(
+        auto_now_add=True,
+        auto_now=False,
+        verbose_name=""Date de parution""
+    )
+    categorie = models.ForeignKey('Categorie')
+
+    def __str__(self):
+        return self.titre
+</code></pre>
+
+<p>So when I run <code>python manage.py makemigrations &lt;my_app_name&gt;</code>, I get this error:</p>
+
+<pre><code>Traceback (most recent call last):
+  File ""manage.py"", line 15, in &lt;module&gt;
+    execute_from_command_line(sys.argv)
+  File ""C:\Users\lislis\AppData\Local\Programs\Python\Python35-32\lib\site-packages\django-2.0-py3.5.egg\django\core\management\__init__.py"", line 354, in execute_from_command_line
+    utility.execute()
+  File ""C:\Users\lislis\AppData\Local\Programs\Python\Python35-32\lib\site-packages\django-2.0-py3.5.egg\django\core\management\__init__.py"", line 330, in execute
+    django.setup()
+  File ""C:\Users\lislis\AppData\Local\Programs\Python\Python35-32\lib\site-packages\django-2.0-py3.5.egg\django\__init__.py"", line 24, in setup
+    apps.populate(settings.INSTALLED_APPS)
+  File ""C:\Users\lislis\AppData\Local\Programs\Python\Python35-32\lib\site-packages\django-2.0-py3.5.egg\django\apps\registry.py"", line 112, in populate
+    app_config.import_models()
+  File ""C:\Users\lislis\AppData\Local\Programs\Python\Python35-32\lib\site-packages\django-2.0-py3.5.egg\django\apps\config.py"", line 198, in import_models
+    self.models_module = import_module(models_module_name)
+  File ""C:\Users\lislis\AppData\Local\Programs\Python\Python35-32\lib\importlib\__init__.py"", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File ""&lt;frozen importlib._bootstrap&gt;"", line 986, in _gcd_import
+  File ""&lt;frozen importlib._bootstrap&gt;"", line 969, in _find_and_load
+  File ""&lt;frozen importlib._bootstrap&gt;"", line 958, in _find_and_load_unlocked
+  File ""&lt;frozen importlib._bootstrap&gt;"", line 673, in _load_unlocked
+  File ""&lt;frozen importlib._bootstrap_external&gt;"", line 665, in exec_module
+  File ""&lt;frozen importlib._bootstrap&gt;"", line 222, in _call_with_frames_removed
+  File ""C:\Users\lislis\Django\mon_site\blog\models.py"", line 6, in &lt;module&gt;
+    class Article(models.Model):
+  File ""C:\Users\lislis\Django\mon_site\blog\models.py"", line 16, in Article
+    categorie = models.ForeignKey('Categorie')
+TypeError: __init__() missing 1 required positional argument: 'on_delete'
+</code></pre>
+
+<p>I've seen some similar issues in stackoverflow, but it seems to not be the same problem: <a href=""https://stackoverflow.com/questions/39231476/init-missing-1-required-positional-argument-quantity"">__init__() missing 1 required positional argument: 'quantity'</a></p>","<p>I have two classes in my sqlite database, a parent table named <code>Categorie</code> and the child table called <code>Article</code>. I created first the child table class and addes entries. So first I had this:</p>
+
+<pre><code>class Article(models.Model):
+    titre=models.CharField(max_length=100)
+    auteur=models.CharField(max_length=42)
+    contenu=models.TextField(null=True)
+    date=models.DateTimeField(
+        auto_now_add=True,
+        auto_now=False,
+        verbose_name=""Date de parution""
+    )
+
+    def __str__(self):
+        return self.titre
+</code></pre>
+
+<p>And after I have added parent table, and now my <code>models.py</code> looks like this:</p>
+
+<pre><code>from django.db import models
+
+# Create your models here.
+class Categorie(models.Model):
+    nom = models.CharField(max_length=30)
+
+    def __str__(self):
+        return self.nom
+
+
+class Article(models.Model):
+    titre=models.CharField(max_length=100)
+    auteur=models.CharField(max_length=42)
+    contenu=models.TextField(null=True)
+    date=models.DateTimeField(
+        auto_now_add=True,
+        auto_now=False,
+        verbose_name=""Date de parution""
+    )
+    categorie = models.ForeignKey('Categorie')
+
+    def __str__(self):
+        return self.titre
+</code></pre>
+
+<p>So when I run <code>python manage.py makemigrations &lt;my_app_name&gt;</code>, I get this error:</p>
+
+<pre><code>Traceback (most recent call last):
+  File ""manage.py"", line 15, in &lt;module&gt;
+    execute_from_command_line(sys.argv)
+  File ""C:\Users\lislis\AppData\Local\Programs\Python\Python35-32\lib\site-packages\django-2.0-py3.5.egg\django\core\management\__init__.py"", line 354, in execute_from_command_line
+    utility.execute()
+  File ""C:\Users\lislis\AppData\Local\Programs\Python\Python35-32\lib\site-packages\django-2.0-py3.5.egg\django\core\management\__init__.py"", line 330, in execute
+    django.setup()
+  File ""C:\Users\lislis\AppData\Local\Programs\Python\Python35-32\lib\site-packages\django-2.0-py3.5.egg\django\__init__.py"", line 24, in setup
+    apps.populate(settings.INSTALLED_APPS)
+  File ""C:\Users\lislis\AppData\Local\Programs\Python\Python35-32\lib\site-packages\django-2.0-py3.5.egg\django\apps\registry.py"", line 112, in populate
+    app_config.import_models()
+  File ""C:\Users\lislis\AppData\Local\Programs\Python\Python35-32\lib\site-packages\django-2.0-py3.5.egg\django\apps\config.py"", line 198, in import_models
+    self.models_module = import_module(models_module_name)
+  File ""C:\Users\lislis\AppData\Local\Programs\Python\Python35-32\lib\importlib\__init__.py"", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File ""&lt;frozen importlib._bootstrap&gt;"", line 986, in _gcd_import
+  File ""&lt;frozen importlib._bootstrap&gt;"", line 969, in _find_and_load
+  File ""&lt;frozen importlib._bootstrap&gt;"", line 958, in _find_and_load_unlocked
+  File ""&lt;frozen importlib._bootstrap&gt;"", line 673, in _load_unlocked
+  File ""&lt;frozen importlib._bootstrap_external&gt;"", line 665, in exec_module
+  File ""&lt;frozen importlib._bootstrap&gt;"", line 222, in _call_with_frames_removed
+  File ""C:\Users\lislis\Django\mon_site\blog\models.py"", line 6, in &lt;module&gt;
+    class Article(models.Model):
+  File ""C:\Users\lislis\Django\mon_site\blog\models.py"", line 16, in Article
+    categorie = models.ForeignKey('Categorie')
+TypeError: __init__() missing 1 required positional argument: 'on_delete'
+</code></pre>
+
+<p>I've seen some similar issues in stackoverflow, but it seems to not be the same problem: <a href=""https://stackoverflow.com/questions/39231476/init-missing-1-required-positional-argument-quantity"">__init__() missing 1 required positional argument: 'quantity'</a></p>","<p>I have two classes in my sqlite database, a parent table named <code>Categorie</code> and the child table called <code>Article</code>. I created first the child table class and addes entries. So first I had this:</p>
+
+<pre><code>class Article(models.Model):
+    titre=models.CharField(max_length=100)
+    auteur=models.CharField(max_length=42)
+    contenu=models.TextField(null=True)
+    date=models.DateTimeField(
+        auto_now_add=True,
+        auto_now=False,
+        verbose_name=""Date de parution""
+    )
+
+    def __str__(self):
+        return self.titre
+</code></pre>
+
+<p>And after I have added parent table, and now my <code>models.py</code> looks like this:</p>
+
+<pre><code>from django.db import models
+
+# Create your models here.
+class Categorie(models.Model):
+    nom = models.CharField(max_length=30)
+
+    def __str__(self):
+        return self.nom
+
+
+class Article(models.Model):
+    titre=models.CharField(max_length=100)
+    auteur=models.CharField(max_length=42)
+    contenu=models.TextField(null=True)
+    date=models.DateTimeField(
+        auto_now_add=True,
+        auto_now=False,
+        verbose_name=""Date de parution""
+    )
+    categorie = models.ForeignKey('Categorie')
+
+    def __str__(self):
+        return self.titre
+</code></pre>
+
+<p>So when I run <code>python manage.py makemigrations &lt;my_app_name&gt;</code>, I get this error:</p>
+
+<pre><code>Traceback (most recent call last):
+  File ""manage.py"", line 15, in &lt;module&gt;
+    execute_from_command_line(sys.argv)
+  File ""C:\Users\lislis\AppData\Local\Programs\Python\Python35-32\lib\site-packages\django-2.0-py3.5.egg\django\core\management\__init__.py"", line 354, in execute_from_command_line
+    utility.execute()
+  File ""C:\Users\lislis\AppData\Local\Programs\Python\Python35-32\lib\site-packages\django-2.0-py3.5.egg\django\core\management\__init__.py"", line 330, in execute
+    django.setup()
+  File ""C:\Users\lislis\AppData\Local\Programs\Python\Python35-32\lib\site-packages\django-2.0-py3.5.egg\django\__init__.py"", line 24, in setup
+    apps.populate(settings.INSTALLED_APPS)
+  File ""C:\Users\lislis\AppData\Local\Programs\Python\Python35-32\lib\site-packages\django-2.0-py3.5.egg\django\apps\registry.py"", line 112, in populate
+    app_config.import_models()
+  File ""C:\Users\lislis\AppData\Local\Programs\Python\Python35-32\lib\site-packages\django-2.0-py3.5.egg\django\apps\config.py"", line 198, in import_models
+    self.models_module = import_module(models_module_name)
+  File ""C:\Users\lislis\AppData\Local\Programs\Python\Python35-32\lib\importlib\__init__.py"", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File ""&lt;frozen importlib._bootstrap&gt;"", line 986, in _gcd_import
+  File ""&lt;frozen importlib._bootstrap&gt;"", line 969, in _find_and_load
+  File ""&lt;frozen importlib._bootstrap&gt;"", line 958, in _find_and_load_unlocked
+  File ""&lt;frozen importlib._bootstrap&gt;"", line 673, in _load_unlocked
+  File ""&lt;frozen importlib._bootstrap_external&gt;"", line 665, in exec_module
+  File ""&lt;frozen importlib._bootstrap&gt;"", line 222, in _call_with_frames_removed
+  File ""C:\Users\lislis\Django\mon_site\blog\models.py"", line 6, in &lt;module&gt;
+    class Article(models.Model):
+  File ""C:\Users\lislis\Django\mon_site\blog\models.py"", line 16, in Article
+    categorie = models.ForeignKey('Categorie')
+TypeError: __init__() missing 1 required positional argument: 'on_delete'
+</code></pre>
+
+<p>I've seen some similar issues in stackoverflow, but it seems to not be the same problem: <a href=""https://stackoverflow.com/questions/39231476/init-missing-1-required-positional-argument-quantity"">__init__() missing 1 required positional argument: 'quantity'</a></p>"
+https://stackoverflow.com/questions/11783875/importerror-no-module-named-bs4-beautifulsoup,ImportError: No Module Named bs4 (BeautifulSoup),"<p>I'm working in Python and using Flask. When I run my main Python file on my computer, it works perfectly, but when I activate venv and run the Flask Python file in the terminal, it says that my main Python file has ""No Module Named bs4."" Any comments or advice is greatly appreciated.</p>","<p>I'm working in Python and using Flask. When I run my main Python file on my computer, it works perfectly, but when I activate venv and run the Flask Python file in the terminal, it says that my main Python file has ""No Module Named bs4."" Any comments or advice is greatly appreciated.</p>","<p>I'm working in Python and using Flask. When I run my main Python file on my computer, it works perfectly, but when I activate venv and run the Flask Python file in the terminal, it says that my main Python file has ""No Module Named bs4."" Any comments or advice is greatly appreciated.</p>"
+https://stackoverflow.com/questions/25889234/error-unexpected-symbol-input-string-constant-numeric-constant-special-in-my-co,Error: unexpected symbol/input/string constant/numeric constant/SPECIAL in my code,"<p>I received one of these errors.  </p>
+
+<pre><code>Error: unexpected symbol in ""&lt;my code&gt;""    
+Error: unexpected input in ""&lt;my code&gt;""
+Error: unexpected string constant in ""&lt;my code&gt;""  
+Error: unexpected numeric constant in ""&lt;my code&gt;""   
+Error: unexpected SPECIAL in ""&lt;my code&gt;""         
+Error: unexpected '&lt;some punctuation&gt;' in ""&lt;my code&gt;"" 
+Error: unexpected '&lt;reserved word&gt;' in ""&lt;my code&gt;""        
+</code></pre>
+
+<p><strong>What does the error mean, and how can I fix it?</strong></p>
+
+<p>Some simple examples that reproduce the errors, and common variants:</p>
+
+<pre><code>a a
+## Error: unexpected symbol in ""a a""
+a\
+## Error: unexpected input in ""a\""
+a""""
+## Error: unexpected string constant in ""a""""""
+""""1
+## Error: unexpected numeric constant in """"""1""
+%%
+## Error: unexpected SPECIAL in ""%%""
+,
+## Error: unexpected ',' in "",""
+=
+## Error: unexpected '=' in ""=""
+)
+## Error: unexpected ')' in "")""
+else
+## Error: unexpected 'else' in ""else""
+</code></pre>","<p>I received one of these errors.  </p>
+
+<pre><code>Error: unexpected symbol in ""&lt;my code&gt;""    
+Error: unexpected input in ""&lt;my code&gt;""
+Error: unexpected string constant in ""&lt;my code&gt;""  
+Error: unexpected numeric constant in ""&lt;my code&gt;""   
+Error: unexpected SPECIAL in ""&lt;my code&gt;""         
+Error: unexpected '&lt;some punctuation&gt;' in ""&lt;my code&gt;"" 
+Error: unexpected '&lt;reserved word&gt;' in ""&lt;my code&gt;""        
+</code></pre>
+
+<p><strong>What does the error mean, and how can I fix it?</strong></p>
+
+<p>Some simple examples that reproduce the errors, and common variants:</p>
+
+<pre><code>a a
+## Error: unexpected symbol in ""a a""
+a\
+## Error: unexpected input in ""a\""
+a""""
+## Error: unexpected string constant in ""a""""""
+""""1
+## Error: unexpected numeric constant in """"""1""
+%%
+## Error: unexpected SPECIAL in ""%%""
+,
+## Error: unexpected ',' in "",""
+=
+## Error: unexpected '=' in ""=""
+)
+## Error: unexpected ')' in "")""
+else
+## Error: unexpected 'else' in ""else""
+</code></pre>","<p>I received one of these errors.  </p>
+
+<pre><code>Error: unexpected symbol in ""&lt;my code&gt;""    
+Error: unexpected input in ""&lt;my code&gt;""
+Error: unexpected string constant in ""&lt;my code&gt;""  
+Error: unexpected numeric constant in ""&lt;my code&gt;""   
+Error: unexpected SPECIAL in ""&lt;my code&gt;""         
+Error: unexpected '&lt;some punctuation&gt;' in ""&lt;my code&gt;"" 
+Error: unexpected '&lt;reserved word&gt;' in ""&lt;my code&gt;""        
+</code></pre>
+
+<p><strong>What does the error mean, and how can I fix it?</strong></p>
+
+<p>Some simple examples that reproduce the errors, and common variants:</p>
+
+<pre><code>a a
+## Error: unexpected symbol in ""a a""
+a\
+## Error: unexpected input in ""a\""
+a""""
+## Error: unexpected string constant in ""a""""""
+""""1
+## Error: unexpected numeric constant in """"""1""
+%%
+## Error: unexpected SPECIAL in ""%%""
+,
+## Error: unexpected ',' in "",""
+=
+## Error: unexpected '=' in ""=""
+)
+## Error: unexpected ')' in "")""
+else
+## Error: unexpected 'else' in ""else""
+</code></pre>"
+https://stackoverflow.com/questions/7788612/c-error-no-match-for-operator,C++ Error: No match for 'operator=',"<p>Having a problem when assigning a value to an array. I have a class I created called <code>Treasury</code>. I created another class called <code>TradingBook</code> which I want to contain a global array of <code>Treasury</code> that can be accessed from all methods in <code>TradingBook</code>. Here is my header files for TradingBook and Treasury:</p>
+
+<pre><code>class Treasury{
+public:
+    Treasury(SBB_instrument_fields bond);
+    Treasury();
+    double yieldRate;
+    short periods;
+};
+
+
+class TradingBook
+{
+public:
+    TradingBook(const char* yieldCurvePath, const char* bondPath);
+    double getBenchmarkYield(short bPeriods) const;
+    void quickSort(int arr[], int left, int right, double index[]);
+
+    BaseBond** tradingBook;
+    int treasuryCount;
+    Treasury* yieldCurve;
+    int bondCount;
+    void runAnalytics(int i);
+};
+</code></pre>
+
+<p>And here is my main code where I'm getting the error:</p>
+
+<pre><code>TradingBook::TradingBook(const char* yieldCurvePath, const char* bondPath)
+{
+    //Loading Yield Curve
+    // ...
+    yieldCurve = new Treasury[treasuryCount];
+
+    int periods[treasuryCount];
+    double yields[treasuryCount];
+    for (int i=0; i &lt; treasuryCount; i++)
+    {
+        yieldCurve[i] = new Treasury(treasuries[i]);
+        //^^^^^^^^^^^^^^^^LINE WITH ERROR^^^^^^^^^^^^^^
+    }
+}
+</code></pre>
+
+<p>I am getting the error:</p>
+
+<blockquote>
+  <p>No match for <code>'operator='</code> on the line <code>'yieldCurve[i] = new Treasury(treasuries[i]);'</code></p>
+</blockquote>
+
+<p>Any advice?</p>","<p>Having a problem when assigning a value to an array. I have a class I created called <code>Treasury</code>. I created another class called <code>TradingBook</code> which I want to contain a global array of <code>Treasury</code> that can be accessed from all methods in <code>TradingBook</code>. Here is my header files for TradingBook and Treasury:</p>
+
+<pre><code>class Treasury{
+public:
+    Treasury(SBB_instrument_fields bond);
+    Treasury();
+    double yieldRate;
+    short periods;
+};
+
+
+class TradingBook
+{
+public:
+    TradingBook(const char* yieldCurvePath, const char* bondPath);
+    double getBenchmarkYield(short bPeriods) const;
+    void quickSort(int arr[], int left, int right, double index[]);
+
+    BaseBond** tradingBook;
+    int treasuryCount;
+    Treasury* yieldCurve;
+    int bondCount;
+    void runAnalytics(int i);
+};
+</code></pre>
+
+<p>And here is my main code where I'm getting the error:</p>
+
+<pre><code>TradingBook::TradingBook(const char* yieldCurvePath, const char* bondPath)
+{
+    //Loading Yield Curve
+    // ...
+    yieldCurve = new Treasury[treasuryCount];
+
+    int periods[treasuryCount];
+    double yields[treasuryCount];
+    for (int i=0; i &lt; treasuryCount; i++)
+    {
+        yieldCurve[i] = new Treasury(treasuries[i]);
+        //^^^^^^^^^^^^^^^^LINE WITH ERROR^^^^^^^^^^^^^^
+    }
+}
+</code></pre>
+
+<p>I am getting the error:</p>
+
+<blockquote>
+  <p>No match for <code>'operator='</code> on the line <code>'yieldCurve[i] = new Treasury(treasuries[i]);'</code></p>
+</blockquote>
+
+<p>Any advice?</p>",
+https://stackoverflow.com/questions/2452226/master-branch-and-origin-master-have-diverged-how-to-undiverge-branches/2452610answertab=votes,"master branch and 'origin/master' have diverged, how to 'undiverge' branches'?","<p>Somehow my <code>master</code> and my <code>origin/master</code> branch have diverged.<br>
+I actually don't want them to diverge.</p>
+<p>How can I view these differences and <strong>merge</strong> them?</p>","<p>Somehow my <code>master</code> and my <code>origin/master</code> branch have diverged.<br>
+I actually don't want them to diverge.</p>
+<p>How can I view these differences and <strong>merge</strong> them?</p>","<p>Somehow my <code>master</code> and my <code>origin/master</code> branch have diverged.<br>
+I actually don't want them to diverge.</p>
+<p>How can I view these differences and <strong>merge</strong> them?</p>"
+https://stackoverflow.com/questions/23058029/missing-return-statement-within-if-for-while,"""Missing return statement"" within if / for / while","<p>I have a question regarding return statements used within <code>if()</code> <code>while()</code> or <code>for()</code> statements.</p>
+<p>As you can see in the following method, it is expecting that I <code>return</code> a String value. The problem is that if I were to use a <code>return</code> statement within my <code>if</code> statement block, the compiler would return the error <code>missing return statement</code>.</p>
+<pre><code>public String myMethod()
+{
+    if(condition)
+    {
+        return x;
+    }
+}
+</code></pre>
+<p>Of course I could change the method header to <code>void</code> and use <code>System.out.println</code> instead of <code>return</code>. But is this the right way to do it? Am I missing something?</p>","<p>I have a question regarding return statements used within <code>if()</code> <code>while()</code> or <code>for()</code> statements.</p>
+<p>As you can see in the following method, it is expecting that I <code>return</code> a String value. The problem is that if I were to use a <code>return</code> statement within my <code>if</code> statement block, the compiler would return the error <code>missing return statement</code>.</p>
+<pre><code>public String myMethod()
+{
+    if(condition)
+    {
+        return x;
+    }
+}
+</code></pre>
+<p>Of course I could change the method header to <code>void</code> and use <code>System.out.println</code> instead of <code>return</code>. But is this the right way to do it? Am I missing something?</p>","<p>I have a question regarding return statements used within <code>if()</code> <code>while()</code> or <code>for()</code> statements.</p>
+<p>As you can see in the following method, it is expecting that I <code>return</code> a String value. The problem is that if I were to use a <code>return</code> statement within my <code>if</code> statement block, the compiler would return the error <code>missing return statement</code>.</p>
+<pre><code>public String myMethod()
+{
+    if(condition)
+    {
+        return x;
+    }
+}
+</code></pre>
+<p>Of course I could change the method header to <code>void</code> and use <code>System.out.println</code> instead of <code>return</code>. But is this the right way to do it? Am I missing something?</p>"
+https://stackoverflow.com/questions/34582318/how-can-i-resolve-the-error-the-security-token-included-in-the-request-is-inval,"How can I resolve the error ""The security token included in the request is invalid"" when running aws iam upload-server-certificate?","<p>I <code>cd</code> into the directory where all the pem/key files are and run the following:</p>
+
+<pre><code>aws iam upload-server-certificate 
+    --server-certificate-name certificate_name 
+    --certificate-body file://webservercertificate.pem  
+    --private-key file://server.key   
+    --certificate-chain file://certificate_chain_file.pem 
+</code></pre>
+
+<p>I get the following error: </p>
+
+<blockquote>
+  <p>A client error (InvalidClientTokenId) occurred when calling the
+  UploadServerCertificate operation: The security token included in the
+  request is invalid.</p>
+</blockquote>
+
+<p>I have 1 'user' in 'users'. That user has been assigned the following permissions:</p>
+
+<pre><code>IAMFullAccess IAMReadOnlyAccess IAMUserSSHKeys
+</code></pre>
+
+<p>I've downloaded the credentials for this user and put them into my user variables</p>
+
+<pre><code>AWS_ACCESS_KEY ****
+AWS_SECRET_KEY ****
+</code></pre>
+
+<p>I have 1 role on my elastic beanstalk  <code>aws-elasticbeanstalk-ec2-role</code></p>","<p>I <code>cd</code> into the directory where all the pem/key files are and run the following:</p>
+
+<pre><code>aws iam upload-server-certificate 
+    --server-certificate-name certificate_name 
+    --certificate-body file://webservercertificate.pem  
+    --private-key file://server.key   
+    --certificate-chain file://certificate_chain_file.pem 
+</code></pre>
+
+<p>I get the following error: </p>
+
+<blockquote>
+  <p>A client error (InvalidClientTokenId) occurred when calling the
+  UploadServerCertificate operation: The security token included in the
+  request is invalid.</p>
+</blockquote>
+
+<p>I have 1 'user' in 'users'. That user has been assigned the following permissions:</p>
+
+<pre><code>IAMFullAccess IAMReadOnlyAccess IAMUserSSHKeys
+</code></pre>
+
+<p>I've downloaded the credentials for this user and put them into my user variables</p>
+
+<pre><code>AWS_ACCESS_KEY ****
+AWS_SECRET_KEY ****
+</code></pre>
+
+<p>I have 1 role on my elastic beanstalk  <code>aws-elasticbeanstalk-ec2-role</code></p>","<p>I <code>cd</code> into the directory where all the pem/key files are and run the following:</p>
+
+<pre><code>aws iam upload-server-certificate 
+    --server-certificate-name certificate_name 
+    --certificate-body file://webservercertificate.pem  
+    --private-key file://server.key   
+    --certificate-chain file://certificate_chain_file.pem 
+</code></pre>
+
+<p>I get the following error: </p>
+
+<blockquote>
+  <p>A client error (InvalidClientTokenId) occurred when calling the
+  UploadServerCertificate operation: The security token included in the
+  request is invalid.</p>
+</blockquote>
+
+<p>I have 1 'user' in 'users'. That user has been assigned the following permissions:</p>
+
+<pre><code>IAMFullAccess IAMReadOnlyAccess IAMUserSSHKeys
+</code></pre>
+
+<p>I've downloaded the credentials for this user and put them into my user variables</p>
+
+<pre><code>AWS_ACCESS_KEY ****
+AWS_SECRET_KEY ****
+</code></pre>
+
+<p>I have 1 role on my elastic beanstalk  <code>aws-elasticbeanstalk-ec2-role</code></p>"

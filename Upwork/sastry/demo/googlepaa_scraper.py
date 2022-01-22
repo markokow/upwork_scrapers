@@ -62,6 +62,9 @@ class PAA_Scraper:
         if heading.strip() == "" or lists.strip() == "":
             _answer = answer.text
 
+        _answer = _answer.replace("\"", "")
+        _answer = _answer.replace("'", "")  
+        _answer = _answer.strip()
         return _answer
 
     def write_csv(self):
