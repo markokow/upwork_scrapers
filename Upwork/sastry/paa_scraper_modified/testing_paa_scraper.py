@@ -64,7 +64,7 @@ def store_response(response, query_name):
 
 # query = "Low maintenance balcony plants"    
 # query = "Best potted plants for shaded porch"    
-# query = "Balcony plants for beginners"    
+query = "Balcony plants for beginners"    
 
 response = fetch_query(query = query)
 parse_response(response = response) 
