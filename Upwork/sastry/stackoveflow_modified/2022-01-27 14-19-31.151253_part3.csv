@@ -1,0 +1,42 @@
+url,title,best_answer_1,best_answer_2,best_answer_3
+https://stackoverflow.com/questions/42268180/tar-unrecognized-archive-format-error-when-trying-to-unpack-flower-photos-tgz,"python - tar: Unrecognized archive format error when trying to unpack flower_photos.tgz, TF tutorials on OSX","<p>try using the <code>-L</code> flag, i.e. </p>
+<pre><code>curl -OL http://download.tensorflow.org/example_../images/flower_photos.tgz
+</code></pre>
+<p>source: <a href=https://github.com/arq5x/bedtools2/issues/189 rel=noreferrer>https://github.com/arq5x/bedtools2/issues/189</a></p>",<p>I solved this problem by downloading the file from safari and then copy the file to your directory. There is something wrong with the file download by command curl. Maybe you can try my method.</p>,"<p>Apparently the new instructions on TensorFlow website run without issues</p>
+<p>I just tried the instructions posted on <a href=https://www.tensorflow.org/tutorials/image_retraining rel=nofollow noreferrer>How to Retrain Inceptions Final Layer for New Categories</a></p>
+<pre><code>curl -O http://download.tensorflow.org/example_images/flower_photos.tgz
+
+tar xzf flower_photos.tgz
+</code></pre>
+<p>It worked without any problems</p>"
+https://stackoverflow.com/questions/16230959/what-does-top-in-the-hyperlink-target-do,html - What does _top in the hyperlink target do?,"<blockquote>
+<p>target=:</p>
+</blockquote>
+<p><code>_top</code>: Opens the linked document in the full body of the window</p>
+<p><code>_blank</code>:   Opens the linked document in a new window or tab</p>
+<p><code>_self</code>:    Opens the linked document in the same frame as it was clicked (this is default)</p>
+<p><code>_parent</code>:  Opens the linked document in the parent frame</p>
+<p><code>framename</code>:    Opens the linked document in a named frame</p>
+<p><a href=http://www.w3schools.com/tags/att_a_target.asp rel=noreferrer>http://www.w3schools.com/tags/att_a_target.asp</a></p>","<p>If the link is in an <code>iframe</code>, the new webpage will not be loaded in the <code>iframe</code> but instead the browser will open the page in the window itself</p>","<p>Its a <a href=http://dev.w3.org/html5/markup/terminology.html#context rel=noreferrer>browsing context</a> name.</p>
+<blockquote>
+<p>A valid browsing context name or keyword is any string that is either
+  a valid browsing context name or that is an ASCII case-insensitive
+  match for one of: _blank, _self, _parent, or _top.</p>
+</blockquote>
+<p>Take a look at the matrix <a href=http://www.w3.org/TR/html5/browsers.html#valid-browsing-context-name-or-keyword rel=noreferrer>here</a>, which describes the behavior of the <code>target</code> attribute in different scenarios.</p>
+<p>The practical effect is that <code>_top</code> references the topmost window (technically <a href=http://www.w3.org/TR/html5/browsers.html#top-level-browsing-context rel=noreferrer>the top level browsing context</a>). </p>
+<p><code>&lt;a href=http://foo.com target=_top&gt;a link&lt;/a&gt;</code> tells the browser to navigate to foo.com not in its own frame, but in the topmost frame. If the current frame <em>is</em> the topmost frame, the URL will open in the same window.</p>
+<p>See also: <a href=http://www.w3.org/TR/html5/browsers.html#windows rel=noreferrer>Browsing Contexts</a> (if youre in the mood for some deep reading).</p>"
+https://stackoverflow.com/questions/4281904/error-initializer-expression-list-treated-as-compound-expression,c++ - error: initializer expression list treated as compound expression,"<pre><code>int login(username,password);
+{
+</code></pre>
+<p>should be</p>
+<pre><code>int login(string username,string password)
+{
+</code></pre>","<p>You may want to fix function declaration </p>
+<pre><code>int login(username,password);
+</code></pre>
+<p>Should be changed to </p>
+<pre><code>int login(const string&amp; username,const string&amp; password);
+</code></pre>
+<p>Also as a style note, you may not want to declare global variable, you can limit scope of most of your variables to local scope in main.</p>",<p>You have to specify the data types of username and password.</p>

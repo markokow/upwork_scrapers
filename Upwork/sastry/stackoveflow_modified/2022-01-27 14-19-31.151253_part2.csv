@@ -1,0 +1,42 @@
+url,title,best_answer_1,best_answer_2,best_answer_3
+https://stackoverflow.com/questions/7816423/warning-options-bootstrap-class-path-not-set-in-conjunction-with-source-1-5,java - warning: [options] bootstrap class path not set in conjunction with -source 1.5,"<p>From a <a href=https://blogs.oracle.com/darcy/new-javac-warning-for-setting-an-older-source-without-bootclasspath rel=noreferrer>blog post</a>:</p>
+<blockquote>
+<p>To use javac from JDK N to cross-compiler to an older platform version, the correct practice is to:</p>
+<ul>
+<li>Use the older -source setting.</li>
+<li>Set the bootclasspath to compile against the rt.jar (or equivalent) for the older platform. </li>
+</ul>
+<p>If the second step is not taken, javac will dutifully use the old language rules combined with new libraries, which can result in class files that do not work on the older platform since references to non-existent methods can get included. </p>
+</blockquote>","<p><strong>bootclasspath usage</strong></p>
+<pre><code>javac -bootclasspath /usr/lib/jvm/java-7-oracle/jre/lib/rt.jar \
+      -source 1.7 Main.java
+</code></pre>
+<p>On UNIX systems, locate <code>rt.jar</code> using:</p>
+<pre><code>locate -r /rt.jar$
+</code></pre>
+<p>Set <code>JAVA_HOME</code> so that <code>rt.jar</code> is located at <code>$JAVA_HOME/jre/lib/rt.jar</code>, then:</p>
+<pre><code>javac -source 1.7 -bootclasspath $JAVA_HOME/jre/lib/rt.jar Main.java
+</code></pre>
+<p>Tested on Ubuntu 14.04 for Oracle Java 7 and 8.</p>","<p>Im currently running Netbeans IDE 8.0.2 with JDK 1.8 on Linux Mint 17.1 which has java -version = 1.7.0_65. So to be able to run JAR files I had to set myProject&gt;Properties&gt;Source/Binary Format: JDK 7. However when building (myProject&gt;Clean and Build) I got a similar warning: warning: [options] bootstrap class path not set in conjunction with -source 1.7. </p>
+<p>The solution was to add the Linux Mint JDK1.7 platform to the Netbeans platform list. </p>
+<p>This can be done by going to myProject&gt;Properties&gt;Libraries and clicking the Manage Platforms... button. Then in the Java Platform Manager window click Add Platform... and select: Java Standard Edition, click Next and browse to /usr/lib/jvm/java-7-openjdk-amd64 (or whatever is the location of the JDK 1.7 version). The Platform name will be set to JDK1.7. Just click Finish and youre done.</p>
+<p>You can now select the Java platform in the project properties. By selecting JDK1.7 and running Clean and Build: no more warnings. :-)</p>"
+https://stackoverflow.com/questions/12363506/what-is-the-difference-between-wcf-and-wpf/36468497,What is the difference between WCF and WPF?,"<p>WCF = Windows COMMUNICATION Foundation</p>
+<p>WPF = Windows PRESENTATION Foundation. </p>
+<p>WCF deals with communication (in simple terms - sending and receiving data as well as formatting and serialization involved), WPF deals with presentation (UI)</p>","<p>The quick answer is: Windows Presentation Foundation (WPF) is basically a way of displaying user interface. (see <a href=http://msdn.microsoft.com/en-us/library/ms754130.aspx rel=noreferrer>this</a>) </p>
+<p>Windows Communication Foundation (WCF) is a framework for creating service oriented applications. (see <a href=http://msdn.microsoft.com/en-us/library/ms731082.aspx rel=noreferrer>this</a>)</p>
+<p>As for which one you should use, it depends on your requirement. Usually an application written in WPF, ASP.NET..etc called the WCF service to do some processing at the server-side and the service returns the result to the application that called it. </p>","<p><strong>Windows Presentation Foundation (WPF)</strong></p>
+<p>Next-Generation User Experiences. The Windows Presentation Foundation, WPF, provides a unified framework for building applications and high-fidelity experiences in Windows Vista that blend application UI, documents, and media content. WPF offers developers 2D and 3D graphics support, hardware-accelerated effects, scalability to different form factors, interactive data visualization, and superior content readability.</p>
+<p><strong>Windows Communication Foundation (WCF)</strong></p>
+<p>Windows Communication Foundation (WCF) is Microsoft’s unified programming model for building service-oriented applications. It enables developers to build secure, reliable, transacted solutions that integrate across platforms and interoperate with existing investments.</p>"
+https://stackoverflow.com/questions/50772789/how-to-fix-an-error-resize-medium-operation-for-this-format-is-not-implemented,virtual machine - How to fix an error Resize medium operation for this format is not implemented yet?,"<p>You need to do it like this:</p>
+<ol>
+<li>VBoxManage clonehd [old.vmdk] [newVDI]</li>
+<li>VBoxManage modifyhd [VDI] --resize [60000]</li>
+<li>VBoxManage clonehd [new-VDI] [newnew-VDI] --variant Fixed</li>
+</ol>","<p>Omids answer is correct.</p>
+<p>NOTE however that you can get pretty confusing not supported for this version error also in case your vdi-disk file has size 45GB on disk, but it is dynamic size disk with max size e.g. 80GB and your try to run </p>
+<pre><code>vboxmanage modifymedium vdi-disk-file-name --resize 60000
+</code></pre>
+<p>This is because you are actually trying to decrease the size, which virtualbox does not support for any format currently.</p>","<p>@omid answer is correct however if you already have virtual disk in .vdi format then you can still follow the three commands plus you have to go to virtual box-&gt;VM settings-&gt;storage-&gt;click on VM.vdi</p>
+<p>On right side, you will get disk icon, just click on it and browse your new VDI that has been created after resizing(new-VDI or newnew-VDI in above case).</p>"

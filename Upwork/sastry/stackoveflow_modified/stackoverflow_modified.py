@@ -54,7 +54,7 @@ class StackOverFlow:
                 post_body = post_body.replace("'", "")
                 post_body = post_body.strip().encode('utf-8')
     
-                features[f'best_answer_{count}'] = post_body
+                features[f'best_answer_{count}'] = post_body.decode('utf-8')
 
                 if count == self.max_answers:
                     break
@@ -84,13 +84,12 @@ class StackOverFlow:
     def open_csv(self):
         '''Opens a csv.'''
         print("opening csv")
+        
         with open('results.csv', 'r', newline = '', encoding= 'utf-8') as csv_file:
             _dict_reader = csv.DictReader(csv_file)
             self._taken = list(_dict_reader)
         
-
         self._done = [_val['valid_urls'] for _val in self._taken]
-
         self.result = self._taken
 
     def store_response(self, *,response, page):

@@ -1,0 +1,102 @@
+url,title,best_answer_1,best_answer_2,best_answer_3
+https://stackoverflow.com/questions/3179672/mock-objects-setup-method-test-driven-development,unit testing - Mock objects - Setup method - Test Driven Development,"<p>The default behaviour of a Moq <code>Mock</code> object is to stub all methods and properties. This means that a call to that method/property with any parameters will not fail and will return a default value for the particular return type.</p>
+<p>You call <code>Setup</code> method for any or all of the following reasons:</p>
+<ul>
+<li>You want to restrict the input values to the method.</li>
+</ul>
+<pre><code>public interface ICalculator {
+  int Sum(int val1, val2);
+}
+
+var mock = new Mock&lt;ICalculator&gt;();
+mock.Setup(m=&gt;m.Sum(
+  It.IsAny&lt;int&gt;(), //Any value
+  3                //value of 3
+));
+</code></pre>
+<p>The above setup will match a call to method <code>Sum</code> with any value for <code>val1</code> and <code>val2</code> value of 3.</p>
+<ul>
+<li>You want to return a specific value. Continuing with <code>ICalculator</code> example, the following setup will return a value of 10 regardless of the input parameters:</li>
+</ul>
+<pre><code>var mock = new Mock&lt;ICalculator&gt;();
+mock.Setup(m=&gt;m.Sum(
+  It.IsAny&lt;int&gt;(), //Any value
+  It.IsAny&lt;int&gt;()  //Any value
+)).Returns(10);
+</code></pre>
+<ul>
+<li>You want to use <code>Mock&lt;T&gt;.VerifyAll()</code> after you setups to verify that all previous setups have been called (once).</li>
+</ul>
+<pre><code>var mock = new Mock&lt;ICalculator&gt;();
+mock.Setup(m=&gt;m.Sum(
+  7, //value of 7
+  3                //value of 3
+));
+
+mock.Setup(m=&gt;m.Sum(
+  5, //value of 5
+  3                //value of 3
+));
+
+mock.VerifyAll();    
+</code></pre>
+<p>The above code verifies that <code>Sum</code> is called twice. Once with <code>(7,3)</code> and once with <code>(5,3)</code>.</p>","<p>Setup method is used to set expectations on the mock object
+For example:</p>
+<pre><code>mock.Setup(foo =&gt; foo.DoSomething(ping)).Returns(true);
+</code></pre>
+<p>Here you are setting the <code>DoSomething</code> method on mock object. You are saying, when the parameter is ping, the method returns true.</p>
+<p>Now this object can further act as a mock or a stub depending on your usage. If you want to use it in state based testing, it can act as a stub. If you want to use it in behavior based testing, it can act as a mock. In behavior testing, you will call the verify method on the mock object to assert that the method was called with ping parameter</p>
+<p>Further refer these links:</p>
+<p><a href=http://martinfowler.com/articles/mocksArentStubs.html rel=noreferrer>http://martinfowler.com/articles/mocksArentStubs.html</a></p>
+<p><a href=http://code.google.com/p/moq/wiki/QuickStart rel=noreferrer>http://code.google.com/p/moq/wiki/QuickStart</a></p>",
+https://stackoverflow.com/questions/11443857/shortcut-to-comment-out-a-block-of-code-with-sublime-text,sublimetext - Shortcut to comment out a block of code with sublime text,"<p>The shortcut to comment out <em>or</em> uncomment the selected text <em>or</em> current line:</p>
+<ul>
+<li>Windows: <kbd>Ctrl</kbd>+<kbd>/</kbd></li>
+<li>Mac: <kbd>Command ⌘</kbd>+<kbd>/</kbd></li>
+<li>Linux: <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>/</kbd></li>
+</ul>
+<p>Alternatively, use the menu: <code>Edit &gt; Comment</code></p>
+<p>For the block comment you may want to use:</p>
+<ul>
+<li>Windows: <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>/</kbd></li>
+<li>Mac: <kbd>Command ⌘</kbd>+<kbd>Option/Alt</kbd>+<kbd>/</kbd></li>
+</ul>","<p>Youre looking for the <code>toggle_comment</code> command. (Edit &gt; Comment &gt; Toggle Comment)</p>
+<p>By default, this command is mapped to:</p>
+<ul>
+<li><kbd>Ctrl</kbd>+<kbd>/</kbd> (On Windows and Linux)</li>
+<li><kbd>Command ⌘</kbd>+<kbd>/</kbd> (On Mac)</li>
+</ul>
+<p>This command also takes a <code>block</code> argument, which allows you to use block comments instead of single lines (e.g. <code>/* ... */</code> as opposed to <code>// ...</code> in JavaScript). By default, the following key combinations are mapped to toggle block comments:</p>
+<ul>
+<li><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>/</kbd> (On Windows and Linux)</li>
+<li><kbd>Command ⌘</kbd>+<kbd>Alt</kbd>+<kbd>/</kbd> (On Mac)</li>
+</ul>","<p>With a non-US keyboard layout the default shortcut <kbd>Ctrl</kbd>+<kbd>/</kbd> (Win/Linux) does not work.</p>
+<p>I managed to change it into <kbd>Ctrl</kbd>+<kbd>1</kbd> as per <a href=https://stackoverflow.com/questions/11443857/shortcut-to-comment-out-a-block-of-code-with-sublime-text/23683570#comment54462369_11443903>Roberts comment</a> by writing </p>
+<pre><code>[
+{
+    keys: [ctrl+1],
+    command: toggle_comment,
+    args: { block: false } 
+}
+,
+{   keys: [ctrl+shift+1],
+    command: toggle_comment,
+    args: { block: true }
+}
+]
+</code></pre>
+<p>to <code>Preferences -&gt; Key Bindings</code> (on the right half, the user keymap).</p>
+<p><em>Note that there should be only one set of brackets (<code>[]</code>) at the right side; if you had there something already, copy paste this between the brackets and keep only the outermost brackets.</em></p>"
+https://stackoverflow.com/questions/43704734/how-to-fix-the-error-windows-sdk-version-8-1-was-not-found/53840125,c++ - How to fix the error Windows SDK version 8.1 was not found?,"<p>I faced this problem too. Re-ran the <strong>Visual Studio 2017 Installer</strong>, go to <strong>Individual Components</strong> and select <code>Windows 8.1 SDK</code>. Go back to to the project &gt; Right click and Re-target to match the SDK required as shown below:<a href=https://i.stack.imgur.com/YfAYE.png rel=noreferrer><img alt=enter image description here src=https://i.stack.imgur.com/YfAYE.png/></a></p>","<p>I installed the 8.1 SDKs version:</p>
+<p><a href=https://developer.microsoft.com/en-us/windows/downloads/sdk-archive rel=nofollow noreferrer>https://developer.microsoft.com/en-us/windows/downloads/sdk-archive</a></p>
+<p>It used 1GB (a little more) in the installation.</p>
+<hr/>
+<p><strong>Update October, 9 (2020).</strong> Theres a https error: the sdksetup link is <a href=https://go.microsoft.com/fwlink/p/?LinkId=323507 rel=nofollow noreferrer>https://go.microsoft.com/fwlink/p/?LinkId=323507</a></p>
+<p>Save link as should help.</p>","<p>Another way (worked for 2015) is open Install/remove programs (Apps &amp; features), find Visual Studio, select Modify. In opened window, press Modify, check</p>
+<ul>
+<li><code>Languages -&gt; Visual C++ -&gt; Common tools for Visual C++</code></li>
+<li><code>Windows and web development -&gt; Tools for universal windows apps -&gt; Tools (1.4.1)
+and Windows 10 SDK ([version])</code></li>
+<li><code>Windows and web development -&gt; Tools for universal windows apps -&gt; Windows 10 SDK ([version])</code></li>
+</ul>
+<p>and install. Then right click on solution -&gt; Re-target and it will compile</p>"

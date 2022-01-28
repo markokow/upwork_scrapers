@@ -31,7 +31,8 @@ class PAA_Scraper:
         }
 
     def get_url(self,url):
-        payload = {'api_key': self.API, 'url': url, 'country_code': 'in'}
+        # payload = {'api_key': self.API, 'url': url, 'country_code': 'in'}
+        payload = {'api_key': self.API, 'url': url}
         proxy_url = 'http://api.scraperapi.com/?' + urlencode(payload)
 
         return proxy_url
@@ -40,10 +41,60 @@ class PAA_Scraper:
         '''Fetch the url and returns bs4 object.'''
         # response = requests.get(f"http://api.scraperapi.com?api_key=89f53273207f9aacdce3069e17dfceb0&url=https://www.google.com/search?q='+{self.keyword}", headers = self.headers)
         # response = requests.get(f"https://www.google.com/search?q='+{self.keyword}", headers = self.headers)
-        url = self.get_url(url = f"https://www.google.com/search?q='+{self.keyword}")
+        url = self.get_url(url = f"https://www.google.com/search?q=+'{self.keyword}")
         response = requests.get(url, headers = self.headers)
 
         return response
+
+    # def parse(self, *, html) -> str:
+    #     '''Parse the urls contained in the page and append to results.'''
+    #     print(self.keyword)
+
+    #     content = BeautifulSoup(html, 'lxml')
+
+    #     answer = content.find_all("div", {"class": "yp1CPe wDYxhc NFQFxe viOShc LKPcQc"})[0]
+    #     # answer = content.find_all("div", {"class": "BNeawe s3v9rd AP7Wnd"})[0]
+    #     snippet_block = content.find_all("div", {"jsname": "Cpkphb"})
+
+    #     # heading = answer.find("div", {"class":"Ey4n2"})
+    #     heading = answer.find("div", {"role":"heading"})
+    #     print("answer")
+    #     print(answer)
+    #     print("heading")
+    #     print(heading)
+    #     print("snippet")
+    #     print(snippet_block)
+
+
+    #     try:
+    #         # lists = "\n".join([val.text for val in  answer.find("ul", {"class":"yRG22b v7pIac"}).find_all("div", {"class":"BNeawe s3v9rd AP7Wnd"}) if val])
+    #         lists = "\n".join([val.text for val in  answer.find_all("li", {"class":"TrT0Xe"}) if val])
+    #         if lists == None:
+    #             lists = ""
+    #     except AttributeError:
+    #         lists = ""
+
+    #     if snippet_block:
+    #         for snippet in snippet_block:
+    #             question = snippet.text if snippet else ""
+
+    #             if question.endswith('?'):
+    #                 self.snippets_total.append(question)
+    #     else:
+    #         return None
+
+    #     heading = heading.text if heading else ""
+
+    #     _answer = heading + "\n" + lists
+
+    #     if heading.strip() == "" or lists.strip() == "":
+    #         _answer = answer.text
+
+    #     _answer = _answer.replace("\"", "")
+    #     _answer = _answer.replace("'", "")  
+    #     _answer = _answer.strip()
+
+    #     return _answer
 
     def parse(self, *, html) -> str:
         '''Parse the urls contained in the page and append to results.'''
@@ -79,6 +130,10 @@ class PAA_Scraper:
         _answer = _answer.replace("\"", "")
         _answer = _answer.replace("'", "")  
         _answer = _answer.strip()
+        
+        print(_answer)
+        print(heading)
+        print(snippet_block)
 
         return _answer
 
@@ -113,14 +168,14 @@ class PAA_Scraper:
 
     def store_response(self, *,response, page):
         '''Saved response as html.'''
-        # if response.status_code == 200:
-        print('Saving response as html')
-        filename = 'res' + str(page) + '.html'
-        with io.open(filename, 'w', encoding = 'utf-8') as html_file:
-            html_file.write(response.text)
+        if response.status_code == 200:
+            print('Saving response as html')
+            filename = 'res' + str(page) + '.html'
+            with io.open(filename, 'w', encoding = 'utf-8') as html_file:
+                html_file.write(response.text)
             print('Done')
-        # else:
-        #     print('Bad response!')
+        else:
+            print('Bad response!')
   
     def load_response(self):   
         '''Load an html file.'''
@@ -141,7 +196,6 @@ class PAA_Scraper:
 
         for keyword in self.keywords:
             actual_counter+=1
-
             attempts = 0
 
             print("working on: ", keyword)
@@ -173,14 +227,22 @@ class PAA_Scraper:
                 self.store_response(response=resp, page = 0)
 
                 if resp.status_code != 200:
+                    attempts += 1
+                    print(resp.status_code)
+
+                    if attempts == 3:
+                        attempts = 0
+                        break
                     continue
-                ans = self.parse(html  = resp.content)
+                try:
+                    ans = self.parse(html  = resp.content)
+                except (IndexError, TypeError):
+                    continue
 
                 self.parsed_snippet.append(self.keyword)
 
                 if len(ans) < 150 or self.keyword == self.query:
                     self.parsed_snippet.append(self.keyword)
-                    attempts += 1
                     continue
                 
                 else:

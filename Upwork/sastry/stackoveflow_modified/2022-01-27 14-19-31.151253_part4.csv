@@ -1,0 +1,127 @@
+url,title,best_answer_1,best_answer_2,best_answer_3
+https://stackoverflow.com/questions/15033195/show-spinner-gif-during-an-http-request-in-angularjs,ajax - Show spinner GIF during an $http request in AngularJS?,"<p>This really depends on your specific use case, but a simple way would follow a pattern like this:</p>
+<pre class=lang-js prettyprint-override><code>.controller(MainCtrl, function ( $scope, myService ) {
+  $scope.loading = true;
+  myService.get().then( function ( response ) {
+    $scope.items = response.data;
+  }, function ( response ) {
+    // TODO: handle the error somehow
+  }).finally(function() {
+    // called no matter success or failure
+    $scope.loading = false;
+  });
+});
+</code></pre>
+<p>And then react to it in your template:</p>
+<pre class=lang-html prettyprint-override><code>&lt;div class=spinner ng-show=loading&gt;&lt;/div&gt;
+&lt;div ng-repeat=item in items&gt;{{item.name}}&lt;/div&gt;
+</code></pre>","<p><strong>Here are the <s>current</s> past AngularJS incantations:</strong></p>
+<pre><code>angular.module(SharedServices, [])
+    .config(function ($httpProvider) {
+        $httpProvider.responseInterceptors.push(myHttpInterceptor);
+        var spinnerFunction = function (data, headersGetter) {
+            // todo start the spinner here
+            //alert(start spinner);
+            $(#mydiv).show();
+            return data;
+        };
+        $httpProvider.defaults.transformRequest.push(spinnerFunction);
+    })
+// register the interceptor as a service, intercepts ALL angular ajax http calls
+    .factory(myHttpInterceptor, function ($q, $window) {
+        return function (promise) {
+            return promise.then(function (response) {
+                // do something on success
+                // todo hide the spinner
+                //alert(stop spinner);
+                $(#mydiv).hide();
+                return response;
+
+            }, function (response) {
+                // do something on error
+                // todo hide the spinner
+                //alert(stop spinner);
+                $(#mydiv).hide();
+                return $q.reject(response);
+            });
+        };
+    });
+
+//regular angular initialization continued below....
+angular.module(myApp, [ myApp.directives, SharedServices]).
+//.......
+</code></pre>
+<p><strong>Here is the rest of it (HTML / CSS)....using</strong></p>
+<pre><code>$(#mydiv).show(); 
+$(#mydiv).hide(); 
+</code></pre>
+<p><strong>to toggle it.  NOTE: the above is used in the angular module at beginning of post</strong></p>
+<pre><code>#mydiv {  
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    z-index:1000;
+    background-color:grey;
+    opacity: .8;
+ }
+
+.ajax-loader {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -32px; /* -1 * image width / 2 */
+    margin-top: -32px;  /* -1 * image height / 2 */
+    display: block;     
+}
+
+&lt;div id=mydiv&gt;
+    &lt;img src=lib/jQuery/images/ajax-loader.gif class=ajax-loader/&gt;
+&lt;/div&gt;
+</code></pre>","<p><strong>Heres a version using a <code>directive</code> and <code>ng-hide</code>.</strong></p>
+<p>This will show the loader during <strong>all</strong> calls via angulars <code>$http</code> service.</p>
+<p><strong>In the template:</strong></p>
+<p><code>&lt;div class=loader data-loading&gt;&lt;/div&gt;</code></p>
+<p><strong>directive:</strong></p>
+<pre><code>angular.module(app)
+  .directive(loading, [$http, function ($http) {
+    return {
+      restrict: A,
+      link: function (scope, element, attrs) {
+        scope.isLoading = function () {
+          return $http.pendingRequests.length &gt; 0;
+        };
+        scope.$watch(scope.isLoading, function (value) {
+          if (value) {
+            element.removeClass(ng-hide);
+          } else {
+            element.addClass(ng-hide);
+          }
+        });
+      }
+    };
+}]);
+</code></pre>
+<p>by using the <code>ng-hide</code> class on the element, you can avoid jquery.  </p>
+<hr/>
+<p><strong>Customize: add an <code>interceptor</code></strong></p>
+<p>If you create a loading-interceptor, you can show/hide the loader based on a condition.</p>
+<p><strong>directive:</strong></p>
+<pre><code>var loadingDirective = function ($rootScope) {
+  return function ($scope, element, attrs) {
+      $scope.$on(loader_show, function () {
+          return element.removeClass(ng-hide);
+      });
+      return $scope.$on(loader_hide, function () {
+          return element.addClass(ng-hide);
+      });
+  };
+};
+</code></pre>
+<p><strong>interceptor:</strong></p>
+<ul>
+<li>for example: dont show <code>spinner</code> when <code>response.background === true;</code></li>
+<li>Intercept <code>request</code> and/or <code>response</code> to set <code>$rootScope.$broadcast(loader_show);</code> or <code>$rootScope.$broadcast(loader_hide);</code></li>
+</ul>
+<p><a href=http://www.webdeveasy.com/interceptors-in-angularjs-and-useful-examples/>more info on writing an interceptor</a></p>"
