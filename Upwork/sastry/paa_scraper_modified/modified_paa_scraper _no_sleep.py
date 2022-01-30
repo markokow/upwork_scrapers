@@ -161,7 +161,7 @@ class ModifiedPaaScraper:
         self.now = str(datetime.today()).replace(':','-')
         
         for count, keyword in enumerate(self.keywords):
-            sleep(randint(2,3))
+           # sleep(randint(2,3))
             print(keyword)
             self.query = keyword
             self.keyword = keyword

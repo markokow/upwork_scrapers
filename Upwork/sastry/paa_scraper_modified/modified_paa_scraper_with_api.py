@@ -1,4 +1,3 @@
-from multiprocessing.sharedctypes import Value
 import re
 import requests
 import urllib
@@ -11,16 +10,13 @@ from requests_html import HTMLSession
 from typing import List
 from bs4 import BeautifulSoup
 from datetime import datetime
-from dateutil.parser import parse
-from random import randint
-from time import sleep
-
+from urllib.parse import urlencode
 
 from tomlkit import key
 
 class ModifiedPaaScraper:
 
-    def __init__(self, *,keywords: List = [], max_questions: int = 5, max_division: int = 50) -> None:
+    def __init__(self, *,keywords: List = [], max_questions: int = 5, max_division: int = 50, API: str = '') -> None:
         '''Initialize variables used for scraping.'''
         self.keywords: List = keywords
         self.keyword: str = ""
@@ -34,21 +30,7 @@ class ModifiedPaaScraper:
         self.parsed_snippet: List = []
         self.csv_headers = [None]
 
-    def cleanup(self, string):
-
-        patterns = [
-            # r"{2}-{1:0>2}-{0:0>2}",
-            # r"{0}-{1:0>2}-{2:0>2}",
-            # r"{0}-{1:0>2}",
-            r"\d{2}-(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)-\d{4}",
-            r"(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec) \d, \d{4}",
-            r"(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec) \d{2}, \d{4}",
-        ]
-
-        for pattern in patterns:
-            string = re.sub(pattern, '', string)
-
-        return string
+        self.API = API
 
     def get_source(self, url):
         """Return the source code for the provided URL. 
@@ -61,11 +43,18 @@ class ModifiedPaaScraper:
         """
         try:
             session = HTMLSession()
+            url = self.get_url(url)
             response = session.get(url)
             return response
 
         except requests.exceptions.RequestException as e:
             print(e)
+
+    def get_url(self,url):
+        payload = {'api_key': self.API, 'url': url}
+        proxy_url = 'http://api.scraperapi.com/?' + urlencode(payload)
+
+        return proxy_url
 
     def fetch_query(self, query):
 
@@ -103,28 +92,22 @@ class ModifiedPaaScraper:
             if heading:
                 try:
                     texts: List = []
-
+                    format = '%b %d, %Y'
+                    
                     for val in heading.find_all("span"):
                         text = val.text.strip()
-                        texts.append(text)
+
+                        try:
+                            datetime.strptime(text, format)
+                        except:
+                            texts.append(text)
 
                     texts = list(set(texts))
                     texts = "\n".join(texts)
 
-                    answer = texts + lists
-                    try:
-                        answer = parse(answer, fuzzy_with_tokens=True)[1]
-                        answer = ''.join([x for x in answer if x != ' '])
-                    except ValueError:
-                        answer = answer
-                    return self.cleanup(answer).strip()
+                    return texts + lists
                 except AttributeError:
-                    try:
-                        lists = parse(lists, fuzzy_with_tokens=True)[1]
-                        lists = ''.join([x for x in lists if x != ' '])
-                    except ValueError:
-                        lists = lists
-                    return self.cleanup(lists).strip()
+                    return lists
             else:
                 return None
         else:
@@ -161,8 +144,9 @@ class ModifiedPaaScraper:
         self.now = str(datetime.today()).replace(':','-')
         
         for count, keyword in enumerate(self.keywords):
-            sleep(randint(2,3))
+
             print(keyword)
+
             self.query = keyword
             self.keyword = keyword
             self.snippets_total = [keyword]
@@ -235,9 +219,12 @@ if __name__ == '__main__':
 
     keywords =  [acc[0].strip() for acc in keywords]
 
-    max_questions: int = 10
+    max_questions: int = 3
     max_divisions: int = 3
+    API = '89f53273207f9aacdce3069e17dfceb0'
 
     #Run scraper
-    scraper = ModifiedPaaScraper(keywords= keywords, max_questions = max_questions, max_division = max_divisions)
+    scraper = ModifiedPaaScraper(keywords= keywords, max_questions = max_questions, max_division = max_divisions, API = API)
     scraper.run()
+
+
