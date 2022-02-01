@@ -1,0 +1,197 @@
+1643649090262	geckodriver	INFO	Listening on 127.0.0.1:58504
+1643649093305	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofileKrYaYg"
+1643649093812	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofileKrYaYg\\search.json.mozlz4", (void 0)))
+1643649097048	Marionette	INFO	Listening on port 58512
+1643649097528	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1643649100184	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'interactive'.
+JavaScript warning: https://pagead2.googlesyndication.com/bg/jGbA3lvUbVA_isqhK0kcOmFQnhmy9VywXuVHQ76HhUI.js line 1 > eval line 3921 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+1643649105501	Marionette	INFO	Stopped listening on port 58512
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1643649106883	geckodriver	INFO	Listening on 127.0.0.1:58654
+1643649109904	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofile0sXRUH"
+1643649110469	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofile0sXRUH\\search.json.mozlz4", (void 0)))
+1643649113359	Marionette	INFO	Listening on port 58663
+1643649113610	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1643649116298	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'interactive'.
+JavaScript warning: https://pagead2.googlesyndication.com/bg/jGbA3lvUbVA_isqhK0kcOmFQnhmy9VywXuVHQ76HhUI.js line 1 > eval line 1800 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+1643649122541	Marionette	INFO	Stopped listening on port 58663
+[Parent 29168, IPC I/O Parent] WARNING: file /builds/worker/checkouts/gecko/ipc/chromium/src/base/process_util_win.cc:167
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+1643649123555	geckodriver	INFO	Listening on 127.0.0.1:62583
+1643649126576	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofileBzxZ4g"
+1643649127109	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofileBzxZ4g\\search.json.mozlz4", (void 0)))
+1643649129994	Marionette	INFO	Listening on port 62597
+1643649130280	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1643649132823	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'interactive'.
+JavaScript warning: https://pagead2.googlesyndication.com/bg/jGbA3lvUbVA_isqhK0kcOmFQnhmy9VywXuVHQ76HhUI.js line 1 > eval line 3355 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+1643649138662	Marionette	INFO	Stopped listening on port 62597
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1643649139678	geckodriver	INFO	Listening on 127.0.0.1:62752
+1643649142706	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofile8Q8AM9"
+1643649143458	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofile8Q8AM9\\search.json.mozlz4", (void 0)))
+1643649146683	Marionette	INFO	Listening on port 62761
+1643649146920	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1643649150646	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'interactive'.
+JavaScript warning: https://pagead2.googlesyndication.com/bg/jGbA3lvUbVA_isqhK0kcOmFQnhmy9VywXuVHQ76HhUI.js line 1 > eval line 4952 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+1643649156486	Marionette	INFO	Stopped listening on port 62761
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+[Parent 8444, IPC I/O Parent] WARNING: file /builds/worker/checkouts/gecko/ipc/chromium/src/base/process_util_win.cc:167
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1643649157407	geckodriver	INFO	Listening on 127.0.0.1:62897
+1643649160447	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofile1Joo00"
+1643649160929	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofile1Joo00\\search.json.mozlz4", (void 0)))
+1643649164181	Marionette	INFO	Listening on port 62907
+1643649164652	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1643649167496	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'interactive'.
+JavaScript warning: https://pagead2.googlesyndication.com/bg/jGbA3lvUbVA_isqhK0kcOmFQnhmy9VywXuVHQ76HhUI.js line 1 > eval line 489 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+1643649179072	Marionette	INFO	Stopped listening on port 62907
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1643649179950	geckodriver	INFO	Listening on 127.0.0.1:63049
+1643649182964	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofileU8RCBb"
+1643649183436	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofileU8RCBb\\search.json.mozlz4", (void 0)))
+1643649186252	Marionette	INFO	Listening on port 63057
+1643649186666	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1643649190095	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'interactive'.
+JavaScript warning: https://pagead2.googlesyndication.com/bg/jGbA3lvUbVA_isqhK0kcOmFQnhmy9VywXuVHQ76HhUI.js line 1 > eval line 1067 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+1643649195082	Marionette	INFO	Stopped listening on port 63057
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1643649195959	geckodriver	INFO	Listening on 127.0.0.1:63192
+1643649198993	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofilexpFQbY"
+1643649199745	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofilexpFQbY\\search.json.mozlz4", (void 0)))
+1643649202670	Marionette	INFO	Listening on port 63202
+1643649203193	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1643649206131	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'interactive'.
+JavaScript warning: https://pagead2.googlesyndication.com/bg/jGbA3lvUbVA_isqhK0kcOmFQnhmy9VywXuVHQ76HhUI.js line 1 > eval line 556 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+1643649212152	Marionette	INFO	Stopped listening on port 63202
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1643649213041	geckodriver	INFO	Listening on 127.0.0.1:63349
+1643649216080	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofileJnJkVW"
+1643649216573	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofileJnJkVW\\search.json.mozlz4", (void 0)))
+1643649219565	Marionette	INFO	Listening on port 63358
+1643649219788	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1643649222503	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'interactive'.
+JavaScript warning: https://pagead2.googlesyndication.com/bg/jGbA3lvUbVA_isqhK0kcOmFQnhmy9VywXuVHQ76HhUI.js line 1 > eval line 4555 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+1643649234102	Marionette	INFO	Stopped listening on port 63358
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1643649234982	geckodriver	INFO	Listening on 127.0.0.1:63501
+1643649238021	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofilefI7eku"
+1643649238563	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofilefI7eku\\search.json.mozlz4", (void 0)))
+1643649241320	Marionette	INFO	Listening on port 63510
+1643649241729	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1643649245391	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'interactive'.
+JavaScript warning: https://pagead2.googlesyndication.com/bg/jGbA3lvUbVA_isqhK0kcOmFQnhmy9VywXuVHQ76HhUI.js line 1 > eval line 858 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+1643649256668	Marionette	INFO	Stopped listening on port 63510
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1643649257584	geckodriver	INFO	Listening on 127.0.0.1:63663
+1643649260623	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofileNNuPBD"
+1643649261099	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofileNNuPBD\\search.json.mozlz4", (void 0)))
+1643649264401	Marionette	INFO	Listening on port 63672
+1643649264836	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1643649267702	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'interactive'.
+JavaScript warning: https://pagead2.googlesyndication.com/bg/jGbA3lvUbVA_isqhK0kcOmFQnhmy9VywXuVHQ76HhUI.js line 1 > eval line 1854 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+1643649272765	Marionette	INFO	Stopped listening on port 63672
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1643649273640	geckodriver	INFO	Listening on 127.0.0.1:63868
+1643649276673	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofileYTX4Ju"
+1643649277139	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofileYTX4Ju\\search.json.mozlz4", (void 0)))
+1643649279910	Marionette	INFO	Listening on port 63876
+1643649280376	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1643649283065	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'interactive'.
+JavaScript warning: https://pagead2.googlesyndication.com/bg/jGbA3lvUbVA_isqhK0kcOmFQnhmy9VywXuVHQ76HhUI.js line 1 > eval line 769 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+1643649288259	Marionette	INFO	Stopped listening on port 63876
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1643649289179	geckodriver	INFO	Listening on 127.0.0.1:64029
+1643649292197	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofilemTCYpS"
+1643649292724	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofilemTCYpS\\search.json.mozlz4", (void 0)))
+1643649296225	Marionette	INFO	Listening on port 64039
+1643649296416	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1643649300228	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'interactive'.
+JavaScript warning: https://pagead2.googlesyndication.com/bg/jGbA3lvUbVA_isqhK0kcOmFQnhmy9VywXuVHQ76HhUI.js line 1 > eval line 3733 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+1643649305812	Marionette	INFO	Stopped listening on port 64039
+[Parent 30612, IPC I/O Parent] WARNING: file /builds/worker/checkouts/gecko/ipc/chromium/src/base/process_util_win.cc:167
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1643649306727	geckodriver	INFO	Listening on 127.0.0.1:64173
+1643649309750	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofileYVRYWX"
+1643649310399	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Lenovo\\AppData\\Local\\Temp\\rust_mozprofileYVRYWX\\search.json.mozlz4", (void 0)))
+1643649313445	Marionette	INFO	Listening on port 64182
+1643649313954	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1643649317144	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'interactive'.
+A content process crashed and MOZ_CRASHREPORTER_SHUTDOWN is set, shutting down
+1643649317531	Marionette	INFO	Stopped listening on port 64182
+[Parent 39080, IPC I/O Parent] WARNING: file /builds/worker/checkouts/gecko/ipc/chromium/src/base/process_util_win.cc:167
+JavaScript error: chrome://remote/content/marionette/cert.js, line 55: NS_ERROR_NOT_AVAILABLE: Component returned failure code: 0x80040111 (NS_ERROR_NOT_AVAILABLE) [nsICertOverrideService.setDisableAllSecurityChecksAndLetAttackersInterceptMyData]
+[Parent 39080, IPC I/O Parent] WARNING: pipe error: 232: file /builds/worker/checkouts/gecko/ipc/chromium/src/chrome/common/ipc_channel_win.cc:565
+A content process crashed and MOZ_CRASHREPORTER_SHUTDOWN is set, shutting down
+[Parent 39080, IPC I/O Parent] WARNING: file /builds/worker/checkouts/gecko/ipc/chromium/src/base/process_util_win.cc:167
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
