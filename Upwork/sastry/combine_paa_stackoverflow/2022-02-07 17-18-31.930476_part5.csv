@@ -1,0 +1,586 @@
+url,title,best_answer_1,best_answer_2,best_answer_3,keyword,question_1,answer_1,question_2,answer_2,question_3,answer_3,question_4,answer_4
+https://stackoverflow.com/questions/141284/the-difference-between-the-runnable-and-callable-interfaces-in-java,multithreading - The difference between the Runnable and Callable interfaces in Java,"<p>See explanation <a href=http://docs.oracle.com/javase/7/docs/api/java/util/concurrent/Callable.html rel=noreferrer>here</a>.</p>
+<blockquote>
+<p>The Callable interface is similar to
+  Runnable, in that both are designed
+  for classes whose instances are
+  potentially executed by another
+  thread. <strong>A Runnable, however, does not
+  return a result and cannot throw a
+  checked exception.</strong></p>
+</blockquote>","<blockquote>
+<p>What are the differences in the applications of <code>Runnable</code> and <code>Callable</code>. Is the difference only with the return parameter present in <code>Callable</code>?</p>
+</blockquote>
+<p>Basically, yes.  See the answers to <a href=https://stackoverflow.com/questions/141284/the-difference-between-the-runnable-and-callable-interfaces-in-java>this question</a>.  And the <a href=http://docs.oracle.com/javase/8/docs/api/java/util/concurrent/Callable.html rel=noreferrer>javadoc for <code>Callable</code></a>.</p>
+<blockquote>
+<p>What is the need of having both if <code>Callable</code> can do all that <code>Runnable</code> does?</p>
+</blockquote>
+<p>Because the <code>Runnable</code> interface <strong>cannot</strong> do everything that <code>Callable</code> does!</p>
+<p><code>Runnable</code> has been around since Java 1.0, but <code>Callable</code> was only introduced in Java 1.5 ... to handle use-cases that <code>Runnable</code> does not support.  In theory, the Java team could have changed the signature of the <code>Runnable.run()</code> method, but this would have broken binary compatiblity with pre-1.5 code, requiring recoding when migrating old Java code to newer JVMs.  That is a BIG NO-NO.  Java strives to be backwards compatible ... and thats been one of Javas biggest selling points for business computing.</p>
+<p>And, obviously, there are use-cases where a task doesnt <em>need</em> to return a result or throw a checked exception.  For those use-cases, using <code>Runnable</code> is more concise than using <code>Callable&lt;Void&gt;</code> and returning a dummy (<code>null</code>) value from the <code>call()</code> method.</p>","<ul>
+<li>A <code>Callable</code> needs to implement <code>call()</code> method while a <code>Runnable</code> needs to implement <code>run()</code> method.</li>
+<li>A <code>Callable</code> can return a value but a <code>Runnable</code> cannot.</li>
+<li>A <code>Callable</code> can throw checked exception but a <code>Runnable</code> cannot.</li>
+<li><p>A <code>Callable</code> can be used with <code>ExecutorService#invokeXXX(Collection&lt;? extends Callable&lt;T&gt;&gt; tasks)</code> methods but a <code>Runnable</code> cannot be.</p>
+<pre><code>public interface Runnable {
+    void run();
+}
+
+public interface Callable&lt;V&gt; {
+    V call() throws Exception;
+}
+</code></pre></li>
+</ul>",runnable vs callable,runnable vs callable,"The Runnable methods will execute asynchronously, till a Callable method is called. ... A Runnable object does not return a result whereas a Callable object returns a result. A Runnable object cannot throw a checked exception wheras a Callable object can throw an exception.",What is the difference between thread and runnable?,"The significant differences between extending Thread class and implementing Runnable interface: ... When we extend Thread class, each of our thread creates unique object and associate with it. When we implements Runnable, it shares the same object to multiple threads.",Why is Callable used?,"Callable : If you are trying to retrieve a value from a task, then use Callable. ... The calling class will randomly call your interface methods not knowing which is Runnable and which is Callable. The Runnable methods will execute asynchronously, till a Callable method is called.",What is Callable in Java?,"The Java Callable interface, java. ... Callable , represents an asynchronous task which can be executed by a separate thread. For instance, it is possible to submit a Callable object to a Java ExecutorService which will then execute it asynchronously."
+https://stackoverflow.com/questions/16508685/understanding-inaddr-any-for-socket-programming,c - Understanding INADDR_ANY for socket programming,"<ol>
+<li><p><code>bind()</code> of <code>INADDR_ANY</code> does <strong>NOT</strong> generate a random IP. It <a href=http://man7.org/linux/man-pages/man7/ip.7.html rel=noreferrer>binds the socket to all available interfaces</a>. </p></li>
+<li><p>For a server, you typically want to bind to all interfaces - not just localhost. </p></li>
+<li><p>If you wish to bind your socket to localhost only, the syntax would be <code>my_sockaddress.sin_addr.s_addr = inet_addr(127.0.0.1);</code>, then call <code>bind(my_socket, (SOCKADDR *) &amp;my_sockaddr, ...)</code>. </p></li>
+<li><p>As it happens, <code>INADDR_ANY</code> is a constant that happens to equal zero:</p>
+<p><a href=http://www.castaglia.org/proftpd/doc/devel-guide/src/include/inet.h.html rel=noreferrer>http://www.castaglia.org/proftpd/doc/devel-guide/src/include/inet.h.html</a></p>
+<pre><code># define INADDR_ANY ((unsigned long int) 0x00000000)
+...
+# define INADDR_NONE    0xffffffff
+...
+# define INPORT_ANY 0
+...
+</code></pre></li>
+<li><p>If youre not already familiar with it, I urge you to check out Beejs Guide to Sockets Programming:</p>
+<p><a href=http://beej.us/guide/bgnet/ rel=noreferrer>http://beej.us/guide/bgnet/</a></p></li>
+</ol>
+<p>Since people are still reading this, an additional note:</p>
+<blockquote>
+<p><a href=http://man7.org/linux/man-pages/man7/ip.7.html rel=noreferrer>man (7) ip</a>:</p>
+<p>When a process wants to receive new incoming packets or connections,
+  it should bind a socket to a local interface address using <a href=http://man7.org/linux/man-pages/man2/bind.2.html rel=noreferrer>bind(2)</a>.</p>
+<p>In this case, only one IP socket may be bound to any given local
+  (address, port) pair.  When INADDR_ANY is specified in the bind call,
+  the socket will be bound to all local interfaces.  </p>
+<p>When <a href=http://man7.org/linux/man-pages/man2/listen.2.html rel=noreferrer>listen(2)</a> is called on an unbound socket, the socket is
+  automatically bound to a random free port with the local address set
+  to INADDR_ANY.  </p>
+<p>When <a href=http://man7.org/linux/man-pages/man2/connect.2.html rel=noreferrer>connect(2)</a> is called on an unbound socket, the socket is
+  automatically bound to a random free port or to a usable shared port
+  with the local address set to INADDR_ANY...</p>
+<p>There are several special addresses: INADDR_LOOPBACK (127.0.0.1)
+  always refers to the local host via the loopback device; INADDR_ANY
+  (0.0.0.0) means any address for binding...</p>
+</blockquote>
+<p>Also:</p>
+<blockquote>
+<p><a href=https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.3.0/com.ibm.zos.v2r3.bpxbd00/bind.htm rel=noreferrer>bind() — Bind a name to a
+  socket</a>:</p>
+<p>If the (sin_addr.s_addr) field is set to the constant INADDR_ANY, as
+  defined in netinet/in.h, the caller is requesting that the socket be
+  bound to all network interfaces on the host. Subsequently, UDP packets
+  and TCP connections from all interfaces (which match the bound name)
+  are routed to the application. This becomes important when a server
+  offers a service to multiple networks. By leaving the address
+  unspecified, the server can accept all UDP packets and TCP connection
+  requests made for its port, regardless of the network interface on
+  which the requests arrived.</p>
+</blockquote>","<p><code>INADDR_ANY</code> is used when you dont need to bind a socket to a specific IP. When you use this value as the address when calling <code>bind()</code>, the socket accepts connections to all the IPs of the machine.</p>","<p>To <em>bind</em> socket with <em>localhost</em>, before you invoke the <em>bind</em> function, sin_addr.s_addr field of the sockaddr_in structure should be set properly. The proper value can be obtained either by </p>
+<pre><code>my_sockaddress.sin_addr.s_addr = inet_addr(127.0.0.1)
+</code></pre>
+<p>or by </p>
+<pre><code>my_sockaddress.sin_addr.s_addr=htonl(INADDR_LOOPBACK);
+</code></pre>",inaddr_any,inaddr_any,"This is an IP address that is used when we don't want to bind a socket to any specific IP. When we don't know the IP address of our machine, we can use the special IP address INADDR_ANY . ... It allows our server to receive packets that have been targeted by any of the interfaces.",What is the value of Inaddr_any?,There are several special addresses: INADDR_LOOPBACK (127.0. 0.1) always refers to the local host via the loopback device; INADDR_ANY (0.0. 0.0) means any address for binding; INADDR_BROADCAST (255.255. 255.255) means any host and has the same effect on bind as INADDR_ANY for historical reasons.,What is Inaddr_broadcast?,"The kernel picks the UDP or TCP socket to which a packet sent to the INADDR_BROADCAST address (255.255. Obviously, the destination port of the packet and the port to which the socket was bound to need to match in both cases. ...",What is Ip_hdrincl?,"1. The IP_HDRINCL option does the following (from the man page): The IPv4 layer generates an IP header when sending a packet unless the IP_HDRINCL socket option is enabled on the socket. When it is enabled, the packet must contain an IP header. For receiving the IP header is always included in the packet."
+https://stackoverflow.com/questions/22692097/what-is-the-result-of-making-log4j-additivity-equals-to-true-or-false,java - What is the result of making log4j additivity equals to true or false?,"<p>By default, a logger inherits the appenders from its ancestors. By setting <code>additivity=false</code>, you prevent this behaviour.</p>
+<p>In your example, there may be appenders associated with <code>com.mypage.glass</code> or <code>com.mypage</code> or even the root logger that would be inherited if you dont set that property to <code>false</code>.</p>",,,log4j setadditivity,What is additivity in log?,"Additivity is set to true by default, that is children inherit the appenders of their ancestors by default. ... However, the children of this logger will inherit its appenders, unless the children have their additivity flag set to false too.",Where is log4j configuration file?,The file is named logj. properties and is located in the $DGRAPH_HOME/dgraph-hdfs-agent/lib directory. The file defines the ROLLINGFILE appenders for the root logger and also sets the log level for the file. The level of the root logger is defined as INFO and attaches the ROLLINGFILE appender to it.,How do I know if log4j is configured?,"Check for the log4j.
+Search for log4j2-test.
+Scan classpath for log4j2-test.yaml or log4j2-test.yml.
+Check for log4j2-test.json or log4j2-test.jsn.
+Search for log4j2-test.xml.
+Look for log4j2.properties.
+Search for log4j2.yaml or log4j2.yml.
+Scan classpath for log4j2.json or log4j2.jsn.",What does additivity mean in log4j?,"For example, if a console appender is added to the root logger, then all enabled logging requests will at least print on the console. ... The output of a log statement of some logger L is forwarded to all the appenders in L and its ancestors. This is the meaning of the term appender additivity."
+https://stackoverflow.com/questions/24118562/the-difference-between-cmpl-and-cmp,assembly - The difference between cmpl and cmp,"<blockquote>
+<p>According to my understanding <code>cmpl</code> compares unsigned.</p>
+</blockquote>
+<p>It does both, in a way.</p>
+<p>The difference in signed vs. unsigned is here the usage of the jump instructions.</p>
+<p>For <code>&gt;</code>, there is <code>ja</code> for unsigned and <code>jg</code> for signed (jump if above and jump if greater).</p>
+<p>For <code>&lt;</code>, there is <code>jb</code> for unsigned and <code>jl</code> for signed (jump if below and jump if less).</p>
+<p>To be exact, here is the meaning of several jump commands:</p>
+<blockquote>
+<p>For unsigned comparisons:</p>
+<pre><code>JB/JNAE (CF = 1)           : Jump if below/not above or equal
+JAE/JNB (CF = 0)           : Jump if above or equal/not below
+JBE/JNA (CF = 1 or ZF = 1) : Jump if below or equal/not above
+JA/JNBE (CF = 0 and ZF = 0): Jump if above/not below or equal
+</code></pre>
+<p>For signed comparisons:</p>
+<pre><code>JL/JNGE (SF &lt;&gt; OF)          : Jump if less/not greater or equal
+JGE/JNL (SF = OF)           : Jump if greater or equal/not less
+JLE/JNG (ZF = 1 or SF &lt;&gt; OF): Jump if less or equal/not greater
+JG/JNLE (ZF = 0 and SF = OF): Jump if greater/not less or equal
+</code></pre>
+</blockquote>",<p>Just to add one extra detail for clarification to @glglgls excellent answer is that the l in cmpl is an <a href=https://en.wikibooks.org/wiki/X86_Assembly/GAS_Syntax rel=nofollow noreferrer>operation suffix</a> indicating that the operation is being done on a long number (32 bit integer or 64-bit floating point).</p>,"<p>I dont think x86 actually has an instruction called <code>CMPL</code>. Its probably part of your assembler syntax to give hints on operands or something else (like <code>JZ</code> and <code>JE</code> being the same).</p>
+<p>From the intel manual on what it is doing:</p>
+<blockquote>
+<p>Compares the first source operand with the second source operand and sets the 
+  status flags in the EFLAGS register according to the results. The comparison is 
+  performed by subtracting the second operand from the first operand and then setting 
+  the status flags in the same manner as the SUB instruction. When an immediate 
+  value is used as an operand, it is sign-extended to the length of the first operand.</p>
+</blockquote>
+<p>Sign-ness is given implicitly, because of the twos complement representation of numbers.</p>
+<p>How to manipulate the jump? If you are sure that the jump should do the exact opposite than what it is doing, you just have to change <code>JA</code> to <code>JBE</code>.</p>",cmpl assembly,cmpl assembly,Description. The cmpl instruction compares the contents of general-purpose register (GPR) RA with the contents of GPR RB as unsigned integers and sets one of the bits in Condition Register Field BF.,What is Movl Assembly?,"Assuming you are using GAS assembly language mnemonics for an Intel CPU, then: movq moves a quadword (64-bits) from source to destination. movl moves a long (32-bits) from source to destination.",What is MOVQ Assembly?,"movq (assuming you're talking about x86) is a move of a quadword (64-bit value). This particular instruction: movq (%rsp), %rsp. looks very much like code that will walk up through stack frames.",What is JS Assembly?,The js (or jne) instruction is a conditional jump that follows a test. It jumps to the specified location if the previous instruction sets the Sign Flag (SF).
+https://stackoverflow.com/questions/7898215/how-to-clear-input-buffer-in-c,How to clear input buffer in C?,"<blockquote>
+<p>The program will not work properly because at Line 1, when the user presses Enter, it will leave in the input buffer 2 character: Enter key (ASCII code 13) and \n (ASCII code 10).  Therefore, at Line 2, it will read the \n and will not wait for the user to enter a character.</p>
+</blockquote>
+<p>The behavior you see at line 2 is correct, but thats not quite the correct explanation.  With text-mode streams, it doesnt matter what line-endings your platform uses (whether carriage return (0x0D) + linefeed (0x0A), a bare CR, or a bare LF).  The C runtime library will take care of that for you: your program will see just <code>\n</code> for newlines.</p>
+<p>If you typed a character and pressed enter, then that input character would be read by line 1, and then <code>\n</code> would be read by line 2.  See <a href=http://c-faq.com/stdio/scanfc.html rel=noreferrer>Im using <code>scanf %c</code> to read a Y/N response, but later input gets skipped.</a> from the comp.lang.c FAQ.</p>
+<p>As for the proposed solutions, see (again from the comp.lang.c FAQ):</p>
+<ul>
+<li><a href=http://c-faq.com/stdio/stdinflush.html rel=noreferrer>How can I flush pending input so that a users typeahead isnt read at the next prompt? Will <code>fflush(stdin)</code> work? </a></li>
+<li><a href=http://c-faq.com/stdio/stdinflush2.html rel=noreferrer>If <code>fflush</code> wont work, what can I use to flush input?</a></li>
+</ul>
+<p>which basically state that the only portable approach is to do:</p>
+<pre><code>int c;
+while ((c = getchar()) != \n &amp;&amp; c != EOF) { }
+</code></pre>
+<p>Your <code>getchar() != \n</code> loop works because once you call <code>getchar()</code>, the returned character already has been removed from the input stream.</p>
+<p>Also, I feel obligated to discourage you from using <code>scanf</code> entirely: <a href=http://c-faq.com/stdio/scanfprobs.html rel=noreferrer>Why does everyone say not to use <code>scanf</code>? What should I use instead?</a> </p>","<p>You can do it (also) this way:</p>
+<pre><code>fseek(stdin,0,SEEK_END);
+</code></pre>","<p>A portable way to clear up to the end of a line that youve already tried to read partially is:</p>
+<pre><code>int c;
+
+while ( (c = getchar()) != \n &amp;&amp; c != EOF ) { }
+</code></pre>
+<p>This reads and discards characters until it gets <code>\n</code> which signals the end of the file. It also checks against <code>EOF</code> in case the input stream gets closed before the end of the line. The type of <code>c</code> must be <code>int</code> (or larger) in order to be able to hold the value <code>EOF</code>.</p>
+<p>There is no portable way to find out if there are any more lines after the current line (if there arent, then <code>getchar</code> will block for input).</p>",clear buffer c,clear buffer c,"The function fflush(stdin) is used to flush or clear the output buffer of the stream. When it is used after the scanf(), it flushes the input buffer also. It returns zero if successful, otherwise returns EOF and feof error indicator is set. The function fflush(stdin) is used to flush or clear the output buffer of the stream. When it is used after the scanfscanfA scanf format string (scan formatted) is a control parameter used in various functions to specify the layout of an input string. The functions can then divide the string and translate into values of appropriate data types. String scanning functions are often supplied in standard libraries.https://en.wikipedia.org › wiki › Scanf_format_stringscanf format string - Wikipedia(), it flushes the input buffer also. It returns zero if successful, otherwise returns EOF and feof error indicator is set. scanfscanfA scanf format string (scan formatted) is a control parameter used in various functions to specify the layout of an input string. The functions can then divide the string and translate into values of appropriate data types. String scanning functions are often supplied in standard libraries.https://en.wikipedia.org › wiki › Scanf_format_stringscanf format string - Wikipedia The function fflush(stdin) is used to flush or clear the output buffer of the stream. When it is used after the scanfscanfA scanf format string (scan formatted) is a control parameter used in various functions to specify the layout of an input string. The functions can then divide the string and translate into values of appropriate data types. String scanning functions are often supplied in standard libraries.https://en.wikipedia.org › wiki › Scanf_format_stringscanf format string - Wikipedia(), it flushes the input buffer also. It returns zero if successful, otherwise returns EOF and feof error indicator is set. scanfA scanf format string (scan formatted) is a control parameter used in various functions to specify the layout of an input string. The functions can then divide the string and translate into values of appropriate data types. String scanning functions are often supplied in standard libraries.https://en.wikipedia.org › wiki › Scanf_format_stringscanf format string - Wikipedia › wiki › Scanf_format_string scanf Clearing input buffer in C/C++ The function fflush(stdin) is used to flush or clear the output buffer of the stream. When it is used after the scanf(), it flushes the input buffer also. It returns zero if successful, otherwise returns EOF and feof error indicator is set. The function fflush(stdin) is used to flush or clear the output buffer of the stream. When it is used after the scanfscanfA scanf format string (scan formatted) is a control parameter used in various functions to specify the layout of an input string. The functions can then divide the string and translate into values of appropriate data types. String scanning functions are often supplied in standard libraries.https://en.wikipedia.org › wiki › Scanf_format_stringscanf format string - Wikipedia(), it flushes the input buffer also. It returns zero if successful, otherwise returns EOF and feof error indicator is set.",How do you clear a buffer?,Using “ while ((getchar()) != '\n'); ” : Typing “while ((getchar()) != '\n');” reads the buffer characters till the end and discards them(including newline) and using it after the “scanf()” statement clears the input buffer and allows the input in the desired container.,What does Clear keyboard buffer do?,"Flush the keyboard buffer. This reads characters from the keyboard input and discards them until there are no more currently buffered, and then allows the program to continue. The program must not wait for users to type anything.",How do you clear a CIN?,"Using “ cin. ignore(numeric_limits::max(),'\n'); ” :- Typing “cin. ignore(numeric_limits::max(),'\n');” after the “cin” statement discards everything in the input stream including the newline."
+https://stackoverflow.com/questions/6103825/how-to-properly-use-unit-testings-assertraises-with-nonetype-objects,python - How to properly use unit-testings assertRaises() with NoneType objects?,"<p>If you are using python2.7 or above you can use the ability of <a href=http://docs.python.org/library/unittest.html#unittest.TestCase.assertRaises>assertRaises</a> to be use as a context manager and do:</p>
+<pre><code>with self.assertRaises(TypeError):
+    self.testListNone[:1]
+</code></pre>
+<p>If you are using python2.6 another way beside the one given until now is to use <a href=http://pypi.python.org/pypi/unittest2/0.5.1>unittest2</a> which is a back port of unittest new feature to python2.6, and you can make it work using the code above.</p>
+<p>N.B: Im a big fan of the new feature (SkipTest, test discovery ...) of unittest so I intend to use unittest2 as much as I can. I advise to do the same because there is a lot more than what unittest come with in python2.6 &lt;.</p>","<p>The problem is the <code>TypeError</code> gets raised before <code>assertRaises</code> gets called since the arguments to <code>assertRaises</code> need to be evaluated before the method can be called. You need to pass a <code>lambda</code> expression like:</p>
+<pre><code>self.assertRaises(TypeError, lambda: self.testListNone[:1])
+</code></pre>","<p>The usual way to use <code>assertRaises</code> is to call a function:</p>
+<pre><code>self.assertRaises(TypeError, test_function, args)
+</code></pre>
+<p>to test that the function call test_function(args) raises a TypeError.</p>
+<p>The problem with <code>self.testListNone[:1]</code> is that Python evaluates the expression immediately, before the <code>assertRaises</code> method is called. The whole reason why <code>test_function</code> and <code>args</code> is passed as separate arguments to <code>self.assertRaises</code> is to allow <code>assertRaises</code> to call <code>test_function(args)</code> from within a <code>try...except</code> block, allowing <code>assertRaises</code> to catch the exception.</p>
+<p>Since youve defined <code>self.testListNone = None</code>, and you need a function to call, you might use <a href=http://docs.python.org/library/operator.html#operator.itemgetter>operator.itemgetter</a> like this:</p>
+<pre><code>import operator
+self.assertRaises(TypeError, operator.itemgetter, (self.testListNone,slice(None,1)))
+</code></pre>
+<p>since </p>
+<pre><code>operator.itemgetter(self.testListNone,slice(None,1))
+</code></pre>
+<p>is a long-winded way of saying <code>self.testListNone[:1]</code>, but which separates the function (<code>operator.itemgetter</code>) from the arguments.</p>",assertraises,What is assertRaises?,assertraises is a function that fails unless an exception is raised by an object of a class. It is mostly used in testing scenarios to prevent our code from malfunctioning.,What is assertRaises Python?,The unittest module provides a rich set of tools for constructing and running tests. ... The crux of each test is a call to assertEqual() to check for an expected result; assertTrue() or assertFalse() to verify a condition; or assertRaises() to verify that a specific exception gets raised.,How do I run a Python test?,"Run tests in a module. pytest test_mod.py.
+Run tests in a directory. pytest testing/
+Run tests by keyword expressions. pytest -k ""MyClass and not method""
+Run tests by marker expressions. pytest -m slow.
+Run tests from packages.",How do I use Unittest?,"Import unittest from the standard library.
+Create a class called TestSum that inherits from the TestCase class.
+Convert the test functions into methods by adding self as the first argument.
+Change the assertions to use the self.
+Change the command-line entry point to call unittest."
+https://stackoverflow.com/questions/44273571/starting-r-error-u-used-without-hex-digits-in-character-string-starting-c,windows - starting R: Error: \U used without hex digits in character string starting C:\U,"<p>I was able to solve this after all:</p>
+<p>I had a section inside my .Rprofile file (in Documents) with \ instead of /.
+So I now changed</p>
+<pre><code># Set mainfolder for PACKAGE package
+options(PACKAGE_MAINFOLDER=C:\Users\...)
+</code></pre>
+<p>to </p>
+<pre><code># Set mainfolder for PACKAGE package
+options(PACKAGE_MAINFOLDER=C:/Users/...)
+</code></pre>
+<p>and that did the trick.</p>","<p>To make it work, just remove the <code><strong>C:\</strong>Users\edmar.campos.cardoso\Dropbox\</code> and replace all <code>\</code> with <code>/</code> using the function <code>setwd()</code> to change the working directory in <code>R</code>.</p>
+<p>Wrong way:</p>
+<pre><code>setwd(C:\Users\edmar.campos.cardoso\Dropbox\...)
+</code></pre>
+<p>Right way:</p>
+<pre><code>setwd(/Users/edmar.campos.cardoso/Dropbox/...)
+</code></pre>",<p>You can use <code>\\</code> instead of <code>\</code>. This allows skipping from some characters such as <code>\n</code> which is the end of the line or <code>\t</code> which is tab.</p>,used without hex digits in character string starting,What does this mean error '\ u used without hex digits in character string starting C :\ u?,How to Fix: error: '\u' used without hex digits in character string starting “'c:\u” This error occurs when you attempt to read a file into R and use backslashes ( \ ) in the file path. ... Use forward slashes ( / ) in the file path. Use double back slashes ( \\ ) in the file path.,How do you escape in R?,,How do you do a backslash in R?,"Yes, you should. To write a single \ in a string, you write it as ""\\"" . This is because the \ is a special character, reserved to escape the character that follows it. (Perhaps you recognize \n as newline.)",What is \r escape sequence?,"\r is a carriage return character; it tells your terminal emulator to move the cursor at the start of the line. The cursor is the position where the next characters will be rendered. So, printing a \r allows to override the current line of the terminal emulator."
+https://stackoverflow.com/questions/7325278/group-by-in-linq/7325306,c# - Group by in LINQ,"<p>Absolutely - you basically want:</p>
+<pre><code>var results = from p in persons
+              group p.car by p.PersonId into g
+              select new { PersonId = g.Key, Cars = g.ToList() };
+</code></pre>
+<p>Or as a non-query expression:</p>
+<pre><code>var results = persons.GroupBy(
+    p =&gt; p.PersonId, 
+    p =&gt; p.car,
+    (key, g) =&gt; new { PersonId = key, Cars = g.ToList() });
+</code></pre>
+<p>Basically the contents of the group (when viewed as an <code>IEnumerable&lt;T&gt;</code>) is a sequence of whatever values were in the projection (<code>p.car</code> in this case) present for the given key.</p>
+<p>For more on how <code>GroupBy</code> works, see my <a href=http://codeblog.jonskeet.uk/2011/01/01/reimplementing-linq-to-objects-part-21-groupby/ rel=noreferrer>Edulinq post on the topic</a>.</p>
+<p>(Ive renamed <code>PersonID</code> to <code>PersonId</code> in the above, to follow <a href=https://docs.microsoft.com/en-us/dotnet/standard/design-guidelines/capitalization-conventions rel=noreferrer>.NET naming conventions</a>.)</p>
+<p>Alternatively, you could use a <code>Lookup</code>:</p>
+<pre><code>var carsByPersonId = persons.ToLookup(p =&gt; p.PersonId, p =&gt; p.car);
+</code></pre>
+<p>You can then get the cars for each person very easily:</p>
+<pre><code>// This will be an empty sequence for any personId not in the lookup
+var carsForPerson = carsByPersonId[personId];
+</code></pre>","<pre><code>var results = from p in persons
+              group p by p.PersonID into g
+              select new { PersonID = g.Key,
+                           /**/car = g.Select(g=&gt;g.car).FirstOrDefault()/**/}
+</code></pre>","<p>You can also Try this:</p>
+<pre><code>var results= persons.GroupBy(n =&gt; new { n.PersonId, n.car})
+                .Select(g =&gt; new {
+                               g.Key.PersonId,
+                               g.Key.car)}).ToList();
+</code></pre>",linq.groupby,What does GroupBy do in LINQ?,"In LINQ, grouping operators pick the elements of the sequence or collection which contains common attributes and serve them in a group. Or in other words, we can say that the grouping operator returns the group of elements based on the given key.",What is Group C#?,"Group C was a category of motorsport, introduced by the FIA in 1982 and continuing until 1993. ... Group C was used in the FIA's World Endurance Championship (1982–1985), World Sports-Prototype Championship (1986–1990), World Sportscar Championship (1991–1992) and in the European Endurance Championship (1983 only).",Does LINQ GroupBy keep order?,"Answer. Found answer on MSDN: Yes. The IGrouping<TKey, TElement> objects are yielded in an order based on the order of the elements in source that produced the first key of each IGrouping<TKey, TElement> . Elements in a grouping are yielded in the order they appear in source.",What is LINQ key?,"The Key is the thing you used to group on. So the key is the first letter or the word, or he number of letters in the word when you grouped on number of characters. You can use the key to identify the group."
+https://stackoverflow.com/questions/9874382/whats-the-difference-between-process-cwd-vs-dirname,node.js - Whats the difference between process.cwd() vs __dirname?,"<p><a href=https://nodejs.org/docs/latest/api/process.html#process_process_cwd rel=noreferrer><code>process.cwd()</code></a> returns the current working directory,</p>
+<p>i.e. the directory from which you invoked the <code>node</code> command.</p>
+<p><a href=https://nodejs.org/docs/latest/api/globals.html#globals_dirname rel=noreferrer><code>__dirname</code></a> returns the directory name of the directory containing the JavaScript source code file</p>","<p>As per node js <a href=https://nodejs.org/api/process.html#process_process_cwd rel=noreferrer>doc</a>
+<code>process.cwd()</code></p>
+<p><code>cwd</code> is a method of global object <code>process</code>, returns a string value which is the current working directory of the Node.js process.</p>
+<p>As per node js <a href=https://nodejs.org/docs/latest/api/globals.html#globals_dirname rel=noreferrer>doc</a>
+<code>__dirname</code></p>
+<p>The directory name of current script as a string value. __dirname is not actually a global but rather local to each module.</p>
+<p>Let me explain with example,</p>
+<p>suppose we have a <code>main.js</code> file that resides inside <code>C:/Project/main.js</code>
+and running <code>node main.js</code> both these values return same file</p>
+<p>or simply with the following folder structure</p>
+<pre><code>Project 
+├── main.js
+└──lib
+   └── script.js
+</code></pre>
+<p><code>main.js</code></p>
+<pre><code>console.log(process.cwd())
+// C:\Project
+console.log(__dirname)
+// C:\Project
+console.log(__dirname===process.cwd())
+// true
+</code></pre>
+<p>suppose we have another file <code>script.js</code> files inside a sub directory of project, i.e. <code>C:/Project/lib/script.js</code> and running <code>node main.js</code> which require <code>script.js</code></p>
+<p><code>main.js</code></p>
+<pre><code>require(./lib/script.js)
+console.log(process.cwd())
+// C:\Project
+console.log(__dirname)
+// C:\Project
+console.log(__dirname===process.cwd())
+// true
+</code></pre>
+<p><code>script.js</code></p>
+<pre><code>console.log(process.cwd())
+// C:\Project
+console.log(__dirname)
+// C:\Project\lib
+console.log(__dirname===process.cwd())
+// false
+</code></pre>
+<blockquote>
+<p>Simply it can be stated as:</p>
+<p><code>process.cwd()</code> returns the value of directory where we run the node process, whereas</p>
+<p><code>__dirname</code> returns the value of directory where the current running file resides.</p>
+</blockquote>","<p>Knowing the <strong>scope</strong> of each can make things easier to remember.</p>
+<p><strong><code>process</code></strong> is <code>node</code>s global object, and <strong><code>.cwd()</code></strong> returns where node is running.</p>
+<p><strong><code>__dirname</code></strong> is <code>module</code>s property, and represents the file path of the module. In node, one module resides in one file.</p>
+<p>Similarly, <strong><code>__filename</code></strong> is another <code>module</code>s property, which holds the file name of the module.</p>",process cwd,What is process CWD?,The process. cwd() method is an inbuilt application programming interface of the process module which is used to get the current working directory of the node. js process. Syntax: process.cwd(),What is CWD in js?,"› wiki › Working_directory cwd() returns the current working directorycurrent working directoryIn computing, the working directory of a process is a directory of a hierarchical file system, if any, dynamically associated with each process. It is sometimes called the current working directory (CWD), e.g. the BSD getcwd function, or just current directory.https://en.wikipedia.org › wiki › Working_directoryWorking directory - Wikipedia, i.e. the directory from which you invoked the node command. __dirname returns the directory name of the directory containing the JavaScript source code file. cwd() returns the current working directory, i.e. the directory from which you invoked the node command. __dirname returns the directory name of the directory containing the JavaScript source code file.cwd() returns the current working directorycurrent working directoryIn computing, the working directory of a process is a directory of a hierarchical file system, if any, dynamically associated with each process. It is sometimes called the current working directory (CWD), e.g. the BSD getcwd function, or just current directory.https://en.wikipedia.org › wiki › Working_directoryWorking directory - Wikipedia, i.e. the directory from which you invoked the node command. __dirname returns the directory name of the directory containing the JavaScript source code file. current working directoryIn computing, the working directory of a process is a directory of a hierarchical file system, if any, dynamically associated with each process. It is sometimes called the current working directory (CWD), e.g. the BSD getcwd function, or just current directory.https://en.wikipedia.org › wiki › Working_directoryWorking directory - Wikipedia current working directorycurrent working directoryIn computing, the working directory of a process is a directory of a hierarchical file system, if any, dynamically associated with each process. It is sometimes called the current working directory (CWD), e.g. the BSD getcwd function, or just current directory.https://en.wikipedia.org › wiki › Working_directoryWorking directory - Wikipedia current working directory",How do I change the process in CWD?,"› wiki › Working_directory current working directoryIn computing, the working directory of a process is a directory of a hierarchical file system, if any, dynamically associated with each process. It is sometimes called the current working directory (CWD), e.g. the BSD getcwd function, or just current directory.https://en.wikipedia.org › wiki › Working_directoryWorking directory - Wikipedia current working directorycurrent working directoryIn computing, the working directory of a process is a directory of a hierarchical file system, if any, dynamically associated with each process. It is sometimes called the current working directory (CWD), e.g. the BSD getcwd function, or just current directory.https://en.wikipedia.org › wiki › Working_directoryWorking directory - Wikipedia You can change the current working directory of the Node process through the command process. chdir() . var process = require('process'); process.You can change the current working directorycurrent working directoryIn computing, the working directory of a process is a directory of a hierarchical file system, if any, dynamically associated with each process. It is sometimes called the current working directory (CWD), e.g. the BSD getcwd function, or just current directory.https://en.wikipedia.org › wiki › Working_directoryWorking directory - Wikipedia of the Node process through the command process. chdir() . var process = require('process'); process. You can change the current working directorycurrent working directoryIn computing, the working directory of a process is a directory of a hierarchical file system, if any, dynamically associated with each process. It is sometimes called the current working directory (CWD), e.g. the BSD getcwd function, or just current directory.https://en.wikipedia.org › wiki › Working_directoryWorking directory - Wikipedia of the Node process through the command process. chdir() . var process = require('process'); process. current working directory",How do I get node CWD?,Using __dirname in a Node script will return the path of the folder where the current JavaScript file resides. Using ./ will give you the current working directory.
+https://stackoverflow.com/questions/37091522/count-unique-values-in-stata,Count unique values in Stata,"<p>You can easily write a wrapper for <code>codebook</code> that uses Nicks <code>distinct</code> command from SSC to store the info you want as scalar(s).</p>
+<p>In my experience, this wrapper approach has proven to be much more effective than asking the nice folks at StataCorp to change their command on an internet forum that they do not participate in. </p>
+<p>Heres an example:</p>
+<pre><code>* (1) You can stick this into a file called mycodebook.ado in
+* /ado/personal (use adopath to see exact location)
+capture program drop mycodebook
+program mycodebook, rclass
+syntax [varlist] [if] [in][, *]
+codebook `varlist `if `in, `options
+capture ssc install distinct
+foreach var of varlist `varlist {
+    qui distinct `var `if `in
+    return scalar nv_`var = r(ndistinct)
+}
+end
+
+* (2) example with mycodebook
+sysuse auto, clear
+mycodebook price mpg rep78 if foreign==0, compact
+return list
+</code></pre>
+<p>This last part will give you:</p>
+<pre><code>. mycodebook price mpg rep78 if foreign==0, compact
+
+Variable   Obs Unique      Mean   Min    Max  Label
+----------------------------------------------------------------------------------
+price       52     52  6072.423  3291  15906  Price
+mpg         52     17  19.82692    12     34  Mileage (mpg)
+rep78       48      5  3.020833     1      5  Repair Record 1978
+----------------------------------------------------------------------------------
+
+. return list
+
+scalars:
+           r(nv_rep78) =  5
+             r(nv_mpg) =  17
+           r(nv_price) =  52
+</code></pre>
+<p>You can then do things like (or whatever it is you want to do with these):</p>
+<pre><code>gen x=r(nv_rep78)
+</code></pre>","<p>A convenient alternative is provided by the unique package. Heres a quick example:</p>
+<pre><code>* Install the unique package
+ssc inst unique
+
+* Load toy dataset
+sysuse auto, clear
+
+* Get a quick report of unique (and total) values for a variable
+unique mpg
+
+* The result will be available as r(unique)
+return list
+</code></pre>","<p>yes, you are wrong</p>
+<pre><code>ssc install egenmore
+egen unique_values=nvals(mpg)
+</code></pre>",stata count unique values,Is there a count function in Stata?,"count counts the number of observations that satisfy the specified conditions. If no conditions are specified, count displays the number of observations in the data. count  strike you as an almost useless command, but it can be one of Stata's handiest. We have observations.",What is a unique value in statistics?,"Observations are distinct on a variable list if they differ with respect to that variable list. First, be aware that codebook reports their number, albeit as “unique values”. ... Unique observations are also often interpreted to mean those that occur precisely once in the data.",What are distinct observations?,"Distinct observations are those different with respect to one or more variables, considered either individually or jointly. Distinctness is thus a key aspect of the similarity or difference of observations. It is sometimes confounded with uniqueness.",How do you use command count?,"Use the COUNT function to get the number of entries in a number field that is in a range or array of numbers. For example, you can enter the following formula to count the numbers in the range A1:A20: =COUNT(A1:A20). In this example, if five of the cells in the range contain numbers, the result is 5."
+https://stackoverflow.com/questions/61105343/how-to-grep-a-specific-process-from-ps-in-linux,how to grep a specific process from ps in linux?,"<p>You can use the command <code>pgrep</code>, where also the switch <code>-w</code> can be used:</p>
+<pre><code>pgrep -w rv
+</code></pre>
+<p>The final result is the process ID of the <code>rv</code> process.</p>","<p>Just append the -w argument to grep</p>
+<pre><code>ps -af | grep -w rv
+</code></pre>","<pre><code>ps -af | grep -w rv
+</code></pre>
+<p>or</p>
+<pre><code>ps -af | grep --word-regexp rv
+</code></pre>",ps grep,What is ps grep?,"ps - list processes. -e - show all processes, not just those belonging to the user. -f - show processes in full format (more detailed than default) command 1 | command 2 - pass output of command 1 as input to command 2. grep find lines containing a pattern.",What is ps EF in Unix?,"This command is used to find the PID (Process ID, Unique number of the process) of the process. Each process will have the unique number which is called as PID of the process.",What does ps mean in Linux?,,What is ps grep Smon?,"so, if you see SMON is shown in ps command, then it means your instance is started for sure."
+https://stackoverflow.com/questions/30043949/raise-to-power-in-r,mathematical expressions - Raise to power in R,"<p>1: No difference. It is kept around to allow old S-code to continue to function. This is documented a Note in <strike><code>?Math</code></strike><code>?Arithmetic</code></p>
+<p>2: Yes: But you already know it:</p>
+<pre><code>`^`(x,y)
+#[1] 1024
+</code></pre>
+<p>In R the mathematical operators are really functions that the parser takes care of rearranging arguments and function names for you to simulate ordinary mathematical infix notation. Also documented at <code>?Math</code>.</p>
+<p>Edit: Let me add that knowing how R handles infix operators (i.e. two argument functions) is very important in understanding the use of the foundational infix [[ and [-functions as (functional) second arguments to <code>lapply</code> and <code>sapply</code>:</p>
+<pre><code>&gt; sapply( list( list(1,2,3), list(4,3,6) ), [[, 1)
+[1] 1 4
+&gt; firsts &lt;- function(lis) sapply(lis, [[, 1)
+&gt; firsts( list( list(1,2,3), list(4,3,6) ) )
+[1] 1 4
+</code></pre>",,,exponents in r,How do you do the power of 2 in R?,"In R, for the calculation of power we can simply use power operator ^ and this will be also used in case of generating a power sequence. For example, if we want to generate a power sequence from 1 to 5 of 2 then we can use the code 2^(1:5) this will result 2 4 8 16 32.",Is there a power function in R?,Logarithm and Power are two very important mathematical functions that help in the calculation of data that is growing exponentially with time.,How do you write the number e in R?,"In R programming, we can compute the value of e using the exp() function. The exp() function in R can return the exponential value of a number i.e. ex. Here x is passed to the function as a parameter. x can also represent a numeric Vector.",How do you write to the power of in R?,"The ""caret"" symbol (or ""hat"") is the exponent (to-the-power-of) operator (read x ^ y as "" x to the power of y ""). What will this evaluate to? Use brackets (actually parentheses) to group to force the order of evaluation if it differs from the default, or to set your own order."
+https://stackoverflow.com/questions/5229310/system-badimageformatexception-could-not-load-file-or-assembly,c# - System.BadImageFormatException: Could not load file or assembly,"<p>It seems that you are using the 64-bit version of the tool to install a 32-bit/x86 architecture application. Look for the 32-bit version of the tool here:</p>
+<pre><code>C:\Windows\Microsoft.NET\Framework\v4.0.30319
+</code></pre>
+<p>and it should install your 32-bit application just fine.</p>","<p>Try to configure the setting of your projects, it is usually due to x86/x64 architecture problems:</p>
+<p>Go and set your choice as shown: </p>
+<p><img alt= src=https://i.stack.imgur.com/hJYE9.png/></p>","<p>I found a different solution to this issue.  Apparently my IIS 7 did not have 32bit mode enabled in my Application Pool by default. </p>
+<p>To enable 32bit mode, open IIS and select your Application Pool.  Mine was named ASP.NET v4.0.<br/>
+Right click, go to Advanced Settings and change the section named:
+Enabled 32-bit Applications to true.  </p>
+<p>Restart your web server and try again.</p>
+<p>I found the fix from this blog reference:
+<a href=http://darrell.mozingo.net/2009/01/17/running-iis-7-in-32-bit-mode/ rel=noreferrer>http://darrell.mozingo.net/2009/01/17/running-iis-7-in-32-bit-mode/</a></p>
+<p>Additionally, you can change the settings on Visual Studio. In my case, I went to <code>Tools &gt; Options &gt; Projects and Solutions &gt; Web Projects</code> and checked <code>Use the 64 bit version of IIS Express for web sites and projects</code> - This was on VS Pro 2015. Nothing else fixed it but this.</p>",system badimageformatexception,What is System BadImageFormatException?,"System. BadImageFormatException has nothing to do with gifs or jpgs , but instead, occurs when a . NET application attempts to load a dynamic link library ( . dll ) or executable ( .exe ) that doesn't match the proper format that the current common language runtime ( CLR ) expects. System. BadImageFormatException has nothing to do with gifs or jpgs , but instead, occurs when a . NET application attempts to load a dynamic link library ( . dll ) or executable ( .exe ) that doesn't match the proper format that the current common language runtime ( CLR ) expects.System. BadImageFormatException has nothing to do with gifs or jpgs , but instead, occurs when a . NET application attempts to load a dynamic link library ( . dll ) or executable ( .exe ) that doesn't match the proper format that the current common language runtime ( CLR ) expects.",How do I resolve system BadImageFormatException?,"if your project is 64 bit, check if the loading dll is 64 too.
+if your project is 32 bit, check if the loading dll is 32 too.
+if the previous points are respected, check this weird Visual Studio option: Any CPU – Prefer 32 bit.",What is bad IL range?,"Exception type is BadImageFormatException , it's thrown when an assembly is corrupted (complete exception message should explain which assembly). There could be many and various reasons for this to happen: viruses, hardware failure, software bugs or a wrong action taken by the user.",How to fix system BadImageFormatException?,"SOLUTION: If you are on IIS7, Right Click/ Advanced Settings on the Specific Application Pool of the website and select True on Enable 32-Bit Applications. It should work. Compile the VS2005 Project with the same . Net Version as your VS2003 Project uses."
+https://stackoverflow.com/questions/3427132/how-to-get-first-character-of-string,javascript - How to get first character of string?,"<p>What you want is <a href=https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/charAt rel=noreferrer><code>charAt</code></a>.</p>
+<pre><code>var x = some string;
+alert(x.charAt(0)); // alerts s
+</code></pre>",,,javascript first character of string,How do you get the first character of a string?,The idea is to use charAt() method of String class to find the first and last character in a string. The charAt() method accepts a parameter as an index of the character to be returned. The first character in a string is present at index zero and the last character in a string is present at index length of string-1 .,How do you find a specific character in a string JavaScript?,"includes().
+indexOf().
+Regular expressions (regex).",What does charAt mean in JavaScript?,The charAt() method returns the character at a specified index (position) in a string. ... The index of the last character is string length - (See Examples below).,How do you get the first character of a string in Java?,The Java String charAt(int index) method returns the character at the specified index in a string. The index value that we pass in this method should be between 0 and (length of string-1). For example: s. charAt(0) would return the first character of the string represented by instance s.
+https://stackoverflow.com/questions/3602827/what-is-the-behavior-of-integer-division,c - What is the behavior of integer division?,"<blockquote>
+<p>Will result always be the floor of the division? What is the defined behavior?</p>
+</blockquote>
+<p>Not quite. It rounds toward 0, rather than flooring.</p>
+<blockquote>
+<p><strong>6.5.5 Multiplicative operators</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>6</strong> When integers are divided, the result of the / operator is the algebraic quotient with any
+fractional part discarded.<sup>88)</sup> If the quotient a/b is representable, the expression
+(a/b)*b + a%b shall equal a.</p>
+</blockquote>
+<p>and the corresponding footnote:</p>
+<blockquote>
+<ol start=88>
+<li>This is often called ‘‘truncation toward zero’’.</li>
+</ol>
+</blockquote>
+<p>Of course two points to note are:</p>
+<blockquote>
+<p><strong>3</strong> The usual arithmetic conversions are performed on the operands.</p>
+</blockquote>
+<p>and:</p>
+<blockquote>
+<p><strong>5</strong> The result of the / operator is the
+quotient from the division of the
+first operand by the second; the
+result of the % operator is the
+remainder. <em>In both operations, if the
+value of the second operand is zero,
+the behavior is undefined.</em></p>
+</blockquote>
+<p>[Note: Emphasis mine]</p>","<p>Dirkgently gives <a href=https://stackoverflow.com/questions/3602827/what-is-the-behavior-of-integer-division-in-c/3602857#3602857>an excellent description</a> of integer division in C99, but you should also know that in C89 integer division with a negative operand has an implementation-defined direction. </p>
+<p>From the ANSI C draft (3.3.5):</p>
+<blockquote>
+<p>If either operand is negative, whether the result of the / operator is the largest integer less than the algebraic quotient or the smallest integer greater than the algebraic quotient is implementation-defined, as is the sign of the result of the % operator.  If the quotient a/b is representable, the expression (a/b)*b + a%b shall equal a.</p>
+</blockquote>
+<p>So watch out with negative numbers when you are stuck with a C89 compiler.</p>
+<p>Its a fun fact that C99 chose truncation towards zero because that was how FORTRAN did it. See <a href=http://groups.google.com/group/comp.std.c/msg/3888950ced7530ff rel=noreferrer>this message</a> on comp.std.c.</p>","<p>Yes, the result is always truncated towards zero. It will round towards the smallest absolute value.</p>
+<pre><code>-5 / 2 = -2
+ 5 / 2 =  2
+</code></pre>
+<p>For unsigned and non-negative signed values, this is the same as floor (rounding towards -Infinity).</p>",integer division in c,integer division in c,"Syntax. The syntax for the div function in the C Language is: div_t div(int numerator, int denominator);
+Returns. The div function returns a structure with the resulting quotient and remainder based on the division calculation.
+Required Header.
+Applies To.
+Similar Functions.",Is there integer division in C?,"Integer division yields an integer result. ... C provides the remainder operator, %, which yields the remainder after integer division. The remainder operator is an integer operator that can be used only with integer operands. Integer Division and the Remainder Operator Integer division yields an integer result. ... C provides the remainder operator, %, which yields the remainder after integer division. The remainder operator is an integer operator that can be used only with integer operands.",What is integer division in programming?,"The % (integer divide) operator divides two numbers and returns the integer part of the result. The result returned has no fractional part (that is, no decimal point or zeros following it). ...",Does integer division round up or down C?,"It rounds toward 0, rather than flooring. 6 When integers are divided, the result of the / operator is the algebraic quotient with any fractional part discarded."
+https://stackoverflow.com/questions/2785612/c-what-does-the-colon-after-a-constructor-mean,"C++, What does the colon after a constructor mean?","<p>As others have said, its an initialisation list. You can use it for two things:</p>
+<ol>
+<li>Calling base class constructors</li>
+<li>Initialising member variables before the body of the constructor executes.</li>
+</ol>
+<p>For case #1, I assume you understand inheritance (if thats not the case, let me know in the comments). So you are simply calling the constructor of your base class.</p>
+<p>For case #2, the question may be asked: Why not just initialise it in the body of the constructor? The importance of the initialisation lists is particularly evident for <code>const</code> members. For instance, take a look at this situation, where I want to initialise <code>m_val</code> based on the constructor parameter:</p>
+<pre><code>class Demo
+{
+    Demo(int&amp; val) 
+     {
+         m_val = val;
+     }
+private:
+    const int&amp; m_val;
+};
+</code></pre>
+<p>By the C++ specification, this is illegal. We cannot change the value of a <code>const</code> variable in the constructor, because it is marked as const. So you can use the initialisation list:</p>
+<pre><code>class Demo
+{
+    Demo(int&amp; val) : m_val(val)
+     {
+     }
+private:
+    const int&amp; m_val;
+};
+</code></pre>
+<p>That is the only time that you can change a const member variable. And as Michael noted in the comments section, it is also the only way to initialise a reference that is a class member.</p>
+<p>Outside of using it to initialise <code>const</code> member variables, it seems to have been generally accepted as the way of initialising variables, so its clear to other programmers reading your code.</p>",<p>This is called an initialization list.  It is for passing arguments to the constructor of a parent class.  Here is a good link explaining it: <a href=http://www.cprogramming.com/tutorial/initialization-lists-c++.html rel=noreferrer>Initialization Lists in C++</a></p>,"<p>Its called an initialization list. An initializer list is how you pass arguments to your member variables constructors and for passing arguments to the parent classs constructor.</p>
+<p>If you use <code>=</code> to assign in the constructor body, first the default constructor is called, then the assignment operator is called. This is a bit wasteful, and sometimes theres no equivalent assignment operator.</p>",c++ colon,What is the colon in C++?,Two colons (::) are used in C++ as a scope resolution operator. This operator gives you more freedom in naming your variables by letting you distinguish between variables with the same name.,Why is colon used in constructor in C++?,You can use it for two things: Calling base class constructors. Initialising member variables before the body of the constructor executes.,What is colon in C programming?,"Basically, the number after the colon describes how many bits that field uses. Here is a quote from MSDN describing bit fields: The constant-expression specifies the width of the field in bits.",What is the colon after constructor C++?,"As others have said, it's an initialisation list. You can use it for two things: Calling base class constructors. Initialising member variables before the body of the constructor executes."
+https://stackoverflow.com/questions/45615591/how-does-only-at-before-action-work-in-rails,How does `only:` at `before_action` work in Rails?,"<p>The <code>only</code> option of <code>before_action</code> defines one action OR a list of actions when the method/block will be executed first.</p>
+<p>Ex:</p>
+<pre><code># defined actions: [:show, :edit, :update, :destroy]
+before_action :set_newsletter_email, only: [:show, :edit]
+</code></pre>
+<p>The <code>set_newsletter_email</code> method will be called just before the <code>show</code> and <code>edit</code> actions.</p>
+<hr/>
+<p>The opposite option <code>except</code> define when NOT to execute the method/block.</p>
+<pre><code># defined actions: [:show, :edit, :update, :destroy]
+before_action :set_newsletter_email, except: [:show, :edit]
+</code></pre>
+<p>The <code>set_newsletter_email</code> method will be called for all existing actions EXCEPT <code>show</code> and <code>edit</code>.</p>
+<hr/>
+<p><code>only</code> / <code>except</code> is just a kind of whitelist/blacklist.</p>","<p>Option <code>:only</code> runs a method, :set_newsletter_email in this example, when any of the action defined in the list in square brackets <code>[:show, :edit, :update, :destroy]</code> is called in the current controller and runs before the actions is run. Any other action defined in the controller will not execute <code>:set_newsletter_email</code> method.</p>
+<p>You can also do the opposite with <code>:except</code> option to define method that will run on every actions defined in the controller except the ones that are listed.</p>
+<p>You can also do <code>after_action</code> that will run after the action in the controller</p>
+<p>You can read about the filters and all the options here:
+<a href=http://guides.rubyonrails.org/action_controller_overview.html#filters rel=nofollow noreferrer>http://guides.rubyonrails.org/action_controller_overview.html#filters</a></p>","<p>When a user navigates only to those routes, it will trigger the <code>:set_newsletter_email</code> function, usually at the end of that controller file.</p>
+<p>So when the user navigates to the index method, it will not trigger it because <code>:set_newsletter_email</code> is <strong>only</strong> called for the methods on brackets.</p>
+<p>In this case that callback is needed because it sets the resource in the single resource views before it is rendered.</p>
+<p>For example:</p>
+<p><code>/newsletter/2</code> route will trigger the <code>:set_newsletter_email</code> that will first get the id from the link params and then it will look for the resource and set an instance variable with it.</p>
+<p>I dont know what is your concern about security in this case, but this callback only gets the id param to set the resource and because youre using scaffolds it also generates a params function (also at the end of the file) that whitelists the parameters you defined earlier while generating the scaffold.</p>
+<p>You can find more info here: <a href=http://api.rubyonrails.org/classes/AbstractController/Callbacks/ClassMethods.html rel=nofollow noreferrer>http://api.rubyonrails.org/classes/AbstractController/Callbacks/ClassMethods.html</a></p>
+<p></p>",rails before_action,What does Before_action do in Rails?,The only option of before_action defines one action OR a list of actions when the method/block will be executed first. The set_newsletter_email method will be called just before the show and edit actions. The opposite option except define when NOT to execute the method/block.,What are filters in Rails?,Rails filters are methods that run before or after a controller's action method is executed. They are helpful when you want to ensure that a given block of code runs with whatever action method is called.,What are controllers in Rails?,"The Rails controller is the logical center of your application. It coordinates the interaction between the user, the views, and the model. The controller is also a home to a number of important ancillary services. It is responsible for routing external requests to internal actions.",What are actions in Rails?,"Rails defines actions as public methods of a controller class. So by default, all of a controller's class methods are actions and available via publicly routed requests. The solution shows a situation in which you might not want all class methods publicly accessible."
+https://stackoverflow.com/questions/23870808/oserror-errno-13-permission-denied,python - OSError - Errno 13 Permission denied,"<p>You need to change the directory permission so that web server process can change the directory.</p>
+<ul>
+<li><p>To change ownership of the directory, use <code>chown</code>:</p>
+<pre><code>chown -R user-id:group-id /path/to/the/directory
+</code></pre></li>
+<li><p>To see which user own the web server process (change <code>httpd</code> accordingly):</p>
+<pre><code>ps aux | grep httpd | grep -v grep
+</code></pre>
+<p>OR</p>
+<pre><code>ps -efl | grep httpd | grep -v grep
+</code></pre></li>
+</ul>","<p>This may also happen if you have a slash before the folder name:</p>
+<pre><code>path = /folder1/folder2
+
+OSError: [Errno 13] Permission denied: /folder1
+</code></pre>
+<p>comes up with an error but this one works fine:</p>
+<pre><code>path = folder1/folder2
+</code></pre>","<p>Probably you are facing problem when a download request is made by the maybe_download function call in base.py file.</p>
+<p>There is a conflict in the permissions of the temporary files and I myself couldnt work out a way to change the permissions, but was able to work around the problem.</p>
+<p>Do the following...</p>
+<ul>
+<li>Download the four .gz files of the MNIST data set from the link ( <a href=http://yann.lecun.com/exdb/mnist/ rel=nofollow noreferrer>http://yann.lecun.com/exdb/mnist/</a> )</li>
+<li>Then make a folder names MNIST_data (or your choice in your working directory/ site packages folder in the tensorflow\examples folder).</li>
+<li>Directly copy paste the files into the folder.</li>
+<li>Copy the address of the folder (it probably will be 
+( C:\Python\Python35\Lib\site-packages\tensorflow\examples\tutorials\mnist\MNIST_data  ))</li>
+<li>Change the \ to / as \ is used for escape characters, to access the folder locations.</li>
+<li>Lastly, if you are following the tutorials, your call function would be <strong>( mnist = input_data.read_data_sets(MNIST_data/, one_hot=True) )</strong> ;
+change the <strong>MNIST_data/</strong> parameter to your <strong>folder location</strong>. As in my case would be <em>( mnist = input_data.read_data_sets(C:/Python/Python35/Lib/site-packages/tensorflow/examples/tutorials/mnist/MNIST_data, one_hot=True) )</em></li>
+</ul>
+<p>Then its all done.
+Hope it works for you.</p>",errno 13 permission denied,How do I fix errno 13 Permission denied?,We can solve this error by Providing the right permissions to the file using chown or chmod commands and also ensuring Python is running in the elevated mode permission .,What is Permission denied Code 13?,"(13) Permission Denied. Error 13 indicates a filesystem permissions problem. That is, Apache was denied access to a file or directory due to incorrect permissions. It does not, in general, imply a problem in the Apache configuration files.",How do I fix permission error in Pycharm?,"The PermissionError: [errno ] permission denied error occurs when you try to access a file from Python without having the necessary permissions. To fix this error, use the chmod or chown command to change the permissions of the file so that the right user and/or group can access the file.",What is the significance of Errno 13 in Unix?,This error code indicates that the current user did not have permission to access an operating system file. This error usually occurs if the user does not have read or write permission on a file (e.g. PERSON. RRN) or a directory (e.g. the directory containing .
+https://stackoverflow.com/questions/8289805/getting-rid-of-bullet-points-from-ul,html - Getting rid of bullet points from <ul>,"<p>Assuming that didnt work, you might want to combine the <code>id</code>-based selector with the <code>li</code> in order to apply the css to the <code>li</code> elements:</p>
+<pre><code>#otis li {
+    list-style-type: none;
+}
+</code></pre>
+<p>Reference:</p>
+<ul>
+<li><a href=https://developer.mozilla.org/en/CSS/list-style-type rel=noreferrer><code>list-style-type</code> at the Mozilla Developer Center</a>.</li>
+</ul>","<p>I had the same extreme irritating problem myself since the script did not take any notice of my styelsheet.
+So I wrote:</p>
+<pre><code>&lt;ul style=list-style-type: none;&gt;
+</code></pre>
+<p>That did not work. So, <strong>in addition</strong>, I wrote:</p>
+<pre><code>&lt;li style=list-style-type: none;&gt;
+</code></pre>
+<p>Voila! it worked!</p>","<p>The following code</p>
+<p></p><div class=snippet data-babel=false data-console=false data-hide=false data-lang=js>
+<div class=snippet-code>
+<pre class=snippet-code-css lang-css prettyprint-override><code>#menu li{
+  list-style-type: none;
+}</code></pre>
+<pre class=snippet-code-html lang-html prettyprint-override><code>&lt;ul id=menu&gt;
+    &lt;li&gt;Root node 1&lt;/li&gt;
+    &lt;li&gt;Root node 2&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+</div>
+</div>
+<p>will produce this output:</p>
+<p><img alt=output is src=https://i.stack.imgur.com/Tj08L.png/></p>",get rid of bullet points css,get rid of bullet points css,"It is possible to remove bullets from ul lists by setting the CSS list-style-type property to none . As a result, the bullets disappear from the list. Note: to get rid of the automatic indentation, you can also set margin and padding to 0.",,,,,,
+https://stackoverflow.com/questions/32736915/how-to-clear-office-clipboard-with-vba,ms word - How to Clear Office Clipboard with VBA,"<p>Would a simple</p>
+<pre><code>Application.CutCopyMode = False
+</code></pre>
+<p>work for your situation, or is this option not viable?</p>","<p>Saw this on another post, and I have tested it with Word VBA.</p>
+<pre><code>Clearing the Office Clipboard
+
+    Dim oData   As New DataObject object to use the clipboard
+
+    oData.SetText text:=Empty Clear
+    oData.PutInClipboard take in the clipboard to empty it
+</code></pre>
+<p>Just copy and paste into your code where ever you need to clear the Clipboard.</p>
+<p>Another thing I noticed is that when I <code>.Quit</code> a program, say Excel, it keeps asking me if I want to keep the data is the Clipboard. A work around is to clear the clipboard using the above stated code. See below:</p>
+<pre><code>Clearing the Office Clipboard
+
+    Dim oData   As New DataObject object to use the clipboard
+
+    oData.SetText text:=Empty Clear
+    oData.PutInClipboard take in the clipboard to empty it
+
+
+You can also just remove the Alert Messages from the Excel Program while    
+the code is running
+Remove alert Messages from the Excel Program when closing
+ExcelProgram.DisplayAlerts = False   
+
+Quiting the Excel Application
+ExcelProgram.Quit
+</code></pre>
+<p>I used the above example in a VBA code to import data from an Excel File. See <a href=https://stackoverflow.com/questions/32738849/copying-data-from-an-excel-file-in-word-using-word-vba title=Link to Another Post for the Excel Data importing>here</a></p>","<p>Heres a solution that worked for me.  This is based on a post by by Zack Barresse on <a href=http://www.vbaexpress.com/kb/getarticle.php?kb_id=205 rel=nofollow noreferrer title=VBAexpress.com>VBAexpress.com</a>:</p>
+<pre><code>Public Declare Function OpenClipboard Lib user32 (ByVal hwnd As Long) As Long
+Public Declare Function EmptyClipboard Lib user32 () As Long
+Public Declare Function CloseClipboard Lib user32 () As Long
+
+Public Sub ClearClipboard()
+    OpenClipboard (0&amp;)
+    EmptyClipboard
+    CloseClipboard
+End Sub
+</code></pre>
+<p>After copying this function to your VBA project, use <code>ClearClipboard</code> to clear it.</p>",excel vba clear clipboard,How do I clear the clipboard in excel VBA?,"However, this is different from the standard Windows clipboard. To clear the Windows clipboard you can use the EmptyClipboard Function. Copy and paste the code below into a code module and run Sub TestClipboardClear to clear the Windows clipboard.",How do I clear the clipboard in excel?,"On the Home tab, in the Clipboard group, click the Clipboard dialog box launcher.
+The Clipboard task pane appears on the left side of your spreadsheet and shows all clips in the clipboard.
+To clear the entire clipboard, click the Clear All button.",How do I clear excel VBA cache?,"Using the VBA Code Double-click on “ThisWorkbook” in the “Project” pane to the left. This will open the code window. To start the code, press F5. This will clear the pivot tables' cache in the active workbook.
+
+Double-click on “ThisWorkbook” in the “Project” pane to the left. This will open the code window. To start the code, press F5. This will clear the pivot tables' cache in the active workbook.",How do I access the clipboard in excel VBA?,"On the Macro editor menu bar on the top, click on “Tools” In the menu, click on “References” Click the “Microsoft Forms Object Library” Press OK."

@@ -1,0 +1,964 @@
+url,title,best_answer_1,keyword,question_1,answer_1,question_2,answer_2,question_3,answer_3,question_4,answer_4,best_answer_2,best_answer_3
+https://stackoverflow.com/questions/7760951/gettimeofday-c-inconsistency,time - gettimeofday() C++ Inconsistency,"<p>Assuming youre talking about the <em>resolution</em> of the data returned, <a href=http://pubs.opengroup.org/onlinepubs/009604599/functions/gettimeofday.html rel=nofollow noreferrer>the POSIX specification</a> for <code>gettimeofday</code> states:</p>
+<blockquote>
+<p>The resolution of the system clock is unspecified.</p>
+</blockquote>
+<p>This is due to the fact that systems may have a widely varying capacity for tracking small time periods. Even the ISO standard <code>clock()</code> function includes caveats like this.</p>
+<p>If youre talking about how <em>long</em> it takes to call it, the standard makes no guarantees about performance along those lines. An implementation is perfectly free to wait 125 <em>minutes</em> before giving you the time although I doubt such an implementation would have much market success :-)</p>
+<hr/>
+<p>As an example of the limited resolution, I typed in the following code to check it on my system:</p>
+<pre><code>#include &lt;stdio.h&gt;
+#include &lt;sys/time.h&gt;
+
+#define NUMBER 30
+
+int main (void) {
+    struct timeval tv[NUMBER];
+    int count[NUMBER], i, diff;
+
+    gettimeofday (&amp;tv[0], NULL);
+
+    for (i = 1; i &lt; NUMBER; i++) {
+        gettimeofday (&amp;tv[i], NULL);
+        count[i] = 1;
+        while ((tv[i].tv_sec == tv[i-1].tv_sec) &amp;&amp;
+            (tv[i].tv_usec == tv[i-1].tv_usec))
+        {
+            count[i]++;
+            gettimeofday (&amp;tv[i], NULL);
+        }
+    }
+
+    printf (%2d: secs = %d, usecs = %6d\n, 0, tv[0].tv_sec, tv[0].tv_usec);
+    for (i = 1; i &lt; NUMBER; i++) {
+        diff = (tv[i].tv_sec - tv[i-1].tv_sec) * 1000000;
+        diff += tv[i].tv_usec - tv[i-1].tv_usec;
+
+        printf (%2d: secs = %d, usecs = %6d, count = %5d, diff = %d\n,
+            i, tv[i].tv_sec, tv[i].tv_usec, count[i], diff);
+    }
+
+    return 0;
+}
+</code></pre>
+<p>The code basically records the changes in the underlying time, keeping a count of how many calls it took to <code>gettimeofday()</code> for the time to actually change. This is on a reasonably powerful machine so its not short on processing power (the count indicates how often it was able to call <code>gettimeofday()</code> for each time quantum, around the 5,800 mark, ignoring the first since we dont know <em>when</em> in that quantum we started the measurements).</p>
+<p>The output was:</p>
+<pre><code> 0: secs = 1318554836, usecs = 990820
+ 1: secs = 1318554836, usecs = 991820, count =  5129, diff = 1000
+ 2: secs = 1318554836, usecs = 992820, count =  5807, diff = 1000
+ 3: secs = 1318554836, usecs = 993820, count =  5901, diff = 1000
+ 4: secs = 1318554836, usecs = 994820, count =  5916, diff = 1000
+ 5: secs = 1318554836, usecs = 995820, count =  5925, diff = 1000
+ 6: secs = 1318554836, usecs = 996820, count =  5814, diff = 1000
+ 7: secs = 1318554836, usecs = 997820, count =  5814, diff = 1000
+ 8: secs = 1318554836, usecs = 998820, count =  5819, diff = 1000
+ 9: secs = 1318554836, usecs = 999820, count =  5901, diff = 1000
+10: secs = 1318554837, usecs =    820, count =  5815, diff = 1000
+11: secs = 1318554837, usecs =   1820, count =  5866, diff = 1000
+12: secs = 1318554837, usecs =   2820, count =  5849, diff = 1000
+13: secs = 1318554837, usecs =   3820, count =  5857, diff = 1000
+14: secs = 1318554837, usecs =   4820, count =  5867, diff = 1000
+15: secs = 1318554837, usecs =   5820, count =  5852, diff = 1000
+16: secs = 1318554837, usecs =   6820, count =  5865, diff = 1000
+17: secs = 1318554837, usecs =   7820, count =  5867, diff = 1000
+18: secs = 1318554837, usecs =   8820, count =  5885, diff = 1000
+19: secs = 1318554837, usecs =   9820, count =  5864, diff = 1000
+20: secs = 1318554837, usecs =  10820, count =  5918, diff = 1000
+21: secs = 1318554837, usecs =  11820, count =  5869, diff = 1000
+22: secs = 1318554837, usecs =  12820, count =  5866, diff = 1000
+23: secs = 1318554837, usecs =  13820, count =  5875, diff = 1000
+24: secs = 1318554837, usecs =  14820, count =  5925, diff = 1000
+25: secs = 1318554837, usecs =  15820, count =  5870, diff = 1000
+26: secs = 1318554837, usecs =  16820, count =  5877, diff = 1000
+27: secs = 1318554837, usecs =  17820, count =  5868, diff = 1000
+28: secs = 1318554837, usecs =  18820, count =  5874, diff = 1000
+29: secs = 1318554837, usecs =  19820, count =  5862, diff = 1000
+</code></pre>
+<p>showing that the resolution seems to be limited to no better than one thousand microseconds. Of course, your system may be different to that, the bottom line is that it depends on your implementation and/or environment.</p>
+<hr/>
+<p>One way to get around this type of limitation is to not do something once but to do it <code>N</code> times and then divide the elapsed time by <code>N</code>.</p>
+<p>For example, lets say you call your function and the timer says it took 125 milliseconds, something that you suspect seems a little high. I would suggest then calling it a thousand times in a loop, measuring the time it took for the entire thousand.</p>
+<p>If that turns out to be 125 seconds then, yes, its probably slow. However, if it takes only 27 seconds, that would indicate your timer resolution is whats causing the seemingly large times, since that would equate to 27 milliseconds per iteration, on par with what youre seeing from the other results.</p>
+<p>Modifying your code to take this into account would be along the lines of:</p>
+<pre><code>int main() {
+    const int count = 1000;
+    timeval tim;
+
+    gettimeofday(&amp;tim, NULL);
+    double t1 = 1.0e6 * tim.tv_sec + tim.tv_usec;
+
+    int v;
+    for (int i = 0; i &lt; count; ++i)
+        v = a(3, 4);           
+
+    gettimeofday(&amp;tim, NULL);
+    double t2 = 1.0e6 * tim.tv_sec + tim.tv_usec;
+
+    cout &lt;&lt; v &lt;&lt; \n &lt;&lt; ((t2 - t1) / count) &lt;&lt; \n;
+
+    return 0;
+}
+</code></pre>",gettimeofday c++,What is Gettimeofday C?,"Use the gettimeofday Function to Calculate Elapsed Time in a Code Block in C. The gettimeofday function is POSIX compliant function that retrieves the current time up to a microseconds precision. The function takes two arguments; one is of the type struct timeval , and the other is struct timezone .",What is Tv_usec?,"0. long int tv_usec This is the rest of the elapsed time (a fraction of a second), represented as the number of microseconds. It is always less than one million. tv_sec will handle the full seconds, while tv_usec handles the microseconds.",What is Timeval?,"Data Type: struct timeval. struct timeval is an older type for representing a simple calendar time, or an elapsed time, with sub-second resolution. It is almost the same as struct timespec , but provides only microsecond resolution. It is declared in sys/time.h and has the following members: time_t tv_sec.",What is Suseconds_t?,"integer typeA short integer can represent a whole number that may take less storage, while having a smaller range, compared with a standard integer on the same machine. In C, it is denoted by short. It is required to be at least 16 bits, and is often smaller than a standard integer, but this is not required.https://en.wikipedia.org › wiki › Integer_(computer_science)Integer (computer science) - Wikipedia
+integer type
+integer typeinteger typeA short integer can represent a whole number that may take less storage, while having a smaller range, compared with a standard integer on the same machine. In C, it is denoted by short. It is required to be at least 16 bits, and is often smaller than a standard integer, but this is not required.https://en.wikipedia.org › wiki › Integer_(computer_science)Integer (computer science) - Wikipedia
+The type useconds_t shall be an unsigned integer typeinteger typeA short integer can represent a whole number that may take less storage, while having a smaller range, compared with a standard integer on the same machine. In C, it is denoted by short. It is required to be at least 16 bits, and is often smaller than a standard integer, but this is not required.https://en.wikipedia.org › wiki › Integer_(computer_science)Integer (computer science) - Wikipedia capable of storing values at least in the range [0, 1000000]. The type suseconds_t shall be a signed integer type capable of storing values at least in the range [-1, 1000000].
+› wiki › Integer_(computer_science)
+The type useconds_t shall be an unsigned integer type capable of storing values at least in the range [0, 1000000]. The type suseconds_t shall be a signed integer type capable of storing values at least in the range [-1, 1000000].The type useconds_t shall be an unsigned integer typeinteger typeA short integer can represent a whole number that may take less storage, while having a smaller range, compared with a standard integer on the same machine. In C, it is denoted by short. It is required to be at least 16 bits, and is often smaller than a standard integer, but this is not required.https://en.wikipedia.org › wiki › Integer_(computer_science)Integer (computer science) - Wikipedia capable of storing values at least in the range [0, 1000000]. The type suseconds_t shall be a signed integer type capable of storing values at least in the range [-1, 1000000].",,
+https://stackoverflow.com/questions/10060098/getting-only-response-header-from-http-post-using-curl,Getting only response header from HTTP POST using cURL,"<pre><code>-D, --dump-header &lt;file&gt;
+       Write the protocol headers to the specified file.
+
+       This  option  is handy to use when you want to store the headers
+       that a HTTP site sends to you. Cookies from  the  headers  could
+       then  be  read  in  a  second  curl  invocation by using the -b,
+       --cookie option! The -c, --cookie-jar option is however a better
+       way to store cookies.
+</code></pre>
+<p>and</p>
+<pre><code>-S, --show-error
+       When used with -s, --silent, it makes curl show an error message if it fails.
+</code></pre>
+<p>and </p>
+<pre><code>-L/--location
+      (HTTP/HTTPS) If the server reports that the requested page has moved to a different location (indicated with a Location: header and a 3XX response
+      code), this option will make curl redo the request on the new place. If used together with -i/--include or -I/--head, headers from  all  requested
+      pages  will  be  shown.  When authentication is used, curl only sends its credentials to the initial host. If a redirect takes curl to a different
+      host, it won’t be able to intercept the user+password. See also --location-trusted on how to change this. You can limit the amount of redirects to
+      follow by using the --max-redirs option.
+
+      When curl follows a redirect and the request is not a plain GET (for example POST or PUT), it will do the following request with a GET if the HTTP
+      response was 301, 302, or 303. If the response code was any other 3xx code, curl will re-send the following  request  using  the  same  unmodified
+      method.
+</code></pre>
+<p>from the man page.  so </p>
+<pre><code>curl -sSL -D - www.acooke.org -o /dev/null
+</code></pre>
+<p>follows redirects, dumps the headers to stdout and sends the data to /dev/null (thats a GET, not a POST, but you can do the same thing with a POST - just add whatever option youre already using for POSTing data)</p>
+<p>note the <code>-</code> after the <code>-D</code> which indicates that the output file is stdout.</p>",curl headers only,How do I get curl response headers?,"In default mode, curl doesn't display request or response headers, only displaying the HTML contents. To display both request and response headers, we can use the verbose mode curl -v or curl -verbose . In the resulting output: The lines beginning with > indicate request headers.",How do I get the response header location?,"To check this Location in action go to Inspect Element -> Network check the response header for Location like below, Location is highlighted you can see.",How do you pass a header value in curl command?,To pass multiple headers in a curl request you simply add additional -H or --header to your curl command.,How do I find my response code?,"Recrawl URLs.
+Open URLs in external services (for example, Serpstat, Ahrefs, Google PageSpeed)
+Try other reports.","<p>The other answers require the response body to be downloaded. But theres a way to make a POST request that will only fetch the header:</p>
+<pre><code>curl -s -I -X POST http://www.google.com
+</code></pre>
+<p>An <code>-I</code> by itself performs a HEAD request which can be overridden by <code>-X POST</code> to perform a POST (or any other) request and still only get the header data.</p>","<p>The Following command displays extra informations</p>
+<pre><code>curl -X POST http://httpbin.org/post -v &gt; /dev/null
+</code></pre>
+<p>You can ask server to send just HEAD, instead of full response</p>
+<pre><code>curl -X HEAD -I http://httpbin.org/
+</code></pre>
+<p><code>Note:</code> In some cases, server may send different headers for POST and HEAD. But in almost all cases headers are same.</p>"
+https://stackoverflow.com/questions/17023235/eclipse-cdt-project-built-but-launch-failed-binary-not-found,binaries - Eclipse CDT project built but Launch Failed. Binary Not Found,"<p>This happened to me and I found a solution, see if this works for you:</p>
+<p>Once you have built your project with the hammer icon:</p>
+<ol>
+<li>select Run.</li>
+<li>Run Configurations.</li>
+<li>Choose C++ Application.</li>
+<li>Click on the New Launch Configuration icon on the top left of the open window.</li>
+<li>Select Browse under the C/C++ Application.</li>
+<li>Browse to the folder where you made your project initially.</li>
+<li>Enter the Debug folder.</li>
+<li>Click on the binary file with the same name as the project. </li>
+<li>Select OK. </li>
+<li>Click Apply to confirm the link you just set. </li>
+<li>Close that window.</li>
+</ol>
+<p>Afterwards you should be able to run the project as much as youd like.</p>
+<p>Hopefully this works for you.</p>",launch failed binary not found,How to solve eclipse launch failed binary not found?,Try doing the following steps : Click on Run -> Run Configuration -> C/C++ Application -> click on project_name debug -> click on browse and select your project file -> Press Ok -> below it Browse binary file ( Goto your Eclipse Workspace and select your project file -> You'll find two files,How can I use C language in eclipse?,"Step 0: Launch Eclipse. Start Eclipse by running "" eclipse.exe "" in the Eclipse installed directory.
+Step 1: Create a new C++ Project.
+Step 2: Write a Hello-world C++ Program.
+Step 3: Compile/Build.
+Step 4: Run.",What are binaries in Eclipse?,"In a double star, or binary, system (see binary star), each star attracts the other gravitationally and orbits about a unique point, the centre of mass of the pair. ... If the plane of their orbits lies edge-on toward Earth, each star will be seen to eclipse the other once each orbital period.",How do I get C C++ in Eclipse?,"Right-click the project and select Build Project. Finally, right-click the project and select run as and then Local C/C++ application. This should run your application.",<p>Simply select the project and press <kbd>CTRL</kbd> + <kbd>B</kbd>.</p>,"<p>I think I found solution - proper binary parser must be selected so Eclipse can recognize the executable:</p>
+<p><strong>Select the project, then right-click. Project-&gt;Properties-&gt;C/C++ Build-&gt;Settings-&gt;Binary Parsers, PE Windows Parser.</strong></p>
+<p>I.e. if Cygwin compiler is used then Cygwin parser should be used.</p>
+<p>That worked for me at least for Cross-compiler (both on Windows 7 and Ubuntu 12.04). On Linux, I use <strong>Elf</strong> parser.</p>
+<p>If anyone has the better solution, please advise.</p>"
+https://stackoverflow.com/questions/42879364/how-to-wait-for-an-animation-to-finished-in-unity-c-sharp,unity3d - How to wait for an animation to finished in Unity C#,"<p>You can use Unitys Animation Events (<a href=https://docs.unity3d.com/Manual/script-AnimationWindowEvent.html rel=nofollow noreferrer title=link>https://docs.unity3d.com/Manual/script-AnimationWindowEvent.html</a>).</p>
+<p>They are markers that can be placed in your animation timeline and allow you to specify a function that will be called.</p>",unity wait for animation to finish,unity wait for animation to finish,"Add an Animation Event to your last key frame.
+In Update you can continuously check if the animation has completed.
+Start a coroutine that yields and waits for the animation to complete.
+Use StateMachineBehaviour.",How do I know if animation is finished in Unity?,"public IEnumerator CheckAnimationCompleted(string CurrentAnim, Action Oncomplete)
+while (!Animator. GetCurrentAnimatorStateInfo(0). IsName(CurrentAnim))
+yield return null;
+if (Oncomplete != null)
+Oncomplete();
+}",How do you end an animation in unity?,"To stop an animator from playing the animation, simply, disable the animator component using this code: myAnimation.",How do you mirror an animation in Unity?,"Select the animated Humanoid asset and go to the Animations tab.
+Find the Mirror checkbox on the bottom of the animation settings.
+Check the Mirror checkbox and click on the Apply button.
+Mirroring animations works only for Humanoid rigs.","<p>What you can do to wait for the animation to finish is using the time the animation take to complete, which you can find on your animation looking at the inspector, you can simply wait that amount of time after you trigger the animation.</p>
+<p>So in your case it would look something like that :</p>
+<pre><code>private IEnumerator Die()
+{
+    // Play the animation for getting suck in
+    anim.SetTrigger(Shrink) 
+
+    yield return new WaitForSeconds(animationTime);
+
+    // Move this object somewhere off the screen
+
+}
+</code></pre>",
+https://stackoverflow.com/questions/2965747/why-do-i-get-an-unsupportedoperationexception-when-trying-to-remove-an-element-f,java - Why do I get an UnsupportedOperationException when trying to remove an element from a List?,"<p>Quite a few problems with your code:</p>
+<h3>On <code>Arrays.asList</code> returning a fixed-size list</h3>
+<p>From the API:</p>
+<blockquote>
+<p><a href=http://java.sun.com/javase/6/docs/api/java/util/Arrays.html#asList%28T...%29 rel=noreferrer><code>Arrays.asList</code></a>: Returns a <strong>fixed-size list</strong> backed by the specified array.</p>
+</blockquote>
+<p>You cant <code>add</code> to it; you cant <code>remove</code> from it. You cant structurally modify the <code>List</code>.</p>
+<h3>Fix</h3>
+<p>Create a <code>LinkedList</code>, which supports faster <code>remove</code>.</p>
+<pre><code>List&lt;String&gt; list = new LinkedList&lt;String&gt;(Arrays.asList(split));
+</code></pre>
+<hr/>
+<h3>On <code>split</code> taking regex</h3>
+<p>From the API:</p>
+<blockquote>
+<p><a href=http://java.sun.com/javase/6/docs/api/java/lang/String.html#split%28java.lang.String%29 rel=noreferrer><code>String.split(String regex)</code></a>: Splits this string around matches of the given <a href=http://java.sun.com/javase/6/docs/api/java/util/regex/Pattern.html#sum rel=noreferrer>regular expression</a>.</p>
+</blockquote>
+<p><code>|</code> is a regex metacharacter; if you want to split on a literal <code>|</code>, you must escape it to <code>\|</code>, which as a Java string literal is <code>\\|</code>.</p>
+<h3>Fix:</h3>
+<pre><code>template.split(\\|)
+</code></pre>
+<hr/>
+<h3>On better algorithm</h3>
+<p>Instead of calling <code>remove</code> one at a time with random indices, its better to generate enough random numbers in the range, and then traversing the <code>List</code> once with a <code>listIterator()</code>, calling <code>remove()</code> at appropriate indices. There are questions on stackoverflow on how to generate random but distinct numbers in a given range.</p>
+<p>With this, your algorithm would be <code>O(N)</code>.</p>",unsupportedoperationexception,What causes UnsupportedOperationException?,"The UnsupportedOperationException is one of the common exceptions that occur when we are working with some API of list implementation. It is thrown to indicate that the requested operation is not supported. This class is a member of the Java Collections Framework. ... ArrayList extends java.The UnsupportedOperationException is one of the common exceptions that occur when we are working with some API of list implementation. It is thrown to indicate that the requested operation is not supported. This class is a member of the Java Collections FrameworkJava Collections FrameworkGiven a Collection in Java, the task is to find the length or size of the collection. The Size of the different collections can be found with the size() method. This method returns the number of elements in this collection. This method does not take any parameters.https://www.geeksforgeeks.org › how-to-get-a-size-of-collecti...How to Get a Size of Collection in Java? - GeeksforGeeks. ... ArrayList extends java. › how-to-get-a-size-of-collecti... Java Collections Framework The UnsupportedOperationException is one of the common exceptions that occur when we are working with some API of list implementation. It is thrown to indicate that the requested operation is not supported. This class is a member of the Java Collections FrameworkJava Collections FrameworkGiven a Collection in Java, the task is to find the length or size of the collection. The Size of the different collections can be found with the size() method. This method returns the number of elements in this collection. This method does not take any parameters.https://www.geeksforgeeks.org › how-to-get-a-size-of-collecti...How to Get a Size of Collection in Java? - GeeksforGeeks. ... ArrayList extends java. Java Collections FrameworkGiven a Collection in Java, the task is to find the length or size of the collection. The Size of the different collections can be found with the size() method. This method returns the number of elements in this collection. This method does not take any parameters.https://www.geeksforgeeks.org › how-to-get-a-size-of-collecti...How to Get a Size of Collection in Java? - GeeksforGeeks Java Collections FrameworkJava Collections FrameworkGiven a Collection in Java, the task is to find the length or size of the collection. The Size of the different collections can be found with the size() method. This method returns the number of elements in this collection. This method does not take any parameters.https://www.geeksforgeeks.org › how-to-get-a-size-of-collecti...How to Get a Size of Collection in Java? - GeeksforGeeks",What is Java Lang UnsupportedOperationException?,"The UnsupportedOperationException is one of the common exceptions that occur when we are working with some API of list implementation. It is thrown to indicate that the requested operation is not supported. This class is a member of the Java Collections Framework. ... ArrayList extends java.The UnsupportedOperationException is one of the common exceptions that occur when we are working with some API of list implementation. It is thrown to indicate that the requested operation is not supported. This class is a member of the Java Collections FrameworkJava Collections FrameworkGiven a Collection in Java, the task is to find the length or size of the collection. The Size of the different collections can be found with the size() method. This method returns the number of elements in this collection. This method does not take any parameters.https://www.geeksforgeeks.org › how-to-get-a-size-of-collecti...How to Get a Size of Collection in Java? - GeeksforGeeks. ... ArrayList extends java. › how-to-get-a-size-of-collecti... Java Collections Framework The UnsupportedOperationException is one of the common exceptions that occur when we are working with some API of list implementation. It is thrown to indicate that the requested operation is not supported. This class is a member of the Java Collections FrameworkJava Collections FrameworkGiven a Collection in Java, the task is to find the length or size of the collection. The Size of the different collections can be found with the size() method. This method returns the number of elements in this collection. This method does not take any parameters.https://www.geeksforgeeks.org › how-to-get-a-size-of-collecti...How to Get a Size of Collection in Java? - GeeksforGeeks. ... ArrayList extends java. Java Collections FrameworkGiven a Collection in Java, the task is to find the length or size of the collection. The Size of the different collections can be found with the size() method. This method returns the number of elements in this collection. This method does not take any parameters.https://www.geeksforgeeks.org › how-to-get-a-size-of-collecti...How to Get a Size of Collection in Java? - GeeksforGeeks Java Collections FrameworkJava Collections FrameworkGiven a Collection in Java, the task is to find the length or size of the collection. The Size of the different collections can be found with the size() method. This method returns the number of elements in this collection. This method does not take any parameters.https://www.geeksforgeeks.org › how-to-get-a-size-of-collecti...How to Get a Size of Collection in Java? - GeeksforGeeks",What is an IllegalArgumentException in Java?,"An IllegalArgumentException is thrown in order to indicate that a method has been passed an illegal argument. This exception extends the RuntimeException class and thus, belongs to those exceptions that can be thrown during the operation of the Java Virtual Machine (JVM).",Why do I get an UnsupportedOperationException when trying to add an element from a list?,"Note: in general, when seeing that UnsupportedOperationException is being thrown by add , etc. it's typically an indication that some code is trying to modify a non-resizable or unmodifiable collection. For example, Collections. emptyList or Collections.","<p>This one has burned me many times. <code>Arrays.asList</code> creates an unmodifiable list.
+From the Javadoc: Returns a <em>fixed-size</em> list backed by the specified array.</p>
+<p>Create a new list with the same content:</p>
+<pre><code>newList.addAll(Arrays.asList(newArray));
+</code></pre>
+<p>This will create a little extra garbage, but you will be able to mutate it.</p>","<p>Probably because youre working with <a href=http://java.sun.com/j2se/1.5.0/docs/api/java/util/Collections.html#unmodifiableList(java.util.List) rel=noreferrer>unmodifiable wrapper</a>.</p>
+<p>Change this line:</p>
+<pre><code>List&lt;String&gt; list = Arrays.asList(split);
+</code></pre>
+<p>to this line:</p>
+<pre><code>List&lt;String&gt; list = new LinkedList&lt;&gt;(Arrays.asList(split));
+</code></pre>"
+https://stackoverflow.com/questions/512143/error-could-not-find-installable-isam,excel - Error: Could Not Find Installable ISAM,"<p>Place single quotes around the <code>Extended Properties</code>:</p>
+<pre><code>OleDbConnection oconn = 
+    new OleDbConnection(
+        @Provider=Microsoft.Jet.OLEDB.4.0;Data Source= + path + ;Extended Properties=Excel 8.0;HDR=YES;IMEX=1;;);
+</code></pre>
+<p>Try it, it really works.</p>",could not find installable isam,How to fix could not find installable ISAM?,"In the Workbook Connections dialog box, select the connection to the Access database, and then click Properties. In the Connection Properties dialog box, click the Definition tab. In the Connection Properties dialog box, click OK. At this point your data should be refreshed.",What is ISAM error?,"Sometimes when an error occurs while executing a SQL statement with an IBM Informix engine, a secondary error called the ISAM error will be generated in addition to the normal SQL error number. The ISAM error gives additional information about why the SQL error occurred. ... The ISAM error will be placed in errornum.",Could not connect to database could not find installable ISAM?,"On the Data ribbon, click the Connections button. In the Workbook Connections dialog box, select the connection to the Access database, and then click Properties. ... In the Connection Properties dialog box, click OK. At this point your data should be refreshed.",How to fix could not find installable isam?,"In the Workbook Connections dialog box, select the connection to the Access database, and then click Properties. In the Connection Properties dialog box, click the Definition tab. In the Connection Properties dialog box, click OK. At this point your data should be refreshed.","<p>Try putting single quotes around the data source:</p>
+<pre><code>Provider=Microsoft.Jet.OLEDB.4.0;Data Source=D:\ptdb\Program Tracking Database.mdb;
+</code></pre>
+<p>The problem tends to be white space which does have meaning to the parser.</p>
+<p>If you had other attributes (e.g., Extended Properties), their values may also have to be enclosed in single quotes:</p>
+<pre><code>Provider=Microsoft.Jet.OLEDB.4.0;Data Source=D:\ptdb\Program Tracking Database.mdb; Extended Properties=Excel 8.0;HDR=YES;IMEX=1;;
+</code></pre>
+<p>You could equally well use double quotes; however, youll probably have to escape them, and I find that more of a <em>Pain In The Algorithm</em> than using singles.</p>","<p>Just use Jet OLEDB: in your connection string.
+it solved for me.</p>
+<p>an example is below:</p>
+<pre><code>Provider=Microsoft.Jet.OLEDB.4.0;Persist Security Info=False;Data Source=E:\Database.mdb;Jet OLEDB:Database Password=b10w
+</code></pre>"
+https://stackoverflow.com/questions/83439/remove-spaces-from-stdstring-in-c,Remove spaces from std::string in C++,"<p>The best thing to do is to use the algorithm <a href=http://en.cppreference.com/w/cpp/algorithm/remove rel=noreferrer><code>remove_if</code></a> and isspace:</p>
+<pre><code>remove_if(str.begin(), str.end(), isspace);
+</code></pre>
+<p>Now the algorithm itself cant change the container(only modify the values), so it actually shuffles the values around and returns a pointer to where the end now should be. So we have to call string::erase to actually modify the length of the container:</p>
+<pre><code>str.erase(remove_if(str.begin(), str.end(), isspace), str.end());
+</code></pre>
+<p>We should also note that remove_if will make at most one copy of the data. Here is a sample implementation:</p>
+<pre><code>template&lt;typename T, typename P&gt;
+T remove_if(T beg, T end, P pred)
+{
+    T dest = beg;
+    for (T itr = beg;itr != end; ++itr)
+        if (!pred(*itr))
+            *(dest++) = *itr;
+    return dest;
+}
+</code></pre>",c++ remove spaces from string,c++ remove spaces from string,Use erase-remove Idiom to Remove Spaces From String in C++ One of the most useful methods for range manipulation in C++ is the erase-remove idiom which consists of two functions - std::erase (built-in function for the most STL containers) and std::remove (the part of the STL algorithms library). One of the most useful methods for range manipulation in C++ is the erase-remove idiom which consists of two functions - std::erase (built-in function for the most STL containers) and std::remove (the part of the STL algorithms library).,,,,,,,"<pre><code>std::string::iterator end_pos = std::remove(str.begin(), str.end(),  );
+str.erase(end_pos, str.end());
+</code></pre>","<p>From <a href=http://www.gamedev.net/community/forums/topic.asp?topic_id=359650 rel=noreferrer>gamedev</a></p>
+<pre><code>string.erase(std::remove_if(string.begin(), string.end(), std::isspace), string.end());
+</code></pre>"
+https://stackoverflow.com/questions/3235850/how-to-enter-a-multi-line-command,powershell - How to enter a multi-line command,"<p>You can use a space followed by the grave accent (backtick):</p>
+<pre><code>Get-ChildItem -Recurse `
+  -Filter *.jpg `
+  | Select LastWriteTime
+</code></pre>
+<p>However, this is only ever necessary in such cases as shown above. Usually you get automatic line continuation when a command cannot syntactically be complete at that point. This includes starting a new pipeline element:</p>
+<pre><code>Get-ChildItem |
+  Select Name,Length
+</code></pre>
+<p>will work without problems since after the <code>|</code> the command cannot be complete since its missing another pipeline element. Also opening curly braces or any other kind of parentheses will allow line continuation directly:</p>
+<pre><code>$x=1..5
+$x[
+  0,3
+] | % {
+  Number: $_
+}
+</code></pre>
+<p>Similar to the <code>|</code> a comma will also work in some contexts:</p>
+<pre><code>1,
+2
+</code></pre>
+<p>Keep in mind, though, similar to JavaScripts <a href=https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Lexical_grammar#Automatic_semicolon_insertion rel=noreferrer>Automatic Semicolon Insertion</a>, there are some things that are similarly broken because the line break occurs at a point where it <em>is</em> preceded by a valid statement:</p>
+<pre><code>return
+  5
+</code></pre>
+<p>will not work.</p>
+<p>Finally, strings (in all varieties) may also extend beyond a single line:</p>
+<pre><code>Foo
+bar
+</code></pre>
+<p>They include the line breaks within the string, then.</p>",powershell multiline command,powershell multiline command,"In PowerShell multiline command can be easily created using ` (backtick character) to split long or single line command into multiline statements. Backtick (`) character is used as escape character, it basically escape the newline character and results in line continuation.",How do I create a multi line string in PowerShell?,"PowerShell understands a string as multiline when it sees a @” succeeded by a newline. It ends when it ends with a “@. The main purpose of this is that it allows users to create strings with quotes, symbols, new lines, or other formatting texts.",How do you continue to the next line in PowerShell?,"Backtick (`) character is PowerShell line continuation character. It ensures the PowerShell script continue to a new line. To use line continuation character in PowerShell, type space at the end of code, use backtick ` and press enter to continue to new line.",How do I indent multiple lines in PowerShell?,Closest you will get in Vanilla PowerShell is the ability to indent multiple lines at once. Put the caret where you want to indent Press Shift + Alt + Arrow Up or Down and it will create a line vertically across your rows of text. Press Tab and it will indent all those lines.,<p>I just found out that there must not be <strong>any</strong> character between the back tick and the line break. Even whitespace will cause the command to not work.</p>,"<p>In most C-like languages I am deliberate about placing my braces where I think they make the code easiest to read.</p>
+<p>PowerShells parser recognizes when a statement clearly isnt complete, and looks to the next line. For example, imagine a cmdlet that takes an optional script block parameter:</p>
+<pre>
+    Get-Foo { ............ }
+</pre>
+<p>if the script block is very long, you might want to write:</p>
+<pre>
+    Get-Foo
+    {
+        ...............
+        ...............
+        ...............
+    }
+</pre>
+<p>But this wont work: the parser will see two statements. The first is <code>Get-Foo</code> and the second is a script block. Instead, I write:</p>
+<pre>
+    Get-Foo {
+        ...............
+        ...............
+        ...............
+    }
+</pre>
+<p>I could use the line-continuation character (`) but that makes for hard-to-read code, and invites bugs.  </p>
+<p>Because this case requires the open brace to be on the previous line, I follow that pattern everywhere:</p>
+<pre>
+    if (condition) {
+        .....
+    }
+</pre>
+<blockquote>
+<p>Note that <code>if</code> statements require a script block in the language grammar, so the parser will look on the next line for the script block, but for consistency, I keep the open brace on the same line.</p>
+</blockquote>
+<p>Simlarly, in the case of long pipelines, I break after the pipe character (<code>|</code>):</p>
+<pre>
+    $project.Items | 
+        ? { $_.Key -eq ProjectFile } | 
+        % { $_.Value } | 
+        % { $_.EvaluatedInclude } |
+        % {
+            .........
+        }
+</pre>"
+https://stackoverflow.com/questions/10580676/comparing-two-numpy-arrays-for-equality-element-wise,"python - Comparing two NumPy arrays for equality, element-wise","<pre><code>(A==B).all()
+</code></pre>
+<p>test if all values of array (A==B) are True.</p>
+<p>Note: maybe you also want to test A and B shape, such as <code>A.shape == B.shape</code></p>
+<p><strong>Special cases and alternatives</strong> (from dbaupps answer and yoavrams comment)</p>
+<p>It should be noted that:</p>
+<ul>
+<li>this solution can have a strange behavior in a particular case: if either <code>A</code> or <code>B</code> is empty  and the other one contains a single element, then it return <code>True</code>. For some reason, the comparison <code>A==B</code> returns an empty array, for which the <code>all</code> operator returns <code>True</code>.</li>
+<li>Another risk is if <code>A</code> and <code>B</code> dont have the same shape and arent broadcastable, then this approach will raise an error.</li>
+</ul>
+<p>In conclusion, if you have a doubt about <code>A</code> and <code>B</code> shape or simply want to be safe: use one of the specialized functions:</p>
+<pre><code>np.array_equal(A,B)  # test if same shape, same elements values
+np.array_equiv(A,B)  # test if broadcastable shape, same elements values
+np.allclose(A,B,...) # test if same shape, elements have close enough values
+</code></pre>",numpy array equal,How do you check if two NumPy arrays are equal?,"Use the == operator to compare two NumPy arrays to generate a new array object. Call ndarray. all() with the new array object as ndarray to return True if the two NumPy arrays are equivalent.
+Use np. ndarray. all() to check if two arrays are equivalent Use the == operator to compare two NumPy arrays to generate a new array object. Call ndarray. all() with the new array object as ndarray to return True if the two NumPy arrays are equivalent.",How do you compare elements in a NumPy array?,"To compare each element of a NumPy array arr against the scalar x using any of the greater (>), greater equal (>=), smaller (<), smaller equal (<=), or equal (==) operators, use the broadcasting feature with the array as one operand and the scalar as another operand.",How do you check if two arrays are equal in Python?,"an_array = np. array([[1,2],[3,4]])
+another_array = np. array([[1,2],[3,4]])
+comparison = an_array == another_array.
+equal_arrays = comparison. all()
+print(equal_arrays)",How do I check if two NumPy arrays are the same?,"The numpy. array_equiv() function can also be used to check whether two arrays are equal or not in Python. The numpy. array_equiv() function returns True if both arrays have the same shape and all the elements are equal, and returns False otherwise.","<p>The <code>(A==B).all()</code> solution is very neat, but there are some built-in functions for this task. Namely <a href=http://docs.scipy.org/doc/numpy/reference/generated/numpy.array_equal.html rel=noreferrer><code>array_equal</code></a>, <a href=http://docs.scipy.org/doc/numpy/reference/generated/numpy.allclose.html#numpy.allclose rel=noreferrer><code>allclose</code></a> and <a href=http://docs.scipy.org/doc/numpy/reference/generated/numpy.array_equiv.html#numpy.array_equiv rel=noreferrer><code>array_equiv</code></a>.</p>
+<p>(Although, some quick testing with <code>timeit</code> seems to indicate that the <code>(A==B).all()</code> method is the fastest, which is a little peculiar, given it has to allocate a whole new array.)</p>","<p>If you want to check if two arrays have the same <code>shape</code> AND <code>elements</code> you should  use <code>np.array_equal</code> as it is the method recommended in the documentation.</p>
+<blockquote>
+<p>Performance-wise dont expect that any equality check will beat another, as there is not much room to optimize <code>comparing two elements</code>. Just for the sake, i still did some tests. </p>
+</blockquote>
+<pre><code>import numpy as np
+import timeit
+
+A = np.zeros((300, 300, 3))
+B = np.zeros((300, 300, 3))
+C = np.ones((300, 300, 3))
+
+timeit.timeit(stmt=(A==B).all(), setup=from __main__ import A, B, number=10**5)
+timeit.timeit(stmt=np.array_equal(A, B), setup=from __main__ import A, B, np, number=10**5)
+timeit.timeit(stmt=np.array_equiv(A, B), setup=from __main__ import A, B, np, number=10**5)
+&gt; 51.5094
+&gt; 52.555
+&gt; 52.761
+</code></pre>
+<p>So pretty much equal, no need to talk about the speed. </p>
+<p>The <code>(A==B).all()</code> behaves pretty much as the following code snippet:</p>
+<pre><code>x = [1,2,3]
+y = [1,2,3]
+print all([x[i]==y[i] for i in range(len(x))])
+&gt; True
+</code></pre>"
+https://stackoverflow.com/questions/66751657/what-does-pip-compile-do-what-is-its-use,python - What does pip-compile do? What is its use?,"<p>You want to be able to lock down the versions of all of the packages that your Python code depends on in your <code>requirements.txt</code> file.  You want this file to include versions for not just the direct dependencies that your code imports directly, but also versions for all of the transitive dependencies as well...that is, the versions of modules that your directly dependent modules themselves depend on.</p>
+<p>So the question is...how do you maintain the contents of requirements.txt?  You can use <code>pip freeze &gt; requirements.txt</code>, but this is messy.  It depends not on a clear list of what the direct dependencies of your app are, but rather on what happens to be in your environment at the time of creation.  What you really want is to have a file in which you list the direct dependencies of your app, along with versions for each of them, and then somehow produce the appropriate <code>requirements.txt</code> file from that list such that it contains exactly versions for those direct dependencies as well as versions for just the transitive dependencies needed by those direct dependencies.</p>
+<p>The <code>requirements.in</code> file and <code>pip-compile</code> together give you this desired behavior.  In <code>requirements.in</code>, you list just the direct dependencies of your app.  Then you run <code>pip-compile</code> on that file to produce <code>requirements.txt</code>. The compile process will produce what you want...a file that contains both the modules listed in <code>requirements.in</code> and the transitive dependencies of those modules.</p>",pip compile,What is pip-compile?,"The pip-compile command lets you compile a requirements. txt file from your dependencies, specified in either setup.py or requirements.in . Run it with pip-compile or python -m piptools compile . If you use multiple Python versions, you can also run py -X.Y -m piptools compile on Windows and pythonX.",How do I use pip tools?,"pip install pip-tools.
+Record your top-level dependencies in requirements.in .
+Don't pin them—unless you want them pinned, of course.
+Put both requirements.in and requirements.
+Then, run pip-compile.",How do I install pip tools?,"pip install pip-tools.
+Record your top-level dependencies in requirements.in .
+Don't pin them—unless you want them pinned, of course.
+Put both requirements.in and requirements.
+Then, run pip-compile.",What is pip-compile multi?,"Pip-compile-multi is a command line utility, that compiles multiple requirements files to lock dependency versions. Underneath it uses pip-tools for actual compilation. Pip-compile-multi targets complex projects and provides highest level of automation and flexibility in class.",,
+https://stackoverflow.com/questions/6039605/typeerror-str-object-is-not-callable-python/14936426,TypeError: str object is not callable (Python),"<p>This is the problem:</p>
+<pre><code>global str
+
+str = str(mar)
+</code></pre>
+<p>You are redefining what <code>str()</code> means. <code>str</code> is the built-in Python name of the string type, and you dont want to change it. </p>
+<p>Use a different name for the local variable, and remove the <code>global</code> statement.</p>",str' object is not callable,str' object is not callable,"The “typeerror: 'str' object is not callable” error is raised when you try to call a string as a function. To solve this error, make sure you do not use “str” as a variable name. If this does not solve the problem, check if you use the % operator to format strings.",What is an str object?,"In Python, the str() function is used for converting a certain value into a string. It takes an object as an argument and converts it into a string. As str is the name of a pre-defined function in Python and is a reserved keyword, it cannot be used anywhere else.",What does it mean for an object to not be callable?,"The Python “typeerror: 'list' object is not callable” error is raised when you try to access a list as if it were a function. To solve this error, make sure square brackets are used to access or change values in a list rather than curly brackets.",What is str object in Python?,Python str() function returns the string version of the object. ... object: The object whose string representation is to be returned.,"<p>While not in your code, another hard-to-spot error is when the <code>%</code> character is missing in an attempt of string formatting:</p>
+<pre><code>foo %s bar %s coffee(blah,asdf)
+</code></pre>
+<p>but it should be:</p>
+<pre><code>foo %s bar %s coffee%(blah,asdf)
+</code></pre>
+<p>The missing <code>%</code> would result in the same <code>TypeError: str object is not callable</code>.</p>","<p>In my case I had a class that had a method and a string property of the same name, I was trying to call the method but was getting the string property.</p>"
+https://stackoverflow.com/questions/63241009/aws-sts-assume-role-in-one-command,amazon web services - AWS sts assume role in one command,"<p>Finally, a colleague shared with me this awesome snippet that gets the work done in one go:</p>
+<pre><code>eval $(aws sts assume-role --role-arn arn:aws:iam::123456789123:role/myAwesomeRole --role-session-name test | jq -r .Credentials | export AWS_ACCESS_KEY_ID=\(.AccessKeyId)\nexport AWS_SECRET_ACCESS_KEY=\(.SecretAccessKey)\nexport AWS_SESSION_TOKEN=\(.SessionToken)\n)
+</code></pre>
+<p>Apart from the AWS CLI, it only requires <code>jq</code> which is usually installed in any Linux Desktop.</p>",aws sts assume-role,What is STS assume role in AWS?,"Returns a set of temporary security credentials that you can use to access AWS resources that you might not normally have access to. These temporary credentials consist of an access key ID, a secret access key, and a security token.",How do I create a STS assume role?,"In the navigation pane of the IAM console, choose Roles, and then choose Create role.
+For Select type of trusted entity, choose AWS service.
+Choose the service that you want to allow to assume this role.
+Choose the use case for your service.",What is STS AssumeRole?,"The sts:AssumeRole action is the means by which such temporary credentials are obtained. To use it, a user or application calls this API using some already-obtained credentials, such as a user's fixed access key, and it returns (if permitted) a new set of credentials to act as the role.",How do you assume AWS role?,You can assume a role by calling an AWS CLI or API operation or by using a custom URL. The method that you use determines who can assume the role and how long the role session can last. ¹ Using the credentials for one role to assume a different role is called role chaining.,"<p>No <code>jq</code>, no <code>eval</code>, no multiple exports - using the <code>printf</code> built-in (i.e. no credential leakage through <code>/proc</code>) and command substitution:</p>
+<pre><code>export $(printf AWS_ACCESS_KEY_ID=%s AWS_SECRET_ACCESS_KEY=%s AWS_SESSION_TOKEN=%s \
+$(aws sts assume-role \
+--role-arn arn:aws:iam::123456789012:role/MyAssumedRole \
+--role-session-name MySessionName \
+--query Credentials.[AccessKeyId,SecretAccessKey,SessionToken] \
+--output text))
+</code></pre>","<p>You can store an IAM Role as a profile in the AWS CLI and it will automatically assume the role for you.</p>
+<p>Here is an example from <a href=https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-role.html rel=noreferrer>Using an IAM role in the AWS CLI - AWS Command Line Interface</a>:</p>
+<pre><code>[profile marketingadmin]
+role_arn = arn:aws:iam::123456789012:role/marketingadminrole
+source_profile = user1
+</code></pre>
+<p>This is saying:</p>
+<ul>
+<li>If a user specifies <code>--profile marketingadmin</code></li>
+<li>Then use the credentials of profile <code>user1</code></li>
+<li>To call <code>AssumeRole</code> on the specified role</li>
+</ul>
+<p>This means you can simply call a command like this and it will assume the role and use the returned credentials automatically:</p>
+<pre><code>aws s3 ls --profile marketingadmin
+</code></pre>"
+https://stackoverflow.com/questions/21574236/how-to-fix-org-hibernate-lazyinitializationexception-could-not-initialize-prox,java - How to fix org.hibernate.LazyInitializationException - could not initialize proxy - no Session,"<p>If you using Spring mark the class as <a href=http://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/transaction/annotation/Transactional.html rel=noreferrer>@Transactional</a>, then Spring will handle session management.</p>
+<pre><code>@Transactional
+public class MyClass {
+    ...
+}
+</code></pre>
+<p>By using <code>@Transactional</code>, many important aspects such as transaction propagation are handled automatically. In this case if another transactional method is called the method will have the option of joining the ongoing transaction avoiding the no session exception.</p>
+<p><strong>WARNING</strong> If you do use <code>@Transactional</code>, please be aware of the resulting behavior. See <a href=https://codete.com/blog/5-common-spring-transactional-pitfalls/ rel=noreferrer>this article</a> for common pitfalls. For example, updates to entities are persisted <em>even if</em> you dont explicitly call <code>save</code></p>",could not initialize proxy no session,What is LazyInitializationException Java?,"Indicates an attempt to access not-yet-fetched data outside of a session context. For example, when an uninitialized proxy or collection is accessed after the session was closed.
+Class LazyInitializationException Indicates an attempt to access not-yet-fetched data outside of a session context. For example, when an uninitialized proxy or collection is accessed after the session was closed.",How do I fix LazyInitializationException org Hibernate?,"Don't use FetchType. EAGER.
+Avoid the Open Session in View anti-pattern.
+Don't use hibernate.
+Initializing associations with a LEFT JOIN FETCH clause.
+Use a @NamedEntityGraph to initialize an association.
+EntityGraph to initialize an association.
+Using a DTO projection.",Can't initialize proxy Hibernate no session?,"This error means that we try to fetch a lazy-loaded object from the database by using a proxy object, but the Hibernate session is already closed.",What is Hibernate initialize do?,"Hibernate initialize() – force initialization of proxy/collections. As you know that hibernate does not support lazy initialization for detached objects. Typically, you load an entity using hibernate session and work-through it and then close the session.","<p>You can try to set </p>
+<pre><code>&lt;property name=hibernate.enable_lazy_load_no_trans&gt;true&lt;/property&gt;
+</code></pre>
+<p>in hibernate.cfg.xml or persistence.xml</p>
+<p>The problem to keep in mind with this property are well explained <a href=https://stackoverflow.com/a/25367976/1212327>here</a></p>","<p>What is wrong here is that your session management configuration is set to close session when you commit transaction. Check if you have something like:</p>
+<pre class=lang-xml prettyprint-override><code>&lt;property name=current_session_context_class&gt;thread&lt;/property&gt;
+</code></pre>
+<p>in your configuration.</p>
+<p>In order to overcome this problem you could change the configuration of session factory or open another session and only than ask for those lazy loaded objects. But what I would suggest here is to initialize this lazy collection in getModelByModelGroup itself and call:</p>
+<pre class=lang-java prettyprint-override><code>Hibernate.initialize(subProcessModel.getElement());
+</code></pre>
+<p>when you are still in active session.</p>
+<p>And one last thing. A friendly advice. You have something like this in your method:</p>
+<pre class=lang-java prettyprint-override><code>for (Model m : modelList) {
+    if (m.getModelType().getId() == 3) {
+        model = m;
+        break;
+    }
+}
+</code></pre>
+<p>Please insted of this code just filter those models with type id equal to 3 in the query statement just couple of lines above. </p>
+<p>Some more reading:</p>
+<p><a href=http://www.coderanch.com/t/428509/ORM/databases/committing-transaction-closes-session rel=noreferrer>session factory configuration</a></p>
+<p><a href=http://forum.zkoss.org/question/45772/hibernate-problem-session-is-closed/ rel=noreferrer>problem with closed session</a></p>"
+https://stackoverflow.com/questions/30379381/docker-command-not-found-even-though-installed-with-apt-get,ubuntu 14.04 - docker command not found even though installed with apt-get,"<p>The Ubuntu package <code>docker</code> actually refers to a GUI application, not the beloved DevOps tool weve come out to look for.</p>
+<p>The instructions for docker can be followed per instructions on the docker page here: <a href=https://docs.docker.com/engine/install/ubuntu/ rel=nofollow noreferrer>https://docs.docker.com/engine/install/ubuntu/</a></p>
+<p><strong>=== UPDATED  (thanks @Scott Stensland) ===</strong></p>
+<p>You now run the following install script to get docker:</p>
+<pre><code>sudo curl -sSL https://get.docker.com/ | sh
+</code></pre>
+<ul>
+<li>Note: review the script on the website and make sure you have the right link before continuing since you are running this as sudo.</li>
+</ul>
+<p>This will run a script that installs docker. Note the last part of the script:</p>
+<pre><code>If you would like to use Docker as a non-root user, you should now consider
+adding your user to the docker group with something like:
+
+  sudo usermod -aG docker stens
+
+Remember that you will have to log out and back in for this to take effect!
+</code></pre>
+<p>To update Docker run:</p>
+<pre><code>sudo apt-get update &amp;&amp; sudo apt-get upgrade
+</code></pre>
+<p>For more details on whats going on,
+See the <a href=https://docs.docker.com/engine/installation/linux/ubuntu/ rel=nofollow noreferrer>docker install documentation</a> or @Scott Stenslands answer below</p>
+<p>.</p>
+<p><strong>=== UPDATE: For those uncomfortable w/ sudo | sh ===</strong></p>
+<p>Some in the comments have mentioned that it a risk to run an arbitrary script as sudo. The above option is a convenience script from docker to make the task simple. However, for those that are security-focused but dont want to read the script you can do the following:</p>
+<ol>
+<li>Add Dependencies</li>
+</ol>
+<pre><code>sudo apt-get update; \
+sudo apt-get install \
+ apt-transport-https \
+ ca-certificates \
+ curl \
+ gnupg-agent \
+ software-properties-common
+</code></pre>
+<ol start=2>
+<li>Add docker gpg key</li>
+</ol>
+<p><code>curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -</code></p>
+<p>(Security check, verify key fingerprint <code>9DC8 5822 9FC7 DD38 854A E2D8 8D81 803C 0EBF CD88</code></p>
+<pre><code>$ sudo apt-key fingerprint 0EBFCD88
+
+pub   rsa4096 2017-02-22 [SCEA]
+      9DC8 5822 9FC7 DD38 854A  E2D8 8D81 803C 0EBF CD88
+uid           [ unknown] Docker Release (CE deb) &lt;docker@docker.com&gt;
+sub   rsa4096 2017-02-22 [S]
+</code></pre>
+<p>)</p>
+<ol start=3>
+<li>Setup Repository</li>
+</ol>
+<pre><code>sudo add-apt-repository \
+   deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+   $(lsb_release -cs) \
+   stable
+</code></pre>
+<ol start=4>
+<li>Install Docker</li>
+</ol>
+<pre><code>sudo apt-get update; \
+sudo apt-get install docker-ce docker-ce-cli containerd.io
+</code></pre>
+<p>If you want to verify that it worked run:
+<code>sudo docker run hello-world</code></p>
+<hr/>
+<p>The following explains why it is named like this:
+<a href=https://stackoverflow.com/questions/27978324/why-install-docker-on-ubuntu-should-be-sudo-apt-get-install-docker-io>Why install docker on ubuntu should be `sudo apt-get install docker.io`?</a></p>",docker command not found,How do I fix docker command not found?,"Another reason for getting the docker: command not found error is that the docker command is on a different path. This can happen sometimes depending on how you installed docker. The fix is actually pretty simple, you just have to create a symbolic link to the correct command.",What is the command to install docker?,"Run one of the following: sudo chkconfig docker on. sudo systemctl enable docker.
+Start Docker at Boot Run one of the following: sudo chkconfig docker on. sudo systemctl enable docker.",How can I tell if docker is installed?,"The operating-system independent way to check whether Docker is running is to ask Docker, using the docker info command. You can also use operating system utilities, such as sudo systemctl is-active docker or sudo status docker or sudo service docker status , or checking the service status using Windows utilities.",How do I get docker command?,"docker –version. This command is used to get the currently installed version of docker.
+docker pull. Usage: docker pull <image name>
+docker run. Usage: docker run -it -d <image name>
+docker ps. This command is used to list the running containers.
+docker ps -a.
+docker exec.
+docker stop.
+docker kill.","<p><strong>IMPORTANT</strong> - on ubuntu package <code>docker</code> is something entirely different ( avoid it ) :</p>
+<p>issue following to view what if any packages you have mentioning docker</p>
+<pre><code>dpkg -l|grep docker
+</code></pre>
+<p>if only match is following then you do NOT have docker installed below is an unrelated package</p>
+<blockquote>
+<p>docker - System tray for KDE3/GNOME2 docklet applications</p>
+</blockquote>
+<blockquote>
+<p>if you do see above lets remove it since its the wrong docker</p>
+</blockquote>
+<blockquote>
+<p>sudo apt-get remove docker # remove the wrong docker</p>
+</blockquote>
+<p>if you see something similar to following then you have docker installed</p>
+<pre><code> dpkg -l|grep docker
+
+ii  docker-ce                                  5:19.03.13~3-0~ubuntu-focal         amd64        Docker: the open-source application container engine
+ii  docker-ce-cli                              5:19.03.13~3-0~ubuntu-focal         amd64        Docker CLI: the open-source application container engine
+</code></pre>
+<p>NOTE - ubuntu package <code>docker.io</code> is not getting updates ( obsolete do NOT use )</p>
+<hr/>
+<p><em><strong>Instead do this :</strong></em> install the latest version of docker on linux by executing the following:</p>
+<pre><code>sudo apt-get install docker-ce
+</code></pre>
+<p>below is yet another way to issue the install command</p>
+<pre><code>  sudo curl -sSL https://get.docker.com/ | sh
+# sudo curl -sSL https://test.docker.com | sh  # get dev pipeline version
+  
+</code></pre>
+<p>here is a typical output ( ubuntu 16.04 )</p>
+<pre><code>apparmor is enabled in the kernel and apparmor utils were already installed
++ sudo -E sh -c apt-key adv --keyserver hkp://ha.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
+Executing: /tmp/tmp.rAAGu0P85R/gpg.1.sh --keyserver
+hkp://ha.pool.sks-keyservers.net:80
+--recv-keys
+58118E89F3A912897C070ADBF76221572C52609D
+gpg: requesting key 2C52609D from hkp server ha.pool.sks-keyservers.net
+gpg: key 2C52609D: Docker Release Tool (releasedocker) &lt;docker@docker.com&gt; 1 new signature
+gpg: Total number processed: 1
+gpg:         new signatures: 1
++ break
++ sudo -E sh -c apt-key adv -k 58118E89F3A912897C070ADBF76221572C52609D &gt;/dev/null
++ sudo -E sh -c mkdir -p /etc/apt/sources.list.d
++ dpkg --print-architecture
++ sudo -E sh -c echo deb [arch=amd64] https://apt.dockerproject.org/repo ubuntu-xenial main &gt; /etc/apt/sources.list.d/docker.list
++ sudo -E sh -c sleep 3; apt-get update; apt-get install -y -q docker-engine
+Hit:1 http://repo.steampowered.com/steam precise InRelease
+Hit:2 http://download.virtualbox.org/virtualbox/debian xenial InRelease                                                           
+Ign:3 http://dl.google.com/linux/chrome/deb stable InRelease                                                                      
+Hit:4 http://dl.google.com/linux/chrome/deb stable Release                                                                        
+Hit:5 http://archive.canonical.com/ubuntu xenial InRelease                                                                        
+Hit:6 http://mirror.cc.columbia.edu/pub/linux/ubuntu/archive xenial InRelease                                                     
+Hit:7 http://mirror.cc.columbia.edu/pub/linux/ubuntu/archive xenial-updates InRelease                                             
+Hit:8 http://ppa.launchpad.net/me-davidsansome/clementine/ubuntu xenial InRelease                                                 
+Ign:9 http://repo.mongodb.org/apt/debian wheezy/mongodb-org/3.2 InRelease                                                         
+Hit:10 http://mirror.cc.columbia.edu/pub/linux/ubuntu/archive xenial-backports InRelease                                          
+Hit:11 http://repo.mongodb.org/apt/debian wheezy/mongodb-org/3.2 Release                                                          
+Hit:12 http://mirror.cc.columbia.edu/pub/linux/ubuntu/archive xenial-security InRelease                                           
+Hit:14 http://ppa.launchpad.net/numix/ppa/ubuntu xenial InRelease                                                                 
+Ign:15 http://linux.dropbox.com/ubuntu wily InRelease                                                                             
+Ign:16 http://repo.vivaldi.com/stable/deb stable InRelease                                                                        
+Hit:17 http://repo.vivaldi.com/stable/deb stable Release                                                                          
+Get:18 http://linux.dropbox.com/ubuntu wily Release [6,596 B]            
+Get:19 https://apt.dockerproject.org/repo ubuntu-xenial InRelease [20.6 kB]    
+Ign:20 http://packages.amplify.nginx.com/ubuntu xenial InRelease                      
+Hit:22 http://packages.amplify.nginx.com/ubuntu xenial Release
+Hit:23 https://deb.opera.com/opera-beta stable InRelease
+Hit:26 https://deb.opera.com/opera-developer stable InRelease
+Get:28 https://apt.dockerproject.org/repo ubuntu-xenial/main amd64 Packages [1,719 B]
+Hit:29 https://packagecloud.io/slacktechnologies/slack/debian jessie InRelease
+Fetched 28.9 kB in 1s (17.2 kB/s)
+Reading package lists... Done
+W: http://repo.mongodb.org/apt/debian/dists/wheezy/mongodb-org/3.2/Release.gpg: Signature by key 42F3E95A2C4F08279C4960ADD68FA50FEA312927 uses weak digest algorithm (SHA1)
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following additional packages will be installed:
+  aufs-tools cgroupfs-mount
+The following NEW packages will be installed:
+  aufs-tools cgroupfs-mount docker-engine
+0 upgraded, 3 newly installed, 0 to remove and 17 not upgraded.
+Need to get 14.6 MB of archives.
+After this operation, 73.7 MB of additional disk space will be used.
+Get:1 http://mirror.cc.columbia.edu/pub/linux/ubuntu/archive xenial/universe amd64 aufs-tools amd64 1:3.2+20130722-1.1ubuntu1 [92.9 kB]
+Get:2 http://mirror.cc.columbia.edu/pub/linux/ubuntu/archive xenial/universe amd64 cgroupfs-mount all 1.2 [4,970 B]
+Get:3 https://apt.dockerproject.org/repo ubuntu-xenial/main amd64 docker-engine amd64 1.11.2-0~xenial [14.5 MB]
+Fetched 14.6 MB in 7s (2,047 kB/s)
+Selecting previously unselected package aufs-tools.
+(Reading database ... 427978 files and directories currently installed.)
+Preparing to unpack .../aufs-tools_1%3a3.2+20130722-1.1ubuntu1_amd64.deb ...
+Unpacking aufs-tools (1:3.2+20130722-1.1ubuntu1) ...
+Selecting previously unselected package cgroupfs-mount.
+Preparing to unpack .../cgroupfs-mount_1.2_all.deb ...
+Unpacking cgroupfs-mount (1.2) ...
+Selecting previously unselected package docker-engine.
+Preparing to unpack .../docker-engine_1.11.2-0~xenial_amd64.deb ...
+Unpacking docker-engine (1.11.2-0~xenial) ...
+Processing triggers for libc-bin (2.23-0ubuntu3) ...
+Processing triggers for man-db (2.7.5-1) ...
+Processing triggers for ureadahead (0.100.0-19) ...
+Processing triggers for systemd (229-4ubuntu6) ...
+Setting up aufs-tools (1:3.2+20130722-1.1ubuntu1) ...
+Setting up cgroupfs-mount (1.2) ...
+Setting up docker-engine (1.11.2-0~xenial) ...
+Processing triggers for libc-bin (2.23-0ubuntu3) ...
+Processing triggers for systemd (229-4ubuntu6) ...
+Processing triggers for ureadahead (0.100.0-19) ...
++ sudo -E sh -c docker version
+Client:
+ Version:      1.11.2
+ API version:  1.23
+ Go version:   go1.5.4
+ Git commit:   b9f10c9
+ Built:        Wed Jun  1 22:00:43 2016
+ OS/Arch:      linux/amd64
+
+Server:
+ Version:      1.11.2
+ API version:  1.23
+ Go version:   go1.5.4
+ Git commit:   b9f10c9
+ Built:        Wed Jun  1 22:00:43 2016
+ OS/Arch:      linux/amd64
+
+If you would like to use Docker as a non-root user, you should now consider
+adding your user to the docker group with something like:
+
+  sudo usermod -aG docker stens
+
+Remember that you will have to log out and back in for this to take effect!
+</code></pre>
+<p>Here is the underlying detailed install instructions which as you can see comes bundled into above technique ... Above one liner gives you same as :</p>
+<p><a href=https://docs.docker.com/engine/installation/linux/ubuntulinux/ rel=nofollow noreferrer>https://docs.docker.com/engine/installation/linux/ubuntulinux/</a></p>
+<p>Once installed you can see what docker packages were installed by issuing</p>
+<pre><code>dpkg -l|grep docker
+ii  docker-ce                                  5:19.03.13~3-0~ubuntu-focal         amd64        Docker: the open-source application container engine
+ii  docker-ce-cli                              5:19.03.13~3-0~ubuntu-focal         amd64        Docker CLI: the open-source application container engine
+</code></pre>
+<p>now Docker updates will get installed going forward when you issue</p>
+<pre><code>sudo apt-get update
+sudo apt-get upgrade
+</code></pre>
+<p>take a look at</p>
+<pre><code> ls -latr /etc/apt/sources.list.d/*docker*
+-rw-r--r-- 1 root root 202 Jun 23 10:01 /etc/apt/sources.list.d/docker.list.save
+-rw-r--r-- 1 root root  71 Jul  4 11:32 /etc/apt/sources.list.d/docker.list
+
+
+cat /etc/apt/sources.list.d/docker.list
+
+deb [arch=amd64] https://apt.dockerproject.org/repo ubuntu-xenial main
+</code></pre>
+<p>or more generally</p>
+<pre><code>cd /etc/apt
+grep -r docker *
+sources.list.d/docker.list:deb [arch=amd64] https://download.docker.com/linux/ubuntu focal test
+</code></pre>","<pre><code>sudo apt-get install docker # DO NOT do this
+</code></pre>
+<p>is a different library on ubuntu.</p>
+<p>Use <code>sudo apt-get install docker-ce</code> to install the correct docker.</p>"
+https://stackoverflow.com/questions/1319074/parallel-python-what-is-a-callback,Parallel Python: What is a callback?,"<p>A callback is a function provided by the consumer of an API that the API can then turn around and invoke (calling you back). If I setup a Dr.s appointment, I can give them my phone number, so they can call me the day before to confirm the appointment. A callback is like that, except instead of just being a phone number, it can be arbitrary instructions like send me an email at this address, and also call my secretary and have her put it in my calendar. </p>
+<p>Callbacks are often used in situations where an action is asynchronous. If you need to call a function, and immediately continue working, you cant sit there wait for its return value to let you know what happened, so you provide a callback. When the function is done completely its asynchronous work it will then invoke your callback with some predetermined arguments (usually some you supply, and some about the status and result of the asynchronous action you requested). </p>
+<p>If the Dr. is out of the office, or they are still working on the schedule, rather than having me wait on hold until he gets back, which could be several hours, we hang up, and once the appointment has been scheduled, they call me.</p>
+<p>In this specific case, Parallel Pythons submit function will invoke your callback with any arguments you supply and the result of <code>func</code>, once <code>func</code> has finished executing.</p>",python callback,What is a callback in Python?,"In Python, a callback is simply a function or a method passed to LocalSolver. A callback takes two parameters: the LocalSolver object that triggers the event and the type of the callback. It is possible to use the same callback method or object for multiple events or multiple LocalSolver instances.",Is there callback in Python?,"In the Parallel Python Module, the submit function is known as the callback function. The callback function acts as an argument for any other function. The other function in which the callback function is an argument calls the callback function in its function definition. Callback Function Definition in Python In the Parallel Python Module, the submit function is known as the callback function. The callback function acts as an argument for any other function. The other function in which the callback function is an argument calls the callback function in its function definition.",Why do we use callbacks?,Callbacks make sure that a function is not going to run before a task is completed but will run right after the task has completed. It helps us develop asynchronous JavaScript code and keeps us safe from problems and errors.,What is a callback in programming?,"In computer programming, a callback, also known as a ""call-after"" function, is any reference to executable code that is passed as an argument to other code; that other code is expected to call back (execute) the code at a given time.","<p>The relevant spot in the docs:</p>
+<pre><code>callback - callback function which will be called with argument 
+        list equal to callbackargs+(result,) 
+        as soon as calculation is done
+callbackargs - additional arguments for callback function
+</code></pre>
+<p>So, if you want some code to be executed as soon as the result is ready, you put that code into a function and pass that function as the <code>callback</code> argument. If you dont need other arguments, it will be just, e.g.:</p>
+<pre><code>def itsdone(result):
+  print Done! result=%r % (result,)
+...
+submit(..., callback=itsdone)
+</code></pre>
+<p>For more on the <code>callback</code> pattern in Python, see e.g. my presentation <a href=http://www.listal.com/video/8878369 rel=noreferrer>here</a>.</p>","<p>Looking at the link, just looks like a hook which is called.</p>
+<blockquote>
+<p>callback - callback function which
+  will be called with argument 
+          list equal to callbackargs+(result,) 
+          as soon as calculation is done</p>
+</blockquote>
+<p>The as soon as calculation is done bit seems ambiguous. The point, as far as I can see of this thing is that the <code>submit()</code> call distributes work to other servers and then returns. Because the finishing is asynchronous, rather block, it allows you to provide a function which is called when some unit of work finishes. If you do:</p>
+<pre><code>submit( ..., callback=work_finished, ... )
+</code></pre>
+<p>Then submit will ensure <code>work_finished()</code> is called when the unit of distributed work is completed on the target server.</p>
+<p>When you call <code>submit()</code> you can provide a <strong>callback</strong> which is called in the same runtime as the caller of <code>submit()</code> ... and it is called after the distribution of the workload function is complete.</p>
+<p>Kind of like call foo(x,y) when you have done some stuff in submit()</p>
+<p>But yea, the documentation could be better. Have a ganders at the ppython source and see at which point the callback is called in <code>submit()</code></p>"
+https://stackoverflow.com/questions/17329647/i-or-d-to-print-integer-in-c-using-printf,console - %i or %d to print integer in C using printf()?,"<p>They are completely equivalent when used with <code>printf()</code>. Personally, I prefer <code>%d</code>, its used more often (should I say its the idiomatic conversion specifier for <code>int</code>?).</p>
+<p>(One difference between <code>%i</code> and <code>%d</code> is that when used with <code>scanf()</code>, then <code>%d</code> always expects a decimal integer, whereas <code>%i</code> recognizes the <code>0</code> and <code>0x</code> prefixes as octal and hexadecimal, but no sane programmer uses <code>scanf()</code> anyway so this should not be a concern.)</p>",print integer c,Can you print an integer in C?,"scanfscanfA scanf format string (scan formatted) is a control parameter used in various functions to specify the layout of an input string. The functions can then divide the string and translate into values of appropriate data types. String scanning functions are often supplied in standard libraries.https://en.wikipedia.org › wiki › Scanf_format_stringscanf format string - Wikipedia
+int number; ... printf(""Enter an integer: ""); scanfscanfA scanf format string (scan formatted) is a control parameter used in various functions to specify the layout of an input string. The functions can then divide the string and translate into values of appropriate data types. String scanning functions are often supplied in standard libraries.https://en.wikipedia.org › wiki › Scanf_format_stringscanf format string - Wikipedia(""%d"", &number); Finally, the value stored in number is displayed on the screen using printf() . printf(""You entered: %d"", number);
+scanfA scanf format string (scan formatted) is a control parameter used in various functions to specify the layout of an input string. The functions can then divide the string and translate into values of appropriate data types. String scanning functions are often supplied in standard libraries.https://en.wikipedia.org › wiki › Scanf_format_stringscanf format string - Wikipedia
+int number; ... printf(""Enter an integer: ""); scanf(""%d"", &number); Finally, the value stored in number is displayed on the screen using printf() . printf(""You entered: %d"", number);int number; ... printf(""Enter an integer: ""); scanfscanfA scanf format string (scan formatted) is a control parameter used in various functions to specify the layout of an input string. The functions can then divide the string and translate into values of appropriate data types. String scanning functions are often supplied in standard libraries.https://en.wikipedia.org › wiki › Scanf_format_stringscanf format string - Wikipedia(""%d"", &number); Finally, the value stored in number is displayed on the screen using printf() . printf(""You entered: %d"", number);
+› wiki › Scanf_format_string
+scanf",How do I print an integer in printf?,"scanfscanfA scanf format string (scan formatted) is a control parameter used in various functions to specify the layout of an input string. The functions can then divide the string and translate into values of appropriate data types. String scanning functions are often supplied in standard libraries.https://en.wikipedia.org › wiki › Scanf_format_stringscanf format string - Wikipedia
+printf(""Enter an integer: ""); scanfscanfA scanf format string (scan formatted) is a control parameter used in various functions to specify the layout of an input string. The functions can then divide the string and translate into values of appropriate data types. String scanning functions are often supplied in standard libraries.https://en.wikipedia.org › wiki › Scanf_format_stringscanf format string - Wikipedia(""%d"", &number); Finally, the value stored in number is displayed on the screen using printf() . printf(""You entered: %d"", number);
+printf(""Enter an integer: ""); scanf(""%d"", &number); Finally, the value stored in number is displayed on the screen using printf() . printf(""You entered: %d"", number);printf(""Enter an integer: ""); scanfscanfA scanf format string (scan formatted) is a control parameter used in various functions to specify the layout of an input string. The functions can then divide the string and translate into values of appropriate data types. String scanning functions are often supplied in standard libraries.https://en.wikipedia.org › wiki › Scanf_format_stringscanf format string - Wikipedia(""%d"", &number); Finally, the value stored in number is displayed on the screen using printf() . printf(""You entered: %d"", number);
+scanfA scanf format string (scan formatted) is a control parameter used in various functions to specify the layout of an input string. The functions can then divide the string and translate into values of appropriate data types. String scanning functions are often supplied in standard libraries.https://en.wikipedia.org › wiki › Scanf_format_stringscanf format string - Wikipedia
+› wiki › Scanf_format_string
+scanf",How do you print a variable in C?,"We use printf() function with %d format specifier to display the value of an integer variable. Similarly %c is used to display character, %f for float variable, %s for string variable, %lf for double and %x for hexadecimal variable. To generate a newline,we use “\n” in C printf() statement.",What is %d in printf?,%d tells printf that the corresponding argument is to be treated as an integer value; the type of the corresponding argument must be int .,"<p>I am just adding example here because I think examples make it easier to understand.</p>
+<p>In printf() they behave identically so you can use any either %d or %i. But they behave differently in scanf().</p>
+<p>For example:</p>
+<pre><code>int main()
+{
+    int num,num2;
+    scanf(%d%i,&amp;num,&amp;num2);// reading num using %d and num2 using %i
+
+    printf(%d\t%d,num,num2);
+    return 0;
+}
+</code></pre>
+<p>Output:</p>
+<p><img alt=enter image description here src=https://i.stack.imgur.com/23R63.png/></p>
+<p>You can see the different results for identical inputs. </p>
+<p><strong><code>num</code></strong>:</p>
+<p>We are reading <code>num</code> using <code>%d</code> so when we enter <code>010</code> it ignores the first <code>0</code> and treats it as decimal <code>10</code>. </p>
+<p><strong><code>num2</code></strong>:</p>
+<p>We are reading <code>num2</code> using <code>%i</code>.</p>
+<p>That means it will treat decimals, octals, and hexadecimals differently.</p>
+<p>When it give <code>num2</code> <code>010</code> it sees the leading <code>0</code> and parses it as octal.</p>
+<p>When we print it using <code>%d</code> it prints the decimal equivalent of octal <code>010</code> which is <code>8</code>.</p>","<p><code>d</code> and <code>i</code> conversion specifiers behave the same with <code>fprintf</code> but behave differently for <code>fscanf</code>.</p>
+<p>As some other wrote in their answer, the idiomatic way to print an <code>int</code> is using <code>d</code> conversion specifier. </p>
+<p>Regarding <code>i</code> specifier and <code>fprintf</code>, C99 Rationale says that:</p>
+<blockquote>
+<p>The %i conversion specifier was added in C89 for programmer convenience to provide 
+  symmetry with fscanf’s %i conversion specifier, even though it has exactly the same meaning 
+  as the %d conversion specifier when used with fprintf.   </p>
+</blockquote>"
+https://stackoverflow.com/questions/53676/how-to-resolve-ora-011033-oracle-initialization-or-shutdown-in-progress,database - How to resolve ORA-011033: ORACLE initialization or shutdown in progress,"<p>After some googling, I found the advice to do the following, and it worked:</p>
+<pre><code>SQL&gt; startup mount
+
+ORACLE Instance started
+
+SQL&gt; recover database 
+
+Media recovery complete
+
+SQL&gt; alter database open;
+
+Database altered
+</code></pre>",ora-01033: oracle initialization or shutdown in progress,How do I fix Ora 01033 Oracle initialization or shutdown in progress?,"Check to see if the database is in the process of starting up or shutting down. Wait a few minutes for Oracle to finish, then try the operation again. If this is unsuccessful, restart the system and restart the database service.
+The Solution Check to see if the database is in the process of starting up or shutting down. Wait a few minutes for Oracle to finish, then try the operation again. If this is unsuccessful, restart the system and restart the database service.",How do you shutdown a database?,"SHUTDOWN IMMEDIATE.
+SHUTDOWN [ABORT | IMMEDIATE | NORMAL | TRANSACTIONAL [LOCAL]]
+> sqlplus.
+Enter user-name: sys as sysdba Enter password: <sys_password>
+SQL> select instance_name, status from v$instance;",How do I open a mount in Oracle?,"To open a mounted database, use the ALTER DATABASE statement with the OPEN clause: ALTER DATABASE OPEN; After executing this statement, any valid Oracle Database user with the CREATE SESSION system privilege can connect to the database.",How do I fix Ora 01034?,"To resolve ORA-01034, be sure that the ORACLE_HOME and ORACLE_SID properly match within the files /etc/oratab or /var/opt/oracle/oratab . As a last step in solving your ORA-01034 problem and running DBUA, make sure that ORACLE_HOME is set to 'old' home, not 'new' home.","<p>Here is my solution to this issue:</p>
+<pre><code>SQL&gt; Startup mount
+ORA-01081: cannot start already-running ORACLE - shut it down first
+SQL&gt; shutdown abort
+ORACLE instance shut down.
+SQL&gt;
+SQL&gt; startup mount
+ORACLE instance started.
+
+Total System Global Area 1904054272 bytes
+Fixed Size                  2404024 bytes
+Variable Size             570425672 bytes
+Database Buffers         1325400064 bytes
+Redo Buffers                5824512 bytes
+Database mounted.
+SQL&gt; Show parameter control_files
+
+NAME                                 TYPE        VALUE
+------------------------------------ ----------- ------------------------------
+control_files                        string      C:\APP\USER\ORADATA\ORACLEDB\C
+                                                 ONTROL01.CTL, C:\APP\USER\FAST
+                                                 _RECOVERY_AREA\ORACLEDB\CONTRO
+                                                 L02.CTL
+SQL&gt; select a.member,a.group#,b.status from v$logfile a ,v$log b where a.group#=
+b.group# and b.status=CURRENT
+  2
+SQL&gt; select a.member,a.group#,b.status from v$logfile a ,v$log b where a.group#=
+b.group# and b.status=CURRENT;
+
+MEMBER
+--------------------------------------------------------------------------------
+
+    GROUP# STATUS
+---------- ----------------
+C:\APP\USER\ORADATA\ORACLEDB\REDO03.LOG
+         3 CURRENT
+
+
+SQL&gt; shutdown abort
+ORACLE instance shut down.
+SQL&gt; startup mount
+ORACLE instance started.
+
+Total System Global Area 1904054272 bytes
+Fixed Size                  2404024 bytes
+Variable Size             570425672 bytes
+Database Buffers         1325400064 bytes
+Redo Buffers                5824512 bytes
+Database mounted.
+SQL&gt; recover database using backup controlfile until cancel;
+ORA-00279: change 4234808 generated at 01/21/2014 18:31:05 needed for thread 1
+ORA-00289: suggestion :
+C:\APP\USER\FAST_RECOVERY_AREA\ORACLEDB\ARCHIVELOG\2014_01_22\O1_MF_1_108_%U_.AR
+
+C
+ORA-00280: change 4234808 for thread 1 is in sequence #108
+
+
+Specify log: {&lt;RET&gt;=suggested | filename | AUTO | CANCEL}
+C:\APP\USER\ORADATA\ORACLEDB\REDO03.LOG
+Log applied.
+Media recovery complete.
+SQL&gt; alter database open resetlogs;
+
+Database altered.
+</code></pre>
+<p>And it worked:</p>
+<p><img alt=enter image description here src=https://i.stack.imgur.com/TXcoQ.png/></p>","<p>I had a similar problem when I had installed the 12c database as per <a href=http://www.oracle.com/webfolder/technetwork/tutorials/obe/db/12c/r1/Windows_DB_Install_OBE/Installing_Oracle_Db12c_Windows.html rel=noreferrer>Oracles tutorial</a> . The instruction instructs reader to create a PLUGGABLE DATABASE (pdb). </p>
+<h2>The problem</h2>
+<p><code>sqlplus hr/hr@pdborcl</code> would result in <strong><code>ORACLE initialization or shutdown in progress</code></strong>.</p>
+<h2>The solution</h2>
+<ul>
+<li><ol>
+<li><p><strong>Login as <code>SYSDBA</code> to the dabase</strong> :  </p>
+<pre><code>sqlplus SYS/Oracle_1@pdborcl AS SYSDBA
+</code></pre></li>
+</ol></li>
+<li><ol start=2>
+<li><p><strong>Alter database</strong>: </p>
+<pre><code>alter pluggable database pdborcl open read write;
+</code></pre></li>
+</ol></li>
+<li><ol start=3>
+<li><p><strong>Login again</strong>: </p>
+<pre><code>sqlplus hr/hr@pdborcl
+</code></pre></li>
+</ol></li>
+</ul>
+<p><em>That worked for me</em></p>
+<p>Some documentation <a href=https://docs.oracle.com/database/121/SQLRF/statements_2008.htm#SQLRF55667 rel=noreferrer>here</a></p>"
+https://stackoverflow.com/questions/42163846/positional-argument-follows-keyword-argument,python - positional argument follows keyword argument,"<p>The <a href=https://docs.python.org/3/reference/expressions.html#calls rel=noreferrer>grammar of the language</a> specifies that positional arguments appear before keyword or starred arguments in calls:</p>
+<pre><code>argument_list        ::=  positional_arguments [, starred_and_keywords]
+                            [, keywords_arguments]
+                          | starred_and_keywords [, keywords_arguments]
+                          | keywords_arguments
+</code></pre>
+<p>Specifically, a keyword argument looks like this: <code>tag=insider trading!</code>
+while a positional argument looks like this: <code>..., exchange, ...</code>. The problem lies in that you appear to have copy/pasted the parameter list, and left some of the default values in place, which makes them look like keyword arguments rather than positional ones. This is fine, except that you then go back to using positional arguments, which is a syntax error.</p>
+<p>Also, when an argument has a <em>default value</em>, such as <code>price=None</code>, that means you dont have to provide it. If you dont provide it, it will use the default value instead. </p>
+<p>To resolve this error, convert your later positional arguments into keyword arguments, or, if they have default values and you dont need to use them, simply dont specify them at all:</p>
+<pre><code>order_id = kite.order_place(self, exchange, tradingsymbol,
+    transaction_type, quantity)
+
+# Fully positional:
+order_id = kite.order_place(self, exchange, tradingsymbol, transaction_type, quantity, price, product, order_type, validity, disclosed_quantity, trigger_price, squareoff_value, stoploss_value, trailing_stoploss, variety, tag)
+
+# Some positional, some keyword (all keywords at end):
+
+order_id = kite.order_place(self, exchange, tradingsymbol,
+    transaction_type, quantity, tag=insider trading!)
+</code></pre>",syntaxerror positional argument follows keyword argument,syntaxerror positional argument follows keyword argument,The error positional argument follows keyword argument means that the if any keyword argument is used in the function call then it should always be followed by keyword arguments. Positional arguments can be written in the beginning before any keyword argument is passed.,Can keyword arguments be followed by positional arguments?,Keyword arguments are passed to functions after any required positional arguments. But the order of one keyword argument compared to another keyword argument does not matter.,How do keyword arguments differ from positional arguments?,A positional argument is a name that is not followed by an equal sign (=) and default value. A keyword argument is followed by an equal sign and an expression that gives its default value.,Is it possible to have a positional argument after keyword argument?,"Yes, keyword arguments, which are assigned some value in the definition, must be written after all the positional arguments.",,
+https://stackoverflow.com/questions/4540684/java-round-up-any-number,math - Java Round up Any Number,"<p><a href=http://download.oracle.com/javase/6/docs/api/java/lang/Math.html#ceil(double) rel=noreferrer><code>Math.ceil()</code></a> is the correct function to call. Im guessing <code>a</code> is an <code>int</code>, which would make <code>a / 100</code> perform integer arithmetic. Try <code>Math.ceil(a / 100.0)</code> instead.</p>
+<pre><code>int a = 142;
+System.out.println(a / 100);
+System.out.println(Math.ceil(a / 100));
+System.out.println(a / 100.0);
+System.out.println(Math.ceil(a / 100.0));
+System.out.println((int) Math.ceil(a / 100.0));
+</code></pre>
+<p>Outputs:</p>
+<pre><code>1
+1.0
+1.42
+2.0
+2
+</code></pre>
+<p>See <a href=http://ideone.com/yhT0l rel=noreferrer>http://ideone.com/yhT0l</a></p>",how to round up java,Does Java round up or down?,"Java internally does rounding to zero, remove anything to the right of the decimal when you divide two integers. So Does Java division round down? The answer is Yes. Java does a round down in case of division of two integer numbers.",How do you round to 2 decimal places in Java?,"DecimalFormat(“0.00”) We can use DecimalFormat(""0.00"") to ensure the number always round to 2 decimal places. For DecimalFormat , the default rounding mode is RoundingMode.
+
+We can use DecimalFormat(""0.00"") to ensure the number always round to 2 decimal places. For DecimalFormat , the default rounding mode is RoundingMode.",How do you round off decimals in Java?,"DecimalFormat("""") DecimalFormat("""") vs DecimalFormat(""#.##"") BigDecimal. String.format(""%.f"", input) Math.round. References.",Do ints round up or down?,"INT rounds a number down using the Order rounding method. That is, it rounds a positive number down, towards zero, and a negative number down, away from zero. Therefore, it's easy to use INT to round a number up using the Math method.","<p>I dont know why you are dividing by 100 but here my assumption <code>int a;</code></p>
+<pre><code>int b = (int) Math.ceil( ((double)a) / 100);
+</code></pre>
+<p>or </p>
+<pre><code>int b = (int) Math.ceil( a / 100.0);
+</code></pre>","<pre><code>int RoundedUp = (int) Math.ceil(RandomReal);
+</code></pre>
+<p>This seemed to do the perfect job. Worked everytime.</p>"
+https://stackoverflow.com/questions/510972/getting-the-class-name-of-an-instance?rq=1,python - Getting the class name of an instance?,"<p>Have you tried the <a href=https://docs.python.org/library/stdtypes.html#definition.__name__ rel=noreferrer><code>__name__</code> attribute</a> of the class? ie <code>type(x).__name__</code> will give you the name of the class, which I think is what you want.</p>
+<pre><code>&gt;&gt;&gt; import itertools
+&gt;&gt;&gt; x = itertools.count(0)
+&gt;&gt;&gt; type(x).__name__
+count
+</code></pre>
+<p>If youre still using Python 2, note that the above method works with <a href=https://wiki.python.org/moin/NewClassVsClassicClass rel=noreferrer>new-style classes</a> only (in Python 3+ all classes are new-style classes). Your code might use some old-style classes. The following works for both:</p>
+<pre><code>x.__class__.__name__
+</code></pre>",get class name python,get class name python,"Use type() to get class name Use type(object) to return a type object. Access the __name__ attribute of the type object to get the class name.
+Use type(object) to return a type object. Access the __name__ attribute of the type object to get the class name.",What is __ Qualname __?,"The __qualname__ attribute means qualified name in Python. It gives you a dotted path to the name of the target object. Using __qualname__ is useful with nested structures, such as when you have a method inside a class.",What is __ class __ in Python?,"Python is an object-oriented programming languageobject-oriented programming languageObject-oriented programming An object is an abstract data type with the addition of polymorphism and inheritance. Rather than structure programs as code and data, an object-oriented system integrates the two using the concept of an ""object"". An object has state (data) and behavior (code).https://en.wikipedia.org › wiki › Object_(computer_science)Object (computer science) - Wikipedia. Everything in Python is an object or an instance. Classes, functions, and even simple data types, such as integer and float, are also objects of some class in Python. ... __class__ is an attribute on the object that refers to the class from which the object was created. › wiki › Object_(computer_science) Python is an object-oriented programming language. Everything in Python is an object or an instance. Classes, functions, and even simple data types, such as integer and float, are also objects of some class in Python. ... __class__ is an attribute on the object that refers to the class from which the object was created.Python is an object-oriented programming languageobject-oriented programming languageObject-oriented programming An object is an abstract data type with the addition of polymorphism and inheritance. Rather than structure programs as code and data, an object-oriented system integrates the two using the concept of an ""object"". An object has state (data) and behavior (code).https://en.wikipedia.org › wiki › Object_(computer_science)Object (computer science) - Wikipedia. Everything in Python is an object or an instance. Classes, functions, and even simple data types, such as integer and float, are also objects of some class in Python. ... __class__ is an attribute on the object that refers to the class from which the object was created. object-oriented programming languageobject-oriented programming languageObject-oriented programming An object is an abstract data type with the addition of polymorphism and inheritance. Rather than structure programs as code and data, an object-oriented system integrates the two using the concept of an ""object"". An object has state (data) and behavior (code).https://en.wikipedia.org › wiki › Object_(computer_science)Object (computer science) - Wikipedia object-oriented programming languageObject-oriented programming An object is an abstract data type with the addition of polymorphism and inheritance. Rather than structure programs as code and data, an object-oriented system integrates the two using the concept of an ""object"". An object has state (data) and behavior (code).https://en.wikipedia.org › wiki › Object_(computer_science)Object (computer science) - Wikipedia object-oriented programming language",What is object in class name?,"a class describes the contents of the objects that belong to it: it describes an aggregate of data fields (called instance variables), and defines the operations (called methods). ... an object is an element (or instance) of a class; objects have the behaviors of their class.
+Object-Oriented Terminology a class describes the contents of the objects that belong to it: it describes an aggregate of data fields (called instance variables), and defines the operations (called methods). ... an object is an element (or instance) of a class; objects have the behaviors of their class.","<p>Do you want the name of the class as a string?</p>
+<pre><code>instance.__class__.__name__
+</code></pre>","<p><a href=https://docs.python.org/3/library/functions.html#type rel=noreferrer><code>type()</code></a> ?</p>
+<pre><code>&gt;&gt;&gt; class A:
+...     def whoami(self):
+...         print(type(self).__name__)
+...
+&gt;&gt;&gt;
+&gt;&gt;&gt; class B(A):
+...     pass
+...
+&gt;&gt;&gt;
+&gt;&gt;&gt;
+&gt;&gt;&gt; o = B()
+&gt;&gt;&gt; o.whoami()
+B
+&gt;&gt;&gt;
+</code></pre>"

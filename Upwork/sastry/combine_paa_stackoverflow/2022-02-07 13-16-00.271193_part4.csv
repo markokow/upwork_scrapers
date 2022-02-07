@@ -1,0 +1,23 @@
+url,title,best_answer_1,best_answer_2,best_answer_3,keyword,question_1,answer_1,question_2,answer_2,question_3,answer_3,question_4,answer_4
+https://stackoverflow.com/questions/2755945/how-can-i-use-as-the-delimiter-with-string-split-in-java,How can I use . as the delimiter with String.split() in java,"<p><a href=http://docs.oracle.com/javase/7/docs/api/java/lang/String.html#split%28java.lang.String%29 rel=noreferrer><code>String.split</code></a> takes a regex, and . has a special meaning for regexes.</p>
+<p>You (probably) want something like:</p>
+<pre><code>String[] words = line.split(\\.);
+</code></pre>
+<p>Some folks seem to be having trouble getting this to work, so here is some runnable code you can use to verify correct behaviour.</p>
+<pre><code>import java.util.Arrays;
+
+public class TestSplit {
+  public static void main(String[] args) {
+    String line = aa.bb.cc.dd;
+    String[] words = line.split(\\.);
+    System.out.println(Arrays.toString(words));
+    // Output is [aa, bb, cc, dd]
+  }
+}
+</code></pre>","<p>When splitting with a string literal delimiter, the safest way is to use the <a href=http://docs.oracle.com/javase/7/docs/api/java/util/regex/Pattern.html#quote%28java.lang.String%29 rel=noreferrer>Pattern.quote()</a> method:</p>
+<pre><code>String[] words = line.split(Pattern.quote(.));
+</code></pre>
+<p>As described by other answers, splitting with <code>\\.</code> is correct, but <code>quote()</code> will do this escaping for you.</p>","<p>The argument to split is a regular expression. The period is a regular expression metacharacter that matches anything, thus every character in <code>line</code> is considered to be a split character, and is thrown away, and all of the empty strings between them are thrown away (because theyre empty strings). The result is that you have nothing left.</p>
+<p>If you escape the period (by adding an escaped backslash before it), then you can match literal periods. (<code>line.split(\\.)</code>)</p>",java split string on period,How do you split a string with a period?,"To split a string with dot, use the split() method in Java. str. split(""[.]"", );",Can you split in Java?,"Split() String method in Java with examples. The string split() method breaks a given string around matches of the given regular expression. After splitting against the given regular expression, this method returns a char array.",Which expression is used to split a string that contains dot?,"To split a string with dot, use the split() method in Java. str. split(""[.]"", ); The following is the complete example.",How do I split a string with multiple separators in Java?,"Example 4: Split String by Multiple Delimiters Java program to split a string with multiple delimiters. Use regex OR operator '|' symbol between multiple delimiters.
+
+Java program to split a string with multiple delimiters. Use regex OR operator '|' symbol between multiple delimiters."

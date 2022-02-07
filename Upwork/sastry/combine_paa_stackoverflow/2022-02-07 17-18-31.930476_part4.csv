@@ -1,0 +1,927 @@
+url,title,best_answer_1,best_answer_2,best_answer_3,keyword,question_1,answer_1,question_2,answer_2,question_3,answer_3,question_4,answer_4
+https://stackoverflow.com/questions/4528744/how-does-the-extend-function-work-in-jquery,How does the extend() function work in jQuery?,"<h1>Multiple Parameters</h1>
+<p>The documentation isnt precise in explaining how extend works, so I ran a little test:</p>
+<pre><code>var a = {foo: 1, bar: 1};
+var b = {foo: 2, baz: 2};
+var c = {foo: 3};
+var r = jQuery.extend(a,b,c);
+console.log(A: Foo= + a.foo +  Bar= + a.bar +  Baz= + a.baz);
+console.log(B: Foo= + b.foo +  Bar= + b.bar +  Baz= + b.baz);
+console.log(C: Foo= + c.foo +  Bar= + c.bar +  Baz= + c.baz);
+console.log(R: Foo= + r.foo +  Bar= + r.bar +  Baz= + r.baz);
+console.log(A === R?:  + (a === r));
+</code></pre>
+<p>(The <code>console.log</code> function is intended to work in Firebug; replace it with alert() or some other output function if you like).</p>
+<p>The results are:</p>
+<pre><code>A: Foo=3 Bar=1 Baz=2
+B: Foo=2 Bar=undefined Baz=2
+C: Foo=3 Bar=undefined Baz=undefined
+R: Foo=3 Bar=1 Baz=2
+A === R?: true
+</code></pre>
+<p>By this we can see that jQuery.extend():</p>
+<ul>
+<li>Starts with the object provided by the first parameter.</li>
+<li>Adds to it any property in the second parameter. If the property already exists in the first parameter, it is overwritten. The object for the second parameter is unchanged.</li>
+<li>Repeats the above with any subsequent parameter.</li>
+<li>Returns the first parameter.</li>
+</ul>
+<p>This is useful for combining user and default option-objects together to get a complete set of options:</p>
+<pre><code>function foo(userOptions) {
+  var defaultOptions = {
+    foo: 2,
+    bar: 2
+  };
+  var someOtherDefaultOptions = {
+    baz: 3
+  };
+
+  var allOptions = jQuery.extend(
+    defaultOptions,
+    someOtherDefaultOptions,
+    userOptions
+  );
+  doSomething(allOptions);
+}
+
+foo({foo:1, baz:1});
+</code></pre>
+<p>Note that null is a valid value for overwriting, but undefined isnt. You might be able to make use of this.</p>
+<pre><code>var a = {foo: a, bar: a};
+var b = {foo: null, bar: undefined};
+jQuery.extend(a,b);
+console.log(A: Foo= + a.foo +  Bar= + a.bar);
+</code></pre>
+<p>Results in:</p>
+<pre><code>A: Foo=null Bar=a
+</code></pre>
+<h1>Single Parameter</h1>
+<p>If you pass just one object to <code>jQuery.extend()</code>, then jQuery assumes that the <code>jQuery</code> object <em>itself</em> is the first parameter (ie: the one to be modified), and your object is the second (ie: the one to add to the first). So:</p>
+<pre><code>console.log( Before:  + jQuery.foo );
+jQuery.extend({foo:1});
+console.log( After:  + jQuery.foo );
+</code></pre>
+<p>Results in:</p>
+<pre><code>Before: undefined
+After: 1
+</code></pre>","<p>It <strong>merges the content of one object to another</strong>. If we pass two  objects, <strong>second object properties are added to the first object / first parameter</strong></p>
+<pre><code>Ex: $.extend(object1, object2);
+</code></pre>
+<p>Now <strong>object1 contains properties of object2</strong></p>
+<p>If we want to <strong>merge two objects</strong>, then we need to pass empty object in the first parameter</p>
+<pre><code>Ex: var newObject = $.extend({}, object1, object2);
+</code></pre>
+<p>Now <strong>newObject contains both properties of object1 and object2</strong>.</p>","<p>From jQuery Documentation</p>
+<blockquote>
+<p>Merge the contents of two or more
+  objects together into the first
+  object.</p>
+</blockquote>
+<p><strong>In a plugin context:</strong> If the user does not set the optional parameters for the function, then a default value will be used instead.</p>",jquery extend,What is jQuery extend?,The jQuery. extend() method is used to merge contents of two or more objects together. The object is merged into the first object.,What is extend method in JavaScript?,"When two or more object arguments are supplied to $. extend() , properties from all of the objects are added to the target object. Arguments that are null or undefined are ignored. If only one argument is supplied to $. extend() , this means the target argument was omitted.",What is FN jQuery?,"fn is an alias for jQuery. prototype which allows you to extend jQuery with your own functions. For Example: $.fn. something = function{} will allow you to use $(""#element"").",What is extend in JS?,"The extends keyword is used to create a child class of another class (parent). The child class inherits all the methods from another class. ... By calling the super() method in the constructor method, we call the parent's constructor method and gets access to the parent's properties and methods."
+https://stackoverflow.com/questions/28957291/avro-vs-parquet,hadoop - Avro vs. Parquet,"<p>If you havent already decided, Id go ahead and write Avro schemas for your data. Once thats done, choosing between Avro container files and Parquet files is about as simple as swapping out e.g.,</p>
+<pre><code>job.setOutputFormatClass(AvroKeyOutputFormat.class);
+AvroJob.setOutputKeySchema(MyAvroType.getClassSchema());
+</code></pre>
+<p>for</p>
+<pre><code>job.setOutputFormatClass(AvroParquetOutputFormat.class);
+AvroParquetOutputFormat.setSchema(job, MyAvroType.getClassSchema());
+</code></pre>
+<p>The Parquet format does seem to be a bit more computationally intensive on the write side--e.g., requiring RAM for buffering and CPU for ordering the data etc. but it should reduce I/O, storage and transfer costs as well as make for efficient reads especially with SQL-like (e.g., Hive or SparkSQL) queries that only address a portion of the columns.</p>
+<p>In one project, I ended up reverting from Parquet to Avro containers because the schema was too extensive and nested (being derived from some fairly hierarchical object-oriented classes) and resulted in 1000s of Parquet columns. In turn, our row groups were really wide and shallow which meant that it took forever before we could process a small number of rows in the last column of each group.</p>
+<p>I havent had much chance to use Parquet for more normalized/sane data yet but I understand that if used well, it allows for significant performance improvements.</p>","<p>Avro is a Row based format. If you want to retrieve the data as a whole you can use Avro</p>
+<p>Parquet is a Column based format. If your data consists of a lot of columns but you are interested in a subset of columns then you can use Parquet</p>
+<p>HBase is useful when frequent updating of data is involved. Avro is fast in retrieval, Parquet is much faster.</p>","<p>Avro</p>
+<ul>
+<li>Widely used as a serialization platform</li>
+<li>Row-based, offers a compact and fast binary format</li>
+<li>Schema is encoded on the file so the data can be untagged</li>
+<li>Files support block compression and are splittable</li>
+<li>Supports schema evolution</li>
+</ul>
+<p>Parquet</p>
+<ul>
+<li>Column-oriented binary file format</li>
+<li>Uses the record shredding and assembly algorithm described in the Dremel paper</li>
+<li>Each data file contains the values for a set of rows</li>
+<li>Efficient in terms of disk I/O when specific columns need to be queried</li>
+</ul>
+<p>From <a href=https://www.slideshare.net/StampedeCon/choosing-an-hdfs-data-storage-format-avro-vs-parquet-and-more-stampedecon-2015 rel=noreferrer>Choosing an HDFS data storage format- Avro vs. Parquet and more</a></p>",avro vs parquet,avro vs parquet,"AVRO is a row-based storage format, whereas PARQUET is a columnar-based storage format. PARQUET is much better for analytical querying, i.e., reads and querying are much more efficient than writing. Writiing operations in AVRO are better than in PARQUET. Comparisons Between Different File Formats AVRO is a row-based storage format, whereas PARQUET is a columnar-based storage format. PARQUET is much better for analytical querying, i.e., reads and querying are much more efficient than writing. Writiing operations in AVRO are better than in PARQUET.",Is Avro faster than Parquet?,"Avro is fast in retrieval, Parquet is much faster. parquet stores data on disk in a hybrid manner. It does a horizontal partition of the data and stores each partition it in a columnar way.",What is difference between Parquet and ORC and Avro?,"The biggest difference between ORC, Avro, and Parquet is how the store the data. Parquet and ORC both store data in columns, while Avro stores data in a row-based format. ... While column-oriented stores like Parquet and ORC excel in some cases, in others a row-based storage mechanism like Avro might be the better choice.",Is Avro better than CSV?,"Avro is row-orientated, just like CSV. This makes it different from, let's say, Parquet, but it's still a highly efficient data format. Column storage files are more lightweight, as adequate compression can be made for each column. Row storage doesn't work in that way, since a single row can have multiple data types."
+https://stackoverflow.com/questions/29522088/rjava-install-error-java-home-cannot-be-determined-from-the-registry,java - rJava install error JAVA_HOME cannot be determined from the Registry,"<p>This error is often resolved by installing a Java version (i.e. 64-bit Java or 32-bit Java) that fits to the type of R version that you are using (i.e. 64-bit R or 32-bit R). This problem can easily effect Windows 7 users, since they might have installed a version of Java that is different than the version of R they are using.</p>
+<p><a href=http://www.r-statistics.com/2012/08/how-to-load-the-rjava-package-after-the-error-java_home-cannot-be-determined-from-the-registry/>http://www.r-statistics.com/2012/08/how-to-load-the-rjava-package-after-the-error-java_home-cannot-be-determined-from-the-registry/</a></p>","<p>Install 64 bit Java from <a href=https://java.com/en/download/manual.jsp rel=noreferrer>https://java.com/en/download/manual.jsp</a>.<br/>
+Then in windows cmd run<br/>
+<code>setx PATH C:\Program Files\Java\jre1.8.0_211\bin\server;%PATH%</code><br/>
+(make sure your path is correct). </p>
+<p>Then in RStudio run<br/>
+<code>Sys.setenv(JAVA_HOME=)</code></p>
+<p>Now, you should be able to run rJava!!</p>","<p>I got the same error resolved by installing same version of R and Java i.e. 64 bits and manually updating the path i.e. ,</p>
+<pre><code>Sys.setenv(JAVA_HOME=C:/Program Files/Java/jre1.8.0_121) # for 64-bit version
+</code></pre>",error: java_home cannot be determined from the registry,error: java_home cannot be determined from the registry,Approach 1: error: JAVA_HOME cannot be determined from the Registry. ... This is frequently due to the fact that you are running a 64-bit version of R but not a 64-bit version of Java. It's possible that you installed a 32-bit version of Java or that you didn't install Java at all.,,,,,,
+https://stackoverflow.com/questions/584770/how-would-i-get-a-cron-job-to-run-every-30-minutes,linux - How would I get a cron job to run every 30 minutes?,"<p>Do:</p>
+<pre><code>0,30 * * * * your_command
+</code></pre>","<p>crontab does not understand intervals, it only understands schedule</p>
+<p>valid hours: 0-23 -- valid minutes: 0-59</p>
+<p><strong>example #1</strong></p>
+<p><code>30 * * * * your_command</code></p>
+<p>this means run when the minute of each hour <strong>is 30</strong> (would run at: 1:30, 2:30, 3:30, etc)</p>
+<p><strong>example #2</strong></p>
+<p><code>*/30 * * * * your_command</code></p>
+<p>this means run when the minute of each hour is <strong>evenly divisible by 30</strong> (would run at: 1:30, 2:00, 2:30, 3:00, etc)</p>
+<p><strong>example #3</strong></p>
+<p><code>0,30 * * * * your_command</code></p>
+<p>this means run when the minute of each hour <strong>is 0 or 30</strong> (would run at: 1:30, 2:00, 2:30, 3:00, etc)</p>
+<p><em>its another way to accomplish the same results as example #2</em></p>
+<p><strong>example #4</strong></p>
+<p><code>19 * * * * your_command</code></p>
+<p>this means run when the minute of each hour <strong>is 19</strong> (would run at: 1:19, 2:19, 3:19, etc)</p>
+<p><strong>example #5</strong></p>
+<p><code>*/19 * * * * your_command</code></p>
+<p>this means run when the minute of each hour is <strong>evenly divisible by 19</strong> (would run at: 1:19, 1:38, 1:57, 2:19, 2:38, 2:57 etc)</p>
+<p><em>note: several refinements have been made to this post by various users including the author</em></p>","<p>Try this:</p>
+<pre><code>0,30 * * * * your command goes here
+</code></pre>
+<p>According to the official Mac OS X <a href=http://developer.apple.com/DOCUMENTATION/Darwin/Reference/ManPages/man5/crontab.5.html rel=noreferrer>crontab(5) manpage</a>, the <code>/</code> syntax is supported.  Thus, to figure out why it wasnt working for you, youll need to look at the logs for cron.  In those logs, you <em>should</em> find a clear failure message.</p>
+<p>Note:  Mac OS X appears to use Vixie Cron, the same as Linux and the BSDs.</p>",cron every 30 min,How do I run a cron job every 30 seconds?,"The trick is to use a sleep 30 but to start it in the background before your payload runs. Then, after the payload is finished, just wait for the background sleep to finish. If the payload takes n seconds (where n <= 30 ), the wait after the payload will then be 30 - n seconds.",How do I run crontab every hour?,"Step 1: Create Task to Schedule As Crontab Job.
+Step 2: Start Crontab Service.
+Step 3: Check Status of Crontab Service.
+Step 4: Launch Crontab File.
+Step 5: Add Task to Crontab File to Be Executed Every Hour.",How do cron jobs work?,"Cron Jobs allow you to automate specific commands or scripts on your server to complete repetitive tasks automatically. This can be a very resourceful tool as a Cron Job can be set to run by  or hourly increments, a day of the week or month, or any combination of these.",How do I run a cron job every 20 minutes?,"To specify a job to be run every , you can use “*/”."
+https://stackoverflow.com/questions/15103810/how-do-i-get-class-name-in-php/15104069,How do I get class name in PHP?,"<p><strong>Since PHP 5.5</strong> you can use class name resolution via <strong>ClassName::class</strong>.</p>
+<p>See <a href=http://php.net/manual/migration55.new-features.php#migration55.new-features.class-name rel=noreferrer>new features of PHP5.5</a>.</p>
+<pre class=lang-php prettyprint-override><code>&lt;?php
+
+namespace Name\Space;
+
+class ClassName {}
+
+echo ClassName::class;
+
+?&gt;
+</code></pre>
+<p>If you want to use this feature in your class method use <strong>static::class</strong>:</p>
+<pre class=lang-php prettyprint-override><code>&lt;?php
+
+namespace Name\Space;
+
+class ClassName {
+   /**
+    * @return string
+    */
+   public function getNameOfClass()
+   {
+      return static::class;
+   }
+}
+
+$obj = new ClassName();
+echo $obj-&gt;getNameOfClass();
+
+?&gt;
+</code></pre>
+<p><strong>For older versions of PHP</strong>, you can use <a href=http://php.net/manual/en/function.get-class.php rel=noreferrer>get_class()</a>.</p>","<p>You can use <code>__CLASS__</code> within a class to get the name.</p>
+<p><a href=http://php.net/manual/en/language.constants.predefined.php>http://php.net/manual/en/language.constants.predefined.php</a></p>","<p>It sounds like you answered your own question. <code>get_class</code> will get you the class name. It is procedural and maybe that is what is causing the confusion. Take a look at the php documentation for <a href=http://php.net/manual/en/function.get-class.php><code>get_class</code></a></p>
+<p>Here is their example:</p>
+<pre><code> &lt;?php
+
+ class foo 
+ {
+     function name()
+     {
+         echo My name is  , get_class($this) , \n;
+     }
+ }
+
+ // create an object
+ $bar = new foo();
+
+ // external call
+ echo Its name is  , get_class($bar) , \n; // Its name is foo
+
+ // internal call
+ $bar-&gt;name(); // My name is foo
+</code></pre>
+<p>To make it more like your example you could do something like:</p>
+<pre><code> &lt;?php
+
+ class MyClass
+ {
+       public static function getClass()
+       {
+            return get_class();
+       }
+ }
+</code></pre>
+<p>Now you can do:</p>
+<pre><code> $className = MyClass::getClass();
+</code></pre>
+<p>This is somewhat limited, however, because if my class is extended it will still return MyClass. We can use <a href=http://www.php.net/manual/en/function.get-called-class.php><code>get_called_class</code></a> instead, which relies on <a href=http://php.net/manual/en/language.oop5.late-static-bindings.php>Late Static Binding</a>, a relatively new feature, and requires PHP &gt;= 5.3.</p>
+<pre><code>&lt;?php
+
+class MyClass
+{
+    public static function getClass()
+    {
+        return get_called_class();
+    }
+
+    public static function getDefiningClass()
+    {
+        return get_class();
+    }
+}
+
+class MyExtendedClass extends MyClass {}
+
+$className = MyClass::getClass(); // MyClass
+$className = MyExtendedClass::getClass(); // MyExtendedClass
+$className = MyExtendedClass::getDefiningClass(); // MyClass
+</code></pre>",php get class name,How do I get the class name of an object in PHP?,Return Value: This function returns the class name of which object is an instance. It returns FALSE if the object is not an object. If the object is omitted when inside the class then the class name is returned. PHP | get_class() Function Return Value: This function returns the class name of which object is an instance. It returns FALSE if the object is not an object. If the object is omitted when inside the class then the class name is returned.,How do I find the class name of an object?,"If you have a JavaSW object, you can obtain it's class object by calling getClass() on the object. To determine a String representation of the name of the class, you can call getName() on the class.",Is instance of class PHP?,The is_a() is a built-in function in PHP which is used to check whether a given object is of a given class or not. It also checks if the given class is one of the parents of the given object or not.,What does :: class do in PHP?,4 Answers. SomeClass::class will return the fully qualified name of SomeClass including the namespace. This feature was implemented in PHP 5.5. It's very useful for 2 reasons.
+https://stackoverflow.com/questions/30948151/how-to-drop-or-delete-a-collection-in-mongodb,How to drop or delete a collection in MongoDB?,"<p>So either of these are valid ways to do it:</p>
+<pre><code>mongo &lt;dbname&gt; --eval db.&lt;collection&gt;.drop()
+#     ^^^^^^^^            ^^^^^^^^^^^^
+</code></pre>
+<p></p>
+<pre><code>db.&lt;collection&gt;.drop()
+#  ^^^^^^^^^^^^
+</code></pre>
+<hr/>
+<p>For example, for a collection <code>mycollection</code> in a database <code>mydb</code> you would say:</p>
+<pre><code>mongo mydb --eval db.mycollection.drop()
+</code></pre>
+<p></p>
+<pre><code>db.mycollection.drop()
+</code></pre>
+<hr/>
+<p>This is the way I fully tested it, creating a database <code>mydb</code> with a collection <code>hello</code>.</p>
+<ul>
+<li><p>Create db <code>mydb</code>:</p>
+<pre><code>&gt; use mydb
+switched to db mydb
+</code></pre></li>
+<li><p>Create a collection <code>mycollection</code>:</p>
+<pre><code>&gt; db.createCollection(mycollection)
+{ ok : 1 }
+</code></pre></li>
+<li><p>Show all the collections there:</p>
+<pre><code>&gt; db.getCollectionNames()
+[ mycollection, system.indexes ]
+</code></pre></li>
+<li><p>Insert some dummy data:</p>
+<pre><code>&gt; db.mycollection.insert({a:b})
+WriteResult({ nInserted : 1 })
+</code></pre></li>
+<li><p>Make sure it was inserted:</p>
+<pre><code>&gt; db.mycollection.find()
+{ _id : ObjectId(55849b22317df91febf39fa9), a : b }
+</code></pre></li>
+<li><p>Delete the collection and make sure it is not present any more:</p>
+<pre><code>&gt; db.mycollection.drop()
+true
+&gt; db.getCollectionNames()
+[ system.indexes ]
+</code></pre></li>
+</ul>
+<p>This also works (I am not repeating the previous commands, since it is just about recreating the database and the collection):</p>
+<pre><code>$ mongo mydb --eval db.mycollection.drop()
+MongoDB shell version: 2.6.10
+connecting to: mydb
+true
+$
+</code></pre>","<p>To drop a collection <code>users</code> of database <code>mydb</code>:</p>
+<pre><code>&gt; use mydb
+&gt; db.users.drop()
+</code></pre>","<pre><code>--eval db.getCollection(collection).drop()
+</code></pre>",mongodb delete collection,mongodb delete collection,"To delete a MongoDB Collection, use db. collection. drop() command.",,,,,,
+https://stackoverflow.com/questions/30533171/react-js-conditionally-applying-class-attributes,javascript - React Js conditionally applying class attributes,"<p>The curly braces are inside the string, so it is being evaluated as string. They need to be outside, so this should work:</p>
+<pre><code>&lt;div className={btn-group pull-right  + (this.props.showBulkActions ? show : hidden)}&gt;
+</code></pre>
+<p>Note the space after pull-right. You dont want to accidentally provide the class pull-rightshow instead of pull-right show. Also the parentheses needs to be there.</p>","<p>As others have commented, <a href=https://github.com/JedWatson/classnames rel=nofollow noreferrer>classnames</a> utility is the currently recommended approach to handle conditional CSS class names in ReactJs.</p>
+<p>In your case, the solution will look like:</p>
+<pre><code>var btnGroupClasses = classNames(
+  btn-group,
+  pull-right,
+  {
+    show: this.props.showBulkActions,
+    hidden: !this.props.showBulkActions
+  }
+);
+</code></pre>
+<p>...</p>
+<pre><code>&lt;div className={btnGroupClasses}&gt;...&lt;/div&gt;
+</code></pre>
+<p>As a side note, I would suggest you to try to avoid using both <code>show</code> and <code>hidden</code> classes, so the code could be simpler. Most likely, you dont need to set a class for something to be shown by default.</p>
+<p><strong>2021 addendum:</strong> for performance improvement, you can look into <a href=https://github.com/lukeed/clsx rel=nofollow noreferrer title=GitHub - lukeed/clsx: A tiny (228B) utility for constructing `className` strings conditionally.>clsx</a> as an alternative.</p>","<p>If you are using a transpiler (such as <a href=https://babeljs.io/ rel=noreferrer>Babel</a> or Traceur) you can use the new ES6 <a href=https://developers.google.com/web/updates/2015/01/ES6-Template-Strings rel=noreferrer>template strings</a>.</p>
+<p>Here is the answer of @spitfire109, modified accordingly:</p>
+<pre><code>&lt;div className={`btn-group pull-right ${this.props.showBulkActions ? shown : hidden}`}&gt;
+</code></pre>
+<p>This approach allows you to do neat things like that, rendering either <code>s-is-shown</code> or <code>s-is-hidden</code>:</p>
+<pre><code>&lt;div className={`s-${this.props.showBulkActions ? is-shown : is-hidden}`}&gt;
+</code></pre>",react conditional classname,How do I use className in React JS?,"className. To specify a CSS class, use the className attribute. This applies to all regular DOM and SVG elements like <div> , <a> , and others. If you use React with Web Components (which is uncommon), use the class attribute instead.",How do I use className in React?,"className. To specify a CSS class, use the className attribute. This applies to all regular DOM and SVG elements like <div> , <a> , and others. If you use React with Web Components (which is uncommon), use the class attribute instead.",How do you add conditional attributes in React?,"if Statement. Using if-else statements is one of the easiest ways to implement conditional attributes.
+Ternary Operator.
+&& Operator.
+Spread Operator.
+Build better Component Libs and Design Systems.",Why do we use className in react?,"Explanation: The only reason behind the fact that it uses className over class is that the class is a reserved keyword in JavaScript and since we use JSX in React which itself is the extension of JavaScript, so we have to use className instead of class attribute."
+https://stackoverflow.com/questions/29594572/laravel-eloquent-update-record-without-loading-from-database,php - Laravel eloquent update record without loading from database,"<pre><code>Post::where(id,3)-&gt;update([title=&gt;Updated title]);
+</code></pre>","<p>You can simply use Query Builder rather than Eloquent, this code directly update your data in the database :) This is a sample:</p>
+<pre><code>DB::table(post)
+            -&gt;where(id, 3)
+            -&gt;update([title =&gt; Updated Title]);
+</code></pre>
+<p>You can check the documentation here for more information: <a href=http://laravel.com/docs/5.0/queries#updates>http://laravel.com/docs/5.0/queries#updates</a></p>","<p>Use property <code>exists</code>:</p>
+<pre><code>$post = new Post();
+$post-&gt;exists = true;
+$post-&gt;id = 3; //already exists in database.
+$post-&gt;title = Updated title;
+$post-&gt;save();
+</code></pre>
+<p>Here is the API documentation: <a href=http://laravel.com/api/5.0/Illuminate/Database/Eloquent/Model.html rel=noreferrer>http://laravel.com/api/5.0/Illuminate/Database/Eloquent/Model.html</a></p>",update in laravel,How do I update Laravel?,"The recommended method of upgrading is to create a new Laravel install and then to copy your site's unique application files into the new application. This would include controllers, routes, Eloquent models, Artisan commands, assets, and other code specific to your application.",What is model in Laravel?,"In Laravel, Model is a class that represents the logical structure and relationship of underlying data table. In Laravel, each of the database table has a corresponding “Model” that allow us to interact with that table. Models gives you the way to retrieve, insert, and update information into your data table.",Should I update laravel version?,"Laravel changed significantly from v4 to v5. So you'll probably have a lot of work to do upgrading your code to work with v5. Definitely something I'd recommend in general, just don't expect it to be a quick upgrade if you have a lot of v4 code.",What is latest laravel version?,"The latest Laravel version is version  which was released on , with new features like Laravel Jetstream, model factory classes, migration squashing, Tailwind  for pagination views and other usability improvements."
+https://stackoverflow.com/questions/10018957/how-to-remove-item-from-list-in-c,How to remove item from list in C#?,"<p><code>List&lt;T&gt;</code> has two methods you can use. </p>
+<p><a href=http://msdn.microsoft.com/en-us/library/5cw9x18z.aspx rel=noreferrer>RemoveAt(int index)</a> can be used if you know the index of the item. For example:</p>
+<pre><code>resultlist.RemoveAt(1);
+</code></pre>
+<p>Or you can use <a href=http://msdn.microsoft.com/en-us/library/cd666k3e.aspx rel=noreferrer>Remove(T item)</a>:</p>
+<pre><code>var itemToRemove = resultlist.Single(r =&gt; r.Id == 2);
+resultList.Remove(itemToRemove);
+</code></pre>
+<p>When you are not sure the item really exists you can use <a href=http://msdn.microsoft.com/en-us/library/bb549274.aspx rel=noreferrer>SingleOrDefault</a>. <code>SingleOrDefault</code> will return <code>null</code> if there is no item (<code>Single</code> will throw an exception when it cant find the item). Both will throw when there is a duplicate value (two items with the same <code>id</code>).</p>
+<pre><code>var itemToRemove = resultlist.SingleOrDefault(r =&gt; r.Id == 2);
+if (itemToRemove != null)
+    resultList.Remove(itemToRemove);
+</code></pre>","<p><strong>Short answer:</strong><br/>
+<strong><sub>Remove (from list <code>results</code>)</sub></strong></p>
+<p><code>results.RemoveAll(r =&gt; r.ID == 2);</code> will remove the item with <strong>ID 2</strong> in <code>results</code> (in place).</p>
+<p><strong><sub>Filter (without removing from original list <code>results</code>):</sub></strong></p>
+<p><code>var filtered = result.Where(f =&gt; f.ID != 2);</code> returns all items except the one with <strong>ID 2</strong></p>
+<p><strong>Detailed answer:</strong></p>
+<p>I think <strong><code>.RemoveAll()</code></strong> is very flexible, because you can have a list of item IDs which you want to remove - please regard the following example.</p>
+<p>If you have:</p>
+<pre><code>class myClass {
+    public int ID; public string FirstName; public string LastName;
+}
+</code></pre>
+<p>and assigned some values to <code>results</code> as follows:</p>
+<pre><code>var results = new List&lt;myClass&gt; {
+    new myClass { ID=1, FirstName=Bill, LastName=Smith },   // results[0]
+    new myClass { ID=2, FirstName=John, LastName=Wilson },  // results[1]
+    new myClass { ID=3, FirstName=Doug, LastName=Berg },    // results[2]
+    new myClass { ID=4, FirstName=Bill, LastName=Wilson }   // results[3]
+};
+</code></pre>
+<p>Then you can define a list of IDs to remove:</p>
+<pre><code>var removeList = new List&lt;int&gt;() { 2, 3 };
+</code></pre>
+<p>And simply use this to remove them:</p>
+<pre><code>results.RemoveAll(r =&gt; removeList.Any(a =&gt; a==r.ID));
+</code></pre>
+<p>It will <strong>remove the items 2 and 3</strong> and keep the items 1 and 4 - as specified by the <code>removeList</code>. <strong>Note</strong> that this happens in place, so there is no additional assigment required.</p>
+<p>Of course, you can also use it on single items like:</p>
+<pre><code>results.RemoveAll(r =&gt; r.ID==4);
+</code></pre>
+<p>where it will remove Bill with ID 4 in our example.</p>
+<p>A last thing to mention is that lists have an indexer, that is, they can also be accessed like a dynamic array, i.e. <code>results[3]</code> will give you the 4th element in the results list (because the first element has the index 0, the 2nd has index 1 etc).</p>
+<p>So if you want to remove all entries where the first name is the same as in the 4th element of the results list, you can simply do it this way:</p>
+<pre><code>results.RemoveAll(r =&gt; results[3].FirstName == r.FirstName);
+</code></pre>
+<p>Note that afterwards, only John and Doug will remain in the list, Bill is removed (the first and last element in the example). Important is that the list will shrink automatically, so it has only 2 elements left - and hence the largest allowed index after executing RemoveAll in this example is 1 <br/>(which is <code>results.Count() - 1</code>).</p>
+<p>Some Trivia: You can use this knowledge and create a local function</p>
+<pre><code>void myRemove()  { var last = results.Count() - 1; 
+                   results.RemoveAll(r =&gt; results[last].FirstName == r.FirstName); }
+</code></pre>
+<p>What do you think will happen, if you call this function twice?
+Like</p>
+<pre><code>myRemove(); myRemove(); 
+</code></pre>
+<p>The first call will remove Bill at the first and last position, the second call will remove Doug and only John Wilson remains in the list.</p>
+<hr/>
+<p><strong>Note:</strong> Since <a href=https://docs.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-8 rel=noreferrer>C# Version 8</a>, you can as well write <code>results[^1]</code> instead of <code>var last = results.Count() - 1;</code> and  <code>results[last]</code>:</p>
+<pre><code>void myRemove()  =&gt;  results.RemoveAll(r =&gt; results[^1].FirstName == r.FirstName); 
+</code></pre>
+<p>So you would not need the local variable <code>last</code> anymore (see <a href=https://docs.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-8#indices-and-ranges rel=noreferrer>indices and ranges</a>). Furthermore, since it is a one-liner, you dont require the curly braces and can use <code>=&gt;</code> instead.
+For a list of all the new features in C#, look <a href=https://docs.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-version-history rel=noreferrer>here</a>.</p>
+<hr/>
+<p>DotNetFiddle: <a href=https://dotnetfiddle.net/6p8cmi rel=noreferrer>Run the demo</a></p>","<pre><code>resultList = results.Where(x=&gt;x.Id != 2).ToList();
+</code></pre>
+<p>Theres a little Linq helper I like thats easy to implement and can make queries with where not conditions a little easier to read:</p>
+<pre><code>public static IEnumerable&lt;T&gt; ExceptWhere&lt;T&gt;(this IEnumerable&lt;T&gt; source, Predicate&lt;T&gt; predicate)
+{
+    return source.Where(x=&gt;!predicate(x));
+}
+
+//usage in above situation
+resultList = results.ExceptWhere(x=&gt;x.Id == 2).ToList();
+</code></pre>",c# list remove,How does remove work in list?,"Removes the first occurrence of the specified element from given list, if the element is present. If the element is not present, the given list is not changed. After removing, it shifts subsequent elements(if any) to left and decreases their indexes by",Does list remove remove all occurrences?,"list. remove(x) removes the first occurrence of value x from the list, but it fails to remove all occurrences of value x from the list.",Which function will remove an item from a list?,"List Object's remove() method: The remove() method is one of the most commonly used list object methods to remove an item or an element from the list. When you use this method, you will need to specify the particular item that is to be removed.",How do I delete one item from a list?,Items of the list can be deleted using del statement by specifying the index of item (element) to be deleted. We can remove an item from the list by passing the value of the item to be deleted as the parameter to remove() function. pop() is also a method of list.
+https://stackoverflow.com/questions/10243841/how-to-get-user-agent-in-php,How to get user agent in PHP,<p>Use the native PHP <code>$_SERVER[HTTP_USER_AGENT]</code> variable instead.</p>,"<p>You could also use the php native funcion <a href=https://secure.php.net/manual/en/function.get-browser.php rel=nofollow noreferrer>get_browser()</a></p>
+<p>IMPORTANT NOTE:
+You should have a browscap.ini file.</p>","<p>You can use the jQuery ajax method <a href=http://api.jquery.com/jQuery.ajax/ rel=nofollow noreferrer>link</a> if you want to pass data from client to server.
+In this case you can use <code>$_SERVER[HTTP_USER_AGENT]</code> variable to found browser user agent.</p>",php $user_agent,How can I get userAgent in PHP?,"function get_browser_name($user_agent){
+$t = strtolower($user_agent);
+$t = "" "" . $
+if (strpos($t, 'opera' ) || strpos($t, 'opr/') ) return 'Opera' ;
+elseif (strpos($t, 'edge' ) ) return 'Edge' ;
+elseif (strpos($t, 'chrome' ) ) return 'Chrome' ;",How can I get browser in PHP?,The get_browser() function in PHP is an inbuilt function that is used to tell the user about the browser's capabilities. This function looks up the user's browscap. ini file and returns the capabilities of the user's browser.,What is $_ server [' HTTP_USER_AGENT ']?,The variable we are interested in right now is $_SERVER['HTTP_USER_AGENT'] . Note: $_SERVER is a special reserved PHP variable that contains all web server information. It is known as a superglobal. See the related manual page on superglobals for more information.,How do I find my browser name?,"How can I tell which browser version I am using? In the browser's toolbar, click on “Help""or the Settings icon. Click the menu option that begins “About” and you'll see what type and version of browser you are using."
+https://stackoverflow.com/questions/15637507/fatal-origin-does-not-appear-to-be-a-git-repository,github - fatal: origin does not appear to be a git repository,"<p><code>$HOME/.gitconfig</code> is your <strong>global</strong> config for git.<br/>
+There are <a href=https://stackoverflow.com/a/1063646/6309>three levels</a> of <a href=http://git-scm.com/docs/git-config rel=noreferrer>config files</a>.</p>
+<pre><code> cat $(git rev-parse --show-toplevel)/.git/config
+</code></pre>
+<p>(<a href=https://stackoverflow.com/questions/15637507/fatal-origin-does-not-appear-to-be-a-git-repository/15637954#comment22186180_15637507>mentioned</a> by <a href=https://stackoverflow.com/users/770830/bereal>bereal</a>) is your <em>local</em> config, local to the repo you have cloned.</p>
+<p>you can also type from within your repo:</p>
+<pre><code>git remote -v
+</code></pre>
+<p>And see if there is any remote named origin listed in it.</p>
+<p>If not, if that remote (which is created by default when cloning a repo) is missing, you can add it again:</p>
+<pre><code>git remote add origin url/to/your/fork
+</code></pre>
+<hr/>
+<p>The OP mentions:</p>
+<blockquote>
+<p>Doing <code>git remote -v</code> gives: </p>
+</blockquote>
+<pre><code>upstream git://git.moodle.org/moodle.git (fetch) 
+upstream git://git.moodle.org/moodle.git (push)
+</code></pre>
+<p>So <code>origin</code> is missing: the reference to <em>your</em> fork.<br/>
+See <a href=https://stackoverflow.com/a/9257901/6309>What is the difference between <code>origin</code> and <code>upstream</code> in github</a></p>
+<p><img alt=enter image description here src=https://i.stack.imgur.com/fqq7J.png/></p>","<p>I faced the same problem when I renamed my repository on GitHub. I tried to push at which point I got the error</p>
+<pre><code>fatal: origin does not appear to be a git repository
+fatal: The remote end hung up unexpectedly
+</code></pre>
+<p>I had to change the URL using</p>
+<pre><code>git remote set-url origin ssh://git@github.com/username/newRepoName.git
+</code></pre>
+<p>After this all commands started working fine. You can check the change by using </p>
+<pre><code>git remote -v
+</code></pre>
+<p>In my case after successfull change it showed correct renamed repo in URL</p>
+<pre><code>[aniket@alok Android]$ git remote -v
+origin  ssh://git@github.com/aniket91/TicTacToe.git (fetch)
+origin  ssh://git@github.com/aniket91/TicTacToe.git (push)
+</code></pre>","<p>It is possible the other branch you try to pull from is out of synch; so before adding and removing remote try to (if you are trying to pull from master) </p>
+<pre><code>git pull origin master
+</code></pre>
+<p>for me that simple call solved those error messages: </p>
+<ul>
+<li>fatal: master does not appear to be a git repository</li>
+<li>fatal: Could not read from remote repository.</li>
+</ul>",fatal origin does not appear to be a git repository,How do you fix fatal origin does not appear to be a git repository?,"The “fatal: 'origin' does not appear to be a git repository” error occurs when you try to push code to a remote Git repository without telling Git the location of the remote repository. To solve this error, use the git remote add command to add a remote to your project.",Does not appear to be a git repository local?,"does not a appear to be a git repository” error is triggered when you try to clone, or run other commands, in a directory that is not recognized as a Git repository. The directory or remote file path might not have initialized Git, or the file path you are trying to access as an active repository is incorrect.",What does fatal not a git repository mean?,"What does “fatal: not a git repository” mean? This error means you attempted to run a Git command, but weren't inside a Git repository. Make sure you've: ... Initialized your repository with `git init` or by cloning an existing repo.",Why does it say not a git repository?,The “not a git repository” error is common. The cause is running a Git command in the wrong folder or running a Git command before initializing a Git repository.
+https://stackoverflow.com/questions/18931315/typeerror-string-indices-must-be-integers-not-str-working-with-dict,"python - TypeError: string indices must be integers, not str // working with dict","<p><code>time1</code> is the key of the most outer dictionary, eg, <code>feb2012</code>. So then youre trying to index the string, but you can only do this with integers. I think what you wanted was:</p>
+<pre><code>for info in courses[time1][course]:
+</code></pre>
+<p>As youre going through each dictionary, you must add another nest.</p>","<p>Actually I think that more general approach to loop through dictionary is to use <a href=http://docs.python.org/2/library/stdtypes.html#dict.iteritems rel=noreferrer>iteritems()</a>:</p>
+<pre><code># get tuples of term, courses
+for term, term_courses in courses.iteritems():
+    # get tuples of course number, info
+    for course, info in term_courses.iteritems():
+        # loop through info
+        for k, v in info.iteritems():
+            print k, v
+</code></pre>
+<p>output:</p>
+<pre><code>assistant Peter C.
+prereq cs101
+...
+name Programming a Robotic Car
+teacher Sebastian
+</code></pre>
+<p>Or, as Matthias mentioned in comments, if you dont need keys, you can just use <a href=http://docs.python.org/2/library/stdtypes.html#dict.itervalues rel=noreferrer>itervalues()</a>:</p>
+<pre><code>for term_courses in courses.itervalues():
+    for info in term_courses.itervalues():
+        for k, v in info.iteritems():
+            print k, v
+</code></pre>","<p>I see that you are looking for an implementation of the problem more than solving that error. Here you have a possible solution:</p>
+<pre><code>from itertools import chain
+
+def involved(courses, person):
+    courses_info = chain.from_iterable(x.values() for x in courses.values())
+    return filter(lambda x: x[teacher] == person, courses_info)
+
+print involved(courses, Dave)
+</code></pre>
+<p>The first thing I do is getting the list of the courses and then filter by teachers name.</p>","typeerror: string indices must be integers, not str","typeerror: string indices must be integers, not str","String indices must be integers. This means that when you're accessing an iterable object like a string, you must do it using a numerical value. If you are accessing items from a dictionary, make sure that you are accessing the dictionary itself and not a key in the dictionary.",What type of error is string indices must be integers?,"TypeError: string indices must be integers means an attempt to access a location within a string using an index that is not an integer. In the above case using the str[hello""] and str[] as indexes. As these are not integers, a TypeError exception is raised.",Can string indices can be floats?,"All the characters of a string have a unique index. This index specifies the position of each character of the string. But you have to remember that all the indexes are integers. When you specify a string or a float as the index, you will encounter an error called TypeError: String Indices Must be Integers.",What is a string indice?,"Indexing allows you to access individual characters in a string directly by using a numeric value. String indexing is zero-based: the first character in the string has index 0, the next is 1, and so on."
+https://stackoverflow.com/questions/55373686/how-to-switch-namespace-in-kubernetes,How to switch namespace in kubernetes,"<p>I like my answers short, to the point and with references to official documentation:</p>
+<p><strong>Answer</strong>:</p>
+<pre><code>kubectl config set-context --current --namespace=my-namespace
+</code></pre>
+<p><strong>From</strong>:</p>
+<p><a href=https://kubernetes.io/docs/reference/kubectl/cheatsheet/ rel=nofollow noreferrer>https://kubernetes.io/docs/reference/kubectl/cheatsheet/</a></p>
+<pre><code># permanently save the namespace for all subsequent kubectl commands in that context.
+kubectl config set-context --current --namespace=ggckad-s2
+</code></pre>","<p>There are a few options:</p>
+<ul>
+<li>Switch namespace only using the kubectl commands::</li>
+</ul>
+<pre><code>kubectl config set-context --current --namespace=&lt;namespace&gt;
+</code></pre>
+<ul>
+<li>Or, Create a new context with namespace defined:</li>
+</ul>
+<pre><code>kubectl config set-context gce-dev --user=cluster-admin --namespace=dev
+kubectl config use-context gce-dev
+</code></pre>
+<ul>
+<li>Or, Use addons, like <a href=https://github.com/ahmetb/kubectx rel=noreferrer>kubectx &amp; kubens</a>, the below command will switch the context to <code>kube-system</code>:</li>
+</ul>
+<pre><code>$ kubens kube-system 
+</code></pre>
+<ul>
+<li>Or, Another easy alternative that I like without installing third party tools, is using bash alias(linux).</li>
+</ul>
+<pre><code>$ alias kubens=kubectl config set-context --current --namespace 
+$ alias kubectx=kubectl config use-context 
+
+// Usage
+$ kubens kube-system    //Switch to a different namespace
+$ kubectx docker        //Switch to separate context
+</code></pre>","<p>I was able to switch namespace using the below steps</p>
+<pre><code>kubectl config set-context $(kubectl config current-context) --namespace=&lt;namespace&gt;
+kubectl config view | grep namespace
+kubectl get pods
+</code></pre>
+<p>This is how i have tested</p>
+<pre><code># Create namespaces k8s-app1, k8s-app2 and k8s-app3
+master $ kubectl create ns k8s-app1
+namespace/k8s-app1 created
+master $ kubectl create ns k8s-app2
+namespace/k8s-app2 created
+master $ kubectl create ns k8s-app3
+namespace/k8s-app3 created
+
+# Create Service Account app1-sa in k8s-app1
+# Service Account app2-sa in k8s-app2
+# Service Account app3-sa in k8s-app3
+master $ kubectl create sa app1-sa -n k8s-app1
+serviceaccount/app1-sa created
+master $ kubectl create sa app2-sa -n k8s-app2
+serviceaccount/app2-sa created
+master $ kubectl create sa app3-sa -n k8s-app3
+serviceaccount/app3-sa created
+
+# Switch namespace
+master $ kubectl config set-context $(kubectl config current-context) --namespace=k8s-app1
+Context kubernetes-admin@kubernetes modified.
+master $ kubectl config view | grep namespace
+    namespace: k8s-app1
+master $ kubectl get sa
+NAME      SECRETS   AGE
+app1-sa   1         1m
+default   1         6m
+master $
+master $ kubectl config set-context $(kubectl config current-context) --namespace=k8s-app2
+Context kubernetes-admin@kubernetes modified.
+master $ kubectl get sa
+NAME      SECRETS   AGE
+app2-sa   1         2m
+default   1         7m
+master $
+master $ kubectl config set-context $(kubectl config current-context) --namespace=k8s-app3
+Context kubernetes-admin@kubernetes modified.
+master $ kubectl get sa
+NAME      SECRETS   AGE
+app3-sa   1         2m
+default   1         7m
+</code></pre>",kubectl set namespace,How do you set a kubectl namespace?,"Create a new YAML file called my-namespace.yaml with the contents: apiVersion: vkind: Namespace metadata: name: <insert-namespace-name-here> Alternatively, you can create namespace using below command: kubectl create namespace <insert-namespace-name-here>",How do I change my default namespace?,Setting Default Namespace Namespace defaults are set in your cluster's context configuration. We change the default you will need to use the kubectl set-config command and specify the name of the namespace want to be used as default. Namespace defaults are set in your cluster's context configuration. We change the default you will need to use the kubectl set-config command and specify the name of the namespace want to be used as default.,How do you use namespaces in Kubernetes?,"Start using namespaces when you need the features they provide. Namespaces provide a scope for names. Names of resources need to be unique within a namespace, but not across namespaces. Namespaces cannot be nested inside one another and each Kubernetes resource can only be in one namespace.",How do you specify a namespace in kubectl?,Setting Default Namespace Namespace defaults are set in your cluster's context configuration. We change the default you will need to use the kubectl set-config command and specify the name of the namespace want to be used as default. Namespace defaults are set in your cluster's context configuration. We change the default you will need to use the kubectl set-config command and specify the name of the namespace want to be used as default.
+https://stackoverflow.com/questions/44433438/what-is-the-purpose-of-tf-global-variables-initializer,tensorflow - What is the purpose of tf.global_variables_initializer?,"<p>A more complete description is given <a href=https://www.tensorflow.org/programmers_guide/variables rel=noreferrer>here</a>. </p>
+<p>Only after running <code>tf.global_variables_initializer()</code> in a session will your variables hold the values you told them to hold when you declare them (<code>tf.Variable(tf.zeros(...))</code>, <code>tf.Variable(tf.random_normal(...))</code>,...).</p>
+<p>From the TF doc : </p>
+<blockquote>
+<p>Calling tf.Variable() adds several ops to the graph:</p>
+<ul>
+<li>A variable op that holds the variable value.</li>
+<li>An initializer op that sets the variable to its initial value. This is actually a tf.assign op.</li>
+<li>The ops for the initial value, such as the zeros op for the biases variable in the example are also added to the graph.</li>
+</ul>
+</blockquote>
+<p>And also:</p>
+<blockquote>
+<p>Variable initializers must be run explicitly before other ops in your
+  model can be run. The easiest way to do that is to add an op that runs
+  all the variable initializers, and run that op before using the model.</p>
+</blockquote>",,,tf.global_variables_initializer,What is TF global_variables_initializer?,global_variables_initializer() in a session will your variables hold the values you told them to hold when you declare them ( tf. Variable(tf.,How do you initialize a Variable in TensorFlow?,"x = tf. Variable(35)
+init = tf. global_variables_initializer()
+with tf. Session() as sess:
+sess. run(init)
+print(sess. run(x))",What is TF Variable?,A tf. Variable represents a tensor whose value can be changed by running ops on it. Specific ops allow you to read and modify the values of this tensor.,What are global variables in TensorFlow?,Global variables are variables that are shared across machines in a distributed environment. The Variable() constructor or get_variable() automatically adds new variables to the graph collection GraphKeys. GLOBAL_VARIABLES . This convenience function returns the contents of that collection.
+https://stackoverflow.com/questions/9171158/how-do-you-get-the-magnitude-of-a-vector-in-numpy,python - How do you get the magnitude of a vector in Numpy?,"<p>The function youre after is <a href=http://docs.scipy.org/doc/numpy/reference/generated/numpy.linalg.norm.html rel=noreferrer><code>numpy.linalg.norm</code></a>. (I reckon it should be in base numpy as a property of an array -- say <code>x.norm()</code> -- but oh well).</p>
+<pre><code>import numpy as np
+x = np.array([1,2,3,4,5])
+np.linalg.norm(x)
+</code></pre>
+<p>You can also feed in an optional <code>ord</code> for the nth order norm you want. Say you wanted the 1-norm:</p>
+<pre><code>np.linalg.norm(x,ord=1)
+</code></pre>
+<p>And so on.</p>","<p>If you are worried at all about speed, you should instead use:</p>
+<pre><code>mag = np.sqrt(x.dot(x))
+</code></pre>
+<p>Here are some benchmarks:</p>
+<pre><code>&gt;&gt;&gt; import timeit
+&gt;&gt;&gt; timeit.timeit(np.linalg.norm(x), setup=import numpy as np; x = np.arange(100), number=1000)
+0.0450878
+&gt;&gt;&gt; timeit.timeit(np.sqrt(x.dot(x)), setup=import numpy as np; x = np.arange(100), number=1000)
+0.0181372
+</code></pre>
+<p>EDIT: The real speed improvement comes when you have to take the norm of many vectors. Using pure numpy functions doesnt require any for loops. For example:</p>
+<pre><code>In [1]: import numpy as np
+
+In [2]: a = np.arange(1200.0).reshape((-1,3))
+
+In [3]: %timeit [np.linalg.norm(x) for x in a]
+100 loops, best of 3: 4.23 ms per loop
+
+In [4]: %timeit np.sqrt((a*a).sum(axis=1))
+100000 loops, best of 3: 18.9 us per loop
+
+In [5]: np.allclose([np.linalg.norm(x) for x in a],np.sqrt((a*a).sum(axis=1)))
+Out[5]: True
+</code></pre>","<p>Yet another alternative is to use the <code>einsum</code> function in numpy for either arrays:</p>
+<pre><code>In [1]: import numpy as np
+
+In [2]: a = np.arange(1200.0).reshape((-1,3))
+
+In [3]: %timeit [np.linalg.norm(x) for x in a]
+100 loops, best of 3: 3.86 ms per loop
+
+In [4]: %timeit np.sqrt((a*a).sum(axis=1))
+100000 loops, best of 3: 15.6 µs per loop
+
+In [5]: %timeit np.sqrt(np.einsum(ij,ij-&gt;i,a,a))
+100000 loops, best of 3: 8.71 µs per loop
+</code></pre>
+<p>or vectors:</p>
+<pre><code>In [5]: a = np.arange(100000)
+
+In [6]: %timeit np.sqrt(a.dot(a))
+10000 loops, best of 3: 80.8 µs per loop
+
+In [7]: %timeit np.sqrt(np.einsum(i,i, a, a))
+10000 loops, best of 3: 60.6 µs per loop
+</code></pre>
+<p>There does, however, seem to be some overhead associated with calling it that may make it slower with small inputs:</p>
+<pre><code>In [2]: a = np.arange(100)
+
+In [3]: %timeit np.sqrt(a.dot(a))
+100000 loops, best of 3: 3.73 µs per loop
+
+In [4]: %timeit np.sqrt(np.einsum(i,i, a, a))
+100000 loops, best of 3: 4.68 µs per loop
+</code></pre>",numpy magnitude of vector,numpy magnitude of vector,norm() to get the magnitude of a vector. Call numpy. linalg. norm(x) with x as an array to compute the magintude of the vector respresented by x .,How do I find magnitude of a vector?,"To work with a vector, we need to be able to find its magnitude and its direction. We find its magnitude using the Pythagorean Theorem or the distance formula, and we find its direction using the inverse tangent function. Given a position vector →v=⟨a,b⟩,the magnitude is found by |v|=√a2+b2.",How do you find the length of a vector in Python?,"To find the size of an array in Python, use the len() method. The len() method returns the number of elements in the array. The len() method takes a required parameter, which is an array or list.",How do you find the length of a vector in Python?,"To find the size of an array in Python, use the len() method. The len() method returns the number of elements in the array. The len() method takes a required parameter, which is an array or list."
+https://stackoverflow.com/questions/51983011/when-should-i-use-a-futurebuilder,dart - When should I use a FutureBuilder?,"<p><code>FutureBuilder</code> removes boilerplate code.</p>
+<p>Lets say you want to fetch some data from the backend on page launch and show a loader until data comes.</p>
+<p><strong>Tasks for ListBuilder:</strong></p>
+<ul>
+<li>Have two state variables, <code>dataFromBackend</code> and <code>isLoadingFlag</code></li>
+<li>On launch, set <code>isLoadingFlag = true</code>, and based on this, show <code>loader</code>.</li>
+<li>Once data arrives, set data with what you get from backend and set <code>isLoadingFlag = false</code> (inside <code>setState</code> obviously)</li>
+<li>We need to have a <code>if-else</code> in widget creation. If <code>isLoadingFlag</code> is <code>true</code>, show the <code>loader</code> else show the <code>data</code>. On failure, show error message.</li>
+</ul>
+<p><strong>Tasks for FutureBuilder:</strong></p>
+<ul>
+<li>Give the async task in <code>future</code> of Future Builder</li>
+<li>Based on <code>connectionState</code>, show message (<code>loading</code>, <code>active(streams)</code>, <code>done</code>)</li>
+<li>Based on <code>data(snapshot.hasError)</code>, show view</li>
+</ul>
+<p><strong>Pros of FutureBuilder</strong></p>
+<ul>
+<li>Does not use the two state variables and <code>setState</code></li>
+<li>Reactive programming (<code>FutureBuilder</code> will take care of updating the view on data arrival)</li>
+</ul>
+<p><strong>Example:</strong></p>
+<pre><code>FutureBuilder&lt;String&gt;(
+    future: _fetchNetworkCall, // async work
+    builder: (BuildContext context, AsyncSnapshot&lt;String&gt; snapshot) {
+       switch (snapshot.connectionState) {
+         case ConnectionState.waiting: return Text(Loading....);
+         default:
+           if (snapshot.hasError)
+              return Text(Error: ${snapshot.error});
+           else
+          return Text(Result: ${snapshot.data});
+        }
+      },
+    )
+</code></pre>
+<p><strong>Performance impact:</strong></p>
+<p>I just looked into the <code>FutureBuilder</code> code to understand the <strong>performance</strong> impact of using this.</p>
+<ul>
+<li>FutureBuilder is just a <code>StatefulWidget</code> whose <code>state</code> variable is <code>_snapshot</code></li>
+<li>Initial state is <code>_snapshot = AsyncSnapshot&lt;T&gt;.withData(ConnectionState.none, widget.initialData);</code></li>
+<li>It is subscribing to <code>future</code> which we send via the constructor and update the <code>state</code> based on that.</li>
+</ul>
+<p><strong>Example:</strong></p>
+<pre><code>widget.future.then&lt;void&gt;((T data) {
+    if (_activeCallbackIdentity == callbackIdentity) {
+      setState(() {
+        _snapshot = AsyncSnapshot&lt;T&gt;.withData(ConnectionState.done, data);
+      });
+    }
+}, onError: (Object error) {
+  if (_activeCallbackIdentity == callbackIdentity) {
+    setState(() {
+      _snapshot = AsyncSnapshot&lt;T&gt;.withError(ConnectionState.done, error);
+    });
+  }
+});
+</code></pre>
+<p>So the <code>FutureBuilder</code> is a <strong>wrapper/boilerplate</strong> of what we do typically, hence there <strong>should not be any performance impact</strong>.</p>","<p><strong>FutureBuilder Example</strong></p>
+<ul>
+<li><p>When you want to  rander widget after async call then use  <strong><code>FutureBuilder()</code></strong></p>
+<pre><code>class _DemoState extends State&lt;Demo&gt; {
+
+@override
+Widget build(BuildContext context) {
+  return FutureBuilder&lt;String&gt;(
+    future: downloadData(), // function where you call your api
+    builder: (BuildContext context, AsyncSnapshot&lt;String&gt; snapshot) {  // AsyncSnapshot&lt;Your object type&gt;
+      if( snapshot.connectionState == ConnectionState.waiting){
+          return  Center(child: Text(Please wait its loading...));
+      }else{
+          if (snapshot.hasError)
+            return Center(child: Text(Error: ${snapshot.error}));
+          else
+            return Center(child: new Text(${snapshot.data}));  // snapshot.data  :- get your object which is pass from your downloadData() function
+      }
+    },
+  );
+}
+Future&lt;String&gt; downloadData()async{
+  //   var response =  await http.get(https://getProjectList);    
+  return Future.value(Data download successfully); // return your response
+}
+}
+</code></pre>
+</li>
+</ul>
+<p>In future builder, it calls the future function to wait for the result, and as soon as it produces the result it calls the builder function where we build the widget.</p>
+<p>AsyncSnapshot has 3 state:</p>
+<ol>
+<li><strong>connectionState.none</strong> = In this state future is null <br/><br/></li>
+<li><strong>connectionState.waiting</strong> = [future] is not null, but has not yet completed<br/><br/></li>
+<li><strong>connectionState.done</strong> = [future] is not null, and has completed. If the future completed successfully, the [AsyncSnapshot.data] will be set to the value to which the future completed. If it completed with an error, [AsyncSnapshot.hasError] will be true</li>
+</ol>","<p>FutureBuilder is a Widget that will help you to execute some asynchronous function and based on that function’s result your UI will update.</p>
+<p>I listed some use cases, why you will use FutureBuilder?</p>
+<ol>
+<li><p>If you want to render widget after async task then use it.</p>
+</li>
+<li><p>We can handle loading process by simply using <code>ConnectionState.waiting</code></p>
+</li>
+<li><p>Dont need any custom error controller. Can handle error simply <code>dataSnapshot.error != null</code></p>
+</li>
+<li><p>As we can handle async task within the builder we do not need any <code>setState(() { _isLoading = false; });</code></p>
+</li>
+</ol>
+<p>When we use the FutureBuilder widget we need to check for future state i.e future is resolved or not and so on. There are various State as follows:</p>
+<ol>
+<li><p><code>ConnectionState.none:</code>  It means that the future is null and initialData is used as defaultValue.</p>
+</li>
+<li><p><code>ConnectionState.active:</code> It means the future is not null but it is not resolved yet.</p>
+</li>
+<li><p><code>ConnectionState.waiting:</code> It means the future is being resolved, and we will get the result soon enough.</p>
+</li>
+<li><p><code>ConnectionState.done:</code> It means that the future has been resolved.</p>
+</li>
+</ol>
+<p>A simple implementation</p>
+<p>Here OrdersProvider is a provider class and fetchAndSetOrders() is the method of that provider class.</p>
+<pre><code>body: FutureBuilder(
+        future: Provider.of&lt;OrdersProvider&gt;(context, listen: false)
+            .fetchAndSetOrders(),
+        builder: (context, dataSnapshot) {
+          if (dataSnapshot.connectionState == ConnectionState.waiting) {
+            return Center(
+              child: CircularProgressIndicator(),
+            );
+          } else {
+            if (dataSnapshot.error != null) {
+              return Center(
+                child: Text(An error occured),
+              );
+            } else {
+              return Consumer&lt;OrdersProvider&gt;(
+                builder: (context, orderData, child) =&gt; ListView.builder(
+                  itemCount: orderData.orders.length,
+                  itemBuilder: (context, i) =&gt; OrderItem(orderData.orders[i]),
+                ),
+              );
+            }
+          }
+        },
+      ),
+</code></pre>",flutter futurebuilder,What is FutureBuilder Flutter?,"In Flutter, the FutureBuilder Widget is used to create widgets based on the latest snapshot of interaction with a Future. It is necessary for Future to be obtained earlier either through a change of state or change in dependencies.",How do you reload data when using FutureBuilder in Flutter?,You can refresh the widget by clicking on FlatButton.,What is snapshot in Flutter?,"Snapshot is the result of the Future or Stream you are listening to in your FutureBuilder . Before interacting with the data being returned and using it in your builder, you have to access it first.",How does future builder work?,"FutureBuilder is a Widget that will assist you with executing some asynchronous function and based on that function's outcome your UI will update. In future builder, it calls the future capacity to wait for the outcome, and when it creates the outcome it calls the builder function where we assemble the widget."
+https://stackoverflow.com/questions/44315961/when-to-use-raise-notimplementederror/44316506,python - When to use raise NotImplementedError?,"<p>As the documentation states <a href=https://docs.python.org/3/library/exceptions.html#NotImplementedError rel=noreferrer><sup>[docs]</sup></a>, </p>
+<blockquote>
+<p>In user defined base classes, abstract methods should raise this exception when they require derived classes to override the method, or while the class is being developed to indicate that the real implementation still needs to be added.</p>
+</blockquote>
+<p>Note that although the main stated use case this error is the indication of abstract methods that should be implemented on inherited classes, you can use it anyhow youd like, like for indication of a <code>TODO</code> marker.</p>","<p>As <a href=https://stackoverflow.com/a/44316063/4653485>Uriel says</a>, it is meant for a method in an abstract class that should be implemented in child class, but can be used to indicate a TODO as well.</p>
+<p>There is an alternative for the first use case: <a href=https://docs.python.org/3.4/library/abc.html rel=noreferrer>Abstract Base Classes</a>. Those help creating abstract classes.</p>
+<p>Heres a Python 3 example:</p>
+<pre><code>class C(abc.ABC):
+    @abc.abstractmethod
+    def my_abstract_method(self, ...):
+        ...
+</code></pre>
+<p>When instantiating <code>C</code>, youll get an error because <code>my_abstract_method</code> is abstract. You need to implement it in a child class.</p>
+<pre><code>TypeError: Cant instantiate abstract class C with abstract methods my_abstract_method
+</code></pre>
+<p>Subclass <code>C</code> and implement <code>my_abstract_method</code>.</p>
+<pre><code>class D(C):
+    def my_abstract_method(self, ...):
+        ...
+</code></pre>
+<p>Now you can instantiate <code>D</code>.</p>
+<p><code>C.my_abstract_method</code> does not have to be empty. It can be called from <code>D</code> using <code>super()</code>.</p>
+<p>An advantage of this over <code>NotImplementedError</code> is that you get an explicit <code>Exception</code> at instantiation time, not at method call time.</p>","<p>Consider if instead it was:</p>
+<pre><code>class RectangularRoom(object):
+    def __init__(self, width, height):
+        pass
+
+    def cleanTileAtPosition(self, pos):
+        pass
+
+    def isTileCleaned(self, m, n):
+        pass
+</code></pre>
+<p>and you subclass and forget to tell it how to <code>isTileCleaned()</code> or, perhaps more likely, typo it as <code>isTileCLeaned()</code>. Then in your code, youll get a <code>None</code> when you call it. </p>
+<ul>
+<li>Will you get the overridden function you wanted? Definitely not.</li>
+<li>Is <code>None</code> valid output? Who knows.  </li>
+<li>Is that intended behavior? Almost certainly not. </li>
+<li>Will you get an error? It depends.</li>
+</ul>
+<p><code>raise NotImplmentedError</code> <em>forces</em> you to implement it, as it <strong>will</strong> throw an exception when you try to run it until you do so. This removes a lot of silent errors. Its similar to why a <a href=https://docs.python.org/2/howto/doanddont.html#except rel=noreferrer>bare except is almost never a good idea</a>: because people make mistakes and this makes sure they arent swept under the rug.</p>
+<p>Note: Using an abstract base class, as other answers have mentioned, is better still, as then the errors are frontloaded and the program wont run until you implement them (with NotImplementedError, it will only throw an exception if actually called).</p>",notimplementederror,What is a ValueError in Python?,"ValueError in Python is raised when a user gives an invalid value to a function but is of a valid argument. It usually occurs in mathematical operations that will require a certain kind of value, even when the value is the correct argument.",What does raise NotImplementedError () do?,"raise NotImplmentedError forces you to implement it, as it will throw an exception when you try to run it until you do so.",What is a TypeError in Python?,"TypeError is one among the several standard Python exceptions. TypeError is raised whenever an operation is performed on an incorrect/unsupported object type. For example, using the + (addition) operator on a string and an integer value will raise TypeError.",What is a NotImplementedError?,"According to Python, the NotImplementedError occurs when an abstract method lacks the required derived class to override this method, thus raising this exception. ... Subclasses, or child classes, are necessary to implement these abstract methods."
+https://stackoverflow.com/questions/43290202/python-typeerror-unhashable-type-slice-for-encoding-categorical-data,pandas - Python TypeError: unhashable type: slice for encoding categorical data,"<p><code>X</code> is a dataframe and cant be accessed via slice terminology like <code>X[:, 3]</code>.  You must access via <a href=https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.iloc.html rel=noreferrer><code>iloc</code></a> or <a href=https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.values.html rel=noreferrer><code>X.values</code></a>.  However, the way you constructed <code>X</code> made it a copy... so.  Id use <code>values</code></p>
+<pre><code># Importing the libraries
+import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
+
+# Importing the dataset
+# dataset = pd.read_csv(50_Startups.csv)
+
+dataset = pd.DataFrame(np.random.rand(10, 10))
+y=dataset.iloc[:, 4]
+X=dataset.iloc[:, 0:4]
+
+# Encoding categorical data
+from sklearn.preprocessing import LabelEncoder, OneHotEncoder
+labelencoder_X = LabelEncoder()
+
+#  I changed this line
+X.values[:, 3] = labelencoder_X.fit_transform(X.values[:, 3])
+</code></pre>","<p>use Values either while creating variable X or while encoding as mentioned above</p>
+<pre><code># Importing the libraries
+import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
+
+# Importing the dataset
+# dataset = pd.read_csv(50_Startups.csv)
+
+dataset = pd.DataFrame(np.random.rand(10, 10))
+y=dataset.iloc[:, 4].values
+X=dataset.iloc[:, 0:4].values
+</code></pre>","<p>While creating the matrix <code>X</code> and <code>Y</code> vector use <code>values</code>.</p>
+<pre><code>X=dataset.iloc[:,4].values
+Y=dataset.iloc[:,0:4].values
+</code></pre>
+<p>It will definitely solve your problem.</p>",unhashable type slice,What does Unhashable type slice mean?,"The “TypeError: unhashable type: 'slice'” error is raised when you try to access items from a dictionary using slicing syntax. To solve this error, make sure you refer to the items you want to access from a dictionary directly.",How do I fix TypeError Unhashable type list?,"The “TypeError: unhashable type: 'list'” error is raised when you try to assign a list as a key in a dictionary. To solve this error, ensure you only assign a hashable object, such as a string or a tuple, as a key for a dictionary.",What does Unhashable type list mean in Python?,,What does Unhashable type set mean in Python?,The python error TypeError: unhashable type: 'set' happens when a set is added to another set or used as a key in a dictionary. ... The unhashable objects are not allowed in set or dictionary key. The dictionary or set hashes the object and uses the hash value as a primary reference to the key.
+https://stackoverflow.com/questions/10922885/uncaught-syntaxerror-unexpected-identifier,javascript - Uncaught syntaxerror: unexpected identifier?,"<p>There are errors here :</p>
+<pre><code>var formTag = document.getElementsByTagName(form), // form tag is an array
+selectListItem = $(select),
+makeSelect = document.createElement(select),
+makeSelect.setAttribute(id, groups);
+</code></pre>
+<p>The code must change to:</p>
+<pre><code>var formTag = document.getElementsByTagName(form);
+var selectListItem = $(select);
+var makeSelect = document.createElement(select);
+makeSelect.setAttribute(id, groups);
+</code></pre>
+<p>By the way, there is another error at line 129 :</p>
+<pre><code>var createLi.appendChild(createSubList);
+</code></pre>
+<p>Replace it with: </p>
+<pre><code>createLi.appendChild(createSubList);
+</code></pre>",,,uncaught syntaxerror unexpected identifier,What is uncaught SyntaxError unexpected identifier?,"Uncaught SyntaxError: Unexpected identifier. One of the most common reasons is that you're trying to mutate (change) a const variable. You can't do that. In JavaScript, the keyword const is a so-called immutable variable which is used for variables that you don't want anyone to modify or redeclare.",What is uncaught SyntaxError invalid or unexpected token?,"days ago The JavaScript exceptions ""unexpected token"" occur when a specific language construct was expected, but something else was provided. This might be a simple typo.",How do I resolve an unexpected token?,"As you write your JavaScript application, the unexpected token error always occurs because JavaScript expected a specific syntax that's not fulfilled by your current code. You can generally fix the error by removing or adding a specific JavaScript language symbol to your code.",What is unexpected token if?,"Not follow them throws an error.An unexpected token occurs if JavaScript code has a missing or extra character { like, ) + – var if-else var etc}. ... JavaScript code are parsed from left to right, it is a process in which the parser converts the statements and whitespace into unique elements."
+https://stackoverflow.com/questions/9347419/python-strip-with-n,Python strip with \n,"<p>You should be able to use <code>line.strip(\n)</code> and <code>line.strip(\t)</code>. But these dont modify the <code>line</code> variable...they just return the string with the <code>\n</code> and <code>\t</code> stripped. So youll have to do something like</p>
+<pre><code>line = line.strip(\n)
+line = line.strip(\t)
+</code></pre>
+<p>That should work for removing from the start and end. If you have <code>\n</code> and <code>\t</code> in the middle of the string, you need to do</p>
+<pre><code>line = line.replace(\n,)
+line = line.replace(\t,)
+</code></pre>
+<p>to replace the <code>\n</code> and <code>\t</code> with nothingness.</p>","<p>The <code>strip()</code> method removes whitespace by default, so there is no need to call it with parameters like \t or \n. However, strings in Python are immutable and cant be modified, i.e. the <code>line.strip()</code> call will not change the <code>line</code> object. The result is a new string which is returned by the call.</p>
+<p>As already mentioned, it would help if you posted an example from your input file. If there are more than one number on each line, <code>strip()</code> is not the function to use. Instead you should use <code>split()</code>, which is also a string method.</p>
+<p>To conclude, assuming that each line contains several floats separated by whitespace, and that you want to build a list of all the numbers, you can try the following:</p>
+<pre><code>floats = []
+with open(filename) as f:
+    for line in f:
+        floats.extend([float(number) for number in line.split()])
+</code></pre>","<p>You can use:</p>
+<pre><code>mylist = []
+# Assuming that you have loaded data into a lines variable. 
+for line in lines:
+    mylist.append(line.strip().split(\t)
+</code></pre>
+<p>to get a python list with only the field values for all the lines of data.</p>",python remove \n,python remove \n,"Call str. rstrip(chars) on a string with ""\n"" as chars to create a new string with the trailing newline removed.
+Use str. rstrip() to remove a trailing newline Call str. rstrip(chars) on a string with ""\n"" as chars to create a new string with the trailing newline removed.",How do you remove N from string?,"Use str. rstrip() to remove a trailing newline Call str. rstrip(chars) on a string with ""\n"" as chars to create a new string with the trailing newline removed. Assign the resultant string to the original string's variable.
+Call str. rstrip(chars) on a string with ""\n"" as chars to create a new string with the trailing newline removed. Assign the resultant string to the original string's variable.",Does Strip remove \n Python?,"The strip() method removes whitespace by default, so there is no need to call it with parameters like '\t' or '\n'. However, strings in Python are immutable and can't be modified, i.e. the line. strip() call will not change the line object.",How do you remove a line break in Python?,"Use str. replace() to remove all line breaks from a string Call str. replace(old, new) where old is ""\n"" and new is "" "" to replace the line breaks with a single space.
+Call str. replace(old, new) where old is ""\n"" and new is "" "" to replace the line breaks with a single space."

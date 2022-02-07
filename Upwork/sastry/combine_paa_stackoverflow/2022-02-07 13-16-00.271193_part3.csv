@@ -1,0 +1,116 @@
+url,title,best_answer_1,best_answer_2,best_answer_3,keyword,question_1,answer_1,question_2,answer_2,question_3,answer_3,question_4,answer_4
+https://stackoverflow.com/questions/20368832/address-family-not-supported-by-protocol,c - Address family not supported by protocol,"<p>The code passes the wrong destination address and wrong number of arguments to <code>inet_pton()</code>. (For the latter the compiler should have warned you about, btw)</p>
+<p>This line</p>
+<pre><code> inet_pton(AF_INET, 127.0.0.1, &amp;server, sizeof(server));
+</code></pre>
+<p>should be</p>
+<pre><code> inet_pton(AF_INET, 127.0.0.1, &amp;server.sin_addr);
+</code></pre>
+<p>Verbatim from <a href=http://man7.org/linux/man-pages/man3/inet_pton.3.html rel=noreferrer><code>man inet_pton</code></a>:</p>
+<blockquote>
+<p><strong>int inet_pton(int af, const char *src, void *dst);</strong></p>
+<p><strong>AF_INET</strong></p>
+<p>[...] The address is converted to
+                a struct in_addr and copied to dst, which must be sizeof(struct in_addr) (4) bytes (32 bits) long.</p>
+</blockquote>
+<hr/>
+<p>Not related to the problem, but also an issue, is that <code>read()</code> returns <code>ssize_t</code> not <code>int</code>.</p>
+<p>The following lines shall be adjusted:</p>
+<pre><code>int n;
+[...]
+printf(%d, %s\n, n, buf);
+</code></pre>
+<p>to become:</p>
+<pre><code>ssize_t n;
+[...]
+printf(%zd, %s\n, n, buf);
+</code></pre>","<p>Set the server address like this;</p>
+<pre><code>addr.sin_family = AF_INET;
+addr.sin_addr.s_addr = inet_addr(host);
+addr.sin_port = htons(port);
+</code></pre>","<p>I seen this error during <a href=http://man7.org/linux/man-pages/man2/bind.2.html rel=nofollow noreferrer>bind</a>. Cause was of using <code>localhost</code> instead of IP:</p>
+<pre><code>./myprogram localhost:7777
+*** exception! `bind failed for `localhost:7777 (97, Address family not supported by protocol)
+
+./myprogram 127.0.0.1:7777
+OK! Listening...
+</code></pre>
+<p>In addition: this error happens on one Linux host and does not appear on another. I check and compare network settings on this machines (<code>lo</code> device, /etc/hosts, /etc/host.conf, etc) and not found essential difference</p>",address family not supported by protocol,What are address families?,"An address family provides basic services to the protocol implementation to allow it to function within a specific network environment. These services may include packet fragmentation and reassembly, routing, addressing, and basic transport.
+2.10. 1 Address Families An address family provides basic services to the protocol implementation to allow it to function within a specific network environment. These services may include packet fragmentation and reassembly, routing, addressing, and basic transport.",What is the meaning of address family?,"Defining a neighbor under a particular ""address family"" means that we want to exchange routes from the particular ""address family"" with that neighbor. Not having a neighbor listed under a particular ""address family"" means that we are not planning to exchange information from that ""address family"" with that neighbor.",What is address family of IP address?,An address family identifier is used to identify individual network address schemes or numbering plans for network communication in contexts where the use of individual addresses might otherwise be ambiguous. Address family identifiers were first defined in RFC,What is address family in C?,"An address family provides basic services to the protocol implementation to allow it to function within a specific network environment. ... An address family is normally comprised of a number of protocols, one per socket type. Each protocol is characterized by an abstract socket type."
+https://stackoverflow.com/questions/5582211/what-does-define-gnu-source-imply/5583764,c - What does #define _GNU_SOURCE imply?,"<p>Defining <code>_GNU_SOURCE</code> has nothing to do with license and everything to do with writing (non-)portable code. If you define <code>_GNU_SOURCE</code>, you will get:</p>
+<ol>
+<li>access to lots of nonstandard GNU/Linux extension functions</li>
+<li>access to traditional functions which were omitted from the POSIX standard (often for good reason, such as being replaced with better alternatives, or being tied to particular legacy implementations)</li>
+<li>access to low-level functions that cannot be portable, but that you sometimes need for implementing system utilities like <code>mount</code>, <code>ifconfig</code>, etc.</li>
+<li>broken behavior for lots of POSIX-specified functions, where the GNU folks disagreed with the standards committee on how the functions should behave and decided to do their own thing.</li>
+</ol>
+<p>As long as youre aware of these things, it should not be a problem to define <code>_GNU_SOURCE</code>, but you should avoid defining it and instead define <code>_POSIX_C_SOURCE=200809L</code> or <code>_XOPEN_SOURCE=700</code> when possible to ensure that your programs are portable.</p>
+<p>In particular, the things from <code>_GNU_SOURCE</code> that you should <em>never</em> use are #2 and #4 above.</p>","<p>For exact details on what are all enabled by <code>_GNU_SOURCE</code>, documentation can help.</p>
+<p>From the GNU documentation:</p>
+<blockquote>
+<p>Macro: _GNU_SOURCE  </p>
+<p>If you define this macro, everything is included: ISO C89, ISO C99, POSIX.1, POSIX.2, BSD, SVID, X/Open, LFS, and GNU extensions. In the cases where POSIX.1 conflicts with BSD, the POSIX definitions take precedence.</p>
+</blockquote>
+<p>From the Linux man page on <a href=http://man7.org/linux/man-pages/man7/feature_test_macros.7.html rel=noreferrer>feature test macros</a>:</p>
+<blockquote>
+<p>_GNU_SOURCE</p>
+<p>Defining this macro (with any value) implicitly defines
+                 _ATFILE_SOURCE, _LARGEFILE64_SOURCE, _ISOC99_SOURCE,
+                 _XOPEN_SOURCE_EXTENDED, _POSIX_SOURCE, _POSIX_C_SOURCE with
+                 the value 200809L (200112L in glibc versions before 2.10;
+                 199506L in glibc versions before 2.5; 199309L in glibc ver‐
+                 sions before 2.1) and _XOPEN_SOURCE with the value 700 (600
+                 in glibc versions before 2.10; 500 in glibc versions before
+                 2.2).  In addition, various GNU-specific extensions are also
+                 exposed.</p>
+<p>Since glibc 2.19, defining _GNU_SOURCE also has the effect of
+                 implicitly defining _DEFAULT_SOURCE.  In glibc versions
+                 before 2.20, defining _GNU_SOURCE also had the effect of
+                 implicitly defining _BSD_SOURCE and _SVID_SOURCE.</p>
+</blockquote>
+<p><strong>Note</strong>: <code>_GNU_SOURCE</code> needs to be defined <strong>before</strong> including header files so that the respective headers enable the features. For example:</p>
+<pre><code>#define _GNU_SOURCE
+
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+...
+</code></pre>
+<p><code>_GNU_SOURCE</code> can be also be enabled per compilation using <code>-D</code> flag:</p>
+<pre><code>$ gcc -D_GNU_SOURCE file.c
+</code></pre>
+<p>(<code>-D</code> is not specific to <code>_GNU_SOURCE</code> but any macro be defined this way).</p>","<p>Let me answer two further points:</p>
+<blockquote>
+<p>Something also bugs me: how does the compiler know which function implementation to link with the executable? Does it use this #define as well?</p>
+</blockquote>
+<p>A common approach is to conditionally <code>#define</code> identifier <code>basename</code> to different names, depending on whether <code>_GNU_SOURCE</code> is defined. For instance:</p>
+<pre><code>#ifdef _GNU_SOURCE
+# define basename __basename_gnu
+#else
+# define basename __basename_nongnu
+#endif
+</code></pre>
+<p>Now the library simply needs to provide both behaviors under those names.</p>
+<blockquote>
+<p>If so, why not give people different headers, instead of having to define some obscure environment variable to get one function implementation or the other?</p>
+</blockquote>
+<p>Often the same header had slightly different contents in different Unix versions, so there is no single right content for, say, <code>&lt;string.h&gt;</code> — there are many standards (<a href=http://xkcd.com/927/ rel=noreferrer>xkcd</a>).
+Theres a whole set of macros to pick your favorite one, so that if your program expects one standard, the library will conform to that.</p>",_gnu_source,What does #define _gnu_source do?,"If you define _GNU_SOURCE , you will get: access to lots of nonstandard GNU/Linux extension functions. access to traditional functions which were omitted from the POSIX standard (often for good reason, such as being replaced with better alternatives, or being tied to particular legacy implementations)",What is __ Use_misc?,"__USE_MISC is an internal detail for how the implementation's headers handle ""feature test macros"" that direct the compiler as to what set of standard functions should be made available to the build.",What is _xopen_source?,"X/OpenThe X/Open Portability Guide is a standard for UNIX systems originally published by X/Open Company Ltd. Based on the AT&T System V Interface Definition, it has a wider scope than POSIX, which is only concerned with direct operating system interfaces.https://en.wikipedia.org › wiki › OpenX/Open - Wikipedia
+4. 147. When you do #define _XOPEN_SOURCE <some number> or cc -D_XOPEN_SOURCE=<some number> it tells your compiler to include definitions for some extra functions that are defined in the X/OpenX/OpenThe X/Open Portability Guide is a standard for UNIX systems originally published by X/Open Company Ltd. Based on the AT&T System V Interface Definition, it has a wider scope than POSIX, which is only concerned with direct operating system interfaces.https://en.wikipedia.org › wiki › OpenX/Open - Wikipedia and POSIX standards.
+› wiki › Open
+4. 147. When you do #define _XOPEN_SOURCE <some number> or cc -D_XOPEN_SOURCE=<some number> it tells your compiler to include definitions for some extra functions that are defined in the X/Open and POSIX standards.4. 147. When you do #define _XOPEN_SOURCE <some number> or cc -D_XOPEN_SOURCE=<some number> it tells your compiler to include definitions for some extra functions that are defined in the X/OpenX/OpenThe X/Open Portability Guide is a standard for UNIX systems originally published by X/Open Company Ltd. Based on the AT&T System V Interface Definition, it has a wider scope than POSIX, which is only concerned with direct operating system interfaces.https://en.wikipedia.org › wiki › OpenX/Open - Wikipedia and POSIX standards.
+X/OpenX/OpenThe X/Open Portability Guide is a standard for UNIX systems originally published by X/Open Company Ltd. Based on the AT&T System V Interface Definition, it has a wider scope than POSIX, which is only concerned with direct operating system interfaces.https://en.wikipedia.org › wiki › OpenX/Open - Wikipedia
+X/Open",What are feature test macros?,Feature test macros allow the programmer to control the definitions that are exposed by system header files when a program is compiled. ... The requirement that the macro must be defined before including any header file exists because header files may freely include one another.
+https://stackoverflow.com/questions/20792499/how-to-get-fully-qualified-host-name-in-python,hostname - How to get fully qualified host name in Python?,"<p>Use the descriptively-named function <a href=http://docs.python.org/3.3/library/socket.html#socket.getfqdn><code>socket.getfqdn()</code></a>:</p>
+<pre><code>&gt;&gt;&gt; import socket   
+&gt;&gt;&gt; socket.getfqdn()
+phxdbx45.phx.host.com
+</code></pre>",,,python get hostname,How do I find the hostname in Python?,"Use the gethostname() Method to Find the Hostname of a Machine in Python. The gethostname() function is used to return a string containing the machine's hostname value on which the Python interpreter is currently executing. To use the gethostname() function, the socket module needs to be imported to the python code.",How do I find the hostname and IP address in Python?,"Import the socket module.
+Get the hostname using the socket. gethostname() method and store it in a variable.
+Find the IP address by passing the hostname as an argument to the socket. gethostbyname() method and store it in a variable.",What is socket Gethostbyname?,"socket. gethostbyname (hostname) Translate a host name to IPv4 address format. The IPv4 address is returned as a string, such as '100.50. 200.5' .",How do I find the FQDN in Python?,"import socket.
+# Get the fully qualified domain name.
+fqdn = socket.getfqdn()
+print(""Fully qualified domain name of this computer is:"");
+print(fqdn);
+# Get FQN for example.net.
+hostName = ""www.example.net"";
+fqdn = socket.getfqdn(hostName);"

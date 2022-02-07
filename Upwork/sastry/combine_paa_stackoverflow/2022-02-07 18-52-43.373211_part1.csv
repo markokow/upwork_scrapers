@@ -1,0 +1,49 @@
+url,title,best_answer_1,best_answer_2,best_answer_3,keyword,question_1,answer_1,question_2,answer_2,question_3,answer_3,question_4,answer_4
+https://stackoverflow.com/questions/2087100/how-to-print-out-a-backslash-in-latex,file io - How to print out a backslash in LaTeX,"<p>Sound like you want a backslash in text mode; since <code>\backslash</code> does not work, try <code>\textbackslash</code>.</p>
+<p>EDIT: <code>\symbol{92}</code> should also work.</p>","<p>You can use <code>\@backslashchar</code>.  The following works for me:</p>
+<pre><code>\documentclass{article}
+\begin{document}
+\newwrite\file
+\immediate\openout\file=myfile.out
+\makeatletter
+\immediate\write\file{\@backslashchar}
+\makeatother
+\closeout\file
+\end{document}
+</code></pre>",<p>AB/FQS/ET004/2014 write it in latex with space as AB/ FQS/ ET004/ 2014</p>,latex backslash,How do you type a backslash in LaTeX?,% monospaced font. \verb+\n+ % monospaced font. \texttt{\symbol{}n} % monospaced font; requires Tencoding. \texttt{\textbackslash n} % current font. \textbackslash n.,What does \\ mean in LaTeX?,"The \\ is context-dependent macro in LaTeX. It means that it is internally redefined in various situations and various LaTeX environments. By default it is \hfil\break and this can be used inside the paragraphs in order to ""destroy"" the normal paragraph formatting.",How do you insert a backslash in LaTeX?,% monospaced font. \verb+\n+ % monospaced font. \texttt{\symbol{}n} % monospaced font; requires Tencoding. \texttt{\textbackslash n} % current font. \textbackslash n.,How do you print a backslash in LaTeX?,"If you simply want the character to be printed just as any other letter, include a \ in front of the character. For example, \$ will produce $ in your output. The exception to the rule is the \ itself because \\ has its own special meaning. A \ is produced by typing $\backslash$ in your file."
+https://stackoverflow.com/questions/2505096/clone-a-private-repository-github,git - Clone A Private Repository (Github),"<p>This worked for me:</p>
+<p><code>git clone https://username@github.com/username/repo_name</code></p>","<p>Private clone URLs take the form <code>git@github.com:username/repo.git</code> - perhaps you needed to use <code>git@</code> rather than <code>git://</code>?</p>
+<p><code>git://</code> URLs are read only, and it looks like private repos do not allow this form of access.</p>","<p>I have met this issue several times and every time I landed on this page, tried every thing and failed!</p>
+<p><strong>Its because I have 2FA enabled!!!</strong></p>
+<p>According to <a href=https://help.github.com/articles/which-remote-url-should-i-use/#when-2fa-is-enabled rel=noreferrer>https://help.github.com/articles/which-remote-url-should-i-use/#when-2fa-is-enabled</a></p>
+<blockquote>
+<p>If you have enabled <a href=https://help.github.com/articles/securing-your-account-with-two-factor-authentication-2fa rel=noreferrer>two-factor authentication</a>, or if you are accessing an organization that uses <a href=https://help.github.com/articles/about-authentication-with-saml-single-sign-on rel=noreferrer>SAML single sign-on</a>, you must <a href=https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line rel=noreferrer>provide a personal access token</a> instead of entering your password for HTTPS Git.</p>
+</blockquote>
+<ol>
+<li>Follow <a href=https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/ rel=noreferrer>this link</a> and create an access token</li>
+<li><code>git clone https://github.com/username/repo_name.git</code> (The default git repo link is good enough!)</li>
+<li>Enter your username and use the access token as password!!</li>
+</ol>
+<hr/>
+<p>Update:</p>
+<ul>
+<li>If you dont mind exposing your access token in the command line, you can also paste the access token as username then hit enter enter (no need for password).</li>
+<li>Hate copy&amp;pasting the access token over and over again?<br/>
+Use <code>git config credential.helper store</code> (dont do this on machine you dont trust)</li>
+</ul>",git clone private repo,Can you git clone a private repository?,Important: Private repositories cannot be cloned using git protocol. You can configure git to specifically use HTTPS over other protocols by setting hub.,How do I clone a private repo?,"In GitHub, go to Settings --> Developer Settings --> Personal access tokens .
+Click Generate new token and assign the token a name.
+Grant the token privilege to the repo group. Copy the token to a secure location.
+At the bottom of the page, click Generate Token .",How do I make a GitHub repository private?,"On GitHub.com, navigate to the main page of the repository.
+Under your repository name, click Settings.
+Under ""Danger Zone"", to the right of to ""Change repository visibility"", click Change visibility.
+Select a visibility.",What is a private git repository?,"Public repositories are accessible to everyone on the internet. Private repositories are only accessible to you, people you explicitly share access with, and, for organization repositories, certain organization members."
+https://stackoverflow.com/questions/25929315/tar-removing-leading-from-member-names,linux - tar removing leading / from member names,"<p>The good version is also displaying the same message youve just missed it.</p>
+<p>If you dont like the behaviour, search for leading, in manual. First hit:</p>
+<pre><code>-P, --absolute-names
+       dont strip leading /s from file names
+</code></pre>","<p>This is because your file (<code>$kname</code>) has leading <code>/</code>.</p>
+<p>To fix that, you may specify <code>-C</code> to change the directory, instead of specifying full path of the archive file.</p>","<p>It might be best to leave your files without the / in the backup and just ignore the error message.  Tar does this as a safety precaution, because if you untar the file, it will automatically place the files back in the original directory.  This can be dangerous and most people want to avoid this.  Personally, I would be happy with the fact that it removed the / and then your restore will be relative and not absolute directory path.  Then you can manually move the files into the right place, or a different place.  Just posting this so people are aware and dont inadvertently replace their original files.</p>",tar: removing leading `/' from member names,What is option in tar?,"Tar command c, v, f, t, and x options The option c creates an archive or a tarball from specified files or directories. If a directory is specified, all its files and sub-directories will be included in the archived file. The option v displays the progress of archiving process at the command prompt. The option c creates an archive or a tarball from specified files or directories. If a directory is specified, all its files and sub-directories will be included in the archived file. The option v displays the progress of archiving process at the command prompt.",How do I untar a folder in Linux?,"From the terminal, change to the directory where your . tar file has been downloaded.
+To extract or untar the file to the current directory, type the following, (Making sure to replace file_name.tar with the actual filename) tar -xvf file_name.tar.",How do I tar a file in Linux?,"Open the terminal app in Linux.
+Compress an entire directory by running tar -zcvf file. tar. gz /path/to/dir/ command in Linux.
+To compress a single file by running tar -zcvf file. tar.
+Tar and compress multiple directories file by running tar -zcvf file. tar.",How can tar remove leading from member names?,"Answers. Use the --absolute-names or -P option to disable this feature. This is the correct answer, but be aware, that in most cases, this is not what you want, cause it results in an archive that extracts in complete paths!"

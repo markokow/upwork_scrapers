@@ -16,8 +16,6 @@ from random import randint
 from time import sleep
 
 
-from tomlkit import key
-
 class ModifiedPaaScraper:
 
     def __init__(self, *,keywords: List = [], max_questions: int = 5, max_division: int = 50) -> None:
@@ -115,14 +113,14 @@ class ModifiedPaaScraper:
                     try:
                         answer = parse(answer, fuzzy_with_tokens=True)[1]
                         answer = ''.join([x for x in answer if x != ' '])
-                    except ValueError:
+                    except:
                         answer = answer
                     return self.cleanup(answer).strip()
                 except AttributeError:
                     try:
                         lists = parse(lists, fuzzy_with_tokens=True)[1]
                         lists = ''.join([x for x in lists if x != ' '])
-                    except ValueError:
+                    except:
                         lists = lists
                     return self.cleanup(lists).strip()
             else:

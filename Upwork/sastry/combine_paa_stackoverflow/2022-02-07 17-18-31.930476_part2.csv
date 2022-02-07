@@ -1,0 +1,720 @@
+url,title,best_answer_1,best_answer_2,keyword,question_1,answer_1,question_2,answer_2,question_3,answer_3,question_4,answer_4,best_answer_3
+https://stackoverflow.com/questions/54765320/outer-product-of-two-rectangular-matrices-in-matlab,matrix - Outer product of two rectangular matrices in matlab,"<p>The <code>*</code> operator in MATLAB calculates the <a href=https://en.wikipedia.org/wiki/Matrix_multiplication rel=nofollow noreferrer>matrix multiplication</a>.</p>
+<p>I guess what you want is the <a href=https://en.wikipedia.org/wiki/Kronecker_product rel=nofollow noreferrer>Kronecker product</a>. It can be done with the <a href=https://de.mathworks.com/help/matlab/ref/kron.html rel=nofollow noreferrer><code>kron</code></a> function in MATLAB.</p>","<p>If you are looking for a 6x6 matrix, you likely want to do</p>
+<pre><code>r(:) * r(:).
+</code></pre>
+<p><code>r(:)</code> is a vector with all the elements of matrix <code>r</code>.</p>
+<p>If you are looking for the tensor outer product of <code>r</code> with itself, which will have a size of 2x3x2x3, then you need to do as follows:</p>
+<pre><code>r .* shiftdim(r,-2)
+</code></pre>
+<p>(with the 2 being the number of dimensions in <code>r</code>, and the <code>.*</code> the element-wise multiplication with implicit singleton expansion.)</p>
+<p>Note that both answers produce the same set of values, as does the <code>kron(r,r)</code> <a href=https://stackoverflow.com/a/54766511/7328782>solution by yar</a>, but all three put the resulting elements in a different order.</p>",outer product matlab,Is every matrix an outer product?,"Any matrix can be represented as a sum of outer products of vectors, and by the definition of tensor product, any tensor is a linear combination of outer products of vectors, so any matrix is a tensor whether or not it can be written as an outer product (i.e., has rank ).",Is outer product same as cross product?,"In Geometric algebra, the cross-product of two vectors is the dual (i.e. a vector in the orthogonal subspace) of the outer product of those vectors in G(so in a way you could say that the outer product generalizes the dot product, although the cross product is not an outer product).",What is the vector outer product?,"In linear algebra, the outer product of two coordinate vectors is a matrix. ... If the two vectors have dimensions n and m, then their outer product is an n × m matrix. More generally, given two tensors (multidimensional arrays of numbers), their outer product is a tensor.",How do you find the inner product of two vectors?,"The inner product of two vector (of equal length, of course), is simply given by the sum of the products of the coordinates with same index. u1v1+u2v2+... +unvn=n∑i=1uivi . Furthermore, two vectors are said to be perpendicular if their inner product is zero, i.e. u⋅v=0 .",
+https://stackoverflow.com/questions/52416312/npm-equivalent-of-yarn-resolutions,package.json - npm equivalent of yarn resolutions?,"<p>This does not seem to be supported by npm natively, however this package aims to add this functionality:</p>
+<p><a href=https://github.com/rogeriochaves/npm-force-resolutions rel=noreferrer>https://github.com/rogeriochaves/npm-force-resolutions</a></p>","<p><a class=post-tag href=/questions/tagged/npm rel=tag title=show questions tagged npm>npm</a> is due to support <a href=https://github.com/npm/rfcs/pull/129 rel=noreferrer><code>overrides</code></a>, which is equivalent to yarns <code>resolutions</code>.</p>
+<p>For more information about the current RFC status:</p>
+<p><a href=https://github.com/npm/rfcs/blob/latest/accepted/0036-overrides.md rel=noreferrer>https://github.com/npm/rfcs/blob/latest/accepted/0036-overrides.md</a></p>",package json resolutions,What are resolutions in package json?,"resolutions is simply a map of package names and the exact versions of those packages that should be kept in the dependency tree, i.e. the above configuration will remove all versions of webpack that are not 5.6.",What are yarn resolutions?,"Yarn supports selective version resolutions, which lets you define custom package versions or ranges inside your dependencies through the resolutions field in your package. json file. Normally, this would require manual edits in the yarn. lock file.",How does npm resolve dependency?,"Npm installs dependencies in the order they are listed in the package. json file. So, it will encounter module A (version 1) first and install it as root dependency under node_modules. Now when npm is installing module B it checks whether the dependencies of module B are already installed as root dependencies or not.",Does yarn look at package json?,Every yarn package must have a package. json file which yarn looks for in order to identify the package. This file configures the behavior of yarn while it is running inside that package.,"<p>Npm equivalent to yarn resolutions is overrides. After the <a href=https://github.com/npm/rfcs/pull/129 rel=noreferrer>RFC</a> was accepted now theres an epic to watch the progress of implementation. <a href=https://github.com/npm/statusboard/issues/343 rel=noreferrer>https://github.com/npm/statusboard/issues/343</a></p>
+<p>Edit: This was released in <a href=https://github.com/npm/cli/releases/tag/v8.3.0 rel=noreferrer>npm v8.3.0</a></p>
+<p>Documentation: <a href=https://docs.npmjs.com/cli/v8/configuring-npm/package-json#overrides rel=noreferrer>https://docs.npmjs.com/cli/v8/configuring-npm/package-json#overrides</a></p>
+<blockquote>
+<p>To make sure the package foo is always installed as version 1.0.0 no
+matter what version your dependencies rely on:</p>
+<pre><code>{
+  overrides: {
+    foo: 1.0.0
+  }
+}
+</code></pre>
+</blockquote>"
+https://stackoverflow.com/questions/2428092/creating-a-json-response-using-django-and-python,Creating a JSON response using Django and Python,"<p>I usually use a dictionary, not a list to return JSON content. </p>
+<pre><code>import json
+
+from django.http import HttpResponse
+
+response_data = {}
+response_data[result] = error
+response_data[message] = Some error message
+</code></pre>
+<p>Pre-Django 1.7 youd return it like this:</p>
+<pre><code>return HttpResponse(json.dumps(response_data), content_type=application/json)
+</code></pre>
+<p>For Django 1.7+, use <a href=https://docs.djangoproject.com/en/dev/ref/request-response/#jsonresponse-objects rel=noreferrer><code>JsonResponse</code></a> as shown in <a href=https://stackoverflow.com/a/24411716/7376>this SO answer</a> like so : </p>
+<pre><code>from django.http import JsonResponse
+return JsonResponse({foo:bar})
+</code></pre>","<p>New in django 1.7</p>
+<p>you could use <a href=https://docs.djangoproject.com/en/dev/ref/request-response/#jsonresponse-objects rel=noreferrer>JsonResponse</a> objects. </p>
+<p>from the docs:</p>
+<pre><code>from django.http import JsonResponse
+return JsonResponse({foo:bar})
+</code></pre>",django return json,How do I return JSON in Django?,"from django. import json # for older versions (and using python < ) #from django.utils import simplejson # and change the json.dumps for simplejson.dumps from django. { ""id"": ""name"":""Test Response"", ""roles"":[ ""Admin"", ""User"" ] }",How do I return a JSON response?,"from django. import json # for older versions (and using python < ) #from django.utils import simplejson # and change the json.dumps for simplejson.dumps from django. { ""id"": ""name"":""Test Response"", ""roles"":[ ""Admin"", ""User"" ] }",What is JSON response in Django?,"Django JsonResponse JsonResponse is an HttpResponse subclass that helps to create a JSON-encoded response. Its default Content-Type header is set to application/json. The first parameter, data , should be a dict instance. JsonResponse is an HttpResponse subclass that helps to create a JSON-encoded response. Its default Content-Type header is set to application/json. The first parameter, data , should be a dict instance.",What is safe false in JsonResponse?,"Django JsonResponse If the safe parameter is set to False , any object can be passed for serialization; otherwise only dict instances are allowed. If the safe parameter is set to False , any object can be passed for serialization; otherwise only dict instances are allowed.","<p>I use this, it works fine.</p>
+<pre><code>from django.utils import simplejson
+from django.http import HttpResponse
+
+def some_view(request):
+    to_json = {
+        key1: value1,
+        key2: value2
+    }
+    return HttpResponse(simplejson.dumps(to_json), mimetype=application/json)
+</code></pre>
+<p>Alternative:</p>
+<pre><code>from django.utils import simplejson
+
+class JsonResponse(HttpResponse):
+    
+        JSON response
+    
+    def __init__(self, content, mimetype=application/json, status=None, content_type=None):
+        super(JsonResponse, self).__init__(
+            content=simplejson.dumps(content),
+            mimetype=mimetype,
+            status=status,
+            content_type=content_type,
+        )
+</code></pre>
+<p>In Django 1.7 <a href=https://docs.djangoproject.com/en/dev/ref/request-response/#jsonresponse-objects rel=noreferrer>JsonResponse</a> objects have been added to the Django framework itself which makes this task even easier:</p>
+<pre><code>from django.http import JsonResponse
+def some_view(request):
+    return JsonResponse({key: value})
+</code></pre>"
+https://stackoverflow.com/questions/34677644/how-to-use-comparison-operators-like-on-bigdecimal/34677687,"java - How to use comparison operators like >, =, < on BigDecimal","<p>To be short: </p>
+<pre><code>firstBigDecimal.compareTo(secondBigDecimal) &lt; 0 // &lt;
+firstBigDecimal.compareTo(secondBigDecimal) &gt; 0 // &gt;    
+firstBigDecimal.compareTo(secondBigDecimal) == 0 // ==  
+firstBigDecimal.compareTo(secondBigDecimal) &gt;= 0 // &gt;=    
+</code></pre>","<p>Every object of the Class <code>BigDecimal</code> has a method <a href=https://docs.oracle.com/javase/8/docs/api/java/math/BigDecimal.html#compareTo-java.math.BigDecimal- rel=noreferrer><code>compareTo</code></a> you can use to compare it to another BigDecimal. The result of <code>compareTo</code> is then compared <code>&gt; 0</code>, <code>== 0</code> or <code>&lt; 0</code> depending on what you need. Read the documentation and you will find out.</p>
+<p>The operators <code>==</code>, <code>&lt;</code>, <code>&gt;</code> and so on can only be used on primitive data types like <code>int</code>, <code>long</code>, <code>double</code> or their wrapper classes like <code>Integer</code>and <code>Double</code>.</p>
+<p>From the documentation of <code>compareTo</code>:</p>
+<blockquote>
+<p>Compares this <code>BigDecimal</code> with the specified <code>BigDecimal</code>. </p>
+<p>Two <code>BigDecimal</code>
+  objects that are equal in value but have a different scale (like 2.0
+  and 2.00) are considered equal by this method. This method is provided
+  in preference to individual methods for each of the six boolean
+  comparison operators (&lt;, ==, &gt;, &gt;=, !=, &lt;=). The suggested idiom for
+  performing these comparisons is: <code>(x.compareTo(y) &lt;op&gt; 0)</code>, where <code>&lt;op&gt;</code>
+  is one of the six comparison operators.</p>
+<p>Returns:
+  -1, 0, or 1 as this BigDecimal is numerically less than, equal to, or greater than val.</p>
+</blockquote>",bigdecimal compare,How can I compare two BigDecimal values?,compareTo(BigDecimal val) compares the BigDecimal Object with the specified BigDecimal value. Two BigDecimal objects that are equal in value but have a different scale (like and ) are considered equal by this method.,How do I use BigDecimal compareTo?,"0 : if value of this BigDecimal is equal to that of BigDecimal object passed as parameter.
+1 : if value of this BigDecimal is greater than that of BigDecimal object passed as parameter.
+-1 : if value of this BigDecimal is less than that of BigDecimal object passed as parameter.",How do I know if BigDecimal is equal?,equals() method checks for equality of a BigDecimal value with the object passed. This method considers two BigDecimal objects equal if only if they are equal in value and scale.,How do I compare BigDecimal values?,"Use the compareTo method of BigDecimal : public int compareTo(BigDecimal val) Compares this BigDecimal with the specified BigDecimal. Returns: -1, 0, or 1 as this BigDecimal is numerically less than, equal to, or greater than val.","<p>Use the <a href=https://docs.oracle.com/javase/8/docs/api/java/math/BigDecimal.html#compareTo-java.math.BigDecimal- rel=noreferrer><code>compareTo</code></a> method of BigDecimal :</p>
+<blockquote>
+<p>public int compareTo(BigDecimal val) Compares this BigDecimal with the
+  specified BigDecimal. </p>
+<pre><code>Returns:
+-1, 0, or 1 as this BigDecimal is numerically less than, equal to, or greater than val.
+</code></pre>
+</blockquote>"
+https://stackoverflow.com/questions/37017244/uploading-a-file-to-a-s3-bucket-with-a-prefix-using-boto3,python - Uploading a file to a S3 bucket with a prefix using Boto3,"<p>Im assuming you have all this set up:</p>
+<ol>
+<li>AWS Access Key ID and Secret Key set up (typically stored at <code>~/.aws/credentials</code></li>
+<li>You have access to S3 and you know your bucket names &amp; prefixes (subdirectories)</li>
+</ol>
+<p>According to the <a href=https://boto3.readthedocs.io/en/latest/reference/services/s3.html#S3.Client.upload_file rel=noreferrer title=Boto3 S3 upload_file documentation>Boto3 S3 <code>upload_file</code> documentation</a>, you should upload your upload like this:</p>
+<p><code>upload_file(Filename, Bucket, Key, ExtraArgs=None, Callback=None, Config=None)</code></p>
+<pre><code>import boto3
+s3 = boto3.resource(s3)
+s3.meta.client.upload_file(/tmp/hello.txt, mybucket, hello.txt)
+</code></pre>
+<p>The key to note here is <code>s3.meta.client</code>. Dont forget that--it worked for me!</p>
+<p>I hope that helped.</p>","<pre><code>import boto3
+
+s3 = boto3.resource(s3)
+s3.meta.client.upload_file( csv1.csv, bucketname, prefixna/csv1.csv)
+</code></pre>",boto3 upload file,How do I upload files to boto3?,Create a botosession. Create an object for S object. Access the bucket in the S resource using the s.Bucket() method and invoke the upload_file() method to upload the files. upload_file() method accepts two parameters. File_Path – Path of the file from the local system that needs to be uploaded.,What is boto3 client (' S3 ')?,"Amazon Web Services (AWS) has become a leader in cloud computing. One of its core components is S, the object storage service offered by AWS. ... Botois the name of the Python SDK for AWS. It allows you to directly create, update, and delete AWS resources from your Python scripts.",How do I upload files to AWS S3?,"In the Amazon S3 console, choose the bucket where you want to upload an object, choose Upload, and then choose Add Files. In the file selection dialog box, find the file that you want to upload, choose it, choose Open, and then choose Start Upload. You can watch the progress of the upload in the Transfer pane.",How do I import a CSV file into an S3 bucket?,"Navigate to All Settings > Raw Data Export > CSV Upload. Toggle the switch to ON. Select Amazon S3 Bucket from the dropdown menu. Enter your Access Key ID, Secret Access Key, and bucket name.","<p>Turns out I needed SSE:</p>
+<pre><code>transfer = S3Transfer(s3_client)
+transfer.upload_file(/tmp/hello.txt, bucket_name, prefix+hello-remote.txt, extra_args={ServerSideEncryption: AES256})
+</code></pre>"
+https://stackoverflow.com/questions/17969365/why-i-am-getting-java-lang-abstractmethoderror-errors,thrift - Why I am getting java.lang.AbstractMethodError errors?,<p>It usually means that you are using an old version of an interface implementation which is missing a new interface method. For example java.sql.Connection interface got a new getSchema method in 1.7. If you have 1.6 JDBC driver and call Connection.getSchema you will get  AbstractMethodError.</p>,"<p>The simple answer is this:  some code is trying to call a method which is declared <code>abstract</code>.  Abstract methods have no body and cannot be executed.  Since you have provided so little information I cant really elaborate more on how this can happen since the compiler usually catches this problem - <a href=http://docs.oracle.com/javase/6/docs/api/java/lang/AbstractMethodError.html rel=noreferrer>as described here, this means the class must have changed at runtime.</a></p>",java lang abstract method error,java lang abstract method error,"Thrown when an application tries to call an abstract method. Normally, this error is caught by the compiler; this error can only occur at run time if the definition of some class has incompatibly changed since the currently executing method was last compiled.
+Class AbstractMethodError Thrown when an application tries to call an abstract method. Normally, this error is caught by the compiler; this error can only occur at run time if the definition of some class has incompatibly changed since the currently executing method was last compiled.",,,,,,,"<p>From documnentation of <a href=http://docs.oracle.com/javase/7/docs/api/java/lang/AbstractMethodError.html rel=noreferrer>AbstractMethodError</a></p>
+<blockquote>
+<p>Thrown when an application tries to call an abstract method. Normally,
+  this error is caught by the compiler; this error can only occur at run
+  time if the definition of some class has incompatibly changed since
+  the currently executing method was last compiled.</p>
+</blockquote>"
+https://stackoverflow.com/questions/30042334/attribute-error-list-object-has-no-attribute-split,python - Attribute Error: list object has no attribute split,"<p>I think youve actually got a wider confusion here.</p>
+<p>The initial error is that youre trying to call <code>split</code> on the whole list of lines, and you cant <code>split</code> a list of strings, only a string. So, you need to <code>split</code> <em>each line</em>, not the whole thing.</p>
+<p>And then youre doing <code>for points in Type</code>, and expecting each such <code>points</code> to give you a new <code>x</code> and <code>y</code>. But that isnt going to happen. <code>Types</code> is just two values, <code>x</code> and <code>y</code>, so first <code>points</code> will be <code>x</code>, and then points will be <code>y</code>, and then youll be done. So, again, you need to loop over each line and get the <code>x</code> and <code>y</code> values from <em>each line</em>, not loop over a single <code>Types</code> from a single line.</p>
+<p>So, everything has to go inside a loop over every line in the file, and do the <code>split</code> into <code>x</code> and <code>y</code> once for each line. Like this:</p>
+<pre><code>def getQuakeData():
+    filename = input(Please enter the quake file: )
+    readfile = open(filename, r)
+
+    for line in readfile:
+        Type = line.split(,)
+        x = Type[1]
+        y = Type[2]
+        print(x,y)
+
+getQuakeData()
+</code></pre>
+<p>As a side note, you really should <code>close</code> the file, ideally with a <code>with</code> statement, but Ill get to that at the end.</p>
+<hr/>
+<p>Interestingly, the problem here isnt that youre being too much of a newbie, but that youre trying to solve the problem in the same abstract way an expert would, and just dont know the details yet. This is completely doable; you just have to be explicit about mapping the functionality, rather than just doing it implicitly. Something like this:</p>
+<pre><code>def getQuakeData():
+    filename = input(Please enter the quake file: )
+    readfile = open(filename, r)
+    readlines = readfile.readlines()
+    Types = [line.split(,) for line in readlines]
+    xs = [Type[1] for Type in Types]
+    ys = [Type[2] for Type in Types]
+    for x, y in zip(xs, ys):
+        print(x,y)
+
+getQuakeData()
+</code></pre>
+<p>Or, a better way to write that might be:</p>
+<pre><code>def getQuakeData():
+    filename = input(Please enter the quake file: )
+    # Use with to make sure the file gets closed
+    with open(filename, r) as readfile:
+        # no need for readlines; the file is already an iterable of lines
+        # also, using generator expressions means no extra copies
+        types = (line.split(,) for line in readfile)
+        # iterate tuples, instead of two separate iterables, so no need for zip
+        xys = ((type[1], type[2]) for type in types)
+        for x, y in xys:
+            print(x,y)
+
+getQuakeData()
+</code></pre>
+<hr/>
+<p>Finally, you may want to take a look at NumPy and Pandas, libraries which <em>do</em> give you a way to implicitly map functionality over a whole array or frame of data almost the same way you were trying to.</p>","<p>The problem is that <code>readlines</code> is a list of strings, each of which is a line of <code>filename</code>. Perhaps you meant:</p>
+<pre><code>for line in readlines:
+    Type = line.split(,)
+    x = Type[1]
+    y = Type[2]
+    print(x,y)
+</code></pre>",attributeerror list object has no attribute split,What does AttributeError list object has no attribute split mean?,"Solution The initial error is that you're trying to call split on the whole list of lines, and you can't split a list of strings, only a string. So, you need to split each line, not the whole thing. The initial error is that you're trying to call split on the whole list of lines, and you can't split a list of strings, only a string. So, you need to split each line, not the whole thing.",What is attribute error in Python?,"AttributeError can be defined as an error that is raised when an attribute reference or assignment fails. For example, if we take a variable x we are assigned a value of  ... Note: Attribute errors in Python are generally raised when an invalid attribute reference is made.",What is no attribute in Python?,"It's simply because there is no attribute with the name you called, for that Object. This means that you got the error when the ""module"" does not contain the method you are calling.",What does AttributeError mean in Python?,"AttributeError can be defined as an error that is raised when an attribute reference or assignment fails. For example, if we take a variable x we are assigned a value of  ... Note: Attribute errors in Python are generally raised when an invalid attribute reference is made.","<p>what i did was a quick fix by converting readlines to string but i do not recommencement it but it works and i dont know if there are limitations or not </p>
+<pre><code>`def getQuakeData():
+    filename = input(Please enter the quake file: )
+    readfile = open(filename, r)
+    readlines = str(readfile.readlines())
+
+    Type = readlines.split(,)
+    x = Type[1]
+    y = Type[2]
+    for points in Type:
+        print(x,y)
+getQuakeData()`
+</code></pre>"
+https://stackoverflow.com/questions/9561174/using-setattr-in-python,Using setattr() in python,"<p>The <a href=http://docs.python.org/library/functions.html#setattr rel=noreferrer>Python docs</a> say all that needs to be said, as far as I can see.</p>
+<blockquote>
+<h3><code>setattr</code>(<em>object</em>, <em>name</em>, <em>value</em>)</h3>
+<p>This is the counterpart of <a href=http://docs.python.org/library/functions.html#getattr rel=noreferrer><code>getattr()</code></a>. The arguments are an object, a string and an arbitrary value. The string may name an existing attribute or a new attribute. The function assigns the value to the attribute, provided the object allows it. For example, <code>setattr(x, foobar, 123)</code> is equivalent to <code>x.foobar = 123</code>.</p>
+</blockquote>
+<p>If this isnt enough, explain what you dont understand.</p>","<p>You are setting <code>self.name</code> to the <em>string</em> <code>get_thing</code>, not the function <code>get_thing</code>.</p>
+<p>If you want <code>self.name</code> to be a function, then you should set it to one:</p>
+<pre><code>setattr(self, name, self.get_thing)
+</code></pre>
+<p>However, thats completely unnecessary for your other code, because you could just call it directly:</p>
+<pre><code>value_returned = self.get_thing()
+</code></pre>",setattr python,What is Setattr () used for in Python?,Python setattr() function is used to assign a new value to the attribute of an object/instance. Setattr in python sets a new specified value argument to the specified attribute name of a class/function's defined object.,What is __ Setattr __ in Python?,"Python setattr() method is used to assign the object attribute its value. Apart from ways to assign values to class variables, through constructors and object functions, this method gives you an alternative way to assign value. ... var : object attribute which has to be assigned.",What is Setattr () and Getattr () used for?,As we have already seen what getattr() does; The setattr() function is used to assign a new value to an object/instance attribute.,What does Setattr return?,"The setattr() method returns None .
+setattr() Return Value The setattr() method returns None .","<p><strong>Setattr:</strong>
+We use <strong>setattr</strong> to add an attribute to our class instance. We pass the class instance, the attribute name, and the value. and with <strong>getattr</strong> we retrive these values</p>
+<p>For example</p>
+<pre><code>Employee = type(Employee, (object,), dict())
+
+employee = Employee()
+
+# Set salary to 1000
+setattr(employee,salary, 1000 )
+
+# Get the Salary
+value = getattr(employee, salary)
+
+print(value)
+</code></pre>"
+https://stackoverflow.com/questions/46688113/exception-in-thread-main-java-lang-numberformatexception-for-input-string,Exception in thread main java.lang.NumberFormatException: For input string:,"<p>You are calling the <code>parseInt</code> method with the String <code>18 7 4 6</code>. Since this isnt a valid Integer, the NumberFormatException is thrown.</p>
+<p>You are already splitting the input into the <code>String[] sar</code>. In the <code>for</code> loop you already call <code>parseInt</code> on each value in <code>sar</code>, which are valid Integers. Seems like you have everything in place; just remove the <code>int target = Integer.parseInt(input);</code> line.</p>",,"exception in thread ""main"" java.lang.numberformatexception: for input string: """"",What is exception in thread main java Lang NumberFormatException for input string?,"The error ""Exception in thread ""main"" java. lang. NumberFormatException: For input string: ""null"" is specifically saying that the String you receive for parsing is not numeric and it's true, ""null"" is not numeric. Many Java methods which convert String to numeric type like Integer.",Is java Lang NumberFormatException for input string?,"lang. NumberFormatException for input string is one of the most common exceptions java programmers face while doing the coding. This exception occurs when someone tries to convert a String into primitive data types such as int, float, double, long, byte, short, etc.",What does java Lang NumberFormatException mean?,"The java. lang. NumberFormatException comes when you try to parse a non-numeric String to a Number like Short, Integer, Float, Double etc. For example, if you try to convert . ""null"" to an integer then you will get NumberFormatException.",How do I prevent NumberFormatException?,It must throw NumberFormatException if you try to parse it to integer. We can keep the code which is throwing exception into try block. try{ int i = Integer. parseInt(input); }catch(NumberFormatException ex){ // handle your exception ... },
+https://stackoverflow.com/questions/8866041/how-can-i-list-all-collections-in-the-mongodb-shell,How can I list all collections in the MongoDB shell?,"<p>You can do...</p>
+<p>JavaScript (shell):</p>
+<pre><code>db.getCollectionNames()
+</code></pre>
+<p>Node.js:</p>
+<pre><code>db.listCollections()
+</code></pre>
+<p>Non-JavaScript (shell only):</p>
+<pre><code>show collections
+</code></pre>
+<p>The reason I call that non-JavaScript is because:</p>
+<pre><code>$ mongo prodmongo/app --eval show collections
+MongoDB shell version: 3.2.10
+connecting to: prodmongo/app
+2016-10-26T19:34:34.886-0400 E QUERY    [thread1] SyntaxError: missing ; before statement @(shell eval):1:5
+
+$ mongo prodmongo/app --eval db.getCollectionNames()
+MongoDB shell version: 3.2.10
+connecting to: prodmongo/app
+[
+    Profiles,
+    Unit_Info
+]
+</code></pre>
+<p>If you really want that sweet, sweet <code>show collections</code> output, you can:</p>
+<pre><code>$ mongo prodmongo/app --eval db.getCollectionNames().join(\n)
+MongoDB shell version: 3.2.10
+connecting to: prodmongo/app
+Profiles
+Unit_Info
+</code></pre>","<pre><code>&gt; show collections
+</code></pre>
+<p>will list all the collections in the currently selected DB, as stated in the command line help (<code>help</code>).</p>",mongodb list collections,How do I list collections in MongoDB?,"connect with the MongoDB database using mongo .
+then run show dbs command.
+then select the database you want.
+then run show collections command.",How do I list all databases in MongoDB?,"Listing all the databases in mongoDB console is using the command show dbs . For more information on this, refer the Mongo Shell Command Helpers that can be used in the mongo shell.",How do I list databases in MongoDB?,Use show dbs command from mongo shell to list all the available databases on MongoDB server. This will show the database name with there size. You can select any database using the use statement and work on it.,How do I show all databases in MongoDB?,"Listing all the databases in mongoDB console is using the command show dbs . For more information on this, refer the Mongo Shell Command Helpers that can be used in the mongo shell.","<blockquote>
+<p>How do I list all collections for the current database that Im using?</p>
+</blockquote>
+<h2>Three methods</h2>
+<ul>
+<li><code>show collections</code></li>
+<li><code>show tables</code></li>
+<li><code>db.getCollectionNames()</code></li>
+</ul>
+<hr/>
+<h3>To list all <em>databases</em>:</h3>
+<pre><code>show dbs
+</code></pre>
+<h3>To enter or use a given database:</h3>
+<pre><code>use databasename
+</code></pre>
+<hr/>
+<h2>To list all <em>collections</em>:</h2>
+<pre><code>show collections
+</code></pre>
+<p>Output:</p>
+<blockquote>
+<pre><code>collection1
+collection2
+system.indexes
+</code></pre>
+</blockquote>
+<p>(or)</p>
+<pre><code>show tables
+</code></pre>
+<p>Output:</p>
+<blockquote>
+<pre><code>collection1
+collection2
+system.indexes
+</code></pre>
+</blockquote>
+<p>(or)</p>
+<pre><code>db.getCollectionNames()
+</code></pre>
+<p>Output:</p>
+<blockquote>
+<pre><code>[ collection1, collection2, system.indexes ]
+</code></pre>
+</blockquote>
+<hr/>
+<h2>To enter or use given collection</h2>
+<pre><code>use collectionname
+</code></pre>"
+https://stackoverflow.com/questions/10368217/how-to-get-the-file-extension-in-php,How to get the file extension in PHP?,"<p>No need to use string functions. You can use something thats actually designed for what you want: <a href=http://php.net/manual/en/function.pathinfo.php rel=noreferrer><code>pathinfo()</code></a>:</p>
+<pre><code>$path = $_FILES[image][name];
+$ext = pathinfo($path, PATHINFO_EXTENSION);
+</code></pre>","<p>This will work as well:</p>
+<pre><code>$array = explode(., $_FILES[image][name]);
+$extension = end($array);
+</code></pre>",php get file extensions,How can I get file extension in PHP?,"Use pathinfo() Function to Get File Extension in PHP.
+Use SplFileInfo() Construct and getExtension() Function to Get File Extension in PHP.",How do I find the file extension?,"Open File Explorer; if you do not have an icon for this in the task bar; click Start, click Windows System, and then File Explorer.
+Click the View tab in File Explorer.
+Click the box next to File name extensions to see file extensions.
+Click the box next to Hidden items to see hidden files.",What is PHP Pathinfo?,The pathinfo() function returns information about a file path in an array. The pathinfo() function returns an associative array with the following elements − directory name − returns directory name. basename − returns basename. extension − returns extension.,What file extension is PHP?,,"<p>A better method is using strrpos + substr (faster than explode for that) :</p>
+<pre><code>$userfile_name = $_FILES[image][name];
+$userfile_extn = substr($userfile_name, strrpos($userfile_name, .)+1);
+</code></pre>
+<p>But, to check the type of a file, using mime_content_type is a better way :
+<a href=http://www.php.net/manual/en/function.mime-content-type.php rel=noreferrer>http://www.php.net/manual/en/function.mime-content-type.php</a></p>"
+https://stackoverflow.com/questions/28271414/conversion-of-a-varchar-data-type-to-a-datetime-data-type-resulted-in-an-out-of?lq=1,sql server - Conversion of a varchar data type to a datetime data type resulted in an out-of-range value in SQL query,"<p>Try <code>ISDATE()</code> function in SQL Server. If 1, select valid date. If 0 selects invalid dates.</p>
+<pre><code>SELECT cast(CONVERT(varchar, LoginTime, 101) as datetime)  
+FROM AuditTrail 
+WHERE ISDATE(LoginTime) = 1
+</code></pre>
+<ul>
+<li><a href=http://sqlfiddle.com/#!3/5b3cb/2 rel=noreferrer>Click here</a> to view result</li>
+</ul>
+<p><strong>EDIT :</strong> </p>
+<p>As per your update <strong>i need to extract the date only and remove the time</strong>, then you could simply use the inner <code>CONVERT</code></p>
+<pre><code>SELECT CONVERT(VARCHAR, LoginTime, 101) FROM AuditTrail 
+</code></pre>
+<p>or</p>
+<pre><code>SELECT LEFT(LoginTime,10) FROM AuditTrail
+</code></pre>
+<p><strong>EDIT 2 :</strong> </p>
+<p>The major reason for the error will be in your date in WHERE clause.ie,</p>
+<pre><code>SELECT cast(CONVERT(varchar, LoginTime, 101) as datetime)  
+FROM AuditTrail
+where CAST(CONVERT(VARCHAR, LoginTime, 101) AS DATE) &lt;= 
+CAST(06/18/2012 AS DATE)
+</code></pre>
+<p>will be different from </p>
+<pre><code>SELECT cast(CONVERT(varchar, LoginTime, 101) as datetime)  
+FROM AuditTrail
+where CAST(CONVERT(VARCHAR, LoginTime, 101) AS DATE) &lt;= 
+CAST(18/06/2012 AS DATE)
+</code></pre>
+<p><strong>CONCLUSION</strong></p>
+<p>In <strong>EDIT 2</strong> the first query tries to filter in <code>mm/dd/yyyy</code> format, while the second query tries to filter in <code>dd/mm/yyyy</code> format. Either of them will fail and throws error</p>
+<blockquote>
+<p>The conversion of a varchar data type to a datetime data type resulted
+  in an out-of-range value.</p>
+</blockquote>
+<p>So please make sure to filter date either with <code>mm/dd/yyyy</code> or with <code>dd/mm/yyyy</code> format, whichever works in your db. </p>","<p>hope this may help you:</p>
+<pre><code>SELECT  CAST(LoginTime AS DATE)
+         FROM    AuditTrail 
+</code></pre>
+<p>If you want to have some filters over this datetime or its different parts, you can use built-in functions such as Year and Month</p>",the conversion of a varchar data type to a datetime data type resulted in an out-of-range value.,Can we convert varchar to date in SQL?,,Is datetime a varchar?,VARCHAR is the first argument that represents the string type. datetime is an expression that evaluates to date or datetime value that you want to convert to a string.,How do I convert datetime to date in SQL?,"Use CONVERT to VARCHAR: CONVERT syntax: CONVERT ( data_type [ ( length ) ] , expression [ , style ] )
+You can also convert to date: SELECT CONVERT(date, getdate()); It will return the current date value along with starting value for time.
+Use CAST.",What is the maximum length of datetime data type?,,"<p>as you can see on the answer to this question:
+<a href=https://dba.stackexchange.com/questions/86313/conversion-of-a-varchar-data-type-to-a-datetime-data-type-resulted-in-an-out-of/183537#183537>Conversion of a varchar data type to a datetime data type resulted in an out-of-range value</a></p>
+<pre><code>-- set the dateformat for the current session
+set dateformat dmy
+
+-- The conversion of a varchar data type 
+-- to a datetime data type resulted in an out-of-range value.
+select cast(2017-08-13 16:31:31  as datetime)
+
+-- get the current session date_format
+select date_format
+from sys.dm_exec_sessions
+where session_id = @@spid
+
+-- set the dateformat for the current session
+set dateformat ymd
+
+-- this should work
+select cast(2017-08-13 16:31:31  as datetime)
+</code></pre>"
+https://stackoverflow.com/questions/19925047/how-to-check-the-input-is-an-integer-or-not-in-java,How to check the input is an integer or not in Java?,"<p>If you are getting the user input with <code>Scanner</code>, you can do:</p>
+<pre><code>if(yourScanner.hasNextInt()) {
+    yourNumber = yourScanner.nextInt();
+}
+</code></pre>
+<p>If you are not, youll have to convert it to <code>int</code> and catch a <code>NumberFormatException</code>:</p>
+<pre><code>try{
+    yourNumber = Integer.parseInt(yourInput);
+}catch (NumberFormatException ex) {
+    //handle exception here
+}
+</code></pre>","<p>You can try this way</p>
+<pre><code> String input = ;
+ try {
+   int x = Integer.parseInt(input); 
+   // You can use this method to convert String to int, But if input 
+   //is not an int  value then this will throws NumberFormatException. 
+   System.out.println(Valid input);
+ }catch(NumberFormatException e) {
+   System.out.println(input is not an int value); 
+   // Here catch NumberFormatException
+   // So input is not a int.
+ } 
+</code></pre>",java check if input is integer,How do you check if an input is an integer in Java?,hasNextInt() method. The Scanner. hasNextInt() method checks whether the current input contains an integer or not. If the integer occurred in input this method will return true otherwise it will return false.,How do you know if input is a number?,"user_input = input(""Enter something: "") if type(user_input) == int: print(user_input, ""Is a number"") else: print(""Not a number"") try: val = int(user_input) except ValueError: print(""That's not an int!"")",How do you check if a number is an integer in C?,"Read input as a string to a buffer fgets(buffer, BUFFER_SIZE, stdin); Use sscanf to try reading integer: int i, r, n; r = sscanf(buffer, ""%d%n"", &i, &n); if(r == && n == strlen(buffer)) { // is integer }",How do you check if a input is an integer?,"integer typeA short integer can represent a whole number that may take less storage, while having a smaller range, compared with a standard integer on the same machine. In C, it is denoted by short. It is required to be at least 16 bits, and is often smaller than a standard integer, but this is not required.https://en.wikipedia.org › wiki › Integer_(computer_science)Integer (computer science) - Wikipedia
+integer type
+integer typeinteger typeA short integer can represent a whole number that may take less storage, while having a smaller range, compared with a standard integer on the same machine. In C, it is denoted by short. It is required to be at least 16 bits, and is often smaller than a standard integer, but this is not required.https://en.wikipedia.org › wiki › Integer_(computer_science)Integer (computer science) - Wikipedia
+
+To check if the input string is an integer number, convert the user input to the integer type using the int() constructor. To check if the input is a float number, convert the user input to the float type using the float() constructor.To check if the input string is an integer number, convert the user input to the integer typeinteger typeA short integer can represent a whole number that may take less storage, while having a smaller range, compared with a standard integer on the same machine. In C, it is denoted by short. It is required to be at least 16 bits, and is often smaller than a standard integer, but this is not required.https://en.wikipedia.org › wiki › Integer_(computer_science)Integer (computer science) - Wikipedia using the int() constructor. To check if the input is a float number, convert the user input to the float type using the float() constructor.
+To check if the input string is an integer number, convert the user input to the integer typeinteger typeA short integer can represent a whole number that may take less storage, while having a smaller range, compared with a standard integer on the same machine. In C, it is denoted by short. It is required to be at least 16 bits, and is often smaller than a standard integer, but this is not required.https://en.wikipedia.org › wiki › Integer_(computer_science)Integer (computer science) - Wikipedia using the int() constructor. To check if the input is a float number, convert the user input to the float type using the float() constructor.
+› wiki › Integer_(computer_science)","<p>If the user input is a <code>String</code> then you can try to parse it as an integer using <code>parseInt</code> method, which throws <code>NumberFormatException</code> when the input is not a valid number string:</p>
+<pre><code>try {
+
+    int intValue = Integer.parseInt(stringUserInput));
+}(NumberFormatException e) {
+    System.out.println(Input is not a valid integer);
+}
+</code></pre>"
+https://stackoverflow.com/questions/9603230/how-to-use-matplotlib-tight-layout-with-figure,python - How to use matplotlib tight layout with Figure?,"<p>Just call <code>fig.tight_layout()</code> as you normally would. (<code>pyplot</code> is just a convenience wrapper. In most cases, you only use it to quickly generate figure and axes objects and then call their methods directly.)</p>
+<p>There shouldnt be a difference between the <code>QtAgg</code> backend and the default backend (or if there is, its a bug).</p>
+<p>E.g.</p>
+<pre><code>import matplotlib.pyplot as plt
+
+#-- In your case, youd do something more like:
+# from matplotlib.figure import Figure
+# fig = Figure()
+#-- ...but we want to use it interactive for a quick example, so 
+#--    well do it this way
+fig, axes = plt.subplots(nrows=4, ncols=4)
+
+for i, ax in enumerate(axes.flat, start=1):
+    ax.set_title(Test Axes {}.format(i))
+    ax.set_xlabel(X axis)
+    ax.set_ylabel(Y axis)
+
+plt.show()
+</code></pre>
+<h2>Before Tight Layout</h2>
+<p><img alt=enter image description here src=https://i.stack.imgur.com/tNHym.png/></p>
+<h2>After Tight Layout</h2>
+<pre><code>import matplotlib.pyplot as plt
+
+fig, axes = plt.subplots(nrows=4, ncols=4)
+
+for i, ax in enumerate(axes.flat, start=1):
+    ax.set_title(Test Axes {}.format(i))
+    ax.set_xlabel(X axis)
+    ax.set_ylabel(Y axis)
+
+fig.tight_layout()
+
+plt.show()
+</code></pre>
+<p><img alt=enter image description here src=https://i.stack.imgur.com/qGNyL.png/></p>",,matplotlib tight_layout,What does matplotlib Tight_layout do?,"tight_layout automatically adjusts subplot params so that the subplot(s) fits in to the figure area. This is an experimental feature and  not work for some cases. It only checks the extents of ticklabels, axis labels, and titles.",What is fig Tight_layout ()?,"tight_layout automatically adjusts subplot params so that the subplot(s) fits in to the figure area. This is an experimental feature and  not work for some cases. It only checks the extents of ticklabels, axis labels, and titles.",How do I create a space between subplots in matplotlib?,"We can use the plt. subplots_adjust() method to change the space between Matplotlib subplots. The parameters wspace and hspace specify the space reserved between Matplotlib subplots. They are the fractions of axis width and height, respectively.",How do I stop matplotlib overlapping?,"Initialize a variable n=20 to get a number of sections in a pie chart.
+Create slices and activities using numpy.
+Create random colors using hexadecimal alphabets, in the range of 20.",
+https://stackoverflow.com/questions/8409498/attributeerror-numpy-ndarray-object-has-no-attribute-append,python - AttributeError: numpy.ndarray object has no attribute append,"<p>Use <code>numpy.concatenate(list1 , list2)</code> or <code>numpy.append()</code>
+Look into the thread at <a href=https://stackoverflow.com/questions/9775297/append-a-numpy-array-to-a-numpy-array>Append a NumPy array to a NumPy array</a>.</p>","<p>I got this error after change a loop in my program, let`s see:</p>
+<pre><code>for ...
+  for ... 
+     x_batch.append(one_hot(int_word, vocab_size))
+     y_batch.append(one_hot(int_nb, vocab_size, value))
+  ...
+  ...
+  if ...
+        x_batch = np.asarray(x_batch)
+        y_batch = np.asarray(y_batch)
+...
+</code></pre>
+<p>In fact, I was reusing the variable and forgot to reset them inside the external loop, like the comment of John Lyon:</p>
+<pre><code>for ...
+  x_batch = []
+  y_batch = []
+  for ... 
+     x_batch.append(one_hot(int_word, vocab_size))
+     y_batch.append(one_hot(int_nb, vocab_size, value))
+  ...
+  ...
+  if ...
+        x_batch = np.asarray(x_batch)
+        y_batch = np.asarray(y_batch)
+...
+</code></pre>
+<p>Then, check if you are using np.asarray() or something like that. </p>",attributeerror numpy ndarray object has no attribute append,How do I append to a NumPy Ndarray object?,"ndarray' object has no attribute 'append' Solution. In regular Python, you can use the append() method to add an item to the end of a list. You cannot use this method in NumPy. If you try to use the Python append() method to add an item to the end of a NumPy array, you will see the AttributeError: 'numpy.",How do I append to an empty NumPy array?,"empty_array = np. array([]) to_append = np. array([]) combined_array = np. append(empty_array, to_append) append `to_append` to `empty_array`",How do you convert an array to a list in Python?,"Converting one-dimensional NumPy Array to List. import numpy as np # 1d array to list arr = np.array([1, 2, 3]) print(f'NumPy Array:\n{arr}') list1 = arr.tolist() print(f'List: {list1}')
+Converting multi-dimensional NumPy Array to List.",How do you convert Ndarray to tensor?,"Step 1 - Import library. import tensorflow as tf import numpy as np.
+Step 2 - Take a Sample data.
+Step 3 - Convert to Tensor.
+Step 4 - Method 2.",<p>You will have to use numpy function to append numpy arrays. Append will workk only for ordinary lists not numpy arrays.</p>
+https://stackoverflow.com/questions/2448843/variable-might-not-have-been-initialized-error,java - Variable might not have been initialized error,"<p>You <em>declared</em> them, but you didnt initialize them. Initializing them is setting them equal to a value:</p>
+<pre><code>int a;        // This is a declaration
+a = 0;        // This is an initialization
+int b = 1;    // This is a declaration and initialization
+</code></pre>
+<p>You get the error because you havent initialized the variables, but you increment them (e.g., <code>a++</code>) in the <code>for</code> loop.</p>
+<p>Java primitives have default values but as one user commented below</p>
+<blockquote>
+<p>Their default value is zero when declared as class members. Local variables dont have default values</p>
+</blockquote>","<p>Local variables do not get default values. Their initial values are undefined with out assigning values by some means. Before you can use local variables they must be initialized.</p>
+<p>There is a big difference when you declare a variable at class level (as a member ie. as a field) and at method level.</p>
+<p>If you declare a field at class level they get default values according to their type. If you declare a variable at method level or as a block (means anycode inside {}) do not get any values and remain undefined until somehow they get some starting values ie some values assigned to them.</p>",variable not initialized java,How do you fix a variable not initialized in Java?,"Solution 1: Initialize the variable.
+Solution 2: Declare variable as instance variable.
+Solution 3: Declare variable in else block.",What does it mean when a variable is not initialized in Java?,"Notice that a variable that is not initialized does not have a defined value, hence it cannot be used until it is assigned such a value. If the variable has been declared but not initialized, we can use an assignment statement to assign it a value.",How do you initialize a variable in Java?,"The syntax for an initializer is the type, followed by the variable name, followed by an equal sign, followed by an expression. That expression can be anything, provided it has the same type as the variable. In this case, the expression is  which is an int literal. We can use more complicated expressions.",What happens when the local variable is not initialized?,"If the programmer, by mistake, did not initialize a local variable and it takes a default value, then the output could be some unexpected value. So in case of local variables, the compiler will ask the programmer to initialize it with some value before they access the variable to avoid the usage of undefined values.","<p>If they were declared as fields of the class then they would be really initialized with 0.</p>
+<p>Youre a bit confused because if you write:</p>
+<pre><code>class Clazz {
+  int a;
+  int b;
+
+  Clazz () {
+     super ();
+     b = 0;
+  }
+
+  public void printA () {
+     sout (a + b);
+  }
+
+  public static void main (String[] args) {
+     new Clazz ().printA ();
+  }
+}
+</code></pre>
+<p>Then this code will print 0. Its because a special constructor will be called when you create new instance of Clazz. At first <code>super ()</code> will be called, then field <code>a</code> will be initialized implicitly, and then line <code>b = 0</code> will be executed.</p>"
+https://stackoverflow.com/questions/10886174/how-can-i-give-access-to-a-private-github-repository,How can I give access to a private GitHub repository?,"<p>If you are the owner it is simple:</p>
+<ul>
+<li>Go to your repo and click the <code>Settings</code> button.</li>
+<li>In the left menu click <code>Collaborators</code></li>
+<li>Then Add their name.</li>
+</ul>
+<p>Then collaborator should visit this example repo link <a href=https://github.com/user/repo/invitations rel=noreferrer>https://github.com/user/repo/invitations</a></p>
+<p>Source: <a href=https://help.github.com/articles/how-do-i-add-a-collaborator rel=noreferrer>Github Docs</a>.</p>","<p>It is a simple 3 Step Process : <br/>
+1) Go to your private repo and click on <strong><em>settings</em></strong>
+<br/>
+2) To the left of the screen click on <strong><em>Manage access</em></strong>
+<br/>
+3) Then Click on <strong><em>Invite Collaborator</em></strong></p>",share private github repo,share private github repo,"Ask for the username of the person you're inviting as a collaborator.
+On GitHub.com, navigate to the main page of the repository.
+Under your repository name, click Settings.
+In the ""Access"" section of the sidebar, click Collaborators & teams.
+Click Invite a collaborator.",,,,,,,"<p>It is a <strong>simple 3 Step</strong> Process :</p>
+<ol>
+<li>Go to your private repo and click on <code>settings</code></li>
+<li>To the left of the screen click on <code>Manage access</code></li>
+<li>Then Click on <code>Invite Collaborator</code></li>
+</ol>
+<blockquote>
+<p>The invited user needs to be logged in to Github before clicking the invitation link in their email or theyll get a <code>404</code> error.</p>
+</blockquote>
+<p>Heres a screenshot of how to do it:</p>
+<p><a href=https://i.stack.imgur.com/OjlLO.png rel=nofollow noreferrer><img alt=enter image description here src=https://i.stack.imgur.com/OjlLO.png/></a></p>"
+https://stackoverflow.com/questions/25475384/when-and-why-do-i-need-to-use-cin-ignore-in-c/41191428,When and why do I need to use cin.ignore() in C++?,"<p>Ignore is exactly what the name implies.</p>
+<p>It doesnt throw away something you dont need instead, it ignores the amount of characters you specify when you call it, up to the char you specify as a breakpoint.</p>
+<p>It works with both input and output buffers. </p>
+<p>Essentially, for <code>std::cin</code> statements you use ignore before you do a <code>getline</code> call, because when a user inputs something with <code>std::cin</code>, they hit enter and a <code>\n</code> char gets into the <code>cin</code> buffer. Then if you use <code>getline</code>, it gets the newline char instead of the string you want. So you do a <code>std::cin.ignore(1000,\n)</code> and that should clear the buffer up to the string that you want. (The 1000 is put there to skip over a specific amount of chars before the specified break point, in this case, the \n newline character.)</p>","<p>Youre thinking about this the wrong way. Youre thinking in logical steps each time <code>cin</code> or <code>getline</code> is used. Ex. First ask for a number, then ask for a name. That is the wrong way to think about <code>cin</code>. So you run into a race condition because you assume the stream is clear each time you ask for a input.</p>
+<p>If you write your program purely for input youll find the problem:</p>
+<pre><code>void main(void)
+{
+    double num;
+    string mystr;
+
+    cin &gt;&gt; num;
+    getline(cin, mystr);
+
+    cout &lt;&lt; num= &lt;&lt; num &lt;&lt; ,mystr=\ &lt;&lt; mystr &lt;&lt; \ &lt;&lt; endl;
+}
+</code></pre>
+<p>In the above, you are thinking, first get a number. So you type in <code>123</code> press enter, and your output will be <code>num=123,mystr=</code>. Why is that? Its because in the stream you have <code>123\n</code> and the <code>123</code> is parsed into the <code>num</code> variable while <code>\n</code> is still in the stream. Reading the doc for <code>getline</code> function by default it will look in the <code>istream</code> until a <code>\n</code> is encountered. In this example, since <code>\n</code> is in the stream, it looks like it skipped it but it worked properly.</p>
+<p>For the above to work, youll have to enter <code>123Hello World</code> which will properly output <code>num=123,mystr=Hello World</code>. That, or you put a <code>cin.ignore</code> between the <code>cin</code> and <code>getline</code> so that itll break into logical steps that you expect.</p>
+<p>This is why you need the <code>ignore</code> command. Because you are thinking of it in logical steps rather than in a stream form so you run into a race condition.</p>
+<p>Take another code example that is commonly found in schools:</p>
+<pre><code>void main(void)
+{
+    int age;
+    string firstName;
+    string lastName;
+
+    cout &lt;&lt; First name: ;
+    cin &gt;&gt; firstName;
+
+    cout &lt;&lt; Last name: ;
+    cin &gt;&gt; lastName;
+
+    cout &lt;&lt; Age: ;
+    cin &gt;&gt; age;
+
+    cout &lt;&lt; Hello  &lt;&lt; firstName &lt;&lt;   &lt;&lt; lastName &lt;&lt; ! You are  &lt;&lt; age &lt;&lt;  years old! &lt;&lt; endl;
+}
+</code></pre>
+<p>The above seems to be in logical steps. First ask for first name, last name, then age. So if you did <code>John</code> enter, then <code>Doe</code> enter, then <code>19</code> enter, the application works each logic step. If you think of it in streams you can simply enter <code>John Doe 19</code> on the First name: question and it would work as well and appear to skip the remaining questions. For the above to work in logical steps, you would need to <code>ignore</code> the remaining stream for each logical break in questions.</p>
+<p>Just remember to think of your program input as it is reading from a stream and not in logical steps. Each time you call <code>cin</code> it is being read from a stream. This creates a rather buggy application if the user enters the wrong input. For example, if you entered a character where a <code>cin &gt;&gt; double</code> is expected, the application will produce a seemingly bizarre output.</p>",cin.ignore(),What does Cin ignore () mean in C++?,"The cin. ignore() function is used which is used to ignore or clear one or more characters from the input buffer. ... For example, after entering into the cin statement, we need to input a character array or string. So we need to clear the input buffer, otherwise it will occupy the buffer of previous variable.",Where do I put CIN ignore?,A very common use case is using this to safely ignore newline characters since cin will sometimes leave newline characters that you will have to go over to get to the next line of input. Adding cin. ignore() to the next line clears/ignores the newline from the stream.,When to use CIN clear and CIN ignore?,"clear() helps in clearing the error flags which are set when std::cin fails to interpret the input. cin. ignore(), on the other hand helps in removing the input contents that could caused the read failure.",What does Cin get () do?,"get() is used for accessing character array. It includes white space characters. Generally, cin with an extraction operator (>>) terminates when whitespace is found.","<p><strong>Short answer</strong></p>
+<p>Why?  Because there is still whitespace (carriage returns, tabs, spaces, newline) left in the input stream.</p>
+<p>When?  When you are using some function which does not on their own ignores the leading whitespaces. Cin by default ignores and removes the leading whitespace but getline does not ignore the leading whitespace on its own.</p>
+<p><strong>Now a detailed answer.</strong></p>
+<p>Everything you input in the console is read from the standard stream stdin. When you enter something, lets say 256 in your case and press enter, the contents of the stream become <code>256\n</code>. Now cin picks up 256 and removes it from the stream and <code>\n</code> still remaining in the stream.
+Now next when you enter your name, lets say <code>Raddicus</code>, the new contents of the stream is <code>\nRaddicus</code>.</p>
+<p>Now here comes the catch.
+When you try to read a line using getline, if not provided any delimiter as the third argument, getline by default reads till the newline character and removes the newline character from the stream.
+So on calling new line, getline reads and discards <code>\n</code> from the stream and resulting in an empty string read in mystr which appears like getline is skipped (but its not) because there was already an newline in the stream, getline will not prompt for input as it has already read what it was supposed to read.</p>
+<p><strong>Now, how does cin.ignore help here?</strong></p>
+<p>According to the ignore documentation extract from <a href=http://www.cplusplus.com/reference/istream/istream/ignore/ rel=noreferrer>cplusplus.com</a>-</p>
+<blockquote>
+<p><strong>istream&amp; ignore (streamsize n = 1, int delim = EOF);</strong></p>
+<p>Extracts characters from the input sequence and discards them, until
+  either n characters have been extracted, or one compares equal to
+  delim.</p>
+<p>The function also stops extracting characters if the end-of-file is
+  reached. If this is reached prematurely (before either extracting n
+  characters or finding delim), the function sets the eofbit flag.</p>
+</blockquote>
+<p>So, <code>cin.ignore(256, \n);</code>, ignores first 256 characters or all the character untill it encounters delimeter (here \n in your case), whichever comes first (here \n is the first character, so it ignores until \n is encountered).</p>
+<p>Just for your reference, If you dont exactly know how many characters to skip and your sole purpose is to clear the stream to prepare for reading a string using getline or cin you should use <code>cin.ignore(numeric_limits&lt;streamsize&gt;::max(),\n)</code>.</p>
+<p><strong>Quick explanation:</strong> It ignores the characters equal to maximum size of stream or until a \n is encountered, whichever case happens first.</p>"
+https://stackoverflow.com/questions/46655388/bootstrap-inline-block-display,html - Bootstrap inline-block display,"<p>To use bootstrap without creating other CSS rules, I think you should use the bootstrap grid as follows:</p>
+<p></p><div class=snippet data-babel=false data-console=true data-hide=false data-lang=js>
+<div class=snippet-code>
+<pre class=snippet-code-html lang-html prettyprint-override><code>&lt;head&gt;
+  &lt;title&gt;&lt;/title&gt;
+  &lt;link rel=stylesheet href=https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css integrity=sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M crossorigin=anonymous&gt;
+  &lt;meta charset=UTF-8&gt;
+  &lt;meta name=viewport content=width=device-width, initial-scale=1.0&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+  &lt;div class=container&gt;
+    &lt;div class=row&gt;
+      &lt;div class=col-sm-6&gt;
+        &lt;ul class=list-group&gt;
+          &lt;li class=list-group-item&gt;one&lt;/li&gt;
+          &lt;li class=list-group-item&gt;two&lt;/li&gt;
+          &lt;li class=list-group-item&gt;three&lt;/li&gt;
+          &lt;li class=list-group-item&gt;four&lt;/li&gt;
+          &lt;li class=list-group-item&gt;five&lt;/li&gt;
+        &lt;/ul&gt;
+
+      &lt;/div&gt;
+      &lt;div class=col-sm-6&gt;
+        &lt;h1&gt;Lorem Ipsum&lt;/h1&gt;
+        &lt;p&gt; Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+          It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with
+          desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/body&gt;</code></pre>
+</div>
+</div>","<p>Please remember to paste the code in the question in  the future.</p>
+<p>This CSS will make the list show horizontal instead of vertical.</p>
+<pre><code>.list-group,
+.list-group-item{
+  display: inline-block;
+}
+</code></pre>",bootstrap inline block,What is inline block in bootstrap?,"The utilities such as block, inline etc are to set the element's display property. The display property classes of bootstrap help to directly set the CSS display property for an element. The available classes are: .d-block: This class when used with an element, sets it display property to block.",How do you make an inline element block in bootstrap?,"Use the d-inline-block class to create a inline-block element. Add breakpoints (sm, md, lg, xl, and xxl) to the classes (d-*-inline-block) to control when the element should be a inline-block element based on the screen width. Resize the browser window to see how it works.",What does D Block do bootstrap?,"d-inline-block to simply set an element's display property to block , inline , or inline-block (respectively). To make an element display: none , use our responsive utilities instead.",What is inline block?,"inline-block It's formatted just like the inline element, where it doesn't start on a new line. ... block The element will start on a new line and occupy the full width available. And you can set width and height values.","<p></p><div class=snippet data-babel=false data-console=true data-hide=false data-lang=js>
+<div class=snippet-code>
+<pre class=snippet-code-css lang-css prettyprint-override><code>.d-inline-block{
+width:50%;
+float:left;
+}</code></pre>
+<pre class=snippet-code-html lang-html prettyprint-override><code>&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;&lt;/title&gt;
+        &lt;link rel=stylesheet href=https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css integrity=sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M crossorigin=anonymous&gt;
+        &lt;meta charset=UTF-8&gt;
+        &lt;meta name=viewport content=width=device-width, initial-scale=1.0&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div class=container&gt;
+            &lt;div class=d-inline-block&gt;
+                &lt;ul class=list-group&gt;
+                  &lt;li class=list-group-item&gt;one&lt;/li&gt;
+                  &lt;li class=list-group-item&gt;two&lt;/li&gt;
+                  &lt;li class=list-group-item&gt;three&lt;/li&gt;
+                  &lt;li class=list-group-item&gt;four&lt;/li&gt;
+                  &lt;li class=list-group-item&gt;five&lt;/li&gt;
+                &lt;/ul&gt;
+
+            &lt;/div&gt;
+            &lt;div class=d-inline-block&gt;
+                &lt;h1&gt;Lorem Ipsum&lt;/h1&gt;
+                &lt;p&gt; Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the 
+ industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.&lt;/p&gt;
+            &lt;/div&gt;
+            &lt;!-- Replace this comment line by Web Technology 1 homework solution. --&gt;
+
+	     &lt;/div&gt;
+
+        &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+</div>
+</div>
+<p>The default width of your divs is 100%.  add the following css:</p>
+<pre><code>.d-inline-block{
+width:50%;
+float:left;
+}
+</code></pre>"
+https://stackoverflow.com/questions/19184335/is-there-a-need-for-rangelena,python - Is there a need for range(len(a))?,"<p>If you need to work with indices of a sequence, then yes - you use it... eg for the equivalent of <a href=http://docs.scipy.org/doc/numpy/reference/generated/numpy.argsort.html rel=noreferrer>numpy.argsort</a>...:</p>
+<pre><code>&gt;&gt;&gt; a = [6, 3, 1, 2, 5, 4]
+&gt;&gt;&gt; sorted(range(len(a)), key=a.__getitem__)
+[2, 3, 1, 5, 4, 0]
+</code></pre>","<p>What if you need to access two elements of the list simultaneously?</p>
+<pre><code>for i in range(len(a[0:-1])):
+    something_new[i] = a[i] * a[i+1]
+</code></pre>
+<p>You can use this, but its probably less clear:</p>
+<pre><code>for i, _ in enumerate(a[0:-1]):
+     something_new[i] = a[i] * a[i+1]
+</code></pre>
+<p>Personally Im not 100% happy with either!</p>",range(len()),What is range Len?,"Well, if len(list) is the length of a list, and range(N) is the integers from 0 to N-1, then range(len(list)) is the integers from 0 to 1 less than the length of the list, i.e., all the legal indices of the list. An example will make this clearer.",What does for i in range len mean?,"for i in range() iterates through numbers. for element in my_list iterates through whatever is in the list (they could be numbers, too) for i in range(len(a_list)) iterates through numbers (which can be used for index access of a_list ).",What is range len ()) in Python?,"Well, if len(list) is the length of a list, and range(N) is the integers from 0 to N-1, then range(len(list)) is the integers from 0 to 1 less than the length of the list, i.e., all the legal indices of the list. ... So range(len(gases)) , or range(4) , is 0, 1, 2, and 3.",What can I use instead of a range Len?,Use enumerate(object) instead of range(len(object)),"<p><strong>Short answer</strong>: mathematically speaking, no, in practical terms, yes, for example for Intentional Programming.</p>
+<p>Technically, the answer would be <strong>no, its not needed</strong> because its expressible using other constructs. But in practice, I use <code>for i in range(len(a)</code> (or <code>for _ in range(len(a))</code> if I dont need the index) to make it explicit that I want to iterate as many times as there are items in a sequence without needing to use the items in the sequence for anything.</p>
+<p>So: <em>Is there a need?</em>? — yes, I <em>need</em> it to express the meaning/intent of the code for readability purposes.</p>
+<p>See also: <a href=https://en.wikipedia.org/wiki/Intentional_programming rel=nofollow noreferrer>https://en.wikipedia.org/wiki/Intentional_programming</a></p>
+<p>And obviously, if there is no collection that is associated with the iteration at all, <code>for ... in range(len(N))</code> is the only option, so as to not resort to <code>i = 0; while i &lt; N; i += 1 ...</code></p>"

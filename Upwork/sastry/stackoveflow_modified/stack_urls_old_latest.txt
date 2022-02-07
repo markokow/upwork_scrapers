@@ -1,0 +1,10 @@
+https://stackoverflow.com/questions/3179672/mock-objects-setup-method-test-driven-development
+https://stackoverflow.com/questions/11443857/shortcut-to-comment-out-a-block-of-code-with-sublime-text
+https://stackoverflow.com/questions/43704734/how-to-fix-the-error-windows-sdk-version-8-1-was-not-found/53840125
+https://stackoverflow.com/questions/7816423/warning-options-bootstrap-class-path-not-set-in-conjunction-with-source-1-5
+https://stackoverflow.com/questions/12363506/what-is-the-difference-between-wcf-and-wpf/36468497
+https://stackoverflow.com/questions/50772789/how-to-fix-an-error-resize-medium-operation-for-this-format-is-not-implemented
+https://stackoverflow.com/questions/42268180/tar-unrecognized-archive-format-error-when-trying-to-unpack-flower-photos-tgz
+https://stackoverflow.com/questions/16230959/what-does-top-in-the-hyperlink-target-do
+https://stackoverflow.com/questions/4281904/error-initializer-expression-list-treated-as-compound-expression
+https://stackoverflow.com/questions/15033195/show-spinner-gif-during-an-http-request-in-angularjs

@@ -1,0 +1,976 @@
+url,title,best_answer_1,best_answer_2,best_answer_3,keyword,question_1,answer_1,question_2,answer_2,question_3,answer_3,question_4,answer_4
+https://stackoverflow.com/questions/2087100/how-to-print-out-a-backslash-in-latex,file io - How to print out a backslash in LaTeX,"<p>Sound like you want a backslash in text mode; since <code>\backslash</code> does not work, try <code>\textbackslash</code>.</p>
+<p>EDIT: <code>\symbol{92}</code> should also work.</p>","<p>You can use <code>\@backslashchar</code>.  The following works for me:</p>
+<pre><code>\documentclass{article}
+\begin{document}
+\newwrite\file
+\immediate\openout\file=myfile.out
+\makeatletter
+\immediate\write\file{\@backslashchar}
+\makeatother
+\closeout\file
+\end{document}
+</code></pre>",<p>AB/FQS/ET004/2014 write it in latex with space as AB/ FQS/ ET004/ 2014</p>,latex backslash,How do you type a backslash in LaTeX?,% monospaced font. \verb+\n+ % monospaced font. \texttt{\symbol{}n} % monospaced font; requires Tencoding. \texttt{\textbackslash n} % current font. \textbackslash n.,What does backslash mean in LaTeX?,"This means you can have comments in your source code to remind you what a particular part of your code is doing. We have also used the backslash symbol \ which indicates that we are using a LaTeX command, as in \LaTeX or \today .",How do you insert a backslash in LaTeX?,% monospaced font. \verb+\n+ % monospaced font. \texttt{\symbol{}n} % monospaced font; requires Tencoding. \texttt{\textbackslash n} % current font. \textbackslash n.,How do you print a backslash in LaTeX?,"If you simply want the character to be printed just as any other letter, include a \ in front of the character. For example, \$ will produce $ in your output. The exception to the rule is the \ itself because \\ has its own special meaning. A \ is produced by typing $\backslash$ in your file."
+https://stackoverflow.com/questions/2505096/clone-a-private-repository-github,git - Clone A Private Repository (Github),"<p>This worked for me:</p>
+<p><code>git clone https://username@github.com/username/repo_name</code></p>","<p>Private clone URLs take the form <code>git@github.com:username/repo.git</code> - perhaps you needed to use <code>git@</code> rather than <code>git://</code>?</p>
+<p><code>git://</code> URLs are read only, and it looks like private repos do not allow this form of access.</p>","<p>I have met this issue several times and every time I landed on this page, tried every thing and failed!</p>
+<p><strong>Its because I have 2FA enabled!!!</strong></p>
+<p>According to <a href=https://help.github.com/articles/which-remote-url-should-i-use/#when-2fa-is-enabled rel=noreferrer>https://help.github.com/articles/which-remote-url-should-i-use/#when-2fa-is-enabled</a></p>
+<blockquote>
+<p>If you have enabled <a href=https://help.github.com/articles/securing-your-account-with-two-factor-authentication-2fa rel=noreferrer>two-factor authentication</a>, or if you are accessing an organization that uses <a href=https://help.github.com/articles/about-authentication-with-saml-single-sign-on rel=noreferrer>SAML single sign-on</a>, you must <a href=https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line rel=noreferrer>provide a personal access token</a> instead of entering your password for HTTPS Git.</p>
+</blockquote>
+<ol>
+<li>Follow <a href=https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/ rel=noreferrer>this link</a> and create an access token</li>
+<li><code>git clone https://github.com/username/repo_name.git</code> (The default git repo link is good enough!)</li>
+<li>Enter your username and use the access token as password!!</li>
+</ol>
+<hr/>
+<p>Update:</p>
+<ul>
+<li>If you dont mind exposing your access token in the command line, you can also paste the access token as username then hit enter enter (no need for password).</li>
+<li>Hate copy&amp;pasting the access token over and over again?<br/>
+Use <code>git config credential.helper store</code> (dont do this on machine you dont trust)</li>
+</ul>",git clone private repo,Can you git clone a private repository?,Important: Private repositories cannot be cloned using git protocol. You can configure git to specifically use HTTPS over other protocols by setting hub.,How do I clone a private repo?,"In GitHub, go to Settings --> Developer Settings --> Personal access tokens .
+Click Generate new token and assign the token a name.
+Grant the token privilege to the repo group. Copy the token to a secure location.
+At the bottom of the page, click Generate Token .",How do I make a GitHub repository private?,"On GitHub.com, navigate to the main page of the repository.
+Under your repository name, click Settings.
+Under ""Danger Zone"", to the right of to ""Change repository visibility"", click Change visibility.
+Select a visibility.",What is a private git repository?,"Public repositories are accessible to everyone on the internet. Private repositories are only accessible to you, people you explicitly share access with, and, for organization repositories, certain organization members."
+https://stackoverflow.com/questions/25929315/tar-removing-leading-from-member-names,linux - tar removing leading / from member names,"<p>The good version is also displaying the same message youve just missed it.</p>
+<p>If you dont like the behaviour, search for leading, in manual. First hit:</p>
+<pre><code>-P, --absolute-names
+       dont strip leading /s from file names
+</code></pre>","<p>This is because your file (<code>$kname</code>) has leading <code>/</code>.</p>
+<p>To fix that, you may specify <code>-C</code> to change the directory, instead of specifying full path of the archive file.</p>","<p>It might be best to leave your files without the / in the backup and just ignore the error message.  Tar does this as a safety precaution, because if you untar the file, it will automatically place the files back in the original directory.  This can be dangerous and most people want to avoid this.  Personally, I would be happy with the fact that it removed the / and then your restore will be relative and not absolute directory path.  Then you can manually move the files into the right place, or a different place.  Just posting this so people are aware and dont inadvertently replace their original files.</p>",tar: removing leading `/' from member names,What is option in tar?,"The option c creates an archive or a tarball from specified files or directories. If a directory is specified, all its files and sub-directories will be included in the archived file. The option v displays the progress of archiving process at the command prompt. Tar command c, v, f, t, and x options The option c creates an archive or a tarball from specified files or directories. If a directory is specified, all its files and sub-directories will be included in the archived file. The option v displays the progress of archiving process at the command prompt.",How do I untar a folder in Linux?,"From the terminal, change to the directory where your . tar file has been downloaded.
+To extract or untar the file to the current directory, type the following, (Making sure to replace file_name.tar with the actual filename) tar -xvf file_name.tar.",How do I tar a file in Linux?,"Open the terminal app in Linux.
+Compress an entire directory by running tar -zcvf file. tar. gz /path/to/dir/ command in Linux.
+To compress a single file by running tar -zcvf file. tar.
+Tar and compress multiple directories file by running tar -zcvf file. tar.",How can tar remove leading from member names?,"Answers. Use the --absolute-names or -P option to disable this feature. This is the correct answer, but be aware, that in most cases, this is not what you want, cause it results in an archive that extracts in complete paths!"
+https://stackoverflow.com/questions/7341942/wpdb-update-or-wpdb-insert-results-in-slashes-being-added-in-front-of-quotes,php - $wpdb->update or $wpdb->insert results in slashes being added in front of quotes,"<p>After spending the day on this, the answer is as follows:</p>
+<p>Wordpress escapes at the $_POST declaration, not at the actual insert, which is bizarre. </p>
+<pre><code>$id = stripslashes_deep($_POST[id]); //added stripslashes_deep which removes WP escaping.
+$title = stripslashes_deep($_POST[title]);
+$message = stripslashes_deep($_POST[message]);
+
+$wpdb-&gt;update(table_name, array(id=&gt;$id, title=&gt;$title, message=&gt;$message), array(id=&gt;$id));
+</code></pre>
+<p>Doing this will mean that WP will not add slashes before any quotes.</p>","<p>a little more info--WordPress decided to make people think they were going crazy by adding magic quotes even if youve got it turned off starting in version 3.0. Any access to $_REQUEST, $_GET, $_POST, $_COOKIE, or $_SERVER will be affected. See <code>wp-includes/load.php</code>.</p>
+<pre><code> /* Add magic quotes to $_GET, $_POST, $_COOKIE, and $_SERVER.
+ * @since 3.0.0
+ */
+function wp_magic_quotes() {
+        // If already slashed, strip.
+        if ( get_magic_quotes_gpc() ) {
+                $_GET    = stripslashes_deep( $_GET    );
+                $_POST   = stripslashes_deep( $_POST   );
+                $_COOKIE = stripslashes_deep( $_COOKIE );
+        }
+
+        // Escape with wpdb.
+        $_GET    = add_magic_quotes( $_GET    );
+        $_POST   = add_magic_quotes( $_POST   );
+        $_COOKIE = add_magic_quotes( $_COOKIE );
+        $_SERVER = add_magic_quotes( $_SERVER );
+
+        // Force REQUEST to be GET + POST.
+        $_REQUEST = array_merge( $_GET, $_POST );
+}
+</code></pre>","<blockquote>
+<p>WordPress ignores the built in php magic quotes setting and the value
+  of get_magic_quotes_gpc() and will always add magic quotes (even after
+  the feature is removed from PHP in 5.4).</p>
+</blockquote>
+<p>you can use this instead</p>
+<pre><code>//replace $_POST with $POST
+$POST      = array_map( stripslashes_deep, $_POST);
+$wpdb-&gt;insert( 
+        wp_mytable, 
+        array( 
+            field_name        =&gt; $POST[field_name], 
+            type              =&gt; $POST[type],
+            values            =&gt; serialize($POST[values]),
+            unanswered_link   =&gt; $POST[unanswered_link], 
+        ), 
+        array( 
+            %s,%s,%s,%s
+        ) 
+    );
+</code></pre>
+<blockquote>
+<p>WordPress does this because too much core and plugin code has come to
+  rely on the quotes being there, so disabling quotes on the super
+  globals (as is done in both the Basic Example and Good Coding
+  Practice examples above) is likely to cause security holes.</p>
+</blockquote>
+<p><a href=http://codex.wordpress.org/Function_Reference/stripslashes_deep rel=nofollow>http://codex.wordpress.org/Function_Reference/stripslashes_deep</a></p>",wpdb update,How do I update database data in WordPress?,"Step 1 - Open File Manager. Log into the one.com control panel.
+Step 2 - Open wp-config. php.
+Step 3 - Locate the login details. Usually, you can find the login details around line 20 in the wp-config file.
+Step 4 - Update details.",What is Wpdb -> prefix in WordPress?,"By default the WordPress database table prefix is wp_, you can change this prefix in the wp-config. php. ... To get data from your database WordPress uses a database class defined as $wpdb, you can get access to this object in any of your functions simply by using the global keyword.",What is $Wpdb?,"WordPress provides a global object, $wpdb , which is an instantiation of the wpdb class. By default, $wpdb is instantiated to talk to the WordPress database. ... The $wpdb object can be used to read data from any table in the WordPress database, not just those created by WordPress itself.",WHERE is Wpdb defined?,For performing database operations WordPress provides a class wpdb which is present in the file – wp-includes\wp-db. php. This class abstracts the database functions for WordPress and most WordPress functions directly or indirectly use this class.
+https://stackoverflow.com/questions/25946047/how-to-prevent-scientific-notation-in-r,How to prevent scientific notation in R?,"<p>To set the use of scientific notation in your entire R session, you can use the <code>scipen</code> option. From the documentation (<code>?options</code>):</p>
+<pre><code>‘scipen’: integer.  A penalty to be applied when deciding to print
+          numeric values in fixed or exponential notation.  Positive
+          values bias towards fixed and negative towards scientific
+          notation: fixed notation will be preferred unless it is more
+          than ‘scipen’ digits wider.
+</code></pre>
+<p>So in essence this value determines how likely it is that scientific notation will be triggered. So to prevent scientific notation, simply use a large positive value like <code>999</code>:</p>
+<pre><code>options(scipen=999)
+</code></pre>","<p>Try <code>format</code> function:</p>
+<pre><code>&gt; xx = 100000000000
+&gt; xx
+[1] 1e+11
+&gt; format(xx, scientific=F)
+[1] 100000000000
+</code></pre>",,turn off scientific notation in r,turn off scientific notation in r,"If you want to avoid scientific notation for a given number or a series of numbers, you can use the format() function by passing scientific = FALSE as an argument.",How do you turn off scientific notation?,"Open Google Sheets and a spreadsheet you use.
+Select a range of cells with numbers.
+Then, go to the menu and click on 'Format. '
+You'll see 'Number' in the drop-down menu.
+Notice that 'Scientific Notation' is turned on.
+To turn off this option, click on any other option.",How do I get rid of the e in R output?,"If you want to avoid scientific notation for a given number or a series of numbers, you can use the format() function by passing scientific = FALSE as an argument.",How do you change to scientific notation in R?,"To set the use of scientific notation in your entire R session, you can use the scipen option. From the documentation ( ? options ): 'scipen': integer."
+https://stackoverflow.com/questions/39008821/tensorflow-when-use-tf-expand-dims,Tensorflow: When use tf.expand_dims?,"<p><code>expand_dims</code> will not add or reduce elements in a tensor, it just changes the shape by adding <code>1</code> to dimensions. For example, a vector with 10 elements could be treated as a 10x1 matrix.</p>
+<p>The situation I have met to use <code>expand_dims</code> is when I tried to build a ConvNet to classify grayscale images. The grayscale images will be loaded as matrix of size <code>[320, 320]</code>. However, <code>tf.nn.conv2d</code> require input to be <code>[batch, in_height, in_width, in_channels]</code>, where the <code>in_channels</code> dimension is missing in my data which in this case should be <code>1</code>. So I used <code>expand_dims</code> to add one more dimension.</p>
+<p>In your case, I do not think you need <code>expand_dims</code>.</p>","<p>To add to Da Tongs answer, you may want to expand more than one dimension at the same time. For instance, if you are performing TensorFlows <code>conv1d</code> operation on vectors of rank 1, you need to feed them with rank three.</p>
+<p>Performing <code>expand_dims</code> several times is readable, but might introduce some overhead into the computational graph. You can get the same functionality in a one-liner with <code>reshape</code>:</p>
+<pre class=lang-py prettyprint-override><code>import tensorflow as tf
+
+# having some tensor of rank 1, it could be an audio signal, a word vector...
+tensor = tf.ones(100)
+print(tensor.get_shape()) # =&gt; (100,)
+
+# expand its dimensionality to fit into conv2d
+tensor_expand = tf.expand_dims(tensor, 0)
+tensor_expand = tf.expand_dims(tensor_expand, 0)
+tensor_expand = tf.expand_dims(tensor_expand, -1)
+print(tensor_expand.get_shape()) # =&gt; (1, 1, 100, 1)
+
+# do the same in one line with reshape
+tensor_reshape = tf.reshape(tensor, [1, 1, tensor.get_shape().as_list()[0],1])
+print(tensor_reshape.get_shape()) # =&gt; (1, 1, 100, 1)
+</code></pre>
+<p><strong>NOTE:</strong> In case you get the error <code>TypeError: Failed to convert object of type &lt;type list&gt; to Tensor.</code>, try to pass <code>tf.shape(x)[0]</code> instead of <code>x.get_shape()[0]</code> as suggested <a href=https://github.com/tensorflow/tensorflow/issues/7253 rel=noreferrer>here</a>.</p>
+<p>Hope it helps!<br/>
+Cheers,<br/>
+Andres</p>",,tf.expand_dims,What is TF Expand_dims?,"This operation is useful to: Add an outer ""batch"" dimension to a single element. Align axes for broadcasting. To add an inner vector length axis to a tensor of scalars.",What does axis =- 1 mean in Tensorflow?,"-1 means the last axis; Since you have a rank 2 tensor, the last axis is the second axis, that is, along the rows; tf. reduce_sum with axis=-1 will thus reduce (sum) the second dimension.",What is TF in TensorFlow?,"When writing a TensorFlow program, the main object that is manipulated and passed around is the tf. Tensor . ... Tensor has the following properties: a single data type (float32, int32, or string, for example) a shape.",What does axis =- 1 mean in TensorFlow?,"-1 means the last axis; Since you have a rank 2 tensor, the last axis is the second axis, that is, along the rows; tf. reduce_sum with axis=-1 will thus reduce (sum) the second dimension."
+https://stackoverflow.com/questions/40894582/type-of-expression-is-ambiguous-without-more-context-swift,swift3 - Type of expression is ambiguous without more context Swift,"<p>This happens when you have a function with wrong argument names.</p>
+<p>Example:</p>
+<pre><code>functionWithArguments(argumentNameWrong: , argumentName2: )
+</code></pre>
+<p>and You declared your function as:</p>
+<pre><code>functionWithArguments(argumentName1: , argumentName2: ){}
+</code></pre>
+<p>This usually happens when you changed the name of a Variable. Make sure you refactor when you do that.</p>","<p>This can happen if <em>any</em> part of your highlighted method or property is attempting to access a property or method with the incorrect type.</p>
+<p><strong>Here is a troubleshooting checklist, make sure:</strong></p>
+<ul>
+<li>the type of arguments match in the call site and implementation.</li>
+<li>the argument names match in the call site and implementation.</li>
+<li>the method name matches in the call site and implementation.</li>
+<li>the returned value of a property or method matches in the usage and implementation (ie: <code>enumerated()</code>)</li>
+<li>you dont have a duplicated method with potentially ambiguous types such as with protocols or generics.</li>
+<li>the compiler can infer the correct type when using type inference.</li>
+</ul>
+<p><strong>A Strategy</strong></p>
+<ul>
+<li>Try breaking apart your method into a greater number of simpler method/implementations.</li>
+</ul>
+<p>For example, lets say you are running <code>compactMap</code> on an array of custom Types.  In the closure you are passing to the <code>compactMap</code> method, you initialize and return another custom struct.  When you get this error, it is difficult to tell which part of your code is offending.</p>
+<ul>
+<li>For debugging purposes, you can use a <code>for in</code> loop instead of <code>compactMap</code>.</li>
+<li>instead of passing the arguments, directly, you can assign them to constants in the for loop.</li>
+</ul>
+<p>By this point, you may come to a realization, such as,  instead of the property you thought you wanted to assign actually had a property on it that had the actual value you wanted to pass.</p>","<p>Not an answer to <em>this</em> question, but as I came here looking for the error others might find this also useful:</p>
+<p>For me, I got this Swift error when I tried to use the <code>for (index, object)</code> loop on an array without adding the <code>.enumerated()</code> part ...</p>",type of expression is ambiguous without more context,type of expression is ambiguous without more context,"“expression is ambiguous without more context” error means that the compiler is unable to understand what you're trying to express because you aren't being specific enough. In order to solve it, you have put correct arguments.",,,,,,
+https://stackoverflow.com/questions/2837020/open-existing-file-append-a-single-line,"c# - Open existing file, append a single line","<p>You can use <a href=http://msdn.microsoft.com/en-us/library/ms143356.aspx rel=noreferrer><code>File.AppendAllText</code></a> for that:</p>
+<pre><code>File.AppendAllText(@c:\path\file.txt, text content + Environment.NewLine);
+</code></pre>","<pre><code>using (StreamWriter w = File.AppendText(myFile.txt))
+{
+  w.WriteLine(hello);
+}
+</code></pre>","<p>Choice one! But the first is very simple. The last maybe util for file manipulation:</p>
+<pre><code>//Method 1 (I like this)
+File.AppendAllLines(
+    FileAppendAllLines.txt, 
+    new string[] { line1, line2, line3 });
+
+//Method 2
+File.AppendAllText(
+    FileAppendAllText.txt,
+    line1 + Environment.NewLine +
+    line2 + Environment.NewLine +
+    line3 + Environment.NewLine);
+
+//Method 3
+using (StreamWriter stream = File.AppendText(FileAppendText.txt))
+{
+    stream.WriteLine(line1);
+    stream.WriteLine(line2);
+    stream.WriteLine(line3);
+}
+
+//Method 4
+using (StreamWriter stream = new StreamWriter(StreamWriter.txt, true))
+{
+    stream.WriteLine(line1);
+    stream.WriteLine(line2);
+    stream.WriteLine(line3);
+}
+
+//Method 5
+using (StreamWriter stream = new FileInfo(FileInfo.txt).AppendText())
+{
+    stream.WriteLine(line1);
+    stream.WriteLine(line2);
+    stream.WriteLine(line3);
+}
+</code></pre>",c# append to file,How write and append to a file in C#?,Open file txt and file Explicitly write a newline (“\n”) to the destination file to enhance readability. Write content from source file to destination file. Display the contents in file txt to console (stdout).,How do I append to a file?,"You do this by using the append redirection symbol, ``>>''. To append one file to the end of another, type cat, the file you want to append, then >>, then the file you want to append to, and press <Enter>.",How do you write to a file in append mode?,"With Files class, we can write a file using it's write() function. Internally write() function uses OutputStream to write byte array into the file. To append content to an existing file, Use StandardOpenOption. APPEND while writing the content. Append to File using Files class With Files class, we can write a file using it's write() function. Internally write() function uses OutputStream to write byte array into the file. To append content to an existing file, Use StandardOpenOption. APPEND while writing the content.",What is append in C?,"Append mode is used to append or add data to the existing data of file, if any. Hence, when you open a file in Append (a) mode, the cursor is positioned at the end of the present data in the file."
+https://stackoverflow.com/questions/37514509/advantages-of-using-stdmake-unique-over-new-operator,c++ - Advantages of using std::make_unique over new operator,"<h2>Advantages</h2>
+<ul>
+<li><p><code>make_unique</code> teaches users never say <code>new</code>/<code>delete</code> and
+<code>new[]</code>/<code>delete[]</code> without disclaimers. </p></li>
+<li><p><code>make_unique</code> shares two advantages with <code>make_shared</code> (excluding the third advantage, increased efficiency). First, <code>unique_ptr&lt;LongTypeName&gt; up(new LongTypeName(args))</code> must mention <code>LongTypeName</code> twice, while <code>auto up = make_unique&lt;LongTypeName&gt;(args)</code> mentions it once. </p></li>
+<li><p><code>make_unique</code> prevents the unspecified-evaluation-order
+leak triggered by expressions like <code>foo(unique_ptr&lt;X&gt;(new X)</code>,
+<code>unique_ptr&lt;Y&gt;(new Y))</code>. (Following the advice never say <code>new</code> is simpler than
+never say <code>new</code>, unless you immediately give it to a named <code>unique_ptr</code>.)</p></li>
+<li><p><code>make_unique</code> is carefully implemented for exception safety and is recommended over directly calling <code>unique_ptr</code> constructors.</p></li>
+</ul>
+<h2>When not to use <code>make_unique</code></h2>
+<ul>
+<li>Dont use <code>make_unique</code> if you need a custom deleter or are adopting a raw pointer from elsewhere.</li>
+</ul>
+<h2>Sources</h2>
+<ol>
+<li><a href=http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2013/n3588.txt rel=noreferrer>Proposal of <code>std::make_unique</code></a>.</li>
+<li><a href=https://herbsutter.com/2013/05/29/gotw-89-solution-smart-pointers/ rel=noreferrer>Herb Sutters GotW #89 Solution: Smart Pointers</a></li>
+</ol>","<p>The difference is that <a href=http://en.cppreference.com/w/cpp/memory/unique_ptr/make_unique rel=noreferrer><code>std::make_unique</code></a> returns an object of type <a href=http://en.cppreference.com/w/cpp/memory/unique_ptr rel=noreferrer><code>std::unique_ptr</code></a> and <code>new</code> returns a pointer to the created object. For memory allocation failures, they will both throw. <strong>Hold on, its not that simple. Read further.</strong></p>
+<p>Consider such a function below:</p>
+<pre><code>void func(ClassA* a, ClassB* b){
+     ......
+}
+</code></pre>
+<p>When you make a call like <code>func(new A(), new B())</code>; The compiler may choose to evaluate the function arguments from left to right, or in any order it so wishes. Lets assume left to right evaluation: What happens when the first <code>new</code> expression succeeds but the second <code>new</code> expression throws?</p>
+<p>The real danger here is when you catch such exception; Yes, you may have caught the exception thrown by <code>new B()</code>, and resume normal execution, but <code>new A()</code> already succeeded, and its memory will be silently leaked. Nobody to clean it up... * <em>sobs</em>...</p>
+<p>But with <code>make_unique</code>, you cannot have a leak because, stack unwinding will happen ( and the destructor of the previously created object will run). Hence, having a preference for <code>make_unique</code> will constrain you towards <a href=https://en.wikipedia.org/wiki/Exception_safety rel=noreferrer><em>exception safety</em></a>. In this case, <code>std::make_unique</code> provides a <a href=https://en.wikipedia.org/wiki/Exception_safety rel=noreferrer><em>Basic Exception Safety</em></a> that the memory allocated and object created by <code>new</code> will never be orphaned no matter what. Even till the ends of time... :-)</p>
+<p>You should read <a href=https://herbsutter.com/gotw/_102/ rel=noreferrer>Herb Sutter GoTW102</a></p>",,c++ make_unique,What is the use of Make_unique in C++?,"Using the 'make_unique' function to create the pointer helps solve this problem by guaranteeing the freeing of memory if an exception occurs. The C++standard, while still not specifying the exact evaluation order for arguments, provides additional guarantees.",Is Make_unique necessary?,It is recommended to use the 'make_unique/make_shared' function to create smart pointers. The analyzer recommends that you create a smart pointer by calling the 'make_unique' / 'make_shared' function rather than by calling a constructor accepting a raw pointer to the resource as a parameter.,What is ABSL :: Make_unique?,"By default, use absl::make_unique() (or std::make_shared() for the rare cases where shared ownership is appropriate) for dynamic allocation. ... When calling a legacy API that accepts ownership via a T* , either allocate the object in advance with absl::make_unique and call ptr.",What is a unique_ptr?,"std::unique_ptr is a smart pointer that owns and manages another object through a pointer and disposes of that object when the unique_ptr goes out of scope. The object is disposed of, using the associated deleter when either of the following happens: the managing unique_ptr object is destroyed."
+https://stackoverflow.com/questions/5772769/how-to-copy-a-file-from-one-directory-to-another-using-php,How to copy a file from one directory to another using PHP?,"<p>You could use the <a href=http://fr2.php.net/copy rel=noreferrer><strong><code>copy()</code></strong></a> function :</p>
+<pre><code>// Will copy foo/test.php to bar/test.php
+// overwritting it if necessary
+copy(foo/test.php, bar/test.php);
+</code></pre>
+<p><br/>
+Quoting a couple of relevant sentences from its manual page :</p>
+<blockquote>
+<p>Makes a copy of the file source to
+  dest.  <br/> <br/><strong>If the destination
+  file already exists, it will be
+  overwritten.</strong></p>
+</blockquote>","<p>You could use the <a href=http://uk.php.net/manual/en/function.rename.php rel=noreferrer>rename()</a> function :</p>
+<pre><code>rename(foo/test.php, bar/test.php);
+</code></pre>
+<p><em>This however will <strong>move</strong> the file <strong>not copy</strong></em></p>",<p><a href=http://php.net/manual/en/function.copy.php rel=noreferrer>copy</a> will do this. Please check the <a href=http://php.net/manual/en/ rel=noreferrer>php-manual</a>. Simple Google search should answer your last two questions ;)</p>,php copyfile,How do I copy and paste a file in PHP?,"The copy() function in PHP is used to copy a file from source to target or destination directory. It makes a copy of the source file to the destination file and if the destination file already exists, it gets overwritten. The copy() function returns true on success and false on failure.",How do I move a file to another directory in PHP?,How to move a file into a different folder on the server using PHP? The move_uploaded_file() function and rename() function is used to move a file into a different folder on the server.,How do I copy a PHP website?,"Open a text editing (Notepad) or web authoring application on your computer. Click on ""File"" and then ""New"" to create a new file.
+Type in the following PHP code to copy files from one location to another:
+Type in the whole script to copy all of the files on your web server to another location.",How do I move a file from one directory to another in PHP?,"The copy() function in PHP is used to copy a file from source to target or destination directory. It makes a copy of the source file to the destination file and if the destination file already exists, it gets overwritten. The copy() function returns true on success and false on failure."
+https://stackoverflow.com/questions/22825349/converting-between-datetime-and-pandas-timestamp-objects,python - Converting between datetime and Pandas Timestamp objects,"<p>You can use the to_pydatetime method to be more explicit:</p>
+<pre><code>In [11]: ts = pd.Timestamp(2014-01-23 00:00:00, tz=None)
+
+In [12]: ts.to_pydatetime()
+Out[12]: datetime.datetime(2014, 1, 23, 0, 0)
+</code></pre>
+<p>Its also available on a DatetimeIndex:</p>
+<pre><code>In [13]: rng = pd.date_range(1/10/2011, periods=3, freq=D)
+
+In [14]: rng.to_pydatetime()
+Out[14]:
+array([datetime.datetime(2011, 1, 10, 0, 0),
+       datetime.datetime(2011, 1, 11, 0, 0),
+       datetime.datetime(2011, 1, 12, 0, 0)], dtype=object)
+</code></pre>","<p><em>Pandas Timestamp to datetime.datetime:</em></p>
+<pre><code>pd.Timestamp(2014-01-23 00:00:00, tz=None).to_pydatetime()
+</code></pre>
+<p><em>datetime.datetime to Timestamp</em></p>
+<pre><code>pd.Timestamp(datetime(2014, 1, 23))
+</code></pre>","<pre><code>&gt;&gt;&gt; pd.Timestamp(2014-01-23 00:00:00, tz=None).to_datetime()
+datetime.datetime(2014, 1, 23, 0, 0)
+&gt;&gt;&gt; pd.Timestamp(datetime.date(2014, 3, 26))
+Timestamp(2014-03-26 00:00:00)
+</code></pre>",pandas timestamp to datetime,pandas timestamp to datetime,"pd. to_datetime(df['timestamp'], unit='s')
+df['timestamp'] = pd. to_datetime(df['timestamp'], unit='s')
+df. timestamp = df. timestamp. dt. tz_localize('UTC')
+df. rimestamp. dt. tz_localize('UTC'). dt.",Is timestamp the same as datetime pandas?,"Timestamp is the pandas equivalent of python's Datetime and is interchangeable with it in most cases. It's the type used for the entries that make up a DatetimeIndex, and other timeseries oriented data structures in pandas.",Is datetime a panda?,"DateTime and Timedelta objects in Pandas Well, don't worry, it is just the Pandas equivalent of Python's DateTime. View the code on Gist. Here, the unit determines the unit of the argument, whether that's day, month, year, hours, etc. Well, don't worry, it is just the Pandas equivalent of Python's DateTime. View the code on Gist. Here, the unit determines the unit of the argument, whether that's day, month, year, hours, etc.",How do I extract a date from a timestamp in Python?,You can simply use the fromtimestamp function from the DateTime module to get a date from a UNIX timestamp. This function takes the timestamp as input and returns the corresponding DateTime object to timestamp. Timestamp to DateTime object You can simply use the fromtimestamp function from the DateTime module to get a date from a UNIX timestamp. This function takes the timestamp as input and returns the corresponding DateTime object to timestamp.
+https://stackoverflow.com/questions/4749585/what-is-the-meaning-of-xor-in-x86-assembly,What is the meaning of XOR in x86 assembly?,"<p><code>A XOR B</code> in english would be translated as are A and B not equal. So <code>xor ax, ax</code> will set <code>ax</code> to zero since ax is always equal to itself.</p>
+<pre><code>A B | A XOR B
+0 0 | 0
+1 0 | 1
+0 1 | 1
+1 1 | 0
+</code></pre>","<p><code>xor reg, reg</code> is often used to clear register. It can be an alternative to <code>mov reg, 0</code></p>
+<p>AFAIR, it was faster (or shorter) in some cases. </p>
+<p>And of course, XOR itself is eXclusive OR (a.k.a.: exclusive disjunction) operation (but its a shame to describe here such basics - use Wikipedia)</p>","<p><code>xor ax, ax</code> is the fastest possible way to set the ax register to <code>0</code>. Fastest in terms of the size of instruction and number of instructions. For detail about how it works you need a little knowledge of bit arithmetic.</p>
+<p>XOR operation between two bits returns 1 if <em>one and only one</em> of the two bits is 1; 0 otherwise. Another way to explain is that that it returns 1 if the two bits are different; 0 otherwise.</p>
+<p>XOR operation between two binary numbers of same length works likewise on a bit-by-bit basis. XOR two numbers you get a number with bits set to 1 where corresponding bits of the two operands differ, 0 when corresponding bits are same.</p>
+<p>From this knowledge its fairly easy to see that if the two operands are the same (ax and ax for example) the result will be 0.</p>",xor assembly,xor assembly,"The XOR instruction implements the bitwise XOR operation. The XOR operation sets the resultant bit to 1, if and only if the bits from the operands are different. ... XORing an operand with itself changes the operand to 0. This is used to clear a register.",What does xor mean in assembly?,,What flags does xor set assembly?,"Like most instructions, xor sets the processor condition flags depending on the result of the previous operation. In this case, the Z flagZ flagThe zero flag is typically abbreviated Z or ZF or similar in most documentation and assembly languages. Along with a carry flag, a sign flag and an overflow flag, the zero flag is used to check the result of an arithmetic operation, including bitwise logical instructions.https://en.wikipedia.org › wiki › Zero_flagZero flag - Wikipedia will be set if the result of the xor is zero. The jnz instruction tests the Z flag and branches if it is not set. Z flag Z flagZ flagThe zero flag is typically abbreviated Z or ZF or similar in most documentation and assembly languages. Along with a carry flag, a sign flag and an overflow flag, the zero flag is used to check the result of an arithmetic operation, including bitwise logical instructions.https://en.wikipedia.org › wiki › Zero_flagZero flag - Wikipedia Like most instructions, xor sets the processor condition flags depending on the result of the previous operation. In this case, the Z flag will be set if the result of the xor is zero. The jnz instruction tests the Z flag and branches if it is not set.Like most instructions, xor sets the processor condition flags depending on the result of the previous operation. In this case, the Z flagZ flagThe zero flag is typically abbreviated Z or ZF or similar in most documentation and assembly languages. Along with a carry flag, a sign flag and an overflow flag, the zero flag is used to check the result of an arithmetic operation, including bitwise logical instructions.https://en.wikipedia.org › wiki › Zero_flagZero flag - Wikipedia will be set if the result of the xor is zero. The jnz instruction tests the Z flag and branches if it is not set. › wiki › Zero_flag Z flagThe zero flag is typically abbreviated Z or ZF or similar in most documentation and assembly languages. Along with a carry flag, a sign flag and an overflow flag, the zero flag is used to check the result of an arithmetic operation, including bitwise logical instructions.https://en.wikipedia.org › wiki › Zero_flagZero flag - Wikipedia",What type of instruction is xor?,"The XOR instruction performs a bit wise Exclusive OR operation between corresponding bits in the two operands and places the result in the first operand. reg, mem, and immed can be  or bits. The XOR instruction can be used to reverse selected bits in an operand while preserving the remaining bits."
+https://stackoverflow.com/questions/57005663/when-to-use-useimperativehandle-uselayouteffect-and-usedebugvalue,"reactjs - When to use useImperativeHandle, useLayoutEffect, and useDebugValue","<p>Allow me to preface this answer by stating that all of these hooks are very rarely used. 99% of the time, you wont need these. They are only meant to cover some rare corner-case scenarios.</p>
+<hr/>
+<h2><code>useImperativeHandle</code></h2>
+<p>Usually when you use <code>useRef</code> you are given the instance value of the component the <code>ref</code> is attached to. This allows you to interact with the DOM element directly.</p>
+<p><code>useImperativeHandle</code> is very similar, but it lets you do two things:</p>
+<ol>
+<li>It gives you control over the value that is returned. Instead of returning the instance element, you explicitly state what the return value will be (see snippet below).</li>
+<li>It allows you to replace native functions (such as <code>blur</code>, <code>focus</code>, etc) with functions of your own, thus allowing side-effects to the normal behavior, or a different behavior altogether. Though, you can call the function whatever you like.</li>
+</ol>
+<p>There could be many reasons you want might to do either of the above; you might not want to expose native properties to the parent or maybe you want to change the behavior of a native function. There could be many reasons. However, <code>useImperativeHandle</code> is rarely used.</p>
+<blockquote>
+<p><code>useImperativeHandle</code> customizes the instance value that is exposed to parent components when using <code>ref</code></p>
+</blockquote>
+<p><strong>Example</strong></p>
+<p>In this example, the value well get from the <code>ref</code> will only contain the function <code>blur</code> which we declared in our <code>useImperativeHandle</code>. It will not contain any other properties (<em>I am logging the value to demonstrate this</em>). The function itself is also customized to behave differently than what youd normally expect. Here, it sets <code>document.title</code> and blurs the input when <code>blur</code> is invoked.</p>
+<p></p><div class=snippet data-babel=true data-console=true data-hide=true data-lang=js>
+<div class=snippet-code snippet-currently-hidden>
+<pre class=snippet-code-js lang-js prettyprint-override><code>const MyInput = React.forwardRef((props, ref) =&gt; {
+  const [val, setVal] = React.useState();
+  const inputRef = React.useRef();
+
+  React.useImperativeHandle(ref, () =&gt; ({
+    blur: () =&gt; {
+      document.title = val;
+      inputRef.current.blur();
+    }
+  }));
+
+  return (
+    &lt;input
+      ref={inputRef}
+      val={val}
+      onChange={e =&gt; setVal(e.target.value)}
+      {...props}
+    /&gt;
+  );
+});
+
+const App = () =&gt; {
+  const ref = React.useRef(null);
+  const onBlur = () =&gt; {
+    console.log(ref.current); // Only contains one property!
+    ref.current.blur();
+  };
+
+  return &lt;MyInput ref={ref} onBlur={onBlur} /&gt;;
+};
+
+ReactDOM.render(&lt;App /&gt;, document.getElementById(app));</code></pre>
+<pre class=snippet-code-html lang-html prettyprint-override><code>&lt;script src=https://cdnjs.cloudflare.com/ajax/libs/react/16.8.1/umd/react.production.min.js&gt;&lt;/script&gt;
+&lt;script src=https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.8.1/umd/react-dom.production.min.js&gt;&lt;/script&gt;
+&lt;div id=app&gt;&lt;/div&gt;</code></pre>
+</div>
+</div>
+<hr/>
+<h2><code>useLayoutEffect</code></h2>
+<p>While similar to some extent to <code>useEffect()</code>, it differs in that it will run after React has committed updates to the DOM. Used in rare cases when you need to calculate the distance between elements after an update or do other post-update calculations / side-effects.</p>
+<blockquote>
+<p>The signature is identical to <code>useEffect</code>, but it fires synchronously after all DOM mutations. Use this to read layout from the DOM and synchronously re-render. Updates scheduled inside <code>useLayoutEffect</code> will be flushed synchronously, <strong>before the browser has a chance to paint</strong>.</p>
+</blockquote>
+<p><strong>Example</strong></p>
+<p>Suppose you have a absolutely positioned element whose height might vary and you want to position another <code>div</code> beneath it. You could use <code>getBoundingCLientRect()</code> to calculate the parents height and top properties and then just apply those to the top property of the child.</p>
+<p>Here you would want to use <code>useLayoutEffect</code> rather than <code>useEffect</code>. See why in the examples below:</p>
+<p><em>With <code>useEffect</code>: (notice the jumpy behavior)</em></p>
+<p></p><div class=snippet data-babel=true data-console=true data-hide=true data-lang=js>
+<div class=snippet-code snippet-currently-hidden>
+<pre class=snippet-code-js lang-js prettyprint-override><code>const Message = ({boxRef, children}) =&gt; {
+  const msgRef = React.useRef(null);
+  React.useEffect(() =&gt; {
+    const rect = boxRef.current.getBoundingClientRect();
+    msgRef.current.style.top = `${rect.height + rect.top}px`;
+  }, []);
+
+  return &lt;span ref={msgRef} className=msg&gt;{children}&lt;/span&gt;;
+};
+
+const App = () =&gt; {
+  const [show, setShow] = React.useState(false);
+  const boxRef = React.useRef(null);
+
+  return (
+    &lt;div&gt;
+      &lt;div ref={boxRef} className=box onClick={() =&gt; setShow(prev =&gt; !prev)}&gt;Click me&lt;/div&gt;
+      {show &amp;&amp; &lt;Message boxRef={boxRef}&gt;Foo bar baz&lt;/Message&gt;}
+    &lt;/div&gt;
+  );
+};
+
+ReactDOM.render(&lt;App /&gt;, document.getElementById(app));</code></pre>
+<pre class=snippet-code-css lang-css prettyprint-override><code>.box {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background: green;
+  color: white;
+}
+
+.msg {
+  position: relative;
+  border: 1px solid red;
+}</code></pre>
+<pre class=snippet-code-html lang-html prettyprint-override><code>&lt;script src=https://cdnjs.cloudflare.com/ajax/libs/react/16.8.1/umd/react.production.min.js&gt;&lt;/script&gt;
+&lt;script src=https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.8.1/umd/react-dom.production.min.js&gt;&lt;/script&gt;
+&lt;div id=app&gt;&lt;/div&gt;</code></pre>
+</div>
+</div>
+<p><em>With <code>useLayoutEffect</code>:</em></p>
+<p></p><div class=snippet data-babel=true data-console=true data-hide=true data-lang=js>
+<div class=snippet-code snippet-currently-hidden>
+<pre class=snippet-code-js lang-js prettyprint-override><code>const Message = ({boxRef, children}) =&gt; {
+  const msgRef = React.useRef(null);
+  React.useLayoutEffect(() =&gt; {
+    const rect = boxRef.current.getBoundingClientRect();
+    msgRef.current.style.top = `${rect.height + rect.top}px`;
+  }, []);
+
+  return &lt;span ref={msgRef} className=msg&gt;{children}&lt;/span&gt;;
+};
+
+const App = () =&gt; {
+  const [show, setShow] = React.useState(false);
+  const boxRef = React.useRef(null);
+
+  return (
+    &lt;div&gt;
+      &lt;div ref={boxRef} className=box onClick={() =&gt; setShow(prev =&gt; !prev)}&gt;Click me&lt;/div&gt;
+      {show &amp;&amp; &lt;Message boxRef={boxRef}&gt;Foo bar baz&lt;/Message&gt;}
+    &lt;/div&gt;
+  );
+};
+
+ReactDOM.render(&lt;App /&gt;, document.getElementById(app));</code></pre>
+<pre class=snippet-code-css lang-css prettyprint-override><code>.box {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background: green;
+  color: white;
+}
+
+.msg {
+  position: relative;
+  border: 1px solid red;
+}</code></pre>
+<pre class=snippet-code-html lang-html prettyprint-override><code>&lt;script src=https://cdnjs.cloudflare.com/ajax/libs/react/16.8.1/umd/react.production.min.js&gt;&lt;/script&gt;
+&lt;script src=https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.8.1/umd/react-dom.production.min.js&gt;&lt;/script&gt;
+&lt;div id=app&gt;&lt;/div&gt;</code></pre>
+</div>
+</div>
+<hr/>
+<h2><code>useDebugValue</code></h2>
+<p>Sometimes you might want to debug certain values or properties, but doing so might require expensive operations which might impact performance.</p>
+<p><code>useDebugValue</code> is only called when the React DevTools are open and the related hook is inspected, preventing any impact on performance.</p>
+<blockquote>
+<p><code>useDebugValue</code> can be used to display a label for custom hooks in React DevTools.</p>
+</blockquote>
+<p>I have personally never used this hook though. Maybe someone in the comments can give some insight with a good example.</p>","<h2><code>useImperativeHandle</code></h2>
+<p><code>useImperativeHandle</code> allows you to determine which properties will be exposed on a ref. In the example below, we have a button component, and wed like to expose the <code>someExposedProperty</code> property on that ref:</p>
+<p><strong>[index.tsx]</strong></p>
+<pre><code>import React, { useRef } from react;
+import { render } from react-dom;
+import Button from ./Button;
+
+import ./styles.css;
+
+function App() {
+  const buttonRef = useRef(null);
+
+  const handleClick = () =&gt; {
+    console.log(Object.keys(buttonRef.current)); // [someExposedProperty]
+    console.log(click in index.tsx);
+    buttonRef.current.someExposedProperty();
+  };
+
+  return (
+    &lt;div&gt;
+      &lt;Button onClick={handleClick} ref={buttonRef} /&gt;
+    &lt;/div&gt;
+  );
+}
+
+const rootElement = document.getElementById(root);
+render(&lt;App /&gt;, rootElement);
+</code></pre>
+<p><strong>[Button.tsx]</strong></p>
+<pre><code>import React, { useRef, useImperativeHandle, forwardRef } from react;
+
+function Button(props, ref) {
+  const buttonRef = useRef();
+  useImperativeHandle(ref, () =&gt; ({
+    someExposedProperty: () =&gt; {
+      console.log(`were inside the exposed property function!`);
+    }
+  }));
+  return (
+    &lt;button ref={buttonRef} {...props}&gt;
+      Button
+    &lt;/button&gt;
+  );
+}
+
+export default forwardRef(Button);
+</code></pre>
+<p><a href=https://codesandbox.io/s/react-hook-useimperativehandle-r0icg?file=/src/index.tsx rel=noreferrer>Available here.</a></p>
+<h2><code>useLayoutEffect</code></h2>
+<p>This is the same as <code>useEffect</code>, but only fires once all DOM mutations are completed. <a href=https://kentcdodds.com/blog/useeffect-vs-uselayouteffect rel=noreferrer>This article</a> From Kent C. Dodds explains the difference as well as anyone, regarding these two, he says:</p>
+<blockquote>
+<p>99% of the time [<code>useEffect</code>] is what you want to use.</p>
+</blockquote>
+<p>I havent seen any examples which illustrate this particularly well, and Im not sure Id be able to create anything either. Its probably best to say that you ought to only use <code>useLayoutEffect</code> when <code>useEffect</code> has issues.</p>
+<h2><code>useDebugValue</code></h2>
+<p>I feel like <a href=https://reactjs.org/docs/hooks-reference.html#usedebugvalue rel=noreferrer>the docs</a> do a pretty good example of explaining this one. If you have a custom hook, and youd like to label it within React DevTools, then this is what you use.</p>
+<p>If you have any specific issues with this then itd probably be best to either comment or ask another question, because I feel like anything people put here will just be reiterating the docs, at least until we reach a more specific problem.</p>","<p>The <code>useImperativeHandle</code> hook helped me a lot with a use case of mine.</p>
+<p>I created a grid component which uses a third-party library component. The library itself has a big data layer with built-in functionality that can be used by accessing the instance of the element.</p>
+<p>However, in my own grid component, I want to extend it with methods which perform actions on the grid. Furthermore, I also want to be able to execute those methods from outside of my grid component.</p>
+<p>This is easily achievable by adding the methods inside of the <code>useImperativeHandle</code> hook, and then they will be exposed and usable by its parent.</p>
+<p>My grid component looks kind of like this:</p>
+<pre class=lang-js prettyprint-override><code>import React, { forwardRef, useImperativeHandle, useRef } from react;
+import ThirdPartyGrid from some-library;
+
+export default forwardRef((props, forwardedRef) =&gt; {
+    const gridRef = useRef(null);
+    useImperativeHandle(forwardedRef,
+        () =&gt; ({
+
+            storeExpandedRecords () {
+                // Some code
+            },
+
+            restoreExpandedRecords () {
+                // Some code
+            },
+
+        }));
+    
+    return (
+        &lt;div ref={forwardedRef}&gt;
+            &lt;ThirdPartyGrid 
+                ref={gridRef}
+                {...props.config}
+            /&gt;
+        &lt;/div&gt;
+    );
+});
+
+</code></pre>
+<p>And then in my parent, I can execute those methods:</p>
+<pre class=lang-js prettyprint-override><code>import React, { useRef, useEffect } from react;
+
+export default function Parent () {
+    const gridRef = useRef(null);
+
+    const storeRecords = () =&gt; {
+        gridRef.current.storeExpandedRecords();
+    };
+
+    useEffect(() =&gt; {
+        storeRecords();
+    }, []);
+
+    return &lt;GridWrapper ref={gridRef} config={{ something: true }} /&gt;
+};
+</code></pre>",useimperativehandle,What is useImperativeHandle?,"useImperativeHandle allows you to pass values and functions from a Child component back up to a Parent using a ref . From there, the Parent can either use it itself or pass it to another Child. Note that you can only pass a ref as a prop to a child that wraps its component in forwardRef .",When should I use useImperativeHandle?,"It gives you control over the value that is returned.
+It allows you to replace native functions (such as blur , focus , etc) with functions of your own, thus allowing side-effects to the normal behavior, or a different behavior altogether.",What is useImperativeHandle in react JS?,"Usually when you use useRef you are given the instance value of the component the ref is attached to. This allows you to interact with the DOM element directly. useImperativeHandle is very similar, but it lets you do two things: It gives you control over the value that is returned.",What is the use of useImperativeHandle?,"The hook useImperativeHandle lets you modify the ref instance that is exposed from parent components when using refs. In other words, the useImperativeHandle gives you the ability to modify a ref that has been created."
+https://stackoverflow.com/questions/3959211/what-is-the-fastest-factorial-function-in-javascript,math - What is the fastest factorial function in JavaScript?,"<p>You can <a href=http://www.wolframalpha.com/input/?i=(1...100)! rel=noreferrer>search for (1...100)! on Wolfram|Alpha</a> to pre-calculate the factorial sequence.</p>
+<p>The first 100 numbers are:</p>
+<pre><code>1, 2, 6, 24, 120, 720, 5040, 40320, 362880, 3628800, 39916800, 479001600, 6227020800, 87178291200, 1307674368000, 20922789888000, 355687428096000, 6402373705728000, 121645100408832000, 2432902008176640000, 51090942171709440000, 1124000727777607680000, 25852016738884976640000, 620448401733239439360000, 15511210043330985984000000, 403291461126605635584000000, 10888869450418352160768000000, 304888344611713860501504000000, 8841761993739701954543616000000, 265252859812191058636308480000000, 8222838654177922817725562880000000, 263130836933693530167218012160000000, 8683317618811886495518194401280000000, 295232799039604140847618609643520000000, 10333147966386144929666651337523200000000, 371993326789901217467999448150835200000000, 13763753091226345046315979581580902400000000, 523022617466601111760007224100074291200000000, 20397882081197443358640281739902897356800000000, 815915283247897734345611269596115894272000000000, 33452526613163807108170062053440751665152000000000, 1405006117752879898543142606244511569936384000000000, 60415263063373835637355132068513997507264512000000000, 2658271574788448768043625811014615890319638528000000000, 119622220865480194561963161495657715064383733760000000000, 5502622159812088949850305428800254892961651752960000000000, 258623241511168180642964355153611979969197632389120000000000, 12413915592536072670862289047373375038521486354677760000000000, 608281864034267560872252163321295376887552831379210240000000000, 30414093201713378043612608166064768844377641568960512000000000000, 1551118753287382280224243016469303211063259720016986112000000000000, 80658175170943878571660636856403766975289505440883277824000000000000, 4274883284060025564298013753389399649690343788366813724672000000000000, 230843697339241380472092742683027581083278564571807941132288000000000000, 12696403353658275925965100847566516959580321051449436762275840000000000000, 710998587804863451854045647463724949736497978881168458687447040000000000000, 40526919504877216755680601905432322134980384796226602145184481280000000000000, 2350561331282878571829474910515074683828862318181142924420699914240000000000000, 138683118545689835737939019720389406345902876772687432540821294940160000000000000, 8320987112741390144276341183223364380754172606361245952449277696409600000000000000, 507580213877224798800856812176625227226004528988036003099405939480985600000000000000, 31469973260387937525653122354950764088012280797258232192163168247821107200000000000000, 1982608315404440064116146708361898137544773690227268628106279599612729753600000000000000, 126886932185884164103433389335161480802865516174545192198801894375214704230400000000000000, 8247650592082470666723170306785496252186258551345437492922123134388955774976000000000000000, 544344939077443064003729240247842752644293064388798874532860126869671081148416000000000000000, 36471110918188685288249859096605464427167635314049524593701628500267962436943872000000000000000, 2480035542436830599600990418569171581047399201355367672371710738018221445712183296000000000000000, 171122452428141311372468338881272839092270544893520369393648040923257279754140647424000000000000000, 11978571669969891796072783721689098736458938142546425857555362864628009582789845319680000000000000000, 850478588567862317521167644239926010288584608120796235886430763388588680378079017697280000000000000000, 61234458376886086861524070385274672740778091784697328983823014963978384987221689274204160000000000000000, 4470115461512684340891257138125051110076800700282905015819080092370422104067183317016903680000000000000000, 330788544151938641225953028221253782145683251820934971170611926835411235700971565459250872320000000000000000, 24809140811395398091946477116594033660926243886570122837795894512655842677572867409443815424000000000000000000, 1885494701666050254987932260861146558230394535379329335672487982961844043495537923117729972224000000000000000000, 145183092028285869634070784086308284983740379224208358846781574688061991349156420080065207861248000000000000000000, 11324281178206297831457521158732046228731749579488251990048962825668835325234200766245086213177344000000000000000000, 894618213078297528685144171539831652069808216779571907213868063227837990693501860533361810841010176000000000000000000, 71569457046263802294811533723186532165584657342365752577109445058227039255480148842668944867280814080000000000000000000, 5797126020747367985879734231578109105412357244731625958745865049716390179693892056256184534249745940480000000000000000000, 475364333701284174842138206989404946643813294067993328617160934076743994734899148613007131808479167119360000000000000000000, 39455239697206586511897471180120610571436503407643446275224357528369751562996629334879591940103770870906880000000000000000000, 3314240134565353266999387579130131288000666286242049487118846032383059131291716864129885722968716753156177920000000000000000000, 281710411438055027694947944226061159480056634330574206405101912752560026159795933451040286452340924018275123200000000000000000000, 24227095383672732381765523203441259715284870552429381750838764496720162249742450276789464634901319465571660595200000000000000000000, 2107757298379527717213600518699389595229783738061356212322972511214654115727593174080683423236414793504734471782400000000000000000000, 185482642257398439114796845645546284380220968949399346684421580986889562184028199319100141244804501828416633516851200000000000000000000, 16507955160908461081216919262453619309839666236496541854913520707833171034378509739399912570787600662729080382999756800000000000000000000, 1485715964481761497309522733620825737885569961284688766942216863704985393094065876545992131370884059645617234469978112000000000000000000000, 135200152767840296255166568759495142147586866476906677791741734597153670771559994765685283954750449427751168336768008192000000000000000000000, 12438414054641307255475324325873553077577991715875414356840239582938137710983519518443046123837041347353107486982656753664000000000000000000000, 1156772507081641574759205162306240436214753229576413535186142281213246807121467315215203289516844845303838996289387078090752000000000000000000000, 108736615665674308027365285256786601004186803580182872307497374434045199869417927630229109214583415458560865651202385340530688000000000000000000000, 10329978488239059262599702099394727095397746340117372869212250571234293987594703124871765375385424468563282236864226607350415360000000000000000000000, 991677934870949689209571401541893801158183648651267795444376054838492222809091499987689476037000748982075094738965754305639874560000000000000000000000, 96192759682482119853328425949563698712343813919172976158104477319333745612481875498805879175589072651261284189679678167647067832320000000000000000000000, 9426890448883247745626185743057242473809693764078951663494238777294707070023223798882976159207729119823605850588608460429412647567360000000000000000000000, 933262154439441526816992388562667004907159682643816214685929638952175999932299156089414639761565182862536979208272237582511852109168640000000000000000000000, 93326215443944152681699238856266700490715968264381621468592963895217599993229915608941463976156518286253697920827223758251185210916864000000000000000000000000
+</code></pre>
+<p>If you still want to calculate the values yourself, you can use <a href=http://en.wikipedia.org/wiki/Memoization rel=noreferrer>memoization</a>:</p>
+<pre><code>var f = [];
+function factorial (n) {
+  if (n == 0 || n == 1)
+    return 1;
+  if (f[n] &gt; 0)
+    return f[n];
+  return f[n] = factorial(n-1) * n;
+}
+</code></pre>
+<h2>Edit: 21.08.2014</h2>
+<h3>Solution 2</h3>
+<p>I thought it would be useful to add a working example of <strong>lazy</strong> <strong>iterative</strong> <strong>factorial function</strong> that uses <strong>big numbers</strong> to get <strong>exact</strong> result with <strong>memoization</strong> and <strong>cache</strong> as comparison</p>
+<pre><code>var f = [new BigNumber(1), new BigNumber(1)];
+var i = 2;
+function factorial(n)
+{
+  if (typeof f[n] != undefined)
+    return f[n];
+  var result = f[i-1];
+  for (; i &lt;= n; i++)
+      f[i] = result = result.multiply(i.toString());
+  return result;
+}
+var cache = 100;
+// Due to memoization, following line will cache first 100 elements.
+factorial(cache);
+</code></pre>
+<p>I assume you would use <a href=https://stackoverflow.com/questions/500431/what-is-the-scope-of-variables-in-javascript>some kind of closure</a> to limit variable name visibility.</p>
+<p><strong>Ref</strong>: <a href=http://jsfromhell.com/classes/bignumber rel=noreferrer>BigNumber</a>
+<strong>Sandbox</strong>: <a href=http://jsfiddle.net/margusmartsepp/tcfpvc1k/5/ rel=noreferrer>JsFiddle</a></p>","<p>You should use a loop. </p>
+<p>Here are two versions benchmarked by calculating the factorial of 100 for 10.000 times.</p>
+<p><strong>Recursive</strong></p>
+<pre><code>function rFact(num)
+{
+    if (num === 0)
+      { return 1; }
+    else
+      { return num * rFact( num - 1 ); }
+}
+</code></pre>
+<p><strong>Iterative</strong> </p>
+<pre><code>function sFact(num)
+{
+    var rval=1;
+    for (var i = 2; i &lt;= num; i++)
+        rval = rval * i;
+    return rval;
+}
+</code></pre>
+<p>Live at : <a href=http://jsfiddle.net/xMpTv/ rel=noreferrer>http://jsfiddle.net/xMpTv/</a></p>
+<p><strong>My results show:</strong><br/>
+- <strong>Recursive</strong> ~ 150 milliseconds<br/>
+- <strong>Iterative</strong> ~ 5 milliseconds..</p>","<p>I still think Marguss answer is the best one. However if you want to calculate the factorials of numbers within the range 0 to 1 (ie the gamma function) as well, then you cannot use that approach because the lookup table will have to contain infinite values.</p>
+<p>However, you <em>can</em> approximate the values of the factorials, and its pretty fast, faster than recursively calling itself or looping it at least (especially when values start to get bigger).</p>
+<p>A good approximation method is Lanczoss one</p>
+<p>Here is an implementation in JavaScript (ported from a calculator I wrote months ago):</p>
+<pre><code>function factorial(op) {
+ // Lanczos Approximation of the Gamma Function
+ // As described in Numerical Recipes in C (2nd ed. Cambridge University Press, 1992)
+ var z = op + 1;
+ var p = [1.000000000190015, 76.18009172947146, -86.50532032941677, 24.01409824083091, -1.231739572450155, 1.208650973866179E-3, -5.395239384953E-6];
+
+ var d1 = Math.sqrt(2 * Math.PI) / z;
+ var d2 = p[0];
+
+ for (var i = 1; i &lt;= 6; ++i)
+  d2 += p[i] / (z + i);
+
+ var d3 = Math.pow((z + 5.5), (z + 0.5));
+ var d4 = Math.exp(-(z + 5.5));
+
+ d = d1 * d2 * d3 * d4;
+
+ return d;
+}
+</code></pre>
+<p>You can now do cool stuff like <code>factorial(0.41)</code>, etc however accuracy might be a little off, after all, it is an approximation of the result.</p>",factorial javascript,Is there a factorial function in Javascript?,,How do you factor a number in Javascript?,function factorialize(num) { if (num === 0 || num === 1) return 1; for (var i = num - 1; i >= 1; i--) { num *= i; } return num; } factorialize(5); I hope you found this helpful.,What is a factorial Javascript?,"The factorial of a number is the product of all the numbers from 1 to that number. For example, factorial of 5 is equal to 1 * 2 * 3 * 4 * 5 = 120. The factorial of a positive number n is given by: factorial of n (n!) = 1 * 2 * 3 * 4..... n.",How do you code a factorial?,"#include<stdio.h> int main() { int i,fact=number; printf(""Enter a number: ""); scanf(""%d"",&number); for(i=i<=number;i++){ fact=fact*i;"
+https://stackoverflow.com/questions/65027898/how-to-add-a-subtitle-in-class-article-in-latex,How to add a subtitle in class article in Latex?,"<pre><code>\documentclass[11pt,a4paper]{article}
+\title {Title}
+\author{Name}
+
+\makeatletter
+\def\@maketitle{%
+  \newpage
+  \null
+  \vskip 2em%
+  \begin{center}%
+  \let \footnote \thanks
+    {\LARGE \@title \par}%
+    \vskip 1em%
+    {\Large Whatever Subtitle you want\par}%
+    \vskip 1.5em%
+    {\large
+      \lineskip .5em%
+      \begin{tabular}[t]{c}%
+        \@author
+      \end{tabular}\par}%
+    \vskip 1em%
+    {\large \@date}%
+  \end{center}%
+  \par
+  \vskip 1.5em}
+\makeatother
+
+
+\begin{document}
+\maketitle
+
+test
+
+\end{document}
+</code></pre>","<p>Hopefully, I found a very easy and quick solution:</p>
+<pre class=lang-latex prettyprint-override><code>\documentclass[11pt,a4paper]{article}
+\title {Title \\[1ex] \large Subtitle}
+\author{Name}
+
+\begin{document}
+\maketitle
+
+Text.
+\end{document}
+</code></pre>",,latex subtitle,How do I put subtitles in LaTeX?,"It's really easy, just add the \caption{Some caption} and inside the braces write the text to be shown. The placement of the caption depends on where you place the command; if it's above the \includegraphics then the caption will be on top of it, if it's below then the caption will also be set below the figure.",How do you add a second title in LaTeX?,"\documentclass{article}
+\title{First line of title}
+\title{Second line of title}\maketitle.",Where do you specify the \Maketitle command in the document LaTeX?,\maketitle In the topmatter of your article you need to include the command \maketitle immediately before the\begin{abstract} command if you are using the LaTeX document class or immediately after the \begin{abstract} command if you are using the AmS-LaTeX document class amsart.,What is Maketitle in LaTeX?,"The \maketitle command generates a title on a separate title page - except in the article style, where the title normally goes at the top of the first page."
+https://stackoverflow.com/questions/31494870/pandas-dataframe-no-numeric-data-to-plot-error,python - pandas DataFrame no numeric data to plot error,"<p>Try the following before plotting: </p>
+<pre><code>df=df.astype(float)
+</code></pre>","<p>To solve this you have to convert the particular column or columns you want to 
+    use to numeric. First let me create a simple dataframe with <code>pandas</code> and <code>numpy</code> to 
+    understand it better.</p>
+<pre><code>#creating the dataframe
+
+import pandas as pd
+import numpy as np
+details=[[kofi,30,male,1.5],[ama,43,female,2.5]]
+pf=pd.DataFrame(np.array(details),[0,1],[name,age,sex,id])
+
+pf  #here i am calling the dataframe
+
+   name age     sex   id
+0  kofi  30    male  1.5
+1   ama  43  female  2.5
+
+#to make your plot work you need to convert the columns that have numbers into numeric
+as seen below 
+
+pf.id=pd.to_numeric(pf.id)
+pf.age=pd.to_numeric(pf.age)
+
+pf.plot.scatter(x=id,y=age)
+
+#This should work perfectly
+</code></pre>","<p>Inspired by alex314159, if you have other data than float in the same table</p>
+<pre><code>df[YourColumnNameHere]=df[YourColumnNameHere].astype(float)
+</code></pre>",typeerror: empty 'dataframe': no numeric data to plot,typeerror: empty 'dataframe': no numeric data to plot,"This error occurs when you attempt to plot values from a pandas DataFrame, but there are no numeric values to plot. This error typically occurs when you think a certain column in the DataFrame is numeric but it turns out to be a different data type.",,,,,,
+https://stackoverflow.com/questions/37003748/usr-bin-sudo-must-be-owned-by-uid-0-and-have-the-setuid-bit-set-version-ubantu,ubuntu - /usr/bin/sudo must be owned by uid 0 and have the setuid bit set version .ubantu14.04 LTS,"<p>First restart your pc, and press the ESC key while Ubuntu is booting.</p>
+<p>This will bring you up the boot menu.</p>
+<p>Select Advanced Options.</p>
+<p>Select your OS version in (recovery mode), and press Enter Key.</p>
+<p>It will bring you up another screen. Now select “Drop to root shell prompt” and press Enter.</p>
+<p>It will load a command line at the bottom of the screen.</p>
+<p>Now run each of the following commands.</p>
+<pre><code>mount -o remount,rw /
+mount --all
+chown root:root /usr/bin/sudo
+chmod 4755 /usr/bin/sudo
+shutdown -r now
+</code></pre>","<p>Its beacuase of Permission issue</p>
+<pre><code> $ su
+ Password: &lt;type your root password&gt;
+</code></pre>
+<p>Switch to root user and run the command</p>
+<pre><code># pkexec chmod a=rx,u+ws /usr/bin/sudo
+</code></pre>
+<p>Then check it by typing from the user</p>
+<pre><code>$sudo -l
+</code></pre>
+<p>it Works fine for me</p>
+<p>Cheers....</p>","<p><code>/usr/bin/sudo mv /usr/local/bin/sudo{,2} 
+hash -r</code></p>
+<p>Refer this <a href=https://unix.stackexchange.com/questions/419122/sudo-must-be-owned-by-uid-0-and-have-the-setuid-bit-set?newreg=b2490740fb214ce79c316ad76f859e0a>https://unix.stackexchange.com/questions/419122/sudo-must-be-owned-by-uid-0-and-have-the-setuid-bit-set?newreg=b2490740fb214ce79c316ad76f859e0a</a></p>",sudo: /usr/bin/sudo must be owned by uid 0 and have the setuid bit set,How do I fix a sudo error?,"The result can be an impaired instance that can't run sudo su or commands that require privileged user access. To fix this syntax error, stop the instance, detach its root volume, attach it to a recovery instance, mount the root volume as a secondary volume, and then revert the changes to the sudoers file.",What is usr bin sudo?,"The sudo program itself is a setuid binary. If you examine its permissions, you will see: ---s--x--x 1 root root 81644 Jan 14 15:36 /usr/bin/sudo. That ""s"" means that this is a ""setuid"" program. You and everyone else have execute permission on this, so you can run it.",Why is sudo setuid?,"The key is that sudo is a setuid binary – this means that it gets run as the user that owns it instead of the current user. This is what gives sudo its power. Because sudo is owned by root , the program is run as root.",How do I change sudo file?,"Run sudo visudo as mentioned above.
+Press Alt + / to navigate to the end of the document. If you are using Vi or Vim, press Shift + G instead.
+Create a new line at the bottom of the document and add the following line:
+Press Ctrl + o to save and Ctrl + x to exit."
+https://stackoverflow.com/questions/4401949/whats-the-use-of-ob-start-in-php/28006025,output buffering - Whats the use of ob_start() in php?,"<p>Think of <code>ob_start()</code> as saying Start remembering everything that would normally be outputted, but dont quite do anything with it yet.</p>
+<p>For example:</p>
+<pre><code>ob_start();
+echo(Hello there!); //would normally get printed to the screen/output to browser
+$output = ob_get_contents();
+ob_end_clean();
+</code></pre>
+<p>There are two other functions you typically pair it with: <code>ob_get_contents()</code>, which basically gives you whatever has been saved to the buffer since it was turned on with <code>ob_start()</code>, and then <code>ob_end_clean()</code> or <code>ob_flush()</code>, which either stops saving things and discards whatever was saved, or stops saving and outputs it all at once, respectively.</p>","<p>I use this so I can break out of PHP with a lot of HTML but not render it. It saves me from storing it as a string which disables IDE color-coding.</p>
+<pre><code>&lt;?php
+ob_start();
+?&gt;
+&lt;div&gt;
+    &lt;span&gt;text&lt;/span&gt;
+    &lt;a href=#&gt;link&lt;/a&gt;
+&lt;/div&gt;
+&lt;?php
+$content = ob_get_clean();
+?&gt;
+</code></pre>
+<p>Instead of:</p>
+<pre><code>&lt;?php
+$content = &lt;div&gt;
+    &lt;span&gt;text&lt;/span&gt;
+    &lt;a href=#&gt;link&lt;/a&gt;
+&lt;/div&gt;;
+?&gt;
+</code></pre>","<p>The accepted answer here describes what <code>ob_start()</code> does - not why it is used (which was the question asked).</p>
+<p>As stated elsewhere <code>ob_start()</code> creates a buffer which output is written to. </p>
+<p>But nobody has mentioned that it is possible to stack multiple buffers within PHP. See <a href=http://php.net/manual/en/function.ob-get-level.php rel=noreferrer>ob_get_level</a>().</p>
+<p>As to the why....</p>
+<ol>
+<li><p>Sending HTML to the browser in larger chunks gives a performance benefit from a reduced network overhead.</p></li>
+<li><p>Passing the data out of PHP in larger chunks gives a performance and capacity benefit by reducing the number of context switches required</p></li>
+<li><p>Passing larger chunks of data to mod_gzip/mod_deflate gives a performance benefit in that the compression can be more efficient.</p></li>
+<li><p>buffering the output means that you can still manipulate the HTTP headers later in the code</p></li>
+<li><p>explicitly <strong>flushing</strong> the buffer after outputting the [head]....[/head] can allow the browser to begin marshaling other resources for the page before HTML stream completes.</p></li>
+<li><p>Capturing the output in a buffer means that it can redirected to other functions such as email, or copied to a file as a cached representation of the content</p></li>
+</ol>",ob_start(),What does Ob_start () mean?,,What is Ob_get_clean?,The ob_get_clean() function is an in-built PHP function that is used to clean or delete the current output buffer. It's also used to get the output buffering again after cleaning the buffer. The ob_get_clean() function is the combination of both ob_get_contents() and ob_end_clean().,What is Ob_end_flush?,"Definition and Usage. The ob_end_flush() function deletes the topmost output buffer and outputs all of its contents. The output  be caught by another output buffer, or, if there are no other output buffers, sent directly to the browser.",What is output buffering in PHP?,"Output buffering is a mechanism for controlling how much output data (excluding headers and cookies) PHP should keep internally before pushing that data to the client. If your application's output exceeds this setting, PHP will send that data in chunks of roughly the size you specify."
+https://stackoverflow.com/questions/34968722/how-to-implement-the-softmax-function-in-python,numpy - How to implement the Softmax function in Python,"<p>Theyre both correct, but yours is preferred from the point of view of numerical stability.</p>
+<p>You start with</p>
+<pre><code>e ^ (x - max(x)) / sum(e^(x - max(x))
+</code></pre>
+<p>By using the fact that a^(b - c) = (a^b)/(a^c) we have</p>
+<pre><code>= e ^ x / (e ^ max(x) * sum(e ^ x / e ^ max(x)))
+
+= e ^ x / sum(e ^ x)
+</code></pre>
+<p>Which is what the other answer says. You could replace max(x) with any variable and it would cancel out.</p>","<p>(Well... much confusion here, both in the question and in the answers...)</p>
+<p>To start with, the two solutions (i.e. yours and the suggested one) are <strong>not</strong> equivalent; they <strong>happen</strong> to be equivalent only for the special case of 1-D score arrays. You would have discovered it if you had tried also the 2-D score array in the Udacity quiz provided example.</p>
+<p>Results-wise, the only actual difference between the two solutions is the <code>axis=0</code> argument. To see that this is the case, lets try your solution (<code>your_softmax</code>) and one where the only difference is the <code>axis</code> argument:</p>
+<pre><code>import numpy as np
+
+# your solution:
+def your_softmax(x):
+    Compute softmax values for each sets of scores in x.
+    e_x = np.exp(x - np.max(x))
+    return e_x / e_x.sum()
+
+# correct solution:
+def softmax(x):
+    Compute softmax values for each sets of scores in x.
+    e_x = np.exp(x - np.max(x))
+    return e_x / e_x.sum(axis=0) # only difference
+</code></pre>
+<p>As I said, for a 1-D score array, the results are indeed identical:</p>
+<pre><code>scores = [3.0, 1.0, 0.2]
+print(your_softmax(scores))
+# [ 0.8360188   0.11314284  0.05083836]
+print(softmax(scores))
+# [ 0.8360188   0.11314284  0.05083836]
+your_softmax(scores) == softmax(scores)
+# array([ True,  True,  True], dtype=bool)
+</code></pre>
+<p>Nevertheless, here are the results for the 2-D score array given in the Udacity quiz as a test example:</p>
+<pre><code>scores2D = np.array([[1, 2, 3, 6],
+                     [2, 4, 5, 6],
+                     [3, 8, 7, 6]])
+
+print(your_softmax(scores2D))
+# [[  4.89907947e-04   1.33170787e-03   3.61995731e-03   7.27087861e-02]
+#  [  1.33170787e-03   9.84006416e-03   2.67480676e-02   7.27087861e-02]
+#  [  3.61995731e-03   5.37249300e-01   1.97642972e-01   7.27087861e-02]]
+
+print(softmax(scores2D))
+# [[ 0.09003057  0.00242826  0.01587624  0.33333333]
+#  [ 0.24472847  0.01794253  0.11731043  0.33333333]
+#  [ 0.66524096  0.97962921  0.86681333  0.33333333]]
+</code></pre>
+<p>The results are different - the second one is indeed identical with the one expected in the Udacity quiz, where all columns indeed sum to 1, which is not the case with the first (wrong) result.</p>
+<p>So, all the fuss was actually for an implementation detail - the <code>axis</code> argument. According to the <a href=http://docs.scipy.org/doc/numpy/reference/generated/numpy.sum.html rel=noreferrer>numpy.sum documentation</a>:</p>
+<blockquote>
+<p>The default, axis=None, will sum all of the elements of the input array</p>
+</blockquote>
+<p>while here we want to sum row-wise, hence <code>axis=0</code>. For a 1-D array, the sum of the (only) row and the sum of all the elements happen to be identical, hence your identical results in that case...</p>
+<p>The <code>axis</code> issue aside, your implementation (i.e. your choice to subtract the max first) is actually <strong>better</strong> than the suggested solution! In fact, it is the recommended way of implementing the softmax function - see <a href=http://cs231n.github.io/linear-classify/#softmax rel=noreferrer>here</a> for the justification (numeric stability, also pointed out by some other answers here).</p>","<p>So, this is really a comment to desertnauts answer but I cant comment on it yet due to my reputation. As he pointed out, your version is only correct if your input consists of a single sample. If your input consists of several samples, it is wrong. <strong>However, desertnauts solution is also wrong.</strong> The problem is that once he takes a 1-dimensional input and then he takes a 2-dimensional input. Let me show this to you.</p>
+<pre><code>import numpy as np
+
+# your solution:
+def your_softmax(x):
+    Compute softmax values for each sets of scores in x.
+    e_x = np.exp(x - np.max(x))
+    return e_x / e_x.sum()
+
+# desertnaut solution (copied from his answer): 
+def desertnaut_softmax(x):
+    Compute softmax values for each sets of scores in x.
+    e_x = np.exp(x - np.max(x))
+    return e_x / e_x.sum(axis=0) # only difference
+
+# my (correct) solution:
+def softmax(z):
+    assert len(z.shape) == 2
+    s = np.max(z, axis=1)
+    s = s[:, np.newaxis] # necessary step to do broadcasting
+    e_x = np.exp(z - s)
+    div = np.sum(e_x, axis=1)
+    div = div[:, np.newaxis] # dito
+    return e_x / div
+</code></pre>
+<p>Lets take desertnauts example:</p>
+<pre><code>x1 = np.array([[1, 2, 3, 6]]) # notice that we put the data into 2 dimensions(!)
+</code></pre>
+<p>This is the output:</p>
+<pre><code>your_softmax(x1)
+array([[ 0.00626879,  0.01704033,  0.04632042,  0.93037047]])
+
+desertnaut_softmax(x1)
+array([[ 1.,  1.,  1.,  1.]])
+
+softmax(x1)
+array([[ 0.00626879,  0.01704033,  0.04632042,  0.93037047]])
+</code></pre>
+<p>You can see that desernauts version would fail in this situation. (It would not if the input was just one dimensional like np.array([1, 2, 3, 6]).</p>
+<p>Lets now use 3 samples since thats the reason why we use a 2 dimensional input. The following x2 is not the same as the one from desernauts example. </p>
+<pre><code>x2 = np.array([[1, 2, 3, 6],  # sample 1
+               [2, 4, 5, 6],  # sample 2
+               [1, 2, 3, 6]]) # sample 1 again(!)
+</code></pre>
+<p>This input consists of a batch with 3 samples. But sample one and three are essentially the same. We now expect 3 rows of softmax activations where the first should be the same as the third and also the same as our activation of x1!</p>
+<pre><code>your_softmax(x2)
+array([[ 0.00183535,  0.00498899,  0.01356148,  0.27238963],
+       [ 0.00498899,  0.03686393,  0.10020655,  0.27238963],
+       [ 0.00183535,  0.00498899,  0.01356148,  0.27238963]])
+
+
+desertnaut_softmax(x2)
+array([[ 0.21194156,  0.10650698,  0.10650698,  0.33333333],
+       [ 0.57611688,  0.78698604,  0.78698604,  0.33333333],
+       [ 0.21194156,  0.10650698,  0.10650698,  0.33333333]])
+
+softmax(x2)
+array([[ 0.00626879,  0.01704033,  0.04632042,  0.93037047],
+       [ 0.01203764,  0.08894682,  0.24178252,  0.65723302],
+       [ 0.00626879,  0.01704033,  0.04632042,  0.93037047]])
+</code></pre>
+<p>I hope you can see that this is only the case with my solution.</p>
+<pre><code>softmax(x1) == softmax(x2)[0]
+array([[ True,  True,  True,  True]], dtype=bool)
+
+softmax(x1) == softmax(x2)[2]
+array([[ True,  True,  True,  True]], dtype=bool)
+</code></pre>
+<p>Additionally, here is the results of TensorFlows softmax implementation:</p>
+<pre><code>import tensorflow as tf
+import numpy as np
+batch = np.asarray([[1,2,3,6],[2,4,5,6],[1,2,3,6]])
+x = tf.placeholder(tf.float32, shape=[None, 4])
+y = tf.nn.softmax(x)
+init = tf.initialize_all_variables()
+sess = tf.Session()
+sess.run(y, feed_dict={x: batch})
+</code></pre>
+<p>And the result:</p>
+<pre><code>array([[ 0.00626879,  0.01704033,  0.04632042,  0.93037045],
+       [ 0.01203764,  0.08894681,  0.24178252,  0.657233  ],
+       [ 0.00626879,  0.01704033,  0.04632042,  0.93037045]], dtype=float32)
+</code></pre>",numpy softmax,What is softmax in Python?,"Softmax function. The softmax function transforms each element of a collection by computing the exponential of each element divided by the sum of the exponentials of all the elements. That is, if x is a one-dimensional numpy array: softmax(x) = np.",What is the problem of implementing the softmax function?,"The common problem which can occur while applying softmax is the numeric stability problem, which means that the ∑j e^(z_j) may become very large due to the exponential and overflow error that may occur. This overflow error can be solved by subtracting each value of the array with its max value.",Is Scipy softmax numerically stable?,"5 Answers. The softmax exp(x)/sum(exp(x)) is actually numerically well-behaved. It has only positive terms, so we needn't worry about loss of significance, and the denominator is at least as large as the numerator, so the result is guaranteed to fall between 0 and 1.",What is softmax used for?,"The softmax function is used as the activation function in the output layer of neural network models that predict a multinomial probability distribution. That is, softmax is used as the activation function for multi-class classification problems where class membership is required on more than two class labels."
+https://stackoverflow.com/questions/41570364/npm-install-not-working-in-windows,node.js - npm install not working in windows,"<p>After countless hours of debugging and researching, I decided to install in a different machine to see if the problem was with my Node installation. It worked. </p>
+<p>So for everyone who may come across this, know that the possibility to uninstall node and delete NPM will be there. This is what I did. I believe it is the safest way to solve the problem and all the rest of your applications installed in your machine will still work. I credit <a href=https://stackoverflow.com/questions/20711240/how-to-completely-remove-node-js-from-windows>this answer</a> for these steps, although I had other npm and node_modules in other locations. So do a quick search for these and unless they are part of an application, make sure they are deleted as well.</p>
+<ol>
+<li><p>Uninstall from Programs &amp; Features with the uninstaller.</p></li>
+<li><p>Reboot (or you probably can get away with killing all node-related processes from Task Manager).</p></li>
+<li><p>Look for these folders and remove them (and their contents) if any still exist. Depending on the version you installed, UAC settings, and CPU architecture, these may or may not exist:</p>
+<ul>
+<li><code>C:\Program Files (x86)\Nodejs</code></li>
+<li><code>C:\Program Files\Nodejs</code></li>
+<li><code>C:\Users\{User}\AppData\Roaming\npm</code> (or <code>%appdata%\npm</code>)</li>
+<li><code>C:\Users\{User}\AppData\Roaming\npm-cache</code> (or <code>%appdata%\npm-cache</code>)</li>
+<li><code>C:\Users\{User}\.npmrc</code> (and possibly check for that without the <code>.</code> prefix too)</li>
+</ul></li>
+<li><p><a href=https://stackoverflow.com/questions/141344/how-to-check-if-directory-exists-in-path>Check your <code>%PATH%</code> environment variable</a> to ensure no references to <code>Nodejs</code> or <code>npm</code> exist.</p></li>
+<li><p>If its <em>still</em> not uninstalled, type <code>where node</code> at the command prompt and youll see where it resides -- delete that (and probably the parent directory) too.</p></li>
+<li><p>Reboot, for good measure.</p></li>
+</ol>","<p>Please read the error carefully.
+Its saying :</p>
+<pre><code>fsevents@1.0.17: wanted {os:darwin,arch:any}
+</code></pre>
+<blockquote>
+<p>The FSEvents API in OS X allows applications to register for notifications of changes to a given directory tree.</p>
+</blockquote>
+<p>It needs OS X, Because some of npm dependencies are using fsevents thats by Its breaking in windows.</p>
+<p><a href=https://github.com/strongloop/fsevents rel=nofollow noreferrer>https://github.com/strongloop/fsevents</a></p>
+<p><strong>Update:</strong></p>
+<p>As you told Its working without fsevents then you can follow these steps:</p>
+<p>install <a href=https://www.npmjs.com/package/npm-check-updates rel=nofollow noreferrer>npm-check-updates</a> and try again.</p>
+<pre><code> npm install -g npm-check-updates
+ ncu -u       #It will update the npm dependencies.
+ rm -fr node_modules
+ npm install
+</code></pre>
+<p>It will update the dependencies and install the dependencies. <br/>
+Hope It will work :)</p>","<p>please try to open the console as a administrator.
+do right Click on the commandLine and select open as administrator then try installing dependency.</p>",npm install not working,Why npm install not working?,"The Npm command not found error can appear when you install or upgrade npm. On Windows, the cause of this error could be that a PATH or system variable is not correctly set. The error can also occur if you do not have npm or Node. js installed, have an outdated version, or have permission issues.",Why is my npm install not working in Mac?,"This solution fixes the error caused by trying to run npm update npm -g . ... Run the following commands to remove all existing global npm modules, uninstall node & npm, re-install node with the correct defaults, configure the location for global npm modules to be installed, and then install npm as its own pacakge.",How do you get npm install working?,"npm install can be run with or without arguments. When run without arguments, npm install downloads dependencies defined in a package. json file and generates a node_modules folder with the installed modules. When run with arguments, npm install downloads specific modules to the node_modules folder.",Why npm is not recognized?,"The Npm command not found error can appear when you install or upgrade npm. On Windows, the cause of this error could be that a PATH or system variable is not correctly set. The error can also occur if you do not have npm or Node. js installed, have an outdated version, or have permission issues."

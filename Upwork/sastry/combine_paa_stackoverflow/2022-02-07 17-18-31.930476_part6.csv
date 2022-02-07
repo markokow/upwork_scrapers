@@ -1,0 +1,1069 @@
+url,title,best_answer_1,best_answer_2,best_answer_3,keyword,question_1,answer_1,question_2,answer_2,question_3,answer_3,question_4,answer_4
+https://stackoverflow.com/questions/42855224/how-to-add-rgb-values-into-setcolor-in-java,How to add RGB values into setColor() in Java?,"<p>You can get a Color instance with the simple code:</p>
+<pre><code>Color myWhite = new Color(255, 255, 255); // Color white
+</code></pre>
+<p>Then, you can set RGB color to your object with something like that:</p>
+<pre><code>g.setColor(myWhite);
+</code></pre>
+<p>Hope it helps you!</p>","<p>Or you can do:</p>
+<pre><code>setColor(new Color(r, g, b));
+</code></pre>
+<p>For example:</p>
+<pre><code>setColor(new Color(0, 0, 0)); //sets the color to Black
+</code></pre>","<p>You can do it with <code>Graphics.setColor</code></p>
+<p>For example:</p>
+<pre><code>g.setColor(Color.getHSBColor(255, 79, 18));
+</code></pre>",setcolor java,What is setColor in Java?,"The Graphics instance gets used to invoke various functions. On the other hand, the setColor function sets the graphic context color to the desired color. It can be a custom user-defined color or can be from the Color class. Custom colors can get defined by giving RGB values in the constructor of the Color class.",What colors does Java recognize?,,Is setColor a method?,It is generally defined to use along with web pages and in HTML code. It has a method paint that comes from the java. awt.,What is a graphics object in Java?,A Graphics object encapsulates state information needed for the basic rendering operations that Java supports. ... The Component object on which to draw. A translation origin for rendering and clipping coordinates. The current clip. The current color.
+https://stackoverflow.com/questions/11308367/error-in-my-code-object-of-type-closure-is-not-subsettable/11308796,r - Error in <my code> : object of type closure is not subsettable,"<p>In general this error message means that you have tried to use indexing on a function.  You can reproduce this error message with, for example</p>
+<pre><code>mean[1]
+## Error in mean[1] : object of type closure is not subsettable
+mean[[1]]
+## Error in mean[[1]] : object of type closure is not subsettable
+mean$a
+## Error in mean$a : object of type closure is not subsettable
+</code></pre>
+<p>The closure mentioned in the error message is (loosely) the function and the environment that stores the variables when the function is called.</p>
+<hr/>
+<p>In this specific case, as Joshua mentioned, you are trying to access the <a href=https://www.rdocumentation.org/packages/base/topics/connections rel=noreferrer><code>url</code></a> function as a variable.  If you define a variable named <code>url</code>, then the error goes away.</p>
+<p>As a matter of good practise, you should usually avoid naming variables after base-R functions.  (Calling variables <a href=https://www.rdocumentation.org/packages/utils/topics/data rel=noreferrer><code>data</code></a> is a common source of this error.) </p>
+<hr/>
+<p>There are several related errors for trying to subset operators or keywords.</p>
+<pre><code>`+`[1]
+## Error in `+`[1] : object of type builtin is not subsettable
+`if`[1]
+## Error in `if`[1] : object of type special is not subsettable
+</code></pre>
+<hr/>
+<p>If youre running into this problem in <code>shiny</code>, the most likely cause is that youre trying to work with a <code>reactive</code> expression without calling it as a function using parentheses.</p>
+<pre><code>library(shiny)
+reactive_df &lt;- reactive({
+    data.frame(col1 = c(1,2,3),
+               col2 = c(4,5,6))
+})
+</code></pre>
+<p>While we often work with reactive expressions in shiny as if they were data frames, they are actually <strong>functions</strong> that return data frames (or other objects).</p>
+<pre><code>isolate({
+    print(reactive_df())
+    print(reactive_df()$col1)
+})
+  col1 col2
+1    1    4
+2    2    5
+3    3    6
+[1] 1 2 3
+</code></pre>
+<p>But if we try to subset it without parentheses, then were actually trying to index a function, and we get an error:</p>
+<pre><code>isolate(
+    reactive_df$col1
+)
+Error in reactive_df$col1 : object of type closure is not subsettable
+</code></pre>","<p>You dont define the vector, <code>url</code>, before trying to subset it.  <code>url</code> is also a function in the base package, so <code>url[i]</code> is attempting to subset that function... which doesnt make sense.</p>
+<p>You probably defined <code>url</code> in your prior R session, but forgot to copy that code to your script.</p>","<p>In case of this similar error 
+<strong>Warning: Error in $: object of type closure is not subsettable
+  [No stack trace available]</strong></p>
+<p>Just add corresponding package name using :: 
+e.g.</p>
+<p>instead of tags(....)</p>
+<p>write 
+shiny::tags(....)</p>",object of type 'closure' is not subsettable,object of type 'closure' is not subsettable,"A common error in R is object of type 'closure' is not subsettable . This message means that you have a variable which represents a function, and you're mistakenly using square brackets to try and subset it, thinking that it represents a data.",How do you fix an object of type closure is not Subsettable?,"This error happens when you're trying to treat a function like a list, vector, or data frame. To fix it, start treating the function like a function. (You should get four plots, arranged in a 2×2 grid.)",What is a closure object in R?,"A closure in R is an object that contains functions bound to the environment the closure was created in. These functions maintain access to the scope in which they were defined, allowing for powerful design patterns that are difficult with the standard S/S approach to objects in R.",What is type closure?,"A closure expression produces a closure value with a unique, anonymous type that cannot be written out. A closure type is approximately equivalent to a struct which contains the captured variables."
+https://stackoverflow.com/questions/41984399/denied-requested-access-to-the-resource-is-denied-docker,dockerfile - denied: requested access to the resource is denied : docker,"<p>You may need to switch your docker repo to private before docker push.</p>
+<p>Thanks to the <a href=https://stackoverflow.com/a/42403423/4096935>answer</a> provided by <a href=https://stackoverflow.com/users/7607604/dean-wu>Dean Wu</a> and <a href=https://stackoverflow.com/questions/41984399/denied-requested-access-to-the-resource-is-denied-docker/41984666#comment94770203_41984666>this comment</a> by <a href=https://stackoverflow.com/users/369759/ses>ses</a>, before pushing, remember to <strong>log out</strong>, then <strong>log in</strong> from the command line to your docker hub account</p>
+<pre><code># you may need log out first `docker logout` ref. https://stackoverflow.com/a/53835882/248616
+docker login
+</code></pre>
+<p>According to the <a href=https://docs.docker.com/engine/getstarted/step_six/#/step-1-tag-and-push-the-image rel=noreferrer>docs</a>:</p>
+<pre><code>You need to include the namespace for Docker Hub to associate it with your account.
+The namespace is the same as your Docker Hub account name.
+You need to rename the image to YOUR_DOCKERHUB_NAME/docker-whale.
+</code></pre>
+<p>So, this means you have to <strong>tag</strong> your image before pushing:</p>
+<pre><code>docker tag firstimage YOUR_DOCKERHUB_NAME/firstimage
+</code></pre>
+<p>and then you should be able to push it.</p>
+<pre><code>docker push YOUR_DOCKERHUB_NAME/firstimage
+</code></pre>",<p>I got the same issue while taking the docker beginner Course. I solved the issue by doing a<code>docker login</code> before the docker push call.</p>,"<p>I had the same issue, but accepted answer given here did not work for me.
+I tried few steps and was able to get around to push it finally. Hope this helps someone.</p>
+<p>Here are the steps worked for me :</p>
+<p>1) Login to the docker. </p>
+<pre><code>docker login -u sirimalla
+</code></pre>
+<p>2) Tag your image build</p>
+<p>my image name here is : <strong>mylocalimage</strong> and by default it has tag : <strong>latest</strong><br/>
+and my username is : <strong>sirimalla</strong> as registered with docker cloud, and I created a public repository named : <strong>dockerhub</strong></p>
+<p>so my personal repository becomes now : <strong>sirimalla/dockerhub</strong>
+and I want to push my image with tag : <code>myfirstimagepush</code></p>
+<p>I tagged as below :</p>
+<pre><code>docker tag mylocalimage:latest sirimalla/dockerhub:myfirstimagepush
+</code></pre>
+<p>3) Pushed the image to my personal docker repository as below</p>
+<pre><code>docker push sirimalla/dockerhub:myfirstimagepush
+</code></pre>
+<p>And it successfully pushed to my personal docker repo.</p>",docker push denied requested access to the resource is denied,What is docker push?,Docker Push is a command that is used to push or share a local Docker image or a repository to a central repository; it might be a public registry like https://hub.docker.com or a private registry or a self-hosted registry.,How do I push to Docker Hub?,"To push an image to Docker Hub, you must first name your local image using your Docker Hub username and the repository name that you created through Docker Hub on the web. You can add multiple images to a repository by adding a specific :<tag> to them (for example docs/base:testing ).",What is docker pull?,The 'docker pull' is a Docker command to download a Docker image or a repository locally on the host from a public or private registry. When we run any container and the specified Docker image is not present locally then it first pulls it from the registry.,What protocol does docker push use?,Namespace-oriented URI Layout. PUSH/PULL registry server for Vimage manifest format. Resumable layer PUSH support. VClient library implementation.
+https://stackoverflow.com/questions/5224790/curl-post-format-for-curlopt-postfields,php - curl POST format for CURLOPT_POSTFIELDS,"<p>In case you are sending a string, urlencode() it. Otherwise if array, it should be key=&gt;value paired and the <code>Content-type</code> header is automatically set to <code>multipart/form-data</code>.</p>
+<p>Also, you dont have to create extra functions to build the query for your arrays, you already have that:</p>
+<pre><code>$query = http_build_query($data, , &amp;);
+</code></pre>","<p><strong>EDIT</strong>: From php5 upwards, usage of <a href=https://php.net/http_build_query rel=noreferrer><code>http_build_query</code></a> is recommended:</p>
+<pre><code>string http_build_query ( mixed $query_data [, string $numeric_prefix [, 
+                          string $arg_separator [, int $enc_type = PHP_QUERY_RFC1738 ]]] )
+</code></pre>
+<p>Simple example from the manual:</p>
+<pre><code>&lt;?php
+$data = array(foo=&gt;bar,
+              baz=&gt;boom,
+              cow=&gt;milk,
+              php=&gt;hypertext processor);
+
+echo http_build_query($data) . \n;
+
+/* output:
+foo=bar&amp;baz=boom&amp;cow=milk&amp;php=hypertext+processor
+*/
+
+?&gt;
+</code></pre>
+<hr/>
+<p><strong><em>before php5:</em></strong></p>
+<p>From the <a href=http://php.net/manual/en/function.curl-setopt.php rel=noreferrer>manual</a>:</p>
+<blockquote>
+<p>CURLOPT_POSTFIELDS</p>
+<p>The full data to post in a HTTP POST operation. To post a file, prepend a filename with @ and use the full path. The filetype can be explicitly specified by following the filename with the type in the format ;type=mimetype. <strong>This parameter can either be passed as a urlencoded string like para1=val1&amp;para2=val2&amp;... or as an array with the field name as key and field data as value. If value is an array, the Content-Type header will be set to multipart/form-data.</strong> As of PHP 5.2.0, files thats passed to this option with the @ prefix must be in array form to work.</p>
+</blockquote>
+<p>So something like this should work perfectly (with parameters passed in a associative array):</p>
+<pre><code>function preparePostFields($array) {
+  $params = array();
+
+  foreach ($array as $key =&gt; $value) {
+    $params[] = $key . = . urlencode($value);
+  }
+
+  return implode(&amp;, $params);
+}
+</code></pre>","<h2>Do not pass a string at all!</h2>
+<p>You can pass an array and let php/curl do the dirty work of encoding etc.</p>",curlopt_postfields,What is Curlopt_postfields?,"It returns a pointer to an encoded string that can be passed as postdata. Using CURLOPT_POSTFIELDS implies setting CURLOPT_POST to  ... If you want to send a zero-byte POST set CURLOPT_POSTFIELDS to an empty string, or set CURLOPT_POST to and CURLOPT_POSTFIELDSIZE to",What is curl_setopt used for?,"Description. The curl_setopt() function will set options for a CURL session identified by the ch parameter. The option parameter is the option you want to set, and the value is the value of the option given by the option.",What is Curlopt_encoding?,CURLOPT_ENCODING only tells the server what types of encoding it will accept. So either way the data will only be decoded if needed. But by giving CURLOPT_ENCODING a value you are limiting your call to only accept one type of encoding.,What is Curlopt_referer?,Description. Pass a pointer to a null-terminated string as parameter. It will be used to set the Referer: header in the http request sent to the remote server. This can be used to fool servers or scripts.
+https://stackoverflow.com/questions/12040197/longer-object-length-is-not-a-multiple-of-shorter-object-length,r - Longer object length is not a multiple of shorter object length?,"<p>Yes, this is something that you should worry about. Check the length of your objects with nrow(). R can auto-replicate objects so that theyre the same length if they differ, which means you might be performing operations on mismatched data.</p>
+<p>In this case you have an obvious flaw in that your subtracting aggregated data from raw data. These will definitely be of different lengths. I suggest that you merge them as time series (using the dates), then locf(), then do your subtraction.  Otherwise merge them by truncating the original dates to the same interval as the aggregated series. Just be very careful that you dont drop observations.</p>
+<p>Lastly, as some general advice as you get started: look at the result of your computations to see if they make sense. You might even pull them into a spreadsheet and replicate the results.     </p>",,,longer object length is not a multiple of shorter object length,longer object length is not a multiple of shorter object length,"The longer object length is not a multiple of shorter object length R warning message appears when you place vectors of different lengths through a function. It occurs because the smaller vector does not end when the larger one does. In this first example, “x” and “y” have the same length and so no message is produced.",,,,,,
+https://stackoverflow.com/questions/9723912/reversing-a-string-with-recursion-in-java,Reversing a String with Recursion in Java,"<p>The function takes the first character of a String - <code>str.charAt(0)</code> - puts it at the end and then calls itself - <code>reverse()</code> - on the remainder - <code>str.substring(1)</code>, adding these two things together to get its result - <code>reverse(str.substring(1)) + str.charAt(0)</code> </p>
+<p>When the passed in String is one character or less and so there will be no remainder left - when <code>str.length()  &lt;= 1)</code> - it stops calling itself recursively and just returns the String passed in.</p>
+<p>So it runs as follows:</p>
+<pre><code>reverse(Hello)
+(reverse(ello)) + H
+((reverse(llo)) + e) + H
+(((reverse(lo)) + l) + e) + H
+((((reverse(o)) + l) + l) + e) + H
+((((o) + l) + l) + e) + H
+olleH
+</code></pre>","<p>You need to remember that you wont have just <em>one</em> call - youll have <em>nested</em> calls. So when the most highly nested call returns immediately (when it finds just o), the next level up will take <code>str.charAt(0)</code> - where <code>str</code> is lo at that point. So that will return ol.</p>
+<p>Then the <em>next</em> level will receive ol, execute <code>str.charAt(0)</code> for <em>its</em> value of <code>str</code> (which is llo), returning oll to the next level out.</p>
+<p>Then the <em>next</em> level will receive the oll from its recursive call, execute <code>str.charAt(0)</code> for <em>its</em> value of <code>str</code> (which is ello), returning olle to the next level out.</p>
+<p>Then the <em>final</em> level will receive the oll from its recursive call, execute <code>str.charAt(0)</code> for <em>its</em> value of <code>str</code> (which is hello), returning olleh to the original caller.</p>
+<p>It may make sense to think of the stack as you go:</p>
+<pre><code>// Most deeply nested call first...
+reverse(o) -&gt; returns o
+reverse(lo) -&gt; adds l, returns ol 
+reverse(llo) -&gt; adds l, returns oll 
+reverse(ello) -&gt; adds e, returns olle 
+reverse(hello) -&gt; adds h, returns olleh 
+</code></pre>",<p>Run it through a debugger. All will become clear.</p>,reverse string java recursion,How do you reverse a string in Java recursion?,class ReverseStringExample { //recursive function to reverse a string. void reverseString(String string) { if ((string==null)||(string.length() <= )) System.out.println(string); else.,How do you reverse a string by recursion?,class ReverseStringExample { //recursive function to reverse a string. void reverseString(String string) { if ((string==null)||(string.length() <= )) System.out.println(string); else.,How can a given string be reversed using recursion in JavaScript?,Recursion is another way to reverse a string in JavaScript. This approach involves two JavaScript functions: substr() and charAt() . The first method returns a substring of a string and the second method returns the specified character of a string.,How do you reverse words in a recursion string?,public static String reverse(String str) { if ((null == str) || (str. length() <= )) { return str; } return reverse(str. substring()) + str. charAt(); }
+https://stackoverflow.com/questions/41625910/offset-columns-in-bootstrap,html - Offset columns in Bootstrap,"<p>The offset works like a blank column that will stay before your column. For example, if you want a column that will have half of the size of the screen and will be exactly in the middle, you will have to do:</p>
+<pre><code>&lt;div class=col-sm-6 col-sm-offset-3&gt;&lt;/div&gt;
+</code></pre>
+<p>A full row has 12 columns. This way you will have 6 columns (half of the row) and a offset of 3 columns. It will be exactly in the middle of the screen.</p>
+<p>Take a look on <a href=http://getbootstrap.com/css/ rel=noreferrer>Bootstrap</a> documentation.</p>","<p>In <strong>Bootstrap 3,</strong> like this..</p>
+<pre><code>&lt;div class=container-fluid&gt;
+    &lt;div class=row&gt;
+        &lt;div class=col-sm-4 col-sm-offset-2&gt;&lt;/div&gt;
+        &lt;div class=col-sm-4&gt;&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<p><a href=http://www.codeply.com/go/7wofwfzrH3 rel=noreferrer>http://www.codeply.com/go/7wofwfzrH3</a></p>
+<p>In <strong>Bootstrap 4</strong>, like this..</p>
+<pre><code>&lt;div class=container-fluid&gt;
+    &lt;div class=row&gt;
+        &lt;div class=col-sm-4 offset-sm-2&gt;&lt;/div&gt;
+        &lt;div class=col-sm-4&gt;&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<p><a href=https://www.codeply.com/go/t5DTGwero8 rel=noreferrer>https://www.codeply.com/go/t5DTGwero8</a></p>","<p>The above doesnt work for me as <em>I think</em> the bootstrap classes have changed slightly.</p>
+<pre><code>&lt;div class=col-md-4 offset-md-2&gt;
+</code></pre>
+<p>Does work for me.</p>
+<p>Hope this helps</p>
+<p>Dave</p>",offset bootstrap,What is offset in Bootstrap?,"BootstrapWeb DevelopmentCSS Framework. An offset is used to push columns over for more spacing. To use offsets on large displays, use the . col-md-offset-* classes.",What is offset in Bootstrap 4?,"Move columns to the right using . offset-md-* classes. These classes increase the left margin of a column by * columns.
+Offset classes Move columns to the right using . offset-md-* classes. These classes increase the left margin of a column by * columns.",What is Col Md offset in Bootstrap?,. col-md-offset-* to leave a particular number of virtual Bootstrap columns to the left of any column (kind of like invisible place holders).,What is Bootstrap grid system?,"The Bootstrap Grid System is used for layout, specifically Responsive Layouts. ... The Grid is made up of groupings of Rows & Columns inside or more Containers. The Bootstrap Grid can be used alone, without the Bootstrap JavaScript and other CSS Components. You just need to download and reference the “ bootstrap-grid."
+https://stackoverflow.com/questions/4135317/make-first-letter-of-a-string-upper-case-with-maximum-performance?rq=1,c# - Make first letter of a string upper case (with maximum performance),"<h1>Solution in different C# versions</h1>
+<h2>C# 8 with at least .NET Core 3.0 or .NET Standard 2.1</h2>
+<pre class=lang-cs prettyprint-override><code>public static class StringExtensions
+{
+    public static string FirstCharToUpper(this string input) =&gt;
+        input switch
+        {
+            null =&gt; throw new ArgumentNullException(nameof(input)),
+             =&gt; throw new ArgumentException(${nameof(input)} cannot be empty, nameof(input)),
+            _ =&gt; string.Concat(input[0].ToString().ToUpper(), input.AsSpan(1))
+        };
+}
+</code></pre>
+<p>Since .NET Core 3.0 / .NET Standard 2.1 <code>String.Concat()</code> supports <code>ReadonlySpan&lt;char&gt;</code> which saves one allocation if we use <code>.AsSpan(1)</code> instead of <code>.Substring(1)</code>.</p>
+<h2>C# 8</h2>
+<pre class=lang-cs prettyprint-override><code>public static class StringExtensions
+{
+    public static string FirstCharToUpper(this string input) =&gt;
+        input switch
+        {
+            null =&gt; throw new ArgumentNullException(nameof(input)),
+             =&gt; throw new ArgumentException(${nameof(input)} cannot be empty, nameof(input)),
+            _ =&gt; input[0].ToString().ToUpper() + input.Substring(1)
+        };
+}
+</code></pre>
+<h2>C# 7</h2>
+<pre class=lang-cs prettyprint-override><code>public static class StringExtensions
+{
+    public static string FirstCharToUpper(this string input)
+    {
+        switch (input)
+        {
+            case null: throw new ArgumentNullException(nameof(input));
+            case : throw new ArgumentException(${nameof(input)} cannot be empty, nameof(input));
+            default: return input[0].ToString().ToUpper() + input.Substring(1);
+        }
+    }
+}
+</code></pre>
+<h2>Really old answers</h2>
+<pre class=lang-cs prettyprint-override><code>public static string FirstCharToUpper(string input)
+{
+    if (String.IsNullOrEmpty(input))
+        throw new ArgumentException(ARGH!);
+    return input.First().ToString().ToUpper() + String.Join(, input.Skip(1));
+}
+</code></pre>
+<p>This version is shorter. For a faster solution, take a look at <a href=https://stackoverflow.com/questions/4135317/make-first-letter-of-a-string-upper-case-with-maximum-performance/4135491#4135491>Diegos answer</a>.</p>
+<pre class=lang-cs prettyprint-override><code>public static string FirstCharToUpper(string input)
+{
+    if (String.IsNullOrEmpty(input))
+        throw new ArgumentException(ARGH!);
+    return input.First().ToString().ToUpper() + input.Substring(1);
+}
+</code></pre>
+<p>Probably the fastest solution is <a href=https://stackoverflow.com/questions/4135317/make-first-letter-of-a-string-upper-case-with-maximum-performance/27073919#27073919>Darrens</a> (Theres even a benchmark) although I would change its <code>string.IsNullOrEmpty(s)</code> validation to throw an exception since the original requirement expects for a first letter to exist so it can be uppercased. Note that this code works for a generic string and not particularly on valid values from the <code>Textbox</code>.</p>","<pre><code>public string FirstLetterToUpper(string str)
+{
+    if (str == null)
+        return null;
+
+    if (str.Length &gt; 1)
+        return char.ToUpper(str[0]) + str.Substring(1);
+
+    return str.ToUpper();
+}
+</code></pre>
+<p>Old answer:
+This makes every first letter to upper case</p>
+<pre><code>public string ToTitleCase(string str)
+{
+    return CultureInfo.CurrentCulture.TextInfo.ToTitleCase(str.ToLower());
+}
+</code></pre>","<p>The right way is to use Culture:</p>
+<pre><code>System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(word.ToLower())
+</code></pre>
+<p><strong>Note:</strong> This will capitalise each word within a string, e.g. red house --&gt; Red House. The solution will also lower-case capitalisation within words, e.g. old McDonald --&gt; Old Mcdonald.</p>",c# capitalize first letter,c# capitalize first letter,"In C#, the Toupper() function of the char class converts a character into uppercase. In the case that we will be discussing, only the first character of the string needs to be converted to uppercase; the rest of the string will stay as it is.",How do you capitalize first letter?,"In general, you should capitalize the first word, all nouns, all verbs (even short ones, like is), all adjectives, and all proper nouns. That means you should lowercase articles, conjunctions, and prepositions—however, some style guides say to capitalize conjunctions and prepositions that are longer than five letters.",How do you capitalize the first character of a string?,"To capitalize the first character of a string, We can use the charAt() to separate the first character and then use the toUpperCase() function to capitalize it.",Do capital letters matter in C#?,"Local Style Guide. You must follow certain guidelines when writing C code. Type names must start with an uppercase letter. In addition, each ""word"" within a class name should start with an uppercase letter."
+https://stackoverflow.com/questions/3365337/best-way-to-generate-a-random-float-in-c-sharp,Best way to generate a random float in C#,"<p>Best approach, no crazed values, <a href=https://stackoverflow.com/questions/609501/generating-a-random-decimal-in-c/610228#610228>distributed with respect to the representable intervals on the floating-point number line</a> (removed uniform as with respect to a continuous number line it is decidedly non-uniform):</p>
+<pre><code>static float NextFloat(Random random)
+{
+    double mantissa = (random.NextDouble() * 2.0) - 1.0;
+    // choose -149 instead of -126 to also generate subnormal floats (*)
+    double exponent = Math.Pow(2.0, random.Next(-126, 128));
+    return (float)(mantissa * exponent);
+}
+</code></pre>
+<p>(*) ... check <a href=http://csharpindepth.com/Articles/General/FloatingPoint.aspx rel=noreferrer>here</a> for subnormal floats</p>
+<p>Warning: generates positive infinity as well! Choose exponent of 127 to be on the safe side.</p>
+<p>Another approach which will give you some crazed values (uniform distribution of bit patterns), potentially useful for fuzzing:</p>
+<pre><code>static float NextFloat(Random random)
+{
+    var buffer = new byte[4];
+    random.NextBytes(buffer);
+    return BitConverter.ToSingle(buffer,0);
+}
+</code></pre>
+<p>An improvement over the previous version is this one, which does not create crazed values (neither infinities nor NaN) and is still fast (also distributed with respect to the representable intervals on the floating-point number line):</p>
+<pre><code>public static float Generate(Random prng)
+{
+    var sign = prng.Next(2);
+    var exponent = prng.Next((1 &lt;&lt; 8) - 1); // do not generate 0xFF (infinities and NaN)
+    var mantissa = prng.Next(1 &lt;&lt; 23);
+
+    var bits = (sign &lt;&lt; 31) + (exponent &lt;&lt; 23) + mantissa;
+    return IntBitsToFloat(bits);
+}
+
+private static float IntBitsToFloat(int bits)
+{
+    unsafe
+    {
+        return *(float*) &amp;bits;
+    }
+}
+</code></pre>
+<p>Least useful approach:</p>
+<pre><code>static float NextFloat(Random random)
+{
+    // Not a uniform distribution w.r.t. the binary floating-point number line
+    // which makes sense given that NextDouble is uniform from 0.0 to 1.0.
+    // Uniform w.r.t. a continuous number line.
+    //
+    // The range produced by this method is 6.8e38.
+    //
+    // Therefore if NextDouble produces values in the range of 0.0 to 0.1
+    // 10% of the time, we will only produce numbers less than 1e38 about
+    // 10% of the time, which does not make sense.
+    var result = (random.NextDouble()
+                  * (Single.MaxValue - (double)Single.MinValue))
+                  + Single.MinValue;
+    return (float)result;
+}
+</code></pre>
+<p>Floating point number line from: <a href=http://www.randelshofer.ch/fhw/gri/float.html rel=noreferrer>Intel Architecture Software Developers Manual Volume 1: Basic Architecture.</a> The Y-axis is logarithmic (base-2) because consecutive binary floating point numbers do not differ linearly. </p>
+<p><img alt=Comparison of distributions, logarithmic Y-axis src=https://3.bp.blogspot.com/_XnHVrPnrx7o/TFHUXopxYNI/AAAAAAAABrs/2H_tT_VuUOk/s1600/distribution.png/></p>","<p>Any reason not to use <code>Random.NextDouble</code> and then cast to <code>float</code>? That will give you a float between 0 and 1.</p>
+<p>If you want a different form of best youll need to specify your requirements. Note that <code>Random</code> shouldnt be used for sensitive matters such as finance or security - and you should generally reuse an existing instance throughout your application, or one per thread (as <code>Random</code> isnt thread-safe).</p>
+<p>EDIT: As suggested in comments, to convert this to a range of <code>float.MinValue</code>, <code>float.MaxValue</code>:</p>
+<pre><code>// Perform arithmetic in double type to avoid overflowing
+double range = (double) float.MaxValue - (double) float.MinValue;
+double sample = rng.NextDouble();
+double scaled = (sample * range) + float.MinValue;
+float f = (float) scaled;
+</code></pre>
+<p>EDIT: Now youve mentioned that this is for unit testing, Im not sure its an ideal approach. You should probably test with concrete values instead - making sure you test with samples in each of the relevant categories - infinities, NaNs, denormal numbers, very large numbers, zero, etc.</p>","<p><strong>One more version... (I think this one is pretty good)</strong></p>
+<pre><code>static float NextFloat(Random random)
+{
+    (float)(float.MaxValue * 2.0 * (rand.NextDouble()-0.5));
+}
+
+//inline version
+float myVal = (float)(float.MaxValue * 2.0 * (rand.NextDouble()-0.5));
+</code></pre>
+<p>I think this...</p>
+<ul>
+<li>is the 2nd fastest (see benchmarks)</li>
+<li>is evenly distributed</li>
+</ul>
+<p><strong>And One more version...(not as good but posting anyway)</strong></p>
+<pre><code>static float NextFloat(Random random)
+{
+    return float.MaxValue * ((rand.Next() / 1073741824.0f) - 1.0f);
+}
+
+//inline version
+float myVal = (float.MaxValue * ((rand.Next() / 1073741824.0f) - 1.0f));
+</code></pre>
+<p>I think this...</p>
+<ul>
+<li>is the fastest (see benchmarks)</li>
+<li>is evenly distributed however because Next() is a 31 bit random value it will only return 2^31 values.  (50% of the neighbor values will have the same value)</li>
+</ul>
+<p><strong>Testing of most of the functions on this page:</strong> (i7, release, without debug, 2^28 loops)</p>
+<pre><code> Sunsetquest1: min: 3.402823E+38  max: -3.402823E+38 time: 3096ms
+ SimonMourier: min: 3.402823E+38  max: -3.402819E+38 time: 14473ms
+ AnthonyPegram:min: 3.402823E+38  max: -3.402823E+38 time: 3191ms
+ JonSkeet:     min: 3.402823E+38  max: -3.402823E+38 time: 3186ms
+ Sixlettervar: min: 1.701405E+38  max: -1.701410E+38 time: 19653ms
+ Sunsetquest2: min: 3.402823E+38  max: -3.402823E+38 time: 2930ms
+</code></pre>",c# random float,How do you randomize a float in C#?,5 Answers. Try: float x = (float)rand()/(float)(RAND_MAX/a);,How do you create a random float from 0 to 1?,"Generate a random float number between 0 to 1 Use a random. random() function of a random module to generate a random float number uniformly in the semi-open range [0.0, 1.0) . Note: A random() function can only provide float numbers between 0.1. to 1.0.
+Use a random. random() function of a random module to generate a random float number uniformly in the semi-open range [0.0, 1.0) . Note: A random() function can only provide float numbers between 0.1. to 1.0.",What is a random float?,"If number is positive, reports a random floating point number greater than or equal to 0 but strictly less than number. If number is negative, reports a random floating point number less than or equal to 0, but strictly greater than number. If number is zero, the result is always 0.
+random-float number If number is positive, reports a random floating point number greater than or equal to 0 but strictly less than number. If number is negative, reports a random floating point number less than or equal to 0, but strictly greater than number. If number is zero, the result is always 0.",What is random NextDouble in C#?,"Returns a random floating-point number that is greater than or equal to 0.0, and less than 1.0. public: virtual double NextDouble();"
+https://stackoverflow.com/questions/9766717/in-sql-server-what-does-set-ansi-nulls-on-mean,"tsql - In SQL Server, what does SET ANSI_NULLS ON mean?","<p>It means that no rows will be returned if <code>@region</code> is <code>NULL</code>, when used in your first example, even if there are rows in the table where <code>Region</code> is <code>NULL</code>.</p>
+<p>When <code>ANSI_NULLS</code> is on (which you should always set on anyway, since the option to not have it on is going to be removed in the future), any comparison operation where (at least) one of the operands is <code>NULL</code> produces the third logic value - <code>UNKNOWN</code> (as opposed to <code>TRUE</code> and <code>FALSE</code>).</p>
+<p><code>UNKNOWN</code> values propagate through any combining boolean operators if theyre not already decided (e.g. <code>AND</code> with a <code>FALSE</code> operand or <code>OR</code> with a <code>TRUE</code> operand) or negations (<code>NOT</code>).</p>
+<p>The <code>WHERE</code> clause is used to filter the result set produced by the <code>FROM</code> clause, such that the overall value of the <code>WHERE</code> clause must be <code>TRUE</code> for the row to not be filtered out. So, if an <code>UNKNOWN</code> is produced by any comparison, it will cause the row to be filtered out.</p>
+<hr/>
+<p>@user1227804s <a href=https://stackoverflow.com/a/9766823/15498>answer</a> includes this quote:</p>
+<blockquote>
+<p>If both sides of the comparison are columns or compound expressions, the setting does not affect the comparison.</p>
+</blockquote>
+<p>from <a href=https://msdn.microsoft.com/en-us/library/ms188048.aspx rel=nofollow noreferrer><code>SET ANSI_NULLS</code></a><sup>*</sup></p>
+<p>However, Im not sure what point its trying to make, since if two <code>NULL</code> columns are compared (e.g. in a <code>JOIN</code>), the comparison still fails:</p>
+<pre><code>create table #T1 (
+    ID int not null,
+    Val1 varchar(10) null
+)
+insert into #T1(ID,Val1) select 1,null
+
+create table #T2 (
+    ID int not null,
+    Val1 varchar(10) null
+)
+insert into #T2(ID,Val1) select 1,null
+
+select * from #T1 t1 inner join #T2 t2 on t1.ID = t2.ID and t1.Val1 = t2.Val1
+</code></pre>
+<p>The above query returns 0 rows, whereas:</p>
+<pre><code>SELECT * FROM #T1 t1 INNER JOIN #T2 t2 
+   ON t1.ID = t2.ID 
+  AND (   t1.Val1 = t2.Val1 
+       OR t1.Val1 IS NULL 
+      AND t2.Val1 IS NULL   )
+</code></pre>
+<p>Returns one row. So even when both operands are columns, <code>NULL</code> does not equal <code>NULL</code>. And the <a href=http://msdn.microsoft.com/en-us/library/ms175118.aspx rel=nofollow noreferrer>documentation for <code>=</code></a> doesnt have anything to say about the operands:</p>
+<blockquote>
+<p>When you compare two <code>NULL</code> expressions, the result depends on the <code>ANSI_NULLS</code> setting:</p>
+<p>If <code>ANSI_NULLS</code> is set to <code>ON</code>, the result is <code>NULL</code><sup>1</sup>, following the ANSI convention that a <code>NULL</code> (or unknown) value is not equal to another <code>NULL</code> or unknown value.</p>
+<p>If <code>ANSI_NULLS</code> is set to <code>OFF</code>, the result of <code>NULL</code> compared to <code>NULL</code> is <code>TRUE</code>.</p>
+<p>Comparing <code>NULL</code> to a non-<code>NULL</code> value always results in <code>FALSE</code><sup>2</sup>.</p>
+</blockquote>
+<p>However, both <sup>1</sup> and <sup>2</sup> are incorrect - the result of both comparisons is <code>UNKNOWN</code>.</p>
+<hr/>
+<p><sup>*</sup>The cryptic meaning of this text was finally discovered years later. What it actually means is that, for those comparisons, the setting has no effect and <em>it always acts as if the setting were ON</em>. Would have been clearer if it had stated that <code>SET ANSI_NULLS OFF</code> was the setting that had no effect.</p>","<p>If ANSI_NULLS is set to ON  and if we apply = , &lt;&gt; on NULL column value while writing select statement then it will not return any result.</p>
+<p><strong>Example</strong></p>
+<pre><code>create table #tempTable (sn int, ename varchar(50))
+
+insert into #tempTable
+values (1, Manoj), (2, Pankaj), (3, NULL), (4, Lokesh), (5, Gopal)
+</code></pre>
+<p><strong>SET ANSI_NULLS ON</strong></p>
+<pre><code>select * from #tempTable where ename is NULL -- (1 row(s) affected)
+select * from #tempTable where ename = NULL -- (0 row(s) affected)
+select * from #tempTable where ename is not NULL -- (4 row(s) affected)
+select * from #tempTable where ename &lt;&gt; NULL -- (0 row(s) affected)
+</code></pre>
+<p><strong>SET ANSI_NULLS OFF</strong></p>
+<pre><code>select * from #tempTable where ename is NULL -- (1 row(s) affected)
+select * from #tempTable where ename = NULL -- (1 row(s) affected)
+select * from #tempTable where ename is not NULL -- (4 row(s) affected)
+select * from #tempTable where ename &lt;&gt; NULL -- (4 row(s) affected)
+</code></pre>","<p>If <code>@Region</code> is not a <code>null</code> value (lets say <code>@Region = South</code>) it will not return rows where the Region field is null, regardless of the value of ANSI_NULLS.</p>
+<p>ANSI_NULLS will only make a difference when the value of <code>@Region</code> is <code>null</code>, i.e. when your first query essentially becomes the second one.</p>
+<p>In that case, ANSI_NULLS ON will not return any rows (because <code>null = null</code> will yield an unknown boolean value (a.k.a. <code>null</code>)) and ANSI_NULLS OFF will return any rows where the Region field is null (because <code>null = null</code> will yield <code>true</code>)</p>",set ansi nulls on,set ansi nulls on,"When ANSI_NULLS is ON, all comparisons against a null value evaluate to UNKNOWN. When SET ANSI_NULLS is OFF, comparisons of all data against a null value evaluate to TRUE if the data value is NULL. If SET ANSI_NULLS is not specified, the setting of the ANSI_NULLS option of the current database applies.",What is set Quoted_identifier on?,"SET QUOTED_IDENTIFIER must be ON when reserved keywords are used for object names in the database. When SET QUOTED_IDENTIFIER is OFF, identifiers cannot be quoted and must follow all Transact-SQL rules for identifiers.",IS NULL ANSI SQL?,"What is NULL? ... ANSI-SQL defines NULL as ""a special value, or mark, that is used to indicate the absence of any data value."" (ANSI-92) NULL in SQL is not a ""data value"", but rather an indicator that we have missing data.",What is set Nocount on SQL Server?,"When you use SET NOCOUNT ON, the message that indicates the number of rows that are affected by the T-SQL statement is not returned as part of the results. When you use SET NOCOUNT OFF; the count is returned. Using SET NOCOUNT ON can improve performance because network traffic can be reduced."
+https://stackoverflow.com/questions/18205111/service-will-not-start-error-1067-the-process-terminated-unexpectedly,java - Service will not start: error 1067: the process terminated unexpectedly,"<p>Goto: </p>
+<blockquote>
+<p>Registry-&gt; HKEY_LOCAL‌​_MACHINE-&gt; System-&gt; Cur‌​rentControlSet-&gt; Servi‌​ces.</p>
+</blockquote>
+<p>Find the concerned service &amp; delete it. Close regedit. Reboot the PC &amp; Re-install the concerned service. Now the error should be gone.</p>","<p>I resolved the problem.This is for EAServer Windows Service</p>
+<p>Resolution is --&gt; 
+Open Regedit in Run prompt</p>
+<p>Under HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\services\EAServer</p>
+<p>In parameters, <strong>give SERVERNAME entry as EAServer.</strong></p>
+<p>[It is sometime overwritten with Envirnoment variable : Path value]</p>","<p>This is a problem related permission.
+Make sure that the current user has access to the folder which contains installation files.</p>",error 1067 the process terminated unexpectedly,error 1067 the process terminated unexpectedly,"""Error 1067: The process terminated unexpectedly"" may occur when you install a software that's incompatible with the version of Windows you are using. Make sure the software you are installing is compatible with the Windows version. If not, please download the correct software for your Windows version.",How do I fix error 1067 the process terminated unexpectedly?,"Go to Control Panel.
+Then open Uninstall a Program.
+Right-click the application that gets ""Error 1067: The process terminated unexpectedly.""
+Select Uninstall.
+Restart the PC when finished.
+Please delete temporary files, see solution 2.
+Then reinstall the application again.",What is system Error 1067 has occurred?,The Error 1067 error code is caused by Windows system malfunction. Corrupted system files are usually a real danger to the performance of a computer. ... This damaged system file will result in missing or wrongly connected data and data files needed for the optimal working of the application.,Could not start MySQL service error 1067 process terminated unexpectedly?,"If you are bothered by SQL or MySQL error 1067, you can delete some log files from the install directory to fix it. ... In the folder, click the Data folder, find ib_logfile0 and ib_logfile1, and then delete them. Go to the Services window and start the MySQL service again."
+https://stackoverflow.com/questions/138600/initializing-a-static-stdmapint-int-in-c,"stl - Initializing a static std::map<int, int> in C++","<p>Using C++11:</p>
+<pre><code>#include &lt;map&gt;
+using namespace std;
+
+map&lt;int, char&gt; m = {{1, a}, {3, b}, {5, c}, {7, d}};
+</code></pre>
+<p>Using <a href=http://www.boost.org/doc/libs/1_36_0/libs/assign/doc/index.html rel=noreferrer>Boost.Assign</a>:</p>
+<pre><code>#include &lt;map&gt;
+#include boost/assign.hpp
+using namespace std;
+using namespace boost::assign;
+
+map&lt;int, char&gt; m = map_list_of (1, a) (3, b) (5, c) (7, d);
+</code></pre>","<p>Best way is to use a function:</p>
+<pre><code>#include &lt;map&gt;
+
+using namespace std;
+
+map&lt;int,int&gt; create_map()
+{
+  map&lt;int,int&gt; m;
+  m[1] = 2;
+  m[3] = 4;
+  m[5] = 6;
+  return m;
+}
+
+map&lt;int,int&gt; m = create_map();
+</code></pre>","<p>Its not a complicated issue to make something similar to boost. Heres a class with just three functions, including the constructor, to replicate what boost did (almost).</p>
+<pre><code>template &lt;typename T, typename U&gt;
+class create_map
+{
+private:
+    std::map&lt;T, U&gt; m_map;
+public:
+    create_map(const T&amp; key, const U&amp; val)
+    {
+        m_map[key] = val;
+    }
+
+    create_map&lt;T, U&gt;&amp; operator()(const T&amp; key, const U&amp; val)
+    {
+        m_map[key] = val;
+        return *this;
+    }
+
+    operator std::map&lt;T, U&gt;()
+    {
+        return m_map;
+    }
+};
+</code></pre>
+<p>Usage:</p>
+<pre>
+std::map mymap = create_map&lt;int, int &gt;(1,2)(3,4)(5,6);
+</pre>
+<p>The above code works best for initialization of global variables or static members of a class which needs to be initialized and you have no idea when it gets used first but you want to assure that the values are available in it.</p>
+<p>If say, youve got to insert elements into an existing std::map... heres another class for you.</p>
+<pre><code>template &lt;typename MapType&gt;
+class map_add_values {
+private:
+    MapType mMap;
+public:
+    typedef typename MapType::key_type KeyType;
+    typedef typename MapType::mapped_type MappedType;
+
+    map_add_values(const KeyType&amp; key, const MappedType&amp; val)
+    {
+        mMap[key] = val;
+    }
+
+    map_add_values&amp; operator()(const KeyType&amp; key, const MappedType&amp; val) {
+        mMap[key] = val;
+        return *this;
+    }
+
+    void to (MapType&amp; map) {
+        map.insert(mMap.begin(), mMap.end());
+    }
+};
+</code></pre>
+<p>Usage:</p>
+<pre><code>typedef std::map&lt;int, int&gt; Int2IntMap;
+Int2IntMap testMap;
+map_add_values&lt;Int2IntMap&gt;(1,2)(3,4)(5,6).to(testMap);
+</code></pre>
+<p>See it in action with GCC 4.7.2 here: <a href=http://ideone.com/3uYJiH rel=noreferrer>http://ideone.com/3uYJiH</a></p>
+<p><strong>############### EVERYTHING BELOW THIS IS OBSOLETE #################</strong></p>
+<p><strong>EDIT</strong>: The <code>map_add_values</code> class below, which was the original solution I had suggested, would fail when it comes to GCC 4.5+. Please look at the code above for how to <strong>add</strong> values to existing map.</p>
+<pre><code>
+template&lt;typename T, typename U&gt;
+class map_add_values
+{
+private:
+    std::map&lt;T,U&gt;&amp; m_map;
+public:
+    map_add_values(std::map&lt;T, U&gt;&amp; _map):m_map(_map){}
+    map_add_values&amp; operator()(const T&amp; _key, const U&amp; _val)
+    {
+        m_map[key] = val;
+        return *this;
+    }
+};</code></pre>
+<p>Usage:</p>
+<pre>std::map&lt;int, int&gt; my_map;
+// Later somewhere along the code
+map_add_values&lt;int,int&gt;(my_map)(1,2)(3,4)(5,6);</pre>
+<p>NOTE: Previously I used a <code>operator []</code> for adding the actual values. This is not possible as commented by dalle.</p>
+<p><strong>##################### END OF OBSOLETE SECTION #####################</strong></p>",initialize map c++,How do you initialize a map in C++?,"Method 1 (Default Constructor) Default constructor doesn't take any params and creates an empty map with no key-value pairs at the time of initialization.
+Method 3 (Copy Constructor)
+Method 4 (Move Constructor)
+Method 5 (Initializer list Constructor)",Can we initialize map in C++?,,How do you initialize a map?,"We can also initialize the map using the double-brace syntax: Map<String, String> doubleBraceMap = new HashMap<String, String>() {{ put(""key1"", ""value1""); put(""key2"", ""value2""); }};",How do you declare a map in C++?,"A map can be declared as follows: #include <iostream> #include <map> map<int, int> sample_map; Each map entry consists of a pair: a key and a value. In this case, both the key and the value are defined as integers, but you can use other types as well: strings, vectors, types you define yourself, and more."
+https://stackoverflow.com/questions/19139434/php-move-a-file-into-a-different-folder-on-the-server,directory - PHP - Move a file into a different folder on the server,"<p>The <code>rename</code> function does this</p>
+<p><a href=http://php.net/manual/en/function.rename.php rel=noreferrer>docs rename</a></p>
+<p><code>rename(image1.jpg, del/image1.jpg);</code></p>
+<p>If you want to keep the existing file on the same place you should use <code>copy</code></p>
+<p><a href=http://php.net/copy rel=noreferrer>docs copy</a></p>
+<p><code>copy(image1.jpg, del/image1.jpg);</code></p>
+<p>If you want to move an uploaded file use the <code>move_uploaded_file</code>, although this is almost the same as <code>rename</code> this function also checks that the given file is a file that was uploaded via the <code>POST</code>, this prevents for example that a local file is moved </p>
+<p><a href=http://www.php.net/manual/en/function.move-uploaded-file.php rel=noreferrer>docs move_uploaded_file</a></p>
+<pre><code>$uploads_dir = /uploads;
+foreach ($_FILES[pictures][error] as $key =&gt; $error) {
+    if ($error == UPLOAD_ERR_OK) {
+        $tmp_name = $_FILES[pictures][tmp_name][$key];
+        $name = $_FILES[pictures][name][$key];
+        move_uploaded_file($tmp_name, $uploads_dir/$name);
+    }
+}
+</code></pre>
+<p><strong>code snipet from docs</strong></p>","<p>Use the <a href=http://www.php.net/manual/en/function.rename.php rel=noreferrer>rename()</a> function.</p>
+<pre><code>rename(user/image1.jpg, user/del/image1.jpg);
+</code></pre>","<p>If you want to move the file in new path with keep original file name. use this:</p>
+<pre><code>$source_file = foo/image.jpg;
+$destination_path = bar/;
+rename($source_file, $destination_path . pathinfo($source_file, PATHINFO_BASENAME));
+</code></pre>",php move file,How do I move a file from one directory to another in php?,"The copy() function in PHP is used to copy a file from source to target or destination directory. It makes a copy of the source file to the destination file and if the destination file already exists, it gets overwritten. The copy() function returns true on success and false on failure.",How can we rename file in php?,"$oldname is the name of the file that you want to rename.
+$newname is the new name of the file.
+$context is a valid context resource.",What is move_uploaded_file in php?,"Definition and Usage The move_uploaded_file() function moves an uploaded file to a new destination. Note: This function only works on files uploaded via PHP's HTTP POST upload mechanism. Note: If the destination file already exists, it will be overwritten.
+The move_uploaded_file() function moves an uploaded file to a new destination. Note: This function only works on files uploaded via PHP's HTTP POST upload mechanism. Note: If the destination file already exists, it will be overwritten.",Which of the following array value is used for moving the uploaded file to other location?,The move_uploaded_file() function moves an uploaded file to a new destination.
+https://stackoverflow.com/questions/22696886/how-to-iterate-over-array-of-objects-in-handlebars,loops - How to iterate over array of objects in Handlebars?,"<p>You can pass <code>this</code> to each block. See here: <a href=http://jsfiddle.net/yR7TZ/1/ rel=noreferrer>http://jsfiddle.net/yR7TZ/1/</a></p>
+<pre class=lang-html prettyprint-override><code>{{#each this}}
+    &lt;div class=row&gt;&lt;/div&gt;
+{{/each}}
+</code></pre>","<p>This fiddle has both <code>each</code> and direct json. <a href=http://jsfiddle.net/streethawk707/a9ssja22/ rel=noreferrer>http://jsfiddle.net/streethawk707/a9ssja22/</a>.</p>
+<p>Below are the two ways of iterating over array. One is with direct json passing and another is naming the json array while passing to content holder.</p>
+<p>Eg1: The below example is directly calling json key (data) inside small_data variable.</p>
+<p>In html use the below code:</p>
+<pre class=lang-html prettyprint-override><code>&lt;div id=small-content-placeholder&gt;&lt;/div&gt;
+</code></pre>
+<p>The below can be placed in header or body of html:</p>
+<pre class=lang-html prettyprint-override><code>&lt;script id=small-template type=text/x-handlebars-template&gt;
+    &lt;table&gt;
+        &lt;thead&gt;
+            &lt;th&gt;Username&lt;/th&gt;
+            &lt;th&gt;email&lt;/th&gt;
+        &lt;/thead&gt;
+        &lt;tbody&gt;
+            {{#data}}
+                &lt;tr&gt;
+                    &lt;td&gt;{{username}}
+                    &lt;/td&gt;
+                    &lt;td&gt;{{email}}&lt;/td&gt;
+                &lt;/tr&gt;
+            {{/data}}
+        &lt;/tbody&gt;
+    &lt;/table&gt;
+&lt;/script&gt;
+</code></pre>
+<p>The below one is on document ready:</p>
+<pre class=lang-js prettyprint-override><code>var small_source   = $(#small-template).html();
+var small_template = Handlebars.compile(small_source);
+</code></pre>
+<p>The below is the json:</p>
+<pre class=lang-js prettyprint-override><code>var small_data = {
+            data: [
+                {username: alan1, firstName: Alan, lastName: Johnson, email: alan1@test.com },
+                {username: alan2, firstName: Alan, lastName: Johnson, email: alan2@test.com }
+            ]
+        };
+</code></pre>
+<p>Finally attach the json to content holder:</p>
+<pre class=lang-js prettyprint-override><code>$(#small-content-placeholder).html(small_template(small_data));
+</code></pre>
+<p>Eg2: Iteration using each.</p>
+<p>Consider the below json.</p>
+<pre class=lang-js prettyprint-override><code>var big_data = [
+            {
+                name: users1,
+                details: [
+                    {username: alan1, firstName: Alan, lastName: Johnson, email: alan@test.com },
+                    {username: allison1, firstName: Allison, lastName: House, email: allison@test.com },
+                    {username: ryan1, firstName: Ryan, lastName: Carson, email: ryan@test.com }
+                  ]
+            },
+            {
+                name: users2,
+                details: [
+                    {username: alan2, firstName: Alan, lastName: Johnson, email: alan@test.com },
+                    {username: allison2, firstName: Allison, lastName: House, email: allison@test.com },
+                    {username: ryan2, firstName: Ryan, lastName: Carson, email: ryan@test.com }
+                  ]
+            }
+      ];
+</code></pre>
+<p>While passing the json to content holder just name it in this way:</p>
+<pre class=lang-js prettyprint-override><code>$(#big-content-placeholder).html(big_template({big_data:big_data}));
+</code></pre>
+<p>And the template looks like :</p>
+<pre class=lang-html prettyprint-override><code>&lt;script id=big-template type=text/x-handlebars-template&gt;
+    &lt;table&gt;
+        &lt;thead&gt;
+            &lt;th&gt;Username&lt;/th&gt;
+            &lt;th&gt;email&lt;/th&gt;
+        &lt;/thead&gt;
+        &lt;tbody&gt;
+            {{#each big_data}}
+                &lt;tr&gt;
+                    &lt;td&gt;{{name}}
+                            &lt;ul&gt;
+                                {{#details}}
+                                    &lt;li&gt;{{username}}&lt;/li&gt;
+                                    &lt;li&gt;{{email}}&lt;/li&gt;
+                                {{/details}}
+                            &lt;/ul&gt;
+                    &lt;/td&gt;
+                    &lt;td&gt;{{email}}&lt;/td&gt;
+                &lt;/tr&gt;
+            {{/each}}
+        &lt;/tbody&gt;
+    &lt;/table&gt;
+&lt;/script&gt;
+</code></pre>","<p>I meant in the <code>template()</code> call..</p>
+<p>You just need to pass the results as an object. So instead of calling </p>
+<pre class=lang-js prettyprint-override><code>var html = template(data);
+</code></pre>
+<p>do</p>
+<pre class=lang-js prettyprint-override><code>var html = template({apidata: data});
+</code></pre>
+<p>and use <code>{{#each apidata}}</code> in your template code</p>
+<p>demo at <a href=http://jsfiddle.net/KPCh4/4/ rel=nofollow noreferrer>http://jsfiddle.net/KPCh4/4/</a><br/>
+(<em>removed some leftover <code>if</code> code that crashed</em>)</p>",each handlebars,What is a handlebar expression?,"Handlebars expressions are the basic unit of a Handlebars template. You can use them alone in a {{mustache}} , pass them to a Handlebars helper, or use them as values in hash arguments.",What is handlebars used for?,What is Handlebars? Handlebars is a simple templating language. It uses a template and an input object to generate HTML or other text formats. Handlebars templates look like regular text with embedded Handlebars expressions.,What are handlebars helpers?,"Handlebars provides additional metadata, such as Hash arguments, to helpers as a final parameter. ... The keys in hash arguments must each be simple identifiers, and the values are Handlebars expressions. Helpers with Hash arguments Handlebars provides additional metadata, such as Hash arguments, to helpers as a final parameter. ... The keys in hash arguments must each be simple identifiers, and the values are Handlebars expressions.",How do you comment on Handlebars?,"You can use comments in your handlebars code just as you would in your code. Since there is generally some level of logic, this is a good practice. The comments will not be in the resulting output. If you'd like the comments to show up just use HTML comments, and they will be output."
+https://stackoverflow.com/questions/55108794/what-is-the-difference-of-pairs-vs-ipairs-in-lua,for loop - What is the difference of pairs() vs. ipairs() in Lua?,"<p><code>pairs()</code> and <code>ipairs()</code> are slightly different.  </p>
+<ul>
+<li><code>pairs()</code> returns key-value pairs and is mostly used for associative tables. key order is unspecified.  </li>
+<li><code>ipairs()</code> returns index-value pairs and is mostly used for numeric tables. Non numeric keys in an array are ignored, while the index order is deterministic (in numeric order).</li>
+</ul>
+<p>This is illustrated by the following code fragment.</p>
+<pre><code>&gt; u={}
+&gt; u[1]=a
+&gt; u[3]=b
+&gt; u[2]=c
+&gt; u[4]=d
+&gt; u[hello]=world
+&gt; for key,value in ipairs(u) do print(key,value) end
+1   a
+2   c
+3   b
+4   d
+&gt; for key,value in pairs(u) do print(key,value) end
+1   a
+hello   world
+3   b
+2   c
+4   d
+&gt; 
+</code></pre>
+<p>When you create an tables without keys (as in your question), it behaves as a numeric array  and behaviour or pairs and ipairs is identical.</p>
+<pre><code>a = {one, two, three}
+</code></pre>
+<p>is equivalent to <code>a[1]=one</code> <code>a[2]=two</code> <code>a[3]=three</code>
+and <code>pairs()</code> and <code>ipairs()</code> will be identical (except for the ordering that is not guaranteed in <code>pairs()</code>).</p>","<p>There is no <code>array</code>-type in Lua, only <code>table</code>s which might have consecutive elements starting from index 1.</p>
+<p>The generic for-loop, in contrast to the numeric for-loop, expects three values:</p>
+<ol>
+<li>A callable</li>
+<li>A context-value it passes on</li>
+<li>An initial index-value</li>
+</ol>
+<p>It calls the callable with context-value and index-value, storing all the returned values in the provided new variables. The first one is additionally saved as the new index-value.</p>
+<p>Now some representative examples of callables for the loop:</p>
+<ol>
+<li><p><code>ipairs(t)</code> returns a function, the table <code>t</code>, and the starting-point <code>0</code>.<br/>
+The function is the moral equivalent to:</p>
+<pre><code>function ipairs_next(t, i)
+    i = i + 1
+    var v = t[i]
+    if v ~= nil then
+        return i, v
+    end
+end
+</code></pre>
+<p>Thus, all numeric entries starting at 1 until the first missing one are shown.</p></li>
+<li><p><code>pairs(t)</code> either delegates to <code>t</code>s metatable, specifically to <code>__pairs(t)</code>, or returns the function <code>next</code>, the table <code>t</code>, and the starting-point <code>nil</code>.
+<code>next</code> accepts a table and an index, and returns the next index and the associated value, if it exists.</p>
+<p>Thus, all elements are shown in some arbitrary order.</p></li>
+<li><p>There are no limits to how creative one can be with the function, and that is what vanilla Lua expects.<br/>
+See <em><a href=https://stackoverflow.com/questions/23350281/bizzare-attempt-to-call-a-table-value-in-lua>Bizzare attempt to call a table value in Lua</a></em> for an example of a user-written callable, and how some dialects react if the first value is not actually a callable.</p></li>
+</ol>",,lua pairs,What are Lua pairs?,"The pairs function, which iterates over all elements in a table, is similar, except that the iterator function is the next function, which is a primitive function in Lua: function pairs (t) return next, t, nil end.",Whats the difference between Ipairs and pairs?,"pairs() and ipairs() are functions that can be used with a for loop to go through each element of an array or dictionary without needing to set starting or ending points. pairs() is used with dictionaries, and ipairs() is used with arrays. The “i” in ipairs() stands for “index.”",Is Ipairs faster than pairs Lua?,"Testing based on long lists of integers, ipairs is about 20% faster than pairs, but numeric for is about 50% faster than ipairs. (Tested with standalone Lua 5.2.",What does pairs mean in Roblox?,"pairs() and ipairs() are functions that can be used with a for loop to go through each element of an array or dictionary without needing to set starting or ending points. pairs() is used with dictionaries, and ipairs() is used with arrays. The “i” in ipairs() stands for “index.”"
+https://stackoverflow.com/questions/5125096/for-loop-example-in-mysql,For loop example in MySQL,"<pre><code>drop table if exists foo;
+create table foo
+(
+id int unsigned not null auto_increment primary key,
+val smallint unsigned not null default 0
+)
+engine=innodb;
+
+drop procedure if exists load_foo_test_data;
+
+delimiter #
+create procedure load_foo_test_data()
+begin
+
+declare v_max int unsigned default 1000;
+declare v_counter int unsigned default 0;
+
+  truncate table foo;
+  start transaction;
+  while v_counter &lt; v_max do
+    insert into foo (val) values ( floor(0 + (rand() * 65535)) );
+    set v_counter=v_counter+1;
+  end while;
+  commit;
+end #
+
+delimiter ;
+
+call load_foo_test_data();
+
+select * from foo order by id;
+</code></pre>","<h2>While loop syntax example in MySQL:</h2>
+<pre><code>delimiter //
+
+CREATE procedure yourdatabase.while_example()
+wholeblock:BEGIN
+  declare str VARCHAR(255) default ;
+  declare x INT default 0;
+  SET x = 1;
+
+  WHILE x &lt;= 5 DO
+    SET str = CONCAT(str,x,,);
+    SET x = x + 1;
+  END WHILE;
+
+  select str;
+END//
+</code></pre>
+<p>Which prints:</p>
+<pre><code>mysql&gt; call while_example();
++------------+
+| str        |
++------------+
+| 1,2,3,4,5, |
++------------+
+</code></pre>
+<h2>REPEAT loop syntax example in MySQL:</h2>
+<pre><code>delimiter //
+
+CREATE procedure yourdb.repeat_loop_example()
+wholeblock:BEGIN
+  DECLARE x INT;
+  DECLARE str VARCHAR(255);
+  SET x = 5;
+  SET str = ;
+
+  REPEAT
+    SET str = CONCAT(str,x,,);
+    SET x = x - 1;
+    UNTIL x &lt;= 0
+  END REPEAT;
+
+  SELECT str;
+END//
+</code></pre>
+<p>Which prints:</p>
+<pre><code>mysql&gt; call repeat_loop_example();
++------------+
+| str        |
++------------+
+| 5,4,3,2,1, |
++------------+
+</code></pre>
+<h2>FOR loop syntax example in MySQL:</h2>
+<pre><code>delimiter //
+
+CREATE procedure yourdatabase.for_loop_example()
+wholeblock:BEGIN
+  DECLARE x INT;
+  DECLARE str VARCHAR(255);
+  SET x = -5;
+  SET str = ;
+
+  loop_label: LOOP
+    IF x &gt; 0 THEN
+      LEAVE loop_label;
+    END IF;
+    SET str = CONCAT(str,x,,);
+    SET x = x + 1;
+    ITERATE loop_label;
+  END LOOP;
+
+  SELECT str;
+
+END//
+</code></pre>
+<p>Which prints:</p>
+<pre><code>mysql&gt; call for_loop_example();
++-------------------+
+| str               |
++-------------------+
+| -5,-4,-3,-2,-1,0, |
++-------------------+
+1 row in set (0.00 sec)
+</code></pre>
+<p>Do the tutorial: <a href=http://www.mysqltutorial.org/stored-procedures-loop.aspx rel=noreferrer>http://www.mysqltutorial.org/stored-procedures-loop.aspx</a></p>
+<p>If I catch you pushing this kind of MySQL for-loop constructs into production, Im going to shoot you with the foam missile launcher.  You can use a pipe wrench to bang in a nail, but doing so makes you look silly.</p>","<p>Assume you have one table with name table1. It contain one column col1 with varchar type. Query to crate table is give below</p>
+<pre><code>CREATE TABLE `table1` (
+    `col1` VARCHAR(50) NULL DEFAULT NULL
+)
+</code></pre>
+<p>Now if you want to insert number from 1 to 50 in that table then use following stored procedure</p>
+<pre><code>DELIMITER $$  
+CREATE PROCEDURE ABC()
+
+   BEGIN
+      DECLARE a INT Default 1 ;
+      simple_loop: LOOP         
+         insert into table1 values(a);
+         SET a=a+1;
+         IF a=51 THEN
+            LEAVE simple_loop;
+         END IF;
+   END LOOP simple_loop;
+END $$
+</code></pre>
+<p>To call that stored procedure use</p>
+<pre><code>CALL `ABC`()
+</code></pre>",mysql for loop,Can we use looping in stored procedure?,"In most programming languages, we use the For-Each loop to access any array or list. In SQL Server, if you want to access the rows in a way as you do with the For-Each loop in other programming languages, you have to use the While loop. Foreach in SQL Server stored procedure In most programming languages, we use the For-Each loop to access any array or list. In SQL Server, if you want to access the rows in a way as you do with the For-Each loop in other programming languages, you have to use the While loop.",Can we write for loop in SQL?,"There is no FOR in SQL, But you can use WHILE or GOTO to achieve the way how the FOR will work. I always prefer WHILE over GOTO statement. For loop is not officially supported yet by SQL server.",Can we use loop in SQL?,"In SQL Server, there is no FOR LOOP. However, you simulate the FOR LOOP using the WHILE LOOP.",Can you do a FOR LOOP in SQL?,"In SQL Server, there is no FOR LOOP. However, you simulate the FOR LOOP using the WHILE LOOP."
+https://stackoverflow.com/questions/12678819/how-to-copy-a-string-of-stdstring-type-in-c/12678854,How to copy a string of std::string type in C++?,"<p>You shouldnt use <code>strcpy()</code> to copy a <code>std::string</code>, only use it for <a href=http://www.cprogramming.com/tutorial/lesson9.html rel=noreferrer>C-Style strings</a>.</p>
+<p>If you want to copy <code>a</code> to <code>b</code> then just use the <code>=</code> operator.</p>
+<pre><code>string a = text;
+string b = image;
+b = a;
+</code></pre>","<p>strcpy is only for C strings. For std::string you copy it like any C++ object.</p>
+<pre><code>std::string a = text;
+std::string b = a; // copy a into b
+</code></pre>
+<p>If you want to concatenate strings you can use the <code>+</code> operator:</p>
+<pre><code>std::string a = text;
+std::string b = image;
+a = a + b; // or a += b;
+</code></pre>
+<p>You can even do many at once:</p>
+<pre><code>std::string c = a +   + b + hello;
+</code></pre>
+<p>Although <code>hello +  world</code> doesnt work as you might expect. You need an explicit std::string to be in there: <code>std::string(Hello) + world</code></p>","<p><strong>strcpy example:</strong></p>
+<pre><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main ()
+{
+  char str1[]=Sample string ;
+  char str2[40] ;
+  strcpy (str2,str1) ;
+  printf (str1: %s\n,str1) ;
+  return 0 ;
+}
+</code></pre>
+<p>Output: <code>str1: Sample string</code></p>
+<p><strong>Your case:</strong></p>
+<p>A simple <code>=</code> operator should do the job.</p>
+<pre><code>string str1=Sample string ;
+string str2 = str1 ;
+</code></pre>",copy string c++,How do you copy a string in C++?,Using the inbuilt function strcpy() from string. h header file to copy one string to the other. strcpy() accepts a pointer to the destination array and source array as a parameter and after copying it returns a pointer to the destination string.,How do I copy a string into another string?,"Copying one string to another - strcpy strcpy can be used to copy one string to another. Remember that C strings are character arrays. You must pass character array, or pointer to character array to this function where string will be copied. The destination character array is the first parameter to strcpy .
+strcpy can be used to copy one string to another. Remember that C strings are character arrays. You must pass character array, or pointer to character array to this function where string will be copied. The destination character array is the first parameter to strcpy .",How do you copy a string?,"Copying one string to another - strcpy strcpy can be used to copy one string to another. Remember that C strings are character arrays. You must pass character array, or pointer to character array to this function where string will be copied. The destination character array is the first parameter to strcpy .
+strcpy can be used to copy one string to another. Remember that C strings are character arrays. You must pass character array, or pointer to character array to this function where string will be copied. The destination character array is the first parameter to strcpy .",How can I copy just a portion of a string?,"strncpy(): Copying part of strings in C We can use string function strncpy() to copy part strings. Part of the second string is added to the first string. strcpy(destination_string, source_string, n);
+We can use string function strncpy() to copy part strings. Part of the second string is added to the first string. strcpy(destination_string, source_string, n);"
+https://stackoverflow.com/questions/29184999/making-a-java-makefile,Making a Java Makefile,"<p>For a simple project without many files or dependencies, I simply use scripts. </p>
+<p>To build:</p>
+<pre><code>javac -cp .;* *.java
+</code></pre>
+<p>To run:</p>
+<pre><code>java -cp .;* SomeMainClass
+</code></pre>
+<p>Replace <code>.</code> with whatever path(s) you need for your source. The * will use any jar on the default path or use a different path like <code>lib/*</code>.</p>","<p>Using make with java can be an exercise in driving screws with a hammer as soon as you have more than one class.</p>
+<p>Working java code will use packages. So youll have a complex directory tree that mirrors your package structure, with your .java source files in it. Writing make rules that see all those files is a pain.</p>
+<p>You should invoke javac on all your source files at the same time to get correct results. So, the usual make pattern of run one command to turn one source file into one compiled file does not work so well.</p>
+<p>However, it seems as if your main problem at the moment is that you expect java to produce an executable; a file with a name like sim. Nope, not going to happen in any simple way. The java compiler produces .class files; a whole tree of them for your source files. You can run directly from them, or you can package them up in a JAR file. </p>
+<p>To get all the way to something that appears to be a simple command line executable, you need to use a more complex tool that wraps all this up with a script on the front.</p>
+<p>For now, you just need to do:</p>
+<pre><code>java -cp . NAME_OF_THE_CLASS_IN_sim.java
+</code></pre>
+<p>to run after your makefile completes.</p>","<p>If you have a simple directory layout like the following,</p>
+<pre><code>root/
+    src/
+        ExampleClass.java
+        AnotherClass.java
+    out/
+makefile
+</code></pre>
+<p>you could create your <code>makefile</code> like this:</p>
+<pre><code>##
+# source directory
+##
+SRC_DIR := src
+
+##
+# output directory
+##
+OUT_DIR := out
+
+##
+# sources
+##
+SRCS := $(wildcard $(SRC_DIR)/*.java)
+
+##
+# classes
+## 
+CLS := $(SRCS:$(SRC_DIR)/%.java=$(OUT_DIR)/%.class)
+
+##
+# compiler and compiler flags
+##
+JC := javac
+JCFLAGS := -d $(OUT_DIR)/ -cp $(SRC_DIR)/
+
+##
+# suffixes
+##
+.SUFFIXES: .java
+
+##
+# targets that do not produce output files
+##
+.PHONY: all clean
+
+##
+# default target(s)
+##
+all: $(CLS)
+
+$(CLS): $(OUT_DIR)/%.class: $(SRC_DIR)/%.java
+    $(JC) $(JCFLAGS) $&lt;
+
+##
+# clean up any output files
+##
+clean:
+    rm $(OUT_DIR)/*.class
+</code></pre>",java makefile,Does Java need a makefile?,"While it is possible to write a short and simple Makefile that compiles Java efficiently, extra care is required to do so in a platform-independent way. Consequently there was an appetite for an intrinsically platform-independent build tool. It was in this environment that Ant and later Maven were created.",Are there Makefiles in Java?,"Makefile for Java Programs. To use this makefile to compile your java programs: create a file named 'makefile' in your project directory with the same content as this example starting from ""makefile begins"". modify the CLASSES macro so that it has the names of your .",Can I use makefile for Java?,"To use the above makefile to compile your java programs: create a file named 'makefile' in your homework directory with the identical contents. ... java files; run 'make', and if all goes well, it should compile all your java source files that need to be re-built.",What are makefiles used for?,"If you want to run or update a task when certain files are updated, the make utility can come in handy. The make utility requires a file, Makefile (or makefile ), which defines set of tasks to be executed. You may have used make to compile a program from source code."
+https://stackoverflow.com/questions/5995405/how-to-center-a-navigation-bar-with-css-or-html,How to center a navigation bar with CSS or HTML?,"<pre><code>#nav ul {
+    display: inline-block;
+    list-style-type: none;
+}
+</code></pre>
+<p>It should work, I tested it in your site.</p>
+<p><img alt=enter image description here src=https://i.stack.imgur.com/OjPJo.jpg/></p>","<p>Add some CSS:</p>
+<pre><code>div#nav{
+  text-align: center;
+}
+div#nav ul{
+  display: inline-block;
+}
+</code></pre>","<p>If you have your navigation <code>&lt;ul&gt;</code> with class #nav
+Then you need to put that <code>&lt;ul&gt;</code> item within a div container.  Make your div container the 100% width. and set the text-align: element to center in the div container.  Then in your <code>&lt;ul&gt;</code> set that class to have 3 particular elements: text-align:center; position: relative; and display: inline-block;</p>
+<p>that should center it.</p>",css center navbar,How do I center a navbar item?,"You could use this hack text-center (this does not only apply for text)
+Or use the exact boostrap class mx-auto.",How do I center the navigation bar in CSS?,Make your div container the 100% width. and set the text-align: element to center in the div container. Then in your <ul> set that class to have 3 particular elements: text-align:center; position: relative; and display: inline-block; that should center it.,How do I center the navigation bar in CSS?,Make your div container the 100% width. and set the text-align: element to center in the div container. Then in your <ul> set that class to have 3 particular elements: text-align:center; position: relative; and display: inline-block; that should center it.,How do I center the navigation bar in CSS?,Make your div container the 100% width. and set the text-align: element to center in the div container. Then in your <ul> set that class to have 3 particular elements: text-align:center; position: relative; and display: inline-block; that should center it.
+https://stackoverflow.com/questions/32805087/how-is-overflow-detected-in-twos-complement,binary - How is overflow detected in twos complement?,"<p>Lets start with an answer to your title question.</p>
+<blockquote>
+<p>How is overflow detected in twos complement?</p>
+</blockquote>
+<p></p>
+<blockquote>
+<p>Overflow rule : If two numbers with the same sign (both positive or both negative) are added, then overflow occurs if and only if the result has the opposite sign.</p>
+</blockquote>
+<p>But you ask something different on the body of your question after your example.</p>
+<blockquote>
+<p>So here the result has fifth left bit <code>10001</code> - is it overflow?</p>
+</blockquote>
+<p>No! there is no overflow here. That fifth bit is the carry/borrow. Carry if you are talking about addition. Borrow if you are talking about subtraction.</p>
+<p>Overflow occurs when the number that you trying to represent is out of the range of numbers that can be represented. In your example you are using 4-bits twos complement, that means you can represent any number in the range <code>-8</code> (<code>1000</code>) up to <code>+7</code> (<code>0111</code>). The result of your subtraction <code>2-1</code> is <code>+1</code>, a number that lies within the range of representation.</p>
+<p>When we add a negative and a positive operand, the result will always be in the range of representation. Overflows occur when we add two numbers with the same sign (both positive or both negative) and the result has the opposite sign.</p>
+<p>Most of misunderstanding surrounding carry-out and overflow comes from the fact we use the carry-out as one of the parameters to generate overflow flag. They are strongly related but they are not the same thing.</p>
+<p>When adding numbers in twos complement, if the carry-out and the carry-on into the most significant bit (sign bit) are different that means an overflow has occurred.</p>
+<p>Lets see two negative operands with a positive result:</p>
+<pre><code>-8 + (-1) = -9 
+
+ 1000  (carry)
+  1000 (-8)
++ 1111 (-1)
+------
+  0111 (+7) OVERFLOW!
+</code></pre>
+<p>The carry-out is 1 and the carry-on to sign bit (MSB) is 0.</p>
+<p>And now, an example of two positive operands with a negative result.</p>
+<pre><code>+7 + 1 = +8
+
+ 0111  (carry)
+  0111 (+7)
++ 0001 (+1)
+------
+  1000 (-8) OVERFLOW!
+</code></pre>
+<p>The carry-out is 0 and the carry-on to sign bit (MSB) is 1.</p>","<p>@GabrielOshiros answer is really good. I just want to add a little bit of logic here. When you add 2 and -1 together here,</p>
+<pre><code>2 = 0010
+1 = 0001 -&gt; -1 = 1111
+2 + (-1) -&gt; 0010 + 1111 = 10001
+</code></pre>
+<p>You should separate the most significant bit in the negative number from the rest of the bits, since in twos complement that bit brings negative value. So if you first add everything else first:</p>
+<pre><code>0010 + 0111(leave out the leftmost 1 for now) = 1001
+</code></pre>
+<p>After this, we can clearly see that the fifth bit in 10001 is caused by adding the 1 we left earlier (in fourth bit) with 1001, yielding a carry in the fifth bit. However, since this 1 should really cancel out with the 1001, leave us with 0001, we can safely ignore the extra bit in 10001 here.</p>
+<p>A more in depth reasoning would be considering when we can safely ignore this extra bit and when we cant. As @GabrielOshiro mentioned, when the carry-out from and carry-on into the most significant are different we cannot ignore it. In a carry-out 2 units of negative numbers are lost because theres no space to hold the extra bit, and in a carry-in two units of positive numbers are lost, since what is supposed to be a unit of positive number is considered as a unit of negative instead. Here 1 - (-1) = 2. Therefore, a carry-on and a carry-out will cancel each other. But when only one of them occurs, the result will be incorrect thus we have an overflow.</p>",,2s complement overflow,2s complement overflow,"Two's Complement Overflow Rules. The rules for detecting overflow in a two's complement sum are simple: If the sum of two positive numbers yields a negative result, the sum has overflowed. If the sum of two negative numbers yields a positive result, the sum has overflowed.",How is overflow detected?,"Overflow Detection – So overflow can be detected by checking Most Significant Bit(MSB) of two operands and answer. But Instead of using 3-bit Comparator Overflow can also be detected using 2 Bit Comparator just by checking Carry-in(C-in) and Carry-Out(C-out) from MSB's. Consider N-Bit Addition of 2's Complement number.
+
+So overflow can be detected by checking Most Significant Bit(MSB) of two operands and answer. But Instead of using 3-bit Comparator Overflow can also be detected using 2 Bit Comparator just by checking Carry-in(C-in) and Carry-Out(C-out) from MSB's. Consider N-Bit Addition of 2's Complement number.",What is an overflow condition?,Overflow occurs when: Two negative numbers are added and an answer comes positive or. Two positive numbers are added and an answer comes as negative.,What is positive overflow?,"When a sum of two numbers exceeds the max value, we call that a positive overflow and when the result is less than min value, we call it a negative overflow."

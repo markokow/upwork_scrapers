@@ -1,0 +1,45 @@
+url,title,best_answer_1,best_answer_2,best_answer_3,keyword,question_1,answer_1,question_2,answer_2,question_3,answer_3,question_4,answer_4
+https://stackoverflow.com/questions/9997391/php-get-name-of-current-directory,PHP Get name of current directory,"<pre><code>getcwd();
+</code></pre>
+<p>or</p>
+<pre><code>dirname(__FILE__);
+</code></pre>
+<p>or (PHP5)</p>
+<pre><code>basename(__DIR__) 
+</code></pre>
+<p><a href=http://php.net/manual/en/function.getcwd.php rel=noreferrer>http://php.net/manual/en/function.getcwd.php</a></p>
+<p><a href=http://php.net/manual/en/function.dirname.php rel=noreferrer>http://php.net/manual/en/function.dirname.php</a></p>
+<p>You can use <code>basename()</code> to get the trailing part of the path :)</p>
+<p>In your case, Id say you are most likely looking to use <code>getcwd()</code>, <code>dirname(__FILE__)</code> is more useful when you have a file that needs to include another library and is included in another library.</p>
+<p>Eg:</p>
+<pre><code>main.php
+libs/common.php
+libs/images/editor.php
+</code></pre>
+<p>In your <code>common.php</code> you need to use functions in <code>editor.php</code>, so you use</p>
+<p><code>common.php</code>:</p>
+<pre><code>require_once dirname(__FILE__) . /images/editor.php;
+</code></pre>
+<p><code>main.php</code>:</p>
+<pre><code>require_once libs/common.php
+</code></pre>
+<p>That way when common.php is <code>required</code> in <code>main.php</code>, the call of <code>require_once</code> in <code>common.php</code> will correctly includes <code>editor.php</code> in <code>images/editor.php</code> instead of trying to look in current directory where <code>main.php</code> is run.</p>","<p>To get only the name of the directory where script executed:</p>
+<pre><code>//Path to script: /data/html/cars/index.php
+echo basename(dirname(__FILE__)); //cars
+</code></pre>","<p>You can use <code>dirname(__FILE__)</code> to get the path to the directory of the current file.</p>
+<p>Example: <code>/path_to/your_dir/your_file.php</code>:</p>
+<pre class=lang-php prettyprint-override><code>// use dirname to get the directory of the current file
+$path = dirname(__FILE__);
+// $path here is now /path_to/your_dir
+
+// split directory into array of pieces
+$pieces = explode(DIRECTORY_SEPARATOR, $path);
+// $pieces = [path_to, your_dir]
+
+// get the last piece
+echo $pieces[count($pieces) - 1];
+// result is: your_dir
+</code></pre>",php get current path,How do I find my PHP path?,"Check PHP Install Path On Linux. The whereis command returns the executable file path.
+Check PHP Install Path On Windows.
+Check Current PHP Version.
+Use phpinfo() Function To Get PHP Version & PHP Install Path.",What is dirname (__ file __)?,dirname(__FILE__) allows you to get an absolute path (and thus avoid an include path search) without relying on the working directory being the directory in which bootstrap. php resides.,What is __ DIR __ in PHP?,"The __DIR__ can be used to obtain the current code working directory. It has been introduced in PHP beginning from version 5.3. It is similar to using dirname(__FILE__). Usually, it is used to include other files that is present in an included file. ... The project directory also contains an index.",Which function is used to return the current directory?,

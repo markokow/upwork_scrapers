@@ -4,6 +4,10 @@ import io
 from bs4 import BeautifulSoup
 from typing import List
 from datetime import datetime
+from dateutil.parser import parse
+from random import randint
+from time import sleep
+
 
 class StackOverFlow:
     def __init__(self, *,urls: List = [], max_answers: int = 3, max_divisions: int = 3) -> None:
@@ -120,6 +124,8 @@ class StackOverFlow:
         actual_counter = 0
 
         for url in self.urls:
+
+            sleep(randint(2,3))
             
             self.url = url
             resp = self.fetch()
@@ -128,8 +134,7 @@ class StackOverFlow:
 
             if _boolean:   
                 counter+=1
-                print(counter)
-                print(self.csv_headers)
+                print(url)
                 if counter % self.max_divisions == 0:
                     part+=1 
                     print(len(self.csv_headers))
@@ -158,7 +163,7 @@ if __name__ == '__main__':
     file =  open('stack_urls.txt', 'r', encoding='utf-8')
     urls: List = [acc.strip() for acc in file.readlines()]
     max_answers: int = 3
-    max_divisions: int = 100
+    max_divisions: int = 3
     
     #Run scraper
     scraper = StackOverFlow(urls= urls, max_answers = max_answers, max_divisions = max_divisions)

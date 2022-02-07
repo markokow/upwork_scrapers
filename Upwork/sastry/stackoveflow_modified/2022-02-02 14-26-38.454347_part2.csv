@@ -1,0 +1,296 @@
+url,title,best_answer_1,best_answer_2,best_answer_3
+https://stackoverflow.com/questions/55544564/what-is-the-max-value-for-float,c# - What is the Max value for float?,"<p>Most <em>Numeric</em> types have a <code>MaxValue</code>  Field</p>
+<p><a href=https://docs.microsoft.com/en-us/dotnet/api/system.single.maxvalue?view=netframework-4.7.2 rel=noreferrer>Single.MaxValue Field</a></p>
+<blockquote>
+<p>Represents the largest possible value of Single. This field is
+  constant.</p>
+</blockquote>
+<p>Which equates to</p>
+<pre><code>public const float MaxValue = 3.402823E+38;
+</code></pre>
+<p>However in this case, you need to put use <code>f</code> suffix to specify a type of a numerical literal, otherwise it will interpret it as an integral type (on a cascading scale of max range up to <code>uint64</code>). </p>
+<pre><code>float myValue = 1234567890123456789024f;
+</code></pre>
+<hr/>
+<p><strong>Additional Resources</strong></p>
+<p><a href=https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/value-types-table rel=noreferrer>Value types table (C# Reference)</a></p>
+<p><a href=https://docs.microsoft.com/en-us/dotnet/csharp/misc/cs1021 rel=noreferrer>Compiler Error CS1021</a></p>
+<blockquote>
+<p>Integral constant is too large</p>
+<p>A value represented by an integer literal is greater than
+  UInt64.MaxValue.</p>
+</blockquote>
+<p><a href=https://docs.microsoft.com/en-us/dotnet/api/system.uint64.maxvalue?view=netframework-4.7.2 rel=noreferrer>UInt64.MaxValue Field</a></p>
+<blockquote>
+<p>Represents the largest possible value of UInt64. This field is
+  constant.</p>
+</blockquote>
+<pre><code>public const ulong MaxValue = 18446744073709551615;
+</code></pre>",,
+https://stackoverflow.com/questions/13381067/simplestringproperty-and-simpleintegerproperty-tableview-javafx,java - SimpleStringProperty and SimpleIntegerProperty TableView JavaFX,"<p>You dont need to use Properties in your table data objects for them to display, although use of Properties in certain circumstances is desirable.</p>
+<p>The following code will display a table of people based on a Person class which has only String fields.</p>
+<pre><code>import javafx.application.Application;
+import javafx.collections.*;
+import javafx.geometry.Insets;
+import javafx.scene.*;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.stage.Stage;
+
+public class ReadOnlyTableView extends Application {
+  private TableView&lt;Person&gt; table = new TableView&lt;Person&gt;();
+  private final ObservableList&lt;Person&gt; data =
+    FXCollections.observableArrayList(
+      new Person(Jacob, Smith, jacob.smith@example.com),
+      new Person(Isabella, Johnson, isabella.johnson@example.com),
+      new Person(Ethan, Williams, ethan.williams@example.com),
+      new Person(Emma, Jones, emma.jones@example.com),
+      new Person(Michael, Brown, michael.brown@example.com)
+    );
+
+  public static void main(String[] args) { launch(args); }
+
+  @Override public void start(Stage stage) {
+    stage.setTitle(Table View Sample);
+    stage.setWidth(450);
+    stage.setHeight(500);
+
+    final Label label = new Label(Address Book);
+    label.setFont(new Font(Arial, 20));
+
+    TableColumn firstNameCol = new TableColumn(First Name);
+    firstNameCol.setMinWidth(100);
+    firstNameCol.setCellValueFactory(new PropertyValueFactory&lt;Person, String&gt;(firstName));
+
+    TableColumn lastNameCol = new TableColumn(Last Name);
+    lastNameCol.setMinWidth(100);
+    lastNameCol.setCellValueFactory(new PropertyValueFactory&lt;Person, String&gt;(lastName));
+
+    TableColumn emailCol = new TableColumn(Email);
+    emailCol.setMinWidth(200);
+    emailCol.setCellValueFactory(new PropertyValueFactory&lt;Person, String&gt;(email));
+
+    table.setItems(data);
+    table.getColumns().addAll(firstNameCol, lastNameCol, emailCol);
+
+    final VBox vbox = new VBox();
+    vbox.setSpacing(5);
+    vbox.setPadding(new Insets(10, 0, 0, 10));
+    vbox.getChildren().addAll(label, table);
+
+    stage.setScene(new Scene(new Group(vbox)));
+    stage.show();
+  }
+
+  public static class Person {
+    private String firstName;
+    private String lastName;
+    private String email;
+
+    private Person(String fName, String lName, String email) {
+      this.firstName = fName;
+      this.lastName = lName;
+      this.email = email;
+    }
+
+    public String getFirstName() { return firstName; }
+    public void setFirstName(String fName) { firstName = fName; }
+    public String getLastName() { return lastName; }
+    public void setLastName(String lName) { lastName = lName; }
+    public String getEmail() { return email; }
+    public void setEmail(String inMail) { email = inMail; }
+  }
+}
+</code></pre>
+<p><em>Explanation</em> </p>
+<p>The purpose of using Properties and ObservableLists is that these are listenable elements. When properties are used, if the value of a property attribute in the datamodel changes, the view of the item in the TableView is automatically updated to match the updated datamodel value.  For example, if the value of a persons email property is set to a new value, that update will be reflected in the TableView because it listens for the property change.  If instead, a plain String had been used to represent the email, the TableView would not refresh as it would be unaware of email value changes.</p>
+<p>The <a href=http://docs.oracle.com/javafx/2/api/javafx/scene/control/cell/PropertyValueFactory.html rel=noreferrer>PropertyValueFactory</a> documentation describes this process in detail:</p>
+<blockquote>
+<p>An example of how to use this class is:</p>
+<pre><code>TableColumn&lt;Person,String&gt; firstNameCol = new TableColumn&lt;Person,String&gt;(First Name);
+firstNameCol.setCellValueFactory(new PropertyValueFactory&lt;Person,String&gt;(firstName));  
+</code></pre>
+<p>In this example, the firstName string is used as a reference to an
+  assumed firstNameProperty() method in the Person class type (which is
+  the class type of the TableView items list). Additionally, this method
+  must return a Property instance. If a method meeting these
+  requirements is found, then the TableCell is populated with this
+  ObservableValue. In addition, the TableView will automatically add an
+  observer to the returned value, such that any changes fired will be
+  observed by the TableView, resulting in the cell immediately updating.</p>
+<p>If no method matching this pattern exists, there is fall-through
+  support for attempting to call get() or is() (that
+  is, getFirstName() or isFirstName() in the example above). If a method
+  matching this pattern exists, the value returned from this method is
+  wrapped in a ReadOnlyObjectWrapper and returned to the TableCell.
+  However, in this situation, this means that the TableCell will not be
+  able to observe the ObservableValue for changes (as is the case in the
+  first approach above).</p>
+</blockquote>
+<p><strong>Update</strong></p>
+<p>Here is a contrasting example to the first example which demonstrates how a TableView can observe and automatically refresh based on changes to its ObservableList of items and changes to the value of a property based item attribute.</p>
+<pre><code>import javafx.application.Application;
+import javafx.beans.property.*;
+import javafx.collections.*;
+import javafx.event.*;
+import javafx.geometry.Insets;
+import javafx.scene.*;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.stage.Stage;
+
+public class PropertyBasedTableView extends Application {
+  private TableView&lt;Person&gt; table = new TableView&lt;Person&gt;();
+  private final ObservableList&lt;Person&gt; data = FXCollections.observableArrayList();
+  private void initData() {
+    data.setAll(
+      new Person(Jacob, Smith, jacob.smith@example.com),
+      new Person(Isabella, Johnson, isabella.johnson@example.com),
+      new Person(Ethan, Williams, ethan.williams@example.com),
+      new Person(Emma, Jones, emma.jones@example.com),
+      new Person(Michael, Brown, michael.brown@example.com)
+    );
+  }
+
+  public static void main(String[] args) { launch(args); }
+
+  @Override public void start(Stage stage) {
+    initData();
+
+    stage.setTitle(Table View Sample);
+    stage.setWidth(450);
+    stage.setHeight(500);
+
+    final Label label = new Label(Address Book);
+    label.setFont(new Font(Arial, 20));
+
+    TableColumn firstNameCol = new TableColumn(First Name);
+    firstNameCol.setMinWidth(100);
+    firstNameCol.setCellValueFactory(new PropertyValueFactory&lt;Person, String&gt;(firstName));
+
+    TableColumn lastNameCol = new TableColumn(Last Name);
+    lastNameCol.setMinWidth(100);
+    lastNameCol.setCellValueFactory(new PropertyValueFactory&lt;Person, String&gt;(lastName));
+
+    TableColumn emailCol = new TableColumn(Email);
+    emailCol.setMinWidth(200);
+    emailCol.setCellValueFactory(new PropertyValueFactory&lt;Person, String&gt;(email));
+
+    table.setItems(data);
+    table.getColumns().addAll(firstNameCol, lastNameCol, emailCol);
+    table.setPrefHeight(300);
+
+    final Button setEmailButton = new Button(Set first email in table to wizard@frobozz.com);
+    setEmailButton.setOnAction(new EventHandler&lt;ActionEvent&gt;() {
+      @Override public void handle(ActionEvent event) {
+        if (data.size() &gt; 0) {
+          data.get(0).setEmail(wizard@frobozz.com);
+        }  
+      }
+    });
+
+    final Button removeRowButton = new Button(Remove first row from the table);
+    removeRowButton.setOnAction(new EventHandler&lt;ActionEvent&gt;() {
+      @Override public void handle(ActionEvent event) {
+        if (data.size() &gt; 0) {
+          data.remove(0);
+        }  
+      }
+    });
+
+    final Button resetButton = new Button(Reset table data);
+    resetButton.setOnAction(new EventHandler&lt;ActionEvent&gt;() {
+      @Override public void handle(ActionEvent event) {
+        initData();
+      }
+    });
+
+    final VBox vbox = new VBox(10);
+    vbox.setPadding(new Insets(10, 0, 0, 10));
+    vbox.getChildren().addAll(label, table, setEmailButton, removeRowButton, resetButton);
+
+    stage.setScene(new Scene(new Group(vbox)));
+    stage.show();
+  }
+
+  public static class Person {
+    private final StringProperty firstName;
+    private final StringProperty lastName;
+    private final StringProperty email;
+
+    private Person(String fName, String lName, String email) {
+      this.firstName = new SimpleStringProperty(fName);
+      this.lastName = new SimpleStringProperty(lName);
+      this.email = new SimpleStringProperty(email);
+    }
+
+    public String getFirstName() { return firstName.get(); }
+    public void setFirstName(String fName) { firstName.set(fName); }
+    public StringProperty firstNameProperty() { return firstName; }
+    public String getLastName() { return lastName.get(); }
+    public void setLastName(String lName) { lastName.set(lName); }
+    public StringProperty lastNameProperty() { return lastName; }
+    public String getEmail() { return email.get(); }
+    public void setEmail(String inMail) { email.set(inMail); }
+    public StringProperty emailProperty() { return email; }  // if this method is commented out then the tableview will not refresh when the email is set.
+  }
+}
+</code></pre>",,
+https://stackoverflow.com/questions/13502733/uncaught-typeerror-undefined-is-not-a-function-beginner-backbone-js-applica,javascript - Uncaught TypeError: undefined is not a function - Beginner Backbone.js Application,"<blockquote>
+<p>Uncaught TypeError: undefined is not a function example_app.js:7</p>
+</blockquote>
+<p>This error message tells the whole story.  On this line, you are trying to execute a function.  However, whatever is being executed is not a function! Instead, its <code>undefined</code>.</p>
+<p>So whats on <code>example_app.js</code> line 7? Looks like this:</p>
+<pre><code>var tasks = new ExampleApp.Collections.Tasks(data.tasks);
+</code></pre>
+<p>There is only one function being run on that line. We found the problem! <code>ExampleApp.Collections.Tasks</code> is <code>undefined</code>.</p>
+<p>So lets look at where that is declared:</p>
+<pre><code>var Tasks = Backbone.Collection.extend({
+    model: Task,
+    url: /tasks
+});
+</code></pre>
+<p>If thats all the code for this collection, then the root cause is right here. You assign the constructor to global variable, called <code>Tasks</code>. But you never add it to the <code>ExampleApp.Collections</code> object, a place you later expect it to be.</p>
+<p>Change that to this, and I bet youd be good.</p>
+<pre><code>ExampleApp.Collections.Tasks = Backbone.Collection.extend({
+    model: Task,
+    url: /tasks
+});
+</code></pre>
+<p>See how important the proper names and line numbers are in figuring this out? Never ever regard errors as binary (it works or it doesnt). Instead read the error, in most cases the error message itself gives you the critical clues you need to trace through to find the real issue.</p>
+<hr/>
+<p>In Javascript, when you execute a function, its evaluated like:</p>
+<pre><code>expression.that(returns).aFunctionObject(); // js
+execute -&gt; expression.that(returns).aFunctionObject // what the JS engine does
+</code></pre>
+<p>That expression can be complex.  So when you see <code>undefined is not a function</code> it means that expression did not return a function object.  So you have to figure out why what you are trying to execute isnt a function.</p>
+<p>And in this case, it was because you didnt put something where you thought you did.</p>","<p>I have occurred the same error look following example-</p>
+<pre><code>async.waterfall([function(waterCB) {
+    waterCB(null);
+}, function(**inputArray**, waterCB) {
+    waterCB(null);
+}], function(waterErr, waterResult) {
+    console.log(Done);
+});
+</code></pre>
+<p>In the above waterfall function, <strong>I am accepting inputArray parameter in waterfall 2nd function. But this inputArray not passed in waterfall 1st function in waterCB.</strong> </p>
+<p>Cheak your function parameters Below are a correct example.</p>
+<pre><code>async.waterfall([function(waterCB) {
+    waterCB(null, **inputArray**);
+}, function(**inputArray**, waterCB) {
+    waterCB(null);
+}], function(waterErr, waterResult) {
+    console.log(Done);
+});
+</code></pre>
+<p>Thanks</p>","<p>[Joke mode on]</p>
+<p>You can fix this by adding this:</p>
+<p><a href=https://github.com/donavon/undefined-is-a-function rel=nofollow noreferrer>https://github.com/donavon/undefined-is-a-function</a></p>
+<pre><code>import { undefined } from undefined-is-a-function;
+// Fixed! undefined is now a function.
+</code></pre>
+<p>[joke mode off]</p>"

@@ -1,0 +1,105 @@
+url,title,best_answer_1,best_answer_2,best_answer_3,keyword,question_1,answer_1,question_2,answer_2,question_3,answer_3,question_4,answer_4
+https://stackoverflow.com/questions/18286432/vb-net-opening-and-closing-forms,winforms - VB.net opening and closing forms,"<blockquote>
+<p>But everytime i switch forms the form load event will only trigger once. Is there something wrong with my code? I am guesing the Me.Hide() will only hide the previous form and not totally close it.</p>
+</blockquote>
+<p>This is exactly what is happening. The <code>Hide</code> method just <em>hides</em> the form from the user, effectively making it invisible.</p>
+<p>What youre looking for is the <a href=http://msdn.microsoft.com/en-us/library/system.windows.forms.form.close.aspx rel=noreferrer><code>Close</code> method</a>, which actually closes the form. (Since you are displaying the form using the <code>Show</code> method, you do not need to call <code>Dispose</code>.)</p>
+<p>You will, however, not be able to close a form and continue to run code in its methods. So youll need to reverse the order of the statements in your event handler functions, displaying the other form <em>first</em> and then closing itself. Make them look like this:</p>
+<pre><code>Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+    Form1.Show()
+    Me.Close()    
+End Sub
+
+Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+    Form2.Show()
+    Me.Close()
+End Sub
+</code></pre>
+<p>That will do what you want. The <code>Load</code> event will be triggered each time you call the <code>Show</code> method, because youre creating and showing a new form.</p>
+<p>It is worth pointing out, though, that youre relying on an unusual characteristic of VB.NET, one that it retains from the older VB languages for backwards compatibility reasons. Instead of referring to an <em>object</em> of your form class (like you would have to do with all other class objects), you are referring to it by the <em>type</em> name (the name of the class itself). You really shouldnt do that, it causes all sorts of headaches and will confuse people reading your code. It is better to just instantiate a new form object, like this:</p>
+<pre><code>Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+    Dim frm As New Form1   create a new Form1 object
+    frm.Show()             ... and display it
+
+    Me.Close()
+End Sub
+
+Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+    Dim frm As New Form1   create a new Form2 object
+    frm.Show()             ... and display it
+
+    Me.Close()
+End Sub
+</code></pre>
+<p>When you run this code, you will likely run immediately into another problem: the first time you close <code>Form1</code>, your entire application will quit. This is because, by default for a new project, <code>Form1</code> is designated as the Startup form in your projects properties (My Project in the Solution Explorer). You will either have to:</p>
+<ul>
+<li>create a <em>third</em> form to use as the main form, and set the Startup form to this third form, or</li>
+<li>change the Shutdown mode (also in My Project) from When startup form closes to When last form closes.</li>
+</ul>","<blockquote>
+<p>I am guesing the Me.Hide() will only hide the previous form and not totally close it</p>
+</blockquote>
+<p>Yes, it does what it says.  If you want to close the form then use Me.Close() instead.  The Load event will fire again when you create the new instance.</p>
+<p>Youll have to change a setting to ensure that doesnt also close your application.  Project + Properties, Application tab, change the Shutdown mode setting to When last form closes.  And put the Me.Close() call <em>after</em> the Show() call.</p>","<p>I also had a similar question. When u <code>.Hide()</code> you are just storing it away in memory somewhere such that when it is re-opened it doesnt have to make a new form just recalls the one from memory hence that method is not called again. You have to destroy the form. So what you can do when navigating to another form is go to that form first and then destroy the current form like so <br/> <code>Form2.Show()</code><br/><code>Me.Close()</code>. Look at my question and my accepted answer. If that works please dont forget to tick this as your accepted answer. <br/>
+<a href=https://stackoverflow.com/questions/17927615/when-my-form-is-hidden-and-reloaded-from-another-form-it-is-not-executing-the-co>When my form is hidden and reloaded from another form it is not executing the code in the Load event</a></p>",vb close form,How do I close a form in VB?,If you want to close the form then use Me. Close() instead. The Load event will fire again when you create the new instance. You'll have to change a setting to ensure that doesn't also close your application.,How do you close a form?,"To close your Google Form, click on the Responses tab and toggle the ""Accepting responses"" option off. It's easy to reopen the same Google Form at a later date, if necessary — simply toggle the ""Not accepting responses"" button back on. Visit Business Insider's homepage for more stories.",How do I close a Web form in VB net?,,How do I close all open form in VB net?,If you want to close all the open forms just type Application. Exit().
+https://stackoverflow.com/questions/32232978/change-the-location-of-the-directory-in-a-windows-install-of-git-bash,msysgit - Change the location of the ~ directory in a Windows install of Git Bash,"<p>I dont understand, why you dont want to set the <code>$HOME</code> environment variable since that solves exactly what youre asking for.</p>
+<p><code>cd ~</code> doesnt mean <em>change to the root directory</em>, but <strong>change to the users home directory</strong>, which is set by the <code>$HOME</code> environment variable.</p>
+<h2>Quickndirty solution</h2>
+<p>Edit <code>C:\Program Files (x86)\Git\etc\profile</code> and set <code>$HOME</code> variable to whatever you want (add it if its not there). A good place could be for example right after a condition commented by <code># Set up USERs home directory</code>. It must be in the MinGW format, for example:</p>
+<pre><code>HOME=/c/my/custom/home
+</code></pre>
+<p>Save it, open Git Bash and execute <code>cd ~</code>. You should be in a directory <code>/c/my/custom/home</code> now.</p>
+<p>Everything that accesses the users profile should go into this directory instead of your Windows profile on a network drive.</p>
+<p><strong>Note:</strong> <code>C:\Program Files (x86)\Git\etc\profile</code> is shared by all users, so if the machine is used by multiple users, its a good idea to set the <code>$HOME</code> dynamically:</p>
+<pre><code>HOME=/c/Users/$USERNAME
+</code></pre>
+<h2>Cleaner solution</h2>
+<p>Set the environment variable <code>HOME</code> in Windows to whatever directory you want. In this case, you have to set it in Windows path format (with backslashes, e.g. <code>c:\my\custom\home</code>), Git Bash will load it and convert it to its format.</p>
+<p>If you want to <strong>change the home directory for all users on your machine</strong>, set it as a <em>system environment variable</em>, where you can use for example <code>%USERNAME%</code> variable so every user will have his own home directory, for example:</p>
+<pre><code>HOME=c:\custom\home\%USERNAME%
+</code></pre>
+<p>If you want to <strong>change the home directory just for yourself</strong>, set it as a <em>user environment variable</em>, so other users wont be affected. In this case, you can simply hard-code the whole path:</p>
+<pre><code>HOME=c:\my\custom\home
+</code></pre>","<p>In my case, all I had to do was add the following <em>User variable</em> on Windows:</p>
+<p>Variable name: <code>HOME</code><br/>
+Variable value: <code>%USERPROFILE%</code></p>
+<p><a href=https://www.nextofwindows.com/how-to-addedit-environment-variables-in-windows-7 rel=noreferrer>How to set a Environment Variable</a> (You can use the <em>User variables for username</em> section if you are not a system administrator)</p>","<p>Id share what I did, which works not only for Git, but MSYS/MinGW as well.</p>
+<p>The <code>HOME</code> environment variable is not normally set for Windows applications, so creating it through Windows did not affect anything else.  From the Computer Properties (right-click on Computer - or whatever it is named - in Explorer, and select Properties, or Control Panel -&gt; System and Security -&gt; System), choose <code>Advanced system settings</code>, then <code>Environment Variables...</code> and create a new one, <code>HOME</code>, and assign it wherever you like.</p>
+<p>If you cant create new environment variables, the other answer will still work.  (I went through the details of how to create environment variables precisely because its so dificult to find.)</p>",git bash change home directory,How do I change the home directory in git bash?,"Right-click on Git Bash's shortcut icon and go to the Properties.
+In the Start in field, paste the path to the desired folder, e.g. D:\WorkDir.
+Remove --cd-to-home from the Target field if it exists.",How do I change my home in bash?,"The Home ( ~ ) directory in Git Bash can be changed by setting the user-level %HOME% environment variable in Windows. This is quite safe as the %HOME% environment variable is not normally set for Windows applications, so creating it shouldn't affect anything else.",How do I change the root directory in bash?,"To change into the root directory of Linux file system, use cd / . To go into the root user directory, run cd /root/ as root user. To navigate up one directory level up, use cd ..",Where is git bash home directory?,"Find it by typing cd / then pwd -W . Alternatively, from the start menu, right click on the Git Bash icon and select open file location. It might be something like C:\Users\name\AppData\Local\Programs\Git , the mingw64 in this directory is your root."
+https://stackoverflow.com/questions/3177241/what-is-the-best-way-to-concatenate-two-vectors,c++ - What is the best way to concatenate two vectors?,"<pre><code>AB.reserve( A.size() + B.size() ); // preallocate memory
+AB.insert( AB.end(), A.begin(), A.end() );
+AB.insert( AB.end(), B.begin(), B.end() );
+</code></pre>","<p>This is precisely what the member function <code>std::vector::insert</code> is for</p>
+<pre><code>std::vector&lt;int&gt; AB = A;
+AB.insert(AB.end(), B.begin(), B.end());
+</code></pre>","<p>Depends on whether you really need to physically concatenate the two vectors or you want to give the appearance of concatenation of the sake of iteration. The boost::join function</p>
+<p><a href=http://www.boost.org/doc/libs/1_43_0/libs/range/doc/html/range/reference/utilities/join.html rel=noreferrer>http://www.boost.org/doc/libs/1_43_0/libs/range/doc/html/range/reference/utilities/join.html</a></p>
+<p>will give you this.</p>
+<pre><code>std::vector&lt;int&gt; v0;
+v0.push_back(1);
+v0.push_back(2);
+v0.push_back(3);
+
+std::vector&lt;int&gt; v1;
+v1.push_back(4);
+v1.push_back(5);
+v1.push_back(6);
+...
+
+BOOST_FOREACH(const int &amp; i, boost::join(v0, v1)){
+    cout &lt;&lt; i &lt;&lt; endl;
+}
+</code></pre>
+<p>should give you </p>
+<pre><code>1
+2
+3
+4
+5
+6
+</code></pre>
+<p>Note boost::join does not copy the two vectors into a new container
+but generates a pair of iterators (range) that cover the span of
+both containers. There will be some performance overhead but maybe
+less that copying all the data to a new container first.</p>",c++ combine two vectors,How do you combine vectors in C++?,"The simplest solution is to use a copy constructor to initialize the target vector with the copy of all the first vector elements. Then, call the vector::insert function to copy all elements of the second vector. We can also use only vector::insert to copy elements of both vectors into the destination vector.",How do you combine two vectors?,"The concatenation of vectors can be done by using combination function c. For example, if we have three vectors x, y, z then the concatenation of these vectors can be done as c(x,y,z). Also, we can concatenate different types of vectors at the same time using the same same function.",Can you add vectors in C++?,"The simplest solution is to use a copy constructor to initialize the target vector with the copy of all the first vector elements. Then, call the vector::insert function to copy all elements of the second vector. We can also use only vector::insert to copy elements of both vectors into the destination vector.",How do you reverse a vector element in C++?,"To reverse vector elements, we can use reverse() function which is defined in <algorithm> header in C++ standard template library. It accepts the range of the iterators in which reverse operation to be performed and reverses the elements between the given range. Reverse a vector To reverse vector elements, we can use reverse() function which is defined in <algorithm> header in C++ standard template library. It accepts the range of the iterators in which reverse operation to be performed and reverses the elements between the given range."
