@@ -8,6 +8,8 @@ from requests_html import HTMLSession
 import urllib
 import pandas as pd
 import time
+from random import randint
+from time import sleep
 
 class Google_Related_Search:
     def __init__(self, *,keywords: List = [], max_searches: int = 3) -> None:
@@ -66,8 +68,8 @@ class Google_Related_Search:
         '''Parse the urls contained in the page and append to results.'''
         # print(self.keyword)
         content = BeautifulSoup(html, 'lxml')
-        # all_divs = content.find_all("div", {"class": "BNeawe s3v9rd AP7Wnd lRVwie"})
-        all_divs = content.find_all("div", {"class": "s75CSd OhScic AB4Wff"})
+        all_divs = content.find_all("div", {"class": "BNeawe s3v9rd AP7Wnd lRVwie"})
+        # all_divs = content.find_all("div", {"class": "s75CSd OhScic AB4Wff"})
 
         if all_divs:
             for div in all_divs:
@@ -75,7 +77,7 @@ class Google_Related_Search:
                 if data in self.related_searches:
                     continue
                 else:
-                    print(data)
+                  #  print(data)
                     self.related_searches.append(data)
 
     def open_csv(self):
@@ -114,7 +116,7 @@ class Google_Related_Search:
 
         time_1 = time.time()
 
-        df = pd.read_csv("Products for Keywords - Rex.csv", encoding='utf-8')
+        df = pd.read_csv("Products for Keywords - Rex - Copy.csv", encoding='utf-8')
         df = df.set_index(["No"])
         new_df = df[df['Keyword 1'].isnull()]
     
@@ -134,45 +136,55 @@ class Google_Related_Search:
                     self.parsed_keyword = []
                     break_outer: bool = False
 
-                    previous_keyword: str = ""
                     while True:
-                        counter += 1
                         for query in self.related_searches:
-                            if query in self.parsed_keyword:
-                                if (query == previous_keyword) and (len(self.related_searches) == 1):
-                                    print("aoks")
+                            if query == self.related_searches[-1]:
+                                if query in self.parsed_keyword:
                                     break_outer = True
                                     break
                                 else:
-                                    continue
+                                    self.keyword = query
+                                    self.parsed_keyword.append(query)
+
+                            # if query in self.parsed_keyword:
+                            #     if (self.keyword == keyword) and (len(self.related_searches) == 1):
+                            #         print("aoks")
+                            #         break_outer = True
+                            #         break
+                            #     else:
+                            #         continue
                             else:
-                                self.keyword = query
-                                self.parsed_keyword.append(query)
-                                break
+                                if query in self.parsed_keyword:
+                                    continue
+                                else:
+                                    self.keyword = query
+                                    self.parsed_keyword.append(query)
+                                    break
 
                         if break_outer:
                             break
 
                         print("umabot dito")
 
-
+                        sleep(randint(1,2))
                         response = self.fetch_query(query=self.keyword)
-                        # self.store_response(response=response, page = 10)
-                        self.parse(html = response.content)
 
-                        previous_keyword = self.keyword
-
-                        print("umabhot dito 2")
-                        
-                        if len(self.related_searches) > self.max_searches:
-                            self.related_searches = self.related_searches[1:self.max_searches]
-                            break
-                        else:
+                        if response.status_code != 200:
                             continue
+                        else:
+                        # self.store_response(response=response, page = 10)
+                            self.parse(html = response.content)
+                            # previous_keyword = self.keyword
+                            print("umabhot dito 2")
+                            if len(self.related_searches) > self.max_searches:
+                                self.related_searches = self.related_searches[1:self.max_searches]
+                                break
+                            else:
+                                continue
 
                     for count, value in enumerate(self.related_searches):
-                        print(dat, cols[count])
-                        print(value)
+                        #print(dat, cols[count])
+                        #print(value)
                         df.loc[dat, cols[count]] = str(value)
         except Exception as e:
             print(e)
@@ -183,7 +195,7 @@ class Google_Related_Search:
             print("Total time spent: ", time_2 - time_1)
             print(f"{added_counter} keywords added")
             print(f"{len(keywords_left)} keywords left")
-            df.to_csv("Products for Keywords - Rex.csv", encoding = "utf-8")
+            df.to_csv("Products for Keywords - Rex - Copy.csv", encoding = "utf-8")
             print("Saved to csv")
 
 

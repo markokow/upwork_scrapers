@@ -1,0 +1,681 @@
+url,title,content
+https://www.toppr.com/guides/business-mathematics-and-statistics/calculus/methods-of-integration/,"Methods of Integration: Integration by Parts, Partial Fractions, Examples","The standard formulae for integration are only useful when the integrand is given in the ‘standard’ form. For most physical applications or analysis purposes, advanced techniques of integration are required, which reduce the integrand analytically to a suitable solvable form. Two such methods – Integration by Parts, and Reduction to Partial Fractions are discussed here. Both have limited applicability, but are of immense use in solving integrands which may seem unsolvable otherwise. So let’s begin!
+
+Suggested Videos
+
+Cost, Demand, Revenue and Profit functionsAverage and Marginal Costs and RevenueIndefinite IntegrationDefinite Integration
+
+
+
+Integration by Parts
+
+
+
+Another useful technique for evaluating certain integrals is integration by parts. Here, the integrand is usually a product of two simple functions (whose integration formula is known beforehand). One of the functions is called the ‘first function’ and the other, the ‘second function’. The general formula for the Integration by parts method then can be given as –∫uvdx=u∫vdx–∫[ddx(u)∫vdx]dx+cwhere both u and v are functions of x.u(x) – the first functionv(x) – the second function
+
+The preference for deciding the first and second functions is usually as follows –Remember the code ILATE for the precedence, whereI – Inverse functionsL – Logarithmic FunctionsA – Algebraic FunctionsT – Trigonometric FunctionsE – Exponential Functions
+
+Application – Suppose your integrand is a product of two functions – exponential and logarithmic. On comparing with the ILATE form of precedence, the logarithmic function will be chosen as the first function and the exponential function can then be taken as the second function for easy evaluation. Thus, for solving ∫(ex)log(4x2)dx, we can choose log(4x2) as the first function, and the ex as the second function to easily obtain the result.
+
+Browse more Topics under Calculus
+
+Application of Marginal Cost And Marginal RevenueIntroduction to Integral Calculus
+
+Method of Partial Fractions
+
+This method relies on the fact that the integration of functions of the form1f(x), where f(x) is a linear function with some exponent, can be done quite easily. Thus, the integrands involving polynomial functions in their numerator and denominator are reduced to partial fractions first, to ease the process of integration.
+
+Different types of integrands need to be handled differently under this method. Therefore, we have the following three general cases –
+
+Assume that the integrand is of the formP(x)Q(x)with both P(x) and Q(x) being polynomials that may be factorized into multiple polynomials. Under every case, we’ll evaluate the partial fractions only under the condition that the degree of P(x) is less than the degree of Q(x).
+
+Case I: Q(x) contains non-repeated linear factors
+
+Basically, Q(x) in this case should be of the form (x – a)(x – b)(x – c)… while P(x) may be any polynomial that satisfies the condition of its degree being less than that of Q(x).
+
+Example – To find the partial fractions corresponding tox(2–x)(x+3):Letx(2–x)(x+3)=A(2–x)+B(x+3)=A(x+3)+B(2–x)(2–x)(x+3)
+
+To find A and B, now we will equate the coefficients of the numerators on both sides of the equation, since the fraction represented by them is the same. We then get –
+
+x = A(x + 3) + B(2 – x)
+
+Now we can proceed by equating the coefficients of equal powers of x on both sides, which is the standard method of solving such algebraic equations; or, we may use a shortcut.
+
+Note that on substituting x = -3 in the equation, we get –
+
+-3 = A(-3 + 3) + B(2 – (-3))-3 = 0 + 5BB = -3/5
+
+Similarly, on substituting x = 2;
+
+2 = A(2 + 3) + B(2 – 2)2 = 5A + 0A = 2/5
+
+Clearly, all we did was to subsitute the values of x that made the coefficient of A and B = 0 separately. Our final result then can be written as -x(2–x)(x+3)=A(2–x)+B(x+3)x(2–x)(x+3)=25(2–x)–53(x+3)
+
+You can also see from the shortcut that you may directly substitute the values of x for which the denominators of our partial fractions tend to go to 0 as well. For eg – To make the denominator ofB(x+3)= 0, we substitute x = -3 throughout the equation, after multiplying the entire equation by the denominator of  B(x+3)i.e. (x + 3). We’ll then be left with –
+
+x(2–x)(x+3).(x+3)=A(2–x).(x+3)+B(x+3).(x+3)x(2–x)=A(2–x).(x+3)+BNow put x = -3 to get –3(2–(−3))=A(2–x).(−3+3)+BB=−53, which is the same result as before.
+
+A similar analysis can be done to find A as well. This way, all the partial fractions of an integrand of the formP(x)Q(x)can be found, where the degree of P(x) is less than that of Q(x).
+
+Case II: Q(x) contains one or more repeated linear factors
+
+Here, Q(x) may have repeated roots and could be of the form (x – a)(x – b)3(x – c)2…In such a case, if a linear factor is repeated n times in the denominator, there will be n corresponding partial fractions with degree 1 to n.
+
+Example – To find the partial fractions corresponding to1(x–1)2(x+1):Let1(x–1)2(x+1)=A(x–1)+B(x–1)2+C(x+1)=A(x–1)(x+1)+B(x+1)+C(x–1)2(x–1)2(x+1)
+
+To find A,B and C, now we will equate the coefficients of the numerators on both sides of the equation, since the fraction represented by them is the same. We then get –
+
+1 = A(x – 1)(x + 1) + B(x + 1) + C(x – 1)2
+
+Now we can proceed by equating the coefficients of equal powers of x on both sides or, once again we may proceed by direct substitution.
+
+Note that on substituting x = 1 in the equation, we get –
+
+1 = A(1 – 1)(1 + 1) + B(1 + 1) + C(1 – 1)21 = 0 + 2B + 0B = 1/2
+
+Similarly, on substituting x = -1;
+
+1 = A(-1 – 1)(-1 + 1) + B(-1 + 1) + C(-1 -1)21 = 0 + 0 + 4CC = 1/4
+
+Now to get A, we may substitute the values of B and C in the numerator balance equation, along with any arbitrary value of x (besides 1 and -1) to get –
+
+1 = A(x – 1)(x + 1) + B(x + 1) + C(x – 1)2Put B = 1/2 and C = 1/41 = A(x – 1)(x + 1) +12(x + 1) +14(x – 1)2Then let us put x = 0 in this case because it seems like an easy value to evaluate the equation for.: 1 = A(0 – 1)(0 + 1)  +12(0 + 1) +14(0 – 1)2 : 1 = -A +12+14: A = -14
+
+Our final result then can be written as -1(x–1)2(x+1)=A(x–1)+B(x–1)2+C(x+1)=–14(x–1)+12(x–1)2+14(x+1)
+
+Similarly, all other partial fractions in the case of a repeated linear root may be found.
+
+Case III: Q(x) contains a higher order polynomial factor
+
+Under this case, some factors of Q(x) might be quadratic, cubic or higher order polynomials in nature. Let us understand this method with respect to a quadratic term in the denominator –
+
+Example – To find the partial fractions corresponding tox3–2x4–1:
+
+First let us factorize the denominator –x4–1=(x2–1)(x2+1)=(x–1)(x+1)(x2+1).Now, letx3–2(x–1)(x+1)(x2+1)=A(x–1)+B(x+1)+Cx+D(x2+1)=A(x+1)(x2+1)+B(x–1)(x2+1)+(Cx+D)(x–1)(x+1)(x–1)(x+1)(x2+1)
+
+Basically, we have chosen the numerator for the partial fraction involving the quadtratic term as a linear function in x: Cx + D (i.e. one degree less than the denominator).
+
+To find A,B,C and D, now we will equate the coefficients of the numerators on both sides of the equation, since the fraction represented by them is the same. We then get –
+
+x3 – 2 = A(x + 1)(x2 + 1) + B(x – 1)(x2 + 1) + (Cx + D)(x – 1)(x + 1)
+
+Now we can proceed by equating the coefficients of equal powers of x on both sides; or once again proceed with direct substitution.
+
+Note that on substituting x = 1 in the equation, we get –
+
+13 – 2 =A(1 + 1)(12 + 1) + B(1 – 1)(12 + 1) + (C.1 + D)(1 – 1)(1 + 1)-1 = 4A + 0 + 0A = -1/4
+
+Similarly, on substituting x = -1;
+
+(-1)3 – 2 =A(-1 + 1)((-1)2 + 1) + B(-1 – 1)((-1)2 + 1) + (C.(-1) + D)(-1 – 1)(-1 + 1)-3 = 0 – 4B + 0B = 3/4
+
+Now we have no option but to compare the coefficients of same powers of x on both sides.
+
+Coefficient of x3 on LHS  = Coefficient of x3 on RHS1 = A + B + CUse values of A and B to get –C = 1/2
+
+Constant term on LHS  = Constant term on RHS1 = A – B – DUse values of A and B to get –D = 1
+
+Our final result then can be written as -x3–2(x–1)(x+1)(x2+1)=A(x–1)+B(x+1)+Cx+D(x2+1)=−14(x–1)+34(x+1)+x/2+1(x2+1)=−14(x–1)+34(x+1)+x+22(x2+1)
+
+Similarly, all other partial fractions in the case of a higher polynomial function may be found.
+
+Definite Integration
+
+All of the integration fundamentals that you have studied so far have led up to this point, wherein now you can apply the integral evaluation techniques to more practical situations by incorporating the boundaries (or the limits) to which your integrand actually holds true.
+
+This is that branch of integration which is of widespread use in Economics, Mathematics, Engineering, and many other disciplines. Its utilization in the task of finding the area under a curve finds great application in estimating the total revenues from related marginal functions, or the total growth from the growth rates trend graph etc. So let’s understand its working formula!
+
+Given an integral∫f(x)dx. We call the evaluation of such an integral as Indefinite Integration.
+
+Formula
+
+The solution of this integration is a resultant function in x plus some arbitrary constant. Let us represent the solution in this form –
+
+∫f(x)dx=F(x)+c
+
+In the method of definite integration, the integral actually has to evaluated in some domain of the variable x. Therefore, we represent it by∫x2x1. What this actually means is that the integrand f(x) now will be bound over the values which the variable of integration i.e. x assumes here, which is x1 to x2. Then we can give the end result by –
+
+∫x2x1f(x)dx=F(x2)–F(xa)Here, x2 – The Upper Limitx1 – The Lower Limit
+
+Note that there is no arbitrary constant of integration in the solution of a definite integration. Also, you need to know beforehand the result of the indefinite integration of f(x), then use its value at the limits of integration to get this solution.
+
+Properties
+
+For a,b,c as real numbers –
+
+∫baf(x)dx=∫baf(t)dt{Change of variable of integration}
+
+⇒∫baf(x)dx=–∫abf(x)dx{Reversal of Lower and Upper Limits}
+
+⇒ \(\int_a^b f(x)dx = \int_a^c f(x)dx + \int_c^b f(x)dx, where a<c<b
+
+⇒∫a0f(x)dx=∫a0f(a–x)dx
+
+⇒ If f(x) = f(a + x) {Periodic Function};∫na0f(x)dx=n∫a0f(x)dx
+
+⇒∫a−af(x)dx=2∫a0f(x)dx if f(-x) = f(x) {Even Function}= 0 if f(-x) = -f(x) {Odd Function}
+
+These properties are very useful for changing the limits, or simplifying the integral given in the problem. Thus, we must understand and memorize them well. Now let us look at some solved examples on what we have learned so far.
+
+Solved Examples for You
+
+Question: Solve∫1(x–1)2(x+1)dxSolution: We can evaluate this type of integrand easily by partial fractions method. In the example for Case 2) above, we have expressed exactly this integrand in terms of partial fractions. Now let us proceed further to find the complete solution.∫1(x–1)2(x+1)dx=∫[−14(x–1)+12(x–1)2+14(x+1)]dxUsing the standard formulae and the variable substitution method -=−14ln|x–1|–12(x–1)+14ln|x+1|+c=14ln|x+1x–1|–12(x–1)+c
+
+Question: Solve∫x2lnxdxSolution: We’ll use integration by parts here with x2 (algebraic) as the second function, and ln x (logarithmic) as the first function. Using the formula, we get –∫x2lnxdx=lnx∫x2dx–∫[ddx(lnx)∫x2dx]dx+c=lnx.x33–∫[1x.x33]dx+c=x3lnx3–∫x23dx+c=x3lnx3–x39+c
+
+Question: Solve∫+2−2x2dxSolution: First, you must note that for this definite integral, the integrand x3 is an even function, that is –
+
+(-x)2 = (x)2
+
+Thus, by the properties of such definite integrals we have –∫+2−2x2dx=2∫20x2dx=2[x33]20=2.[233–033]=163
+"
+https://www.toppr.com/guides/chemistry-formulas/ammonium-iodide-formula/,"Ammonium Iodide Formula: Structure, Preparations and Properties","The ammonium iodide is the chemical compound NH4I that comes in use in the photographic chemicals and also in some medications at the same time. The preparation of the ammonium iodide takes place by the action of hydroiodic acid on the ammonia. It is easily soluble when we mix it in the water (H2O). Moreover, by the process of mixing it with the water, it crystallizes in the shape of cubes. It is also soluble when putting inside the solution of ethanol and then, as a result, it turns yellow on standing in the moist air, owing to decomposition with the process of liberation of the iodine. Read on further to know about Ammonium Iodide Formula.
+
+Structure and Formula
+
+The molecular formula of the ammonium iodide is H4IN and its structure is present below in the form of an image:
+
+
+
+Preparation
+
+Firstly we dissolve 254 grams of the potassium iodide in 125 ml of water (H2O) and mix it with 100 grams of ammonium sulfate. Then we have to dissolve in 125 ml of boiling water. After it cools down, we add 40 ml of alcohol and then we keep the mixture for a time period of 12 hours.
+
+However, then we obtain a precipitate of potassium sulfate that we filter and then we evaporate the filtrate occasionally by adding ammonia water that is containing some amount of alcohol until the process of crystallization starts. Then the crystals of the potassium sulfate are additionally washed with the dilute alcohol that is about 20 percent. Moreover, after combining the filtrates and evaporating finally the ammonium iodide is obtained as a result.
+
+(NH4)2SO4+ 2KI →2NH4I + K2SO4
+
+The ammonium iodide crystallizes in the shape of cubes and deliquesces in the air. We have to preserve it in a dark place because the light decomposes the salt, causing it to turn brown in color. We can remove this coloration by dissolving it in distilled water.
+
+After that, then treating the solution with the ammonium sulfide, filtering, and evaporating the filtrate with the help of the steam bath, to crystallize. It is readily soluble in alcohol. The aqueous solution turns yellow in color on standing, owing to the decomposition and separation of the iodine. One part of the salt dissolves in 0.60 parts of the water (H2O).
+
+The ammonium iodide can also be made in a laboratory. By the process of reacting ammonia or ammonium hydroxide with the hydroiodic acid or the hydrogen iodide gas:
+
+NH3+ HI → NH4I
+
+NH4OH + HI → NH4I + H2O
+
+Uses
+
+The ammonium iodide is useful in many ways and one of them is in photographic chemicals. Moreover, we also generally use it in the process of making various types of medicines.
+
+Properties
+
+The ammonium iodide is visible in the form of a white crystalline powder. In addition, it has a melting point of 551 °C whereas, it has a boiling point of 405 °C. Its molar mass is 144.94 g/mol with a density of 2.51 g/cm³. It is easily soluble when putting inside the water (H2O).
+
+Safety and Health Hazards
+
+Due to the inhalation of the ammonium iodide a person may suffer from multiple health issues, some of them are irritation of nose and throat. Contact of the ammonium iodide with the naked eyes of a living being can cause irritation in the eyes. The toxic and irritating fumes of the hydrogen iodide, iodine, and oxides of nitrogen may result in the fire. The compound may sublime into the fire and then condense on the cold surfaces. The ammonium iodide should be kept in a tightly closed and protected container and the sunlight should not enter that container.
+
+Solved Example on Ammonium Iodide Formula
+
+Question: How to prepare methyl ammonium iodide for lead iodide perovskite?
+
+Solution: Addition of CH3NH2 and HI at ice-cold conditions then stir for 2 h, followed by heating at 80-90oC for 3 h, eventually, you will get while solid. This one should go for washing with ether multiple times and dried in an oven at 600C for one day.
+
+In detail, you can find in nature paper about the preparation of CH3NH3I.
+"
+https://www.toppr.com/guides/chemistry-formulas/ammonium-hydroxide-formula/,"Ammonium Hydroxide Formula: Structure, Properties and Uses","The ammonium hydroxide is also known as the Aqua Ammonia, solution of the ammonia gas inside the water, and also a common commercial form of ammonia. It is a liquid that has no color and has a strong characteristic odor. In the concentrated form, ammonium hydroxide can result in burns on coming in contact with the skin. Moreover, with the ordinary household ammonia, useful as a cleanser, is dilute ammonium hydroxide. The water solution is basically represented by the formula i.e. NH4OH, though no appreciable amount of the molecular species NH4OH is present over there. The solution consists primarily of large amounts of water (H2O) and ammonia (NH3) and smaller amounts of the ammonium ion, NH4+, and the hydroxide ion, OH–. Let’s study about Ammonium Hydroxide Formula in detail.
+
+Formula and Structure
+
+The chemical formula of the ammonium hydroxide is NH4OH. The molar mass is 35.04 g/mol-1. The compound structure is made by 1 hydroxide anion (OH–) and 1 ammonium cation NH4+ and these share an ionic bond. An image showing its chemical structure is below in the common representations that we generally use for the organic molecules.
+
+Source: pubchem
+
+Occurrence
+
+Ammonium hydroxide occurs by the dissolution of ammonia inside the water. However, this is a totally natural process.
+
+Preparation
+
+The ammonium hydroxide is made mostly by the direct reaction of the hydrogen and the nitrogen together, metal catalyzes it as an iron. Then we add the resulting ammonia to the water to make ammonium hydroxide.
+
+Physical Properties
+
+Ammonium hydroxide is a colorless liquid that has a highly pungent odor. Ammonium hydroxide has a density of 0.91 g/mL-1. The melting point is -57.5oC and it has a boiling point of 37oC. It is highly miscible with the water.
+
+Chemical Properties
+
+Ammonium hydroxide is a basic compound that partially dissociates in the water keeping the next equilibrium with the ammonium ion and the hydroxide ion, moreover, it is a weak compound:
+
+NH4OH + H2O ⇌ NH4+ + OH−
+
+The equilibrium comes in use for regulating the pH of the solutions due to the ion OH– maximizes the pOH of the basicity level of any solution.
+
+Basicity of Ammonia in Water
+
+In an aqueous solution, the ammonia deprotonates a minimal fraction of the water to provide ammonium and hydroxide:
+
+NH3 + H2O ⇌ NH4+ + OH−.
+
+In a 1M ammonia solution, about 0.42% of the ammonia changes into ammonium that is equivalent to a pH of 11.63 because [NH4+] = 0.0042 M, [OH–] = 0.0042 M, [NH3] = 0.9958 M, and pH = 14+log10[OH–] = 11.62. [citation needed] The base ionization constant is
+
+Kb = [NH4+][OH−]/[NH3] = 1.8×10−5
+
+Uses
+
+Ammonium hydroxide’s most common use is as a household cleaner, for this purpose it comes in use as a solution of 1-3%. In some chemical processes, we can use it as a precursor to form the alkylamines. Moreover, we also use the Ammonium hydroxide as an acidity regulator to reduce the acidity in food due to the release of the hydroxide in the solution.
+
+Health Effects/Safety Hazards
+
+Ammonium hydroxide can also cause severe damage to the eyes and the skin. It is very toxic to aquatic life at the same time.
+
+Laboratory Use
+
+Many traditional qualitative inorganic analysis uses aqueous ammonia as a complex ant and base. Like multiple amines, it provides a deep blue color with copper (II) solutions. However, the ammonia solution can dissolve the silver oxide residues, such as those formed from Tollens’ reagent. It is also present in the solutions we generally use to clean gold, silver, and platinum jewellery also but may have adverse effects on porous gemstones such as the opals and the pearls.
+
+Solved Example on Ammonium Hydroxide Formula
+
+Question: How to prepare a solution of NH4OH (0.3%) using: Ammonia NH3, 2 M solution in the Methanol (density 0.787)?
+
+Solution: 0.3% NH4OH means 0.176 M NH3 solution in 100ml H2O
+
+M1V1 = M2V2
+
+2*V1 = 0.176*100 (If you need 100 ml solution)
+
+V1 = ml of 2M NH3 in MeOH (take the V1 and mix with H2O to make 100 ml standard solution).
+"
+https://www.toppr.com/guides/chemistry-formulas/ammonium-dichromate-formula/,"Ammonium Dichromate Formula: Properties, Uses and Reactions","Ammonium dichromate is a crystalline solid that is bright orange in color. It readily ignites and burns and produces a voluminous residue that has a green color. However, if we start heating it in a closed container, the container may rupture because of the decomposition of the material. It can also act as a strong oxidizing agent when mixed with or contaminated with the combustible material. It dissolves when put inside the water. Moreover, in this compound, as in all the chromates and the dichromates, chromium is in a +6 oxidation state that is commonly called hexavalent chromium. Let’s learn about Ammonium Dichromate Formula in detail.
+
+It is a salt that comprises of the ammonium ions and dichromate ions both at the same time. The Ammonium dichromate is also popular by the name ‘vesuvian’ Fire sometimes, because of its application in the demonstrations of the tabletop ‘volcanoes’. However, this demonstration is not so popular in the schools due to the carcinogenic nature of the compound. In the early days of photography and some of the pyrotechnics use it.
+
+Ammonium Dichromate Formula and Structure
+
+The molecular formula of the ammonium dichromate is (NH4)2Cr2O7. And its structure id given in the image provided below.
+
+
+
+Properties
+
+At room temperature and pressure, the compound exists in orange color acidic crystals that are soluble in water and alcohol. Its production takes place by the action of the chromic acid on the ammonium hydroxide with subsequent crystallization. The (NH4)2Cr2O7 crystal (C2/c, z=4) consists of a single type of ammonium ion. Moreover, at the sites of symmetry C1 (2,3). Every single NH4+ center is irregularly surrounded by 8 oxygen atoms at N—O distances that range from ca. 2.83 – ca. 3.17 Å, typical of the bonds of hydrogen.
+
+Uses
+
+It has various applications like pyrotechnics and in the early time of photography as well as in the lithography, as a source of pure nitrogen in the chemistry labs, and also as a catalyst. In addition, industries also use it as a mordant in the process of dying in the dyeing pigments, in the manufacturing process of the alizarin, chrome alum, leather tanning and in oil purification as well.
+
+Photosensitive films that contain PVA, ammonium dichromate and a phosphor are spin-coated as liquid slurries in the production of the phosphor raster of the TV screens and LCDs and many other different devices. On the other hand, the ammonium dichromate acts as the photoactive site as well.
+
+Reactions
+
+The volcano demonstration includes the igniting of a pile of the salt and this initiates the following exothermic conversion:
+
+(NH4)2Cr2O7 (s) → Cr2O3 (s) + N2 (g) + 4 H2O (g) (ΔH = −429.1 ± 3 kcal/mol)
+
+Like the ammonium nitrate, it is also thermodynamically unstable. Its decomposition reaction proceeds to the process of completion once we initiate it, producing voluminous powder of chromium (III) oxide that is dark green in color.
+
+Not all of the ammonium dichromate decomposes in this specific reaction. When the dark green color powder mixes up in the water then, as a result, a yellow or an orange color solution is the outcome we get from the leftover ammonium dichromate.
+
+Safety
+
+The Ammonium dichromate is similar to all the chromium (VI) compounds and it is highly toxic and also a proven carcinogen. Moreover, it is also a strong irritant at the same time.
+
+Incidents
+
+In the airtight and sealed containers, ammonium dichromate may explode if provided excess heat. In the year 1986, 2 workers lost their lives and 14 others were injured at the Diamond Shamrock Chemicals in Ashtabula, Ohio when about 2,000 lbs. of ammonium dichromate exploded because it was being dried in a heater.
+
+Solved Example on Ammonium Dichromate Formula
+
+Question: What is the oxidation state for Cr in (NH4)2Cr2O7?
+
+Solution: The oxidation number of the chromium i.e. Cr in (NH4)2Cr2O7 is +6.
+"
+https://www.toppr.com/guides/chemistry-formulas/ammonium-chloride-formula/,"Ammonium Chloride Formula: Properties, Uses and Examples","Ammonium chloride (NH4Cl) that is also known as the ‘sal ammoniac’ is the salt of the ammonia and the hydrogen chloride. Its most common uses are as a nitrogen supply in the fertilizers and as an electrolyte in the dry cells. Moreover, it is also majorly employed as a constituent of galvanizing, tinning, and soldering fluxes to remove the oxide coatings from the metals. Further, to improve the adhesion between the solders. Similarly, many types of cold and cough medicines or remedies also use it because of its efficacy as an expectorant. Ammonium Chloride Formula will help you understand this better.
+
+Ammonium chloride is a crystalline substance that has no color. Further, it is highly soluble when mixed with water. The ammonium chloride is produced as a by-product in the ammonia-soda process that is conducted for forming the sodium carbonate. On the other hand, it is also produced by the reaction of the ammonium sulfate and sodium chloride solutions. However, when the ammonium chloride is mixed with slaked lime i.e. calcium carbonate, the result that comes out is the ammonia gas.
+
+Formula and Structure
+
+The chemical formula of the ammonium chloride is NH4Cl and it has a molar mass of 53.490 g mol-1. Moreover, this molecule is formed by two potassium cations K1+ and 1 dichromate anion Cr2O72-. Furthermore, it is present in both the forms that are the anhydrous and the three hydrate. Its chemical structure is shown below in the form of an image, in the common illustrations used for the organic molecules.
+
+
+
+Occurrence
+
+Ammonium chloride is present in mineralogical creations and in this form we refer to it as the ‘salt ammoniac’. In addition to this, it is also present in various volcanic vents and ashes.
+
+Preparation
+
+One can also prepare Ammonium chloride by multiple methodologies. The first one is through the neutralization with the HCl of the ammoniacal residue made in the distillation of the coal.
+
+NH3 + HCl → NH4Cl
+
+The 2nd strategy is by the Solvay process to get the sodium carbonate or bicarbonate and where the ammonium chloride is present as a by-product.
+
+NH3 + CO2 + NaCl + H2O → NH4Cl + NaHCO3
+
+In the Solvay process, the sodium bicarbonate is recovered by the filtration process and then the ammonium chloride that remains in solution crystallizes.
+
+Physical Properties
+
+Ammonium chloride is a white solid that has no smell. It has a density of 1.5274 g mL-1 and the melting and boiling points are 338 ºC and 520 ºC respectively. Further, it is soluble in water, ethanol, methanol, and glycerol and it is also slightly soluble in the acetone. Moreover, it is insoluble in organic solvents such as ethyl acetate.
+
+Chemical Properties
+
+Ammonium chloride may suffer various types of reactions of great value to the chemical and pharmaceutical industries respectively. It can decompose when one heats it into hydrochloric acid and ammonia (a reaction I).
+
+NH4Cl → NH3 + HCl (I)
+
+NH4Cl + NaOH → NH3 + NaCl + H2O (II)
+
+2 NH4Cl + Na2CO3 → 2 NaCl + CO2 + H2O + 2 NH3 (III)
+
+Uses
+
+Ammonium chloride has a large source of the nitrogen, so that and similarly to the urea we also use it as fertilizers and add it to the media of bacteria and yeast growth. Moreover, we also use it for the preparation of some metals before galvanization that needs a surface that is free of metal oxides. Further, the pharmaceutical industry also uses ammonium chloride to produce cough syrups and medicines.
+
+Health Effects/Safety Hazards
+
+Ammonium chloride is very poisonous and toxic and can cause damage to organs by ingestion. It also causes serious eye damages.
+
+Solved Example on Ammonium Chloride Formula
+
+Question: Do a solution of NH4Cl and NH4OH acts as a buffer?
+
+Solution: NH4Cl is a strong electrolyte hence, dissociates completely, NH4OH is a weak electrolyte. Its dissociation is further suppressed by common ion NH4+ provided by NH4Cl in the solution.
+
+NH4Claq ⇌ NH4+aq + Cl–aq
+
+NH4OHaq ⇌ NH4+aq + OH‑aq
+
+This solution acts as a basic buffer and maintains its pH around 9.25. It is capable of resisting the change in pH on the addition of a small amount of acid or alkali.
+"
+https://www.toppr.com/guides/chemistry-formulas/ammonium-carbonate-formula/,"Ammonium Carbonate Formula: Properties, Uses and Examples","We commonly refer to Ammonium Carbonate as Baker’s Ammonia. Along with it, it is a chemical compound that comprises the ions of the ammonium and carbonate. The chemical or the molecular formula for the Ammonium Carbonate is termed as (NH4)2CO3. On the other hand, it is a crystalline solid that has no color or a white powder that has a strong odor of ammonia and has a very Sharp ammoniacal taste. This article also deals in Ammonium Carbonate Formula.
+
+Moreover, the ammonium carbonate is non-combustible and it is also soluble when you dissolve it in the water. Importantly, when it reacts with the acids it develops ammonium salt and carbon dioxide at the same time. When it reacts with bases it forms ammonia gas. It forms by the process of blending the carbon dioxide and aqueous ammonia together. Moreover, one commonly uses it as a leavening agent and as a smelling salt. It is so because of its property of degrading to the gaseous ammonia and the carbon dioxide when it is heated.
+
+Ammonium Carbonate Formula
+
+The Ammonium Carbonate is a white, crystalline salt that has a chemical formula i.e. (NH4)2CO3.
+
+
+
+Production
+
+Ammonium carbonate is made by the combination of carbon dioxide and the aqueous ammonia. However, about 80000 tons per year were produced as of 1997. The ammonium carbonate can be produced by carbon dioxide. This consists of, sending the carbon dioxide and the ammonia gas with the purity level of about 99-99.99 percent into 2 buffer gas vats with a pressure of 0.2 to 2MPa.
+
+Opening the valve of the vats to release the flow of the gas by the Rota meter into a sealed PVC synthesis reaction bag and form the product. Wherein, the speed of the flow is (0.6-2) X 106L/h, and (0.1-0.6) X 106L/h for carbon dioxide and the ammonia gas separately.
+
+Decomposition
+
+The Ammonium carbonate decomposes at a very slow speed with standard temperature and pressure through 2 pathways. Thus any initially pure sample of the ammonium carbonate will soon turn into a mixture that includes various by-products. Ammonium carbonate has the capability to spontaneously decompose into the ammonium bicarbonate and the ammonia.
+
+(NH4)2CO3 → NH4HCO3 + NH3
+
+Which later on decompose into the carbon dioxide, water and some other molecules of ammonia.
+
+NH4HCO3 → H2O + CO2 + NH3
+
+Uses
+
+Leavening Agent
+
+The Ammonium carbonate also works as a leavening agent in some traditional recipes, particularly those from northern Europe and Scandinavia for example, Speculoos, Tunnbröd or Lebkuchen. It was the ancestor to today’s more commonly used general baking powder.
+
+Some Other Uses
+
+Ammonium carbonate is the main component of the smelling salts. Although, the commercial scale of their production process is smaller. Buckley’s cough syrup that is from Canada today uses ammonium carbonate as an active ingredient that helps in providing relief to the symptoms of bronchitis.
+
+Moreover, it is also useful as an emetic. It is also present in smokeless tobacco generally chewing tobacco products like Skoal. One also uses it in the aqueous solution as a photographic lens cleaning agent that cleans the lenses, for example, Eastman Kodak’s “Kodak Lens Cleaner.”
+
+Properties of Ammonium Carbonate
+
+The chemical formula of Ammonium Carbonate is (NH4)2CO3. Along with this, the molecular weight is 96.09 g/mol. The density is 1.50 g/cm3. It has a melting point of 58 °C whereas, its boiling point decomposes.
+
+Stability/Shelf Life
+
+The ammonium carbonate decomposes on exposure to air with the loss of ammonia and the carbon dioxide, and it becomes white and powdery and starts converting into ammonium bicarbonate gradually.
+
+Substitute
+
+One can substitute a teaspoon of the baker’s ammonia with a teaspoon baking powder with a teaspoon of the baking soda.
+
+Solved Example on Ammonium Carbonate Formula
+
+Question: Which will not be precipitated after addition of Ammonium carbonate in presence of NH4CI:- (1) Mg (2) Ba (3) Ca (4) Sr?
+
+Solution: When we add (NH4)2CO3 to salt solution containing NH4Cl and NH4OH, the carbonates of Ba2+, Sr2+ and Ca2+ are precipitated:
+
+BaCl2+(NH4)2CO3 → BaCO3↓+ 2NH4Cl
+
+SrCl2+(NH4)2CO3 → SrCO3↓+ 2NH4Cl
+
+CaCl2+(NH4)2CO3 → CaCO3↓+ 2NH4Cl
+
+Then answer is (1) – Mg.
+"
+https://www.toppr.com/guides/chemistry-formulas/ammonium-bromide-formula/,"Ammonium Bromide Formula: Reactions, Applications and Examples","Ammonium Bromide Formula
+
+Ammonium bromide (NH4Br) is the ammonium salt of hydrobromic acid. The chemical matures in prisms that are colorless, owning a salty taste. It sublimes when heated and is very easily soluble in the water. On exposure to the air, it slowly assumes a color because of the oxidation of traces of the bromide (Br−) to the bromine (Br2) and the color assumed by this is yellow. In a simple language, the ammonium bromide is the odorless crystals that are white in color or the granules which turn into yellow color when exposed with air. The ammonium bromide formula stays stable under the recommended storage conditions that have a set temperature according to the need of the ammonium bromide.
+
+Structural Formula of Ammonium Bromide
+
+Ammonium Bromide is generally an ammonium salt that is formed when an ammonium ion reacts with bromide ion in a ratio of 1:1.
+
+NH3 + HBr → NH4Br
+
+The structural representation of Ammonium Bromide is provided below:
+
+
+
+Preparation
+
+Ammonium bromide can be formed by the process of a direct action of the hydrogen bromide on the ammonia. The preparation of the Ammonium bromide can also be done by the process of reacting to the ammonia with iron (II) bromide or iron (III) bromide, which we can attain by passing the aqueous bromine solution over the iron filings.
+
+2 NH3 + FeBr2 + 2 H2O → 2 NH4Br + Fe(OH)2
+
+Reactions
+
+Ammonium bromide is a weak type of acid that has a pKa of ~5 in the water. It is an acid salt. The reason that it is an acid salt is that the ammonium ion hydrolyzes slightly inside the water. Ammonium Bromide is a strong electrolyte when it is present inside the water.
+
+NH4Br(s) → NH4+(aq) + Br−(aq)
+
+The Ammonium bromide gets decomposed to the ammonia and hydrogen bromide when it gets heated at raised temperature levels.
+
+NH4Br → NH3 + HBr
+
+Applications
+
+Ammonium Bromide is useful for the purpose of photography in the films, plates, and papers, in fireproofing of the wooden elements, in the lithography and the process inscription, in the corrosion inhibitors, and in many pharmaceutical preparations done in the labs during the experiments.
+
+Ammonium Bromide is also used in combination with an appropriate oxidizer and it is an efficient biocide that is applied in various water systems in the industrial sector and wastewater to control bacteria, fungi, and the algae.
+
+Characteristics
+
+Some important details related to the ammonium bromide such as chemical formula, molecular weight, density, crystal structure, chemical names, boiling point, and melting point are :
+
+The chemical formula of the ammonium bromide is NH4Br or it can also be called BrH4N. Further, the Molecular weight of the ammonium bromide is 97.943 g/mol. The density of the ammonium bromide is 2.429 g/cm3. The crystal structure of the ammonium bromide is Isometric.
+
+Similarly, some Chemical Names given to the ammonium bromide are Ammonii bromide, Ammonium bromatum, and the Ammonium bromide ((NH4)Br). The Boiling point of the ammonium bromide is near about 452 °C whereas the melting point of the ammonium bromide is 235 °C.
+
+Solubility
+
+In water, the solubility of the ammonium bromide is 78.3 g/100 g water at 25 °C. It is soluble in acetone, ammonia, ether, in water, 97 g/100 cc at 25 °C, 145.6 g/100 cc at 100 °C; in alcohol, 10 g/100 cc at 78 °C. It is freely soluble in the methanol, ethanol, and acetone, slightly soluble in ether and practically insoluble in the ethyl acetate.
+
+Density
+
+The density of the ammonium bromide is 2.429 at 68 °F (USCG, 1999) and 2.429 at 25 °C of temperature level.
+
+Solved Example on Ammonium Bromide Formula
+
+Question: What reaction occurs when we dissolve NH4Br in the water?
+
+NH4+ + OH- <==> NH4OHBr-+ H3O <==> HBr+ H2ONH3+H2O <==>NH4+OHNH4+H2O <==> NH3+H3O+Br– + H2O <==> HBr+ OH–
+
+Solution: NH4Br is the salt of a weak base, NH4OH and a strong acid HBr at the same time, Thus, the NH4+ will hydrolyze as given below:
+
+NH4+ + H2O ==> NH3 + H3O+, so option D is the correct answer.
+"
+https://www.toppr.com/guides/chemistry-formulas/ammonium-bicarbonate-formula/,"Ammonium Bicarbonate Formula: Properties, Uses and Solved Examples","The ammonium bicarbonate is an inorganic compound with a formula i.e. (NH4)HCO3 that is NH5CO3 after simplification. This compound has multiple names that reflect its long history. Chemically it is the bicarbonate salt of ammonium ion. It is a solid that has no colour and it degrades to carbon dioxide, ammonia, and water. Given below is the Ammonium Bicarbonate Formula:
+
+
+
+Ammonium Bicarbonate Formula
+
+Ammonium bicarbonate is also commonly known as ammonium hydrogen carbonate and it is a mildly basic inorganic compound.
+
+Formula and Structure
+
+The chemical formula of the ammonium bicarbonate is NH4HCO3. The molecular formula of the ammonium bicarbonate is CH5NO3 and it has a molar mass of 79.056 g/mol. Its chemical structure comprises of the ammonium cation NH4+ and the bicarbonate anion HCO3-.
+
+Occurrence
+
+Ammonium bicarbonate is present in a small quantity in nitrogenous organic matter, along with multiple other ammonium salts.
+
+Production
+
+The Ammonium bicarbonate is made by combining two things that are carbon dioxide and the ammonia:
+
+CO2 + NH3 + H2O → (NH4)HCO3
+
+Since ammonium bicarbonate is unstable thermally, the reaction solution is kept under the cold temperature. Thus, this results in allowing the precipitation of the product as the white solid. About 100,000 tons were produced in a similar way in the year 1997.
+
+Ammonia gas sent to an aqueous solution of sesquicarbonate that is a 2:1:1 mixture of (NH4)HCO3, (NH4)2CO3, and H2O transforms it into a normal ammonium carbonate ((NH4)2CO3), which can be obtained in the crystalline condition from a solution created at about 30 °C of temperature. This compound on exposure to air provides off ammonia and reverts it to the ammonium bicarbonate.
+
+Preparation
+
+They make Ammonium bicarbonate by the process of passing the carbon dioxide gas into aqueous ammonia until the ammonium bicarbonate crystals are complete and are then separates from the solution by the method of filtration or centrifugation. To prevent the decomposition of the product, the reaction is takes place at a cold temperature.
+
+CO2 + NH3 + H2O → NH4HCO3
+
+Physical Properties
+
+Ammonium bicarbonate exists as a white crystalline solid that carries a density of 1.59 g/mL and a melting point of 41.9 °C. It has a strong aroma of ammonia, and it is highly soluble in water.
+
+Chemical Properties
+
+It dissolves with the water to make a mildly alkaline solution. Moreover, it is insoluble in many organic solvents. While it is stable at room temperature that is near about 25 °C, it decomposes at a temperature above 36 °C to make ammonia, carbon dioxide, and water in an endothermic reaction. Further, it absorbs the energy for the reaction from the surroundings nearby.
+
+NH4HCO3 → NH3 + CO2 + H2O
+
+It reacts with acids to form carbon dioxide and reacts with the bases to produce ammonia.
+
+Uses
+
+Ammonium bicarbonate comes in use as baking powder in some food or cooking processing applications. Further, we use it in the cough syrups also and as an antacid. Further, we also use it as a fertilizer, pH buffer, and reagent in the chemical laboratories. In the industries, we use it in the manufacturing of dyes, pharmaceuticals, catalysts, ceramics, plastics, and various other products.
+
+It is also useful for buffering solutions to make them alkaline during the chemical purification, just like the high-performance liquid chromatography. This allows recovery of the compound of interest by freeze-drying.
+
+Health Effects/Safety Hazards
+
+In low concentrations, it is not hazardous. Further, its common and main health hazard is its decomposition reaction providing pungent ammonia gas that is a serious irritant. Similarly, inhalation of the ammonium bicarbonate can result in irritation in the eyes, skin, nose and entire system of respiration and cause major coughing and difficulty in the process of breathing.
+
+Solved Examples on Ammonium Bicarbonate Formula
+
+Question: How to measure the concentration of the bicarbonate, when we are purging the solvent (water) with the normal air or CO2 gas?
+
+Solution: We have several options depending on how accurate your result has to be.
+
+If you know the initial pH and you’re using pure water you can obtain a good estimate by measuring the pH change combined with modelling of your system, for example with phreeqc. Alternatively, you can sample your solution, add a base to the sample and then titrate between both pK values of H2CO3. Other options are to add Ba and also make your samples alkaline. Then you can weigh the BaCO3 after drying.
+"
+https://www.toppr.com/guides/chemistry-formulas/ammonium-acetate-formula/,"Ammonium Acetate Formula: Properties, Uses and Solved Examples","Ammonium Acetate
+
+Ammonium Acetate Formula- It is a salt that has interesting chemical properties and due to this reason, the pharmaceutical industry uses it as an intermediary and raw material in various processes. NH4OAc (Ammonium acetate) is a salt that forms from the reaction of ammonia and acetic acid. Also, it is useful for applications that require buffer solutions. The Henry reactions are the most common reactions that use ammonium acetate. In an aqueous solution, it is a chemical compound that we know by the name spirit of Mindererus or ammonium acetate, which is a white, hygroscopic solid we can derive from the reaction of ammonia and acetic acid.
+
+Ammonium Acetate Formula and Structure
+
+Its chemical formula is NH4CH2CO2 or CH2COONH4. The molecular formula of ammonium acetate is C2H7NO2and its molar mass is 77.08 g/mol-1. Also, it is a slat of acetate ion COO-1(from acetic acid dissociation in water) and ammonium ion NH4+(from ammonia dissociation in water).
+
+Ammonium acetate is volatile at low pressure because it has been used to replace cell buffers with non-volatile salts that help in the preparation of chemical samples. Its common representation of organic molecule’s chemical structure can be written as below:
+
+
+
+Ammonium Acetate Occurrence
+
+In nature, ammonium acetate is not present in a free compound state. But, ammonium and acetate ions are present in many biochemical processes.
+
+Ammonium Acetate Preparation
+
+Just like other acetates, we can also synthesize ammonium acetate in a similar way to other acetates that is through neutralization of acetic acid. Furthermore, this synthesis uses acetic acid that we neutralize by adding ammonium carbonate. Besides, in the chemical industries, this method uses glacial acetic acid that is saturated with ammonia:
+
+2CH3COOH + (NH4)2CO3→ 2CH3COONH4+ H2CO3
+
+H2CO3→ CO2+ H2O
+
+CH3COOH + NH3→ CH3COONH4
+
+Ammonium Acetate Physical Properties
+
+It is a hygroscopic white solid with a slightly acidic odor. Furthermore, its melting point is 113oC. Also, it is highly soluble in water and its density in this liquid is 1.17 g/mL-1.
+
+Ammonium Acetate Chemical Properties
+
+It is a slat of a weak acid (acetic acid) and a weak base (ammonia). We use this salt with acetic acid to prepare a buffer solution to regulate its pH. Nevertheless, its use as a buffering agent is not very extensive because ammonium acetate can be volatile in low pressures.
+
+Ammonium Acetate Uses
+
+We use it as a raw material in the synthesis of pesticides, herbicides, and non-steroidal anti-inflammatory drugs. Moreover, it is the precursor in the acetamide synthesis (a chemical compound that we use to produce plasticizers):
+
+CH3COONH4→ CH3C(O)NH2+ H2O
+
+In industries, they use it to acidify textiles and hair and some countries use it as a food acidity regulator. With acetic acid, it is a buffering agent. In organic chemistry, ammonium acetate found its use as a catalyst, in reactions such as Knoevenagel condensations. We can use it as a fertilizer and in the synthesis of explosives.
+
+It is volatile at low pressure and because of this, industries and scientists have used it to replace cell buffers with non-volatile salts in preparing samples for mass spectrometry. Besides, it is popular as a buffer for mobile phases for HPLC and ELSD detection for this reason. Moreover, other salts that they have used for this include ammonium formate.
+
+Ammonium Acetate Health and Safety Hazards
+
+Majorly, ammonium acetate causes irritation in the mouth, eyes, skin, and nose. Furthermore, it is highly dangerous by ingestion and can cause tissue necrosis. It can also destroy the cell membranes, penetrate in organisms, and saponify the skin. When heated it produces toxic fumes that can damage the lungs. In a few seconds, it can decompose sodium hypochlorite.
+
+Solved Examples on Ammonium Acetate Formula
+
+Question: Show how ammonium acetate is a precursor of acetamide?
+
+Solution: The reaction is as below:
+
+NH4CH3CO2 → CH3C(O)NH2 + H2O
+"
+https://www.toppr.com/guides/chemistry-formulas/ammonia-formula/,"Ammonia Formula: Properties, Uses and Examples","Ammonia
+
+Ammonia Formula- Ammonia, azane or nitrogen trihydride, is the simplest inorganic base that is also an important source of nitrogen for many applications.
+
+Structure and Formula of Ammonia
+
+Its chemical formula is NH3and the molar mass is 17.03 g/mol. It is a compound of hydrogen and nitrogen. The molecule of ammonia has a trigonal pyramidal shape that the VSEPR theory (Valance Shell Electron Pair Repulsion theory) with an experimentally determined bond angle of 106.7o.
+
+Also, the central nitrogen atom has five outer electrons with an additional electron from each hydrogen atom. Which gives a total of eight electron or four electron pairs that are arranged tetrahedrally. Besides, three of these electrons pairs are used as bond pairs and it leaves one pair of electron lonely.
+
+
+
+Furthermore, the ammonia molecule has a trigonal pyramidal shape that has nitrogen, which connects to three hydrogen atoms. The lone electron pair of nitrogen atom makes the base for ammonia. NH2 is a polar molecule that readily forms hydrogen bonds which makes it highly miscible in water.
+
+Occurrence of Ammonia
+
+Naturally, it exists in the body, the kidneys secrete them to neutralize excess acid. Moreover, we can find its small amount in rainwater, volcanic areas, and even in the atmosphere.
+
+Preparation of Ammonia
+
+Commercially they produce ammonia by the Haber-Bosch process, in which elemental hydrogen and elemental nitrogen react in the presence of a metal catalyst to give ammonia gas. This reaction took place at a high temperature (400-550oC) and high pressure.
+
+N2+ 3H2→ 2NH3
+
+Physical Properties of Ammonia
+
+It is a colorless/ transparent gas that has a penetrating odor. It freezing point it -77.7oC and the boiling point is -33.35oC.  Besides, we can liquefy the NH2 gas, but due to extremely low boiling point, we store liquid ammonia at low temperature and at high pressure.
+
+Chemical Properties of Ammonia
+
+It is a weak base that combines with numerous acids to form ammonium salts that are important in chemical industries. Moreover, it readily dissolves in water in an exothermic reaction, to form an aqueous ammonia solution that we know as ammonium hydroxide (NH4OH).
+
+NH3+ H2O → NH4OH
+
+It is also an important non-aqueous solvent that can dissolve many alkalies and alkaline-earth metals to produce blue-colored conductive solutions.
+
+Uses of Ammonia
+
+It is the precursor to various important nitrogen compounds that includes urea, phenol, amino acids, hydrogen cyanide, acrylonitrile, nitric acid, soda ash, and many more. Also, industries use it in the production of polymers, fertilizers, synthetic fibers (rayon and nylon, etc.), explosives (nitroglycerin, TNT), refrigerants, and cleaning agents. Moreover, it is a common nitrogenous waste, particularly among aquatic organisms.
+
+Additionally, it contributes significantly to the nutritional needs of land organisms by serving as a precursor to food and fertilizers. Either directly or indirectly it serves as a building block for the synthesis of many pharmaceutical products. Many commercial cleaning products contain ammonia. Mainly it collects by the downward displacement of both air and water.
+
+Ammonia Health and Safety Hazards
+
+In nature, it is widely available and we use it in the household for many purposes. Scientists consider it a toxic gas by inhalation. NH3fumes have a sharp and pungent odor that can irritate the nose, eyes, skin and mucous membrane, and can damage the respiratory tract. However, high concentration exposure to ammonia gas can cause permanent lung damage and death.
+
+Solved Examples on Ammonia Formula
+
+Question: How they prepare ammonia before world war I?
+
+Solution: Earlier from World War I, most ammonia was gained by the dry distillation of nitrogenous vegetables and animal waste products that include camel dung. These were distilled by the reduction of nitrous aid and nitrites with hydrogen. Most noteworthy, they produce it by distillation of coal, and by the decomposition of ammonium salts by alkaline hydroxides such as quicklime:
+
+2NH4Cl + 2CaO → CaCl2 + Ca(OH)2 + 2NH3(g)
+"

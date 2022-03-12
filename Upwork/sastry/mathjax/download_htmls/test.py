@@ -1,5 +1,9 @@
 from selenium import webdriver  
 import time  
+from bs4 import BeautifulSoup
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import Select
+from selenium.common.exceptions import NoSuchElementException
 
 urls_list = [
 "https://www.toppr.com/guides/business-mathematics-and-statistics/calculus/methods-of-integration/",
@@ -148,11 +152,6 @@ urls_list = [
 "https://www.toppr.com/guides/chemistry-formulas/butane-formula/",
 "https://www.toppr.com/guides/chemistry-formulas/butan-1-ol-formula/",
 "https://www.toppr.com/guides/chemistry-formulas/bromine-formula/",
-
-
-
-
-
 ]
 from time import sleep
 for url in urls_list:
@@ -166,12 +165,28 @@ for url in urls_list:
     
     filename = url.split('/')[-2]
     
-    with open('Downloads/'+filename+'.html', 'w', encoding = 'utf-8') as f:
-        f.write(get_source)
+    # with open('Downloads/'+filename+'.html', 'w', encoding = 'utf-8') as f:
+    #     f.write(get_source)
 
     print(url,' completed')
     sleep(3)
+    print(driver.title)
+    web_string = driver.find_element(By.XPATH, '//*[@id="content"]').text
+    # web_string = driver.find_element(By.XPATH, '//*[@id="wrap-main"]').text
+    # print(driver.find_element(By.ID, 'wrap-main').text.encode('utf-8'))
+
+    with open("Output.txt", "w", encoding='utf-8') as text_file:
+        text_file.write(web_string)
+
     driver.quit()
+
+    # print(get_source.encode('utf-8'))
+
+    soup = BeautifulSoup(get_source.encode('utf-8','ignore'), "lxml")
+    soup = soup.encode('utf-8')
+
+
+    break
 print ("############################# ALL COMPLETED ####################################")
 
 
