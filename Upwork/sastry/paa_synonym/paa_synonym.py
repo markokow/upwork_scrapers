@@ -1,4 +1,5 @@
 from ast import keyword
+from dataclasses import replace
 import os
 from PyPDF2 import PdfFileReader, PdfFileWriter
 import glob
@@ -30,6 +31,8 @@ class PAA_Synonym:
         self.headers = {
             'User-Agent': 'Mozilla/5.0',
         }
+
+        self.replaced: List = []
 
         self.csv_headers = [None]
 
@@ -105,7 +108,7 @@ class PAA_Synonym:
         df = df.set_index("keyword")
 
         for key in keywords:
-            for ans in ans_columns:
+            for idx, ans in enumerate(ans_columns):
                 phrase = df.at[key, ans]
 
                 if phrase is not np.nan:
@@ -136,6 +139,14 @@ class PAA_Synonym:
                             if _bool:
                                 df.at[key,ans] = df.at[key,ans].replace(self.keyword, self.result)
                                 print(f"Replaced \"{self.keyword}\" with \"{self.result}\"")
+
+                                replaced: dict = {}
+                                replaced["key"] = self.keyword
+                                replaced["answer_index"] = idx + 1
+                                replaced["old"] = self.keyword
+                                replaced["new"] = self.result
+
+                                self.replaced.append(replaced)
                                 print("\n")
                                 break
                         
@@ -162,6 +173,8 @@ class PAA_Synonym:
                 df.to_csv(os.path.join('Output',f"{filename}_replaced_synonyms.csv"))
                 print(f"File saved to Output/{filename}_replaced_synonyms.csv")
     
+        rep_df = pd.DataFrame(self.replaced)
+        rep_df.to_csv(os.path.join('Output',f"{filename}_replaced_list.csv"), index = False)
         print("All csvs replaced.")
 
 if __name__ == '__main__':

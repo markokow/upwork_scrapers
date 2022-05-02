@@ -143,8 +143,6 @@ class CombinedPaa_Stackoverflow:
 
         return response
 
-        return response
-
     def parse_response(self, response: requests_html.HTMLResponse = None):
 
         # content = BeautifulSoup(response.content, 'lxml', from_encoding="utf-8")

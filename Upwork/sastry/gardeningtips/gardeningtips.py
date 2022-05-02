@@ -35,7 +35,7 @@ class GardeningTips:
 
         features: dict = {}
         all_answers = content.find("div",{"id":"tdi_62"})
-        all_answers = all_answers.find("div",{"class":"tdb-block-inner td-fix-index"})
+        all_answers = all_answers.find("div",{"class":"tdb-block-inner"})
         
         final_answer: str = ''
         to_remove: str = ''
