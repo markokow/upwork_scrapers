@@ -1,0 +1,120 @@
+url,title,best_answer_1,best_answer_2,best_answer_3
+https://stackoverflow.com/questions/21045416/angular-js-uncaught-error-injectormodulerr/32577278,javascript - Angular JS Uncaught Error: [$injector:modulerr],"<p>In development environments I recommend you to use <strong>not minified distributives</strong>. And all errors become more informative! Instead of <code>angular.min.js</code>, use <code>angular.js</code>.</p>
+<pre class=lang-html prettyprint-override><code>&lt;script src=https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular.js&gt;     
+&lt;script src=https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-route.js&gt;
+&lt;script src=https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-resource.js&gt;
+</code></pre>","<p>The problem was caused by missing inclusion of ngRoute module. Since version 1.1.6 its a separate part:</p>
+<pre><code>&lt;script src=https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js&gt;&lt;/script&gt;
+
+var app = angular.module(myapp, [ngRoute]);
+</code></pre>
+<p>This is getting reference from: <a href=https://stackoverflow.com/questions/18287482/angularjs-1-2-injectormodulerr>AngularJS 1.2 $injector:modulerr</a> David answer</p>","<p>I had the same problem. You should type your Angular js code outside of any function like this:</p>
+<pre><code>$( document ).ready(function() {});
+</code></pre>"
+https://stackoverflow.com/questions/19930214/uncaught-typeerror-cannot-read-property-length-of-undefined,javascript - Uncaught TypeError: Cannot read property length of undefined,"<p>You are not passing the variable correctly. One fast solution is to make a global variable like this:</p>
+<pre><code>var global_json_data;
+$(document).ready(function() {
+    var json_source = https://spreadsheets.google.com/feeds/list/0ApL1zT2P00q5dG1wOUMzSlNVV3VRV2pwQ2Fnbmt3M0E/od7/public/basic?alt=json;
+    var string_data =;
+    var json_data = $.ajax({
+        dataType: json, // Return JSON
+        url: json_source,
+        success: function(data){
+            var data_obj = [];
+            for (i=0; i&lt;data.feed.entry.length; i++){
+                var el = {key: data.feed.entry[i].title[$t], value: &lt;p&gt;&lt;a href=+data.feed.entry[i].content[$t]+&gt;+data.feed.entry[i].title[$t]+&lt;/a&gt;&lt;/p&gt;};
+                data_obj.push(el)};
+
+            console.log(data grabbed);  
+            global_json_data =   data_obj;
+
+            return data_obj;
+
+
+        },      
+
+        error: function(jqXHR, textStatus, errorThrown){ 
+                        $(#results_box).html(&lt;h2&gt;Something went wrong!&lt;/h2&gt;&lt;p&gt;&lt;b&gt; + textStatus  + &lt;/b&gt;  + errorThrown  + &lt;/p&gt;);
+        }
+    }); 
+
+    $(:submit).click(function(event){
+        var json_data = global_json_data;
+        event.preventDefault();
+        console.log(json_data.length);
+
+        //function
+        if ($(#place).val() !=){
+            var copy_string = $(#place).val();
+            var converted_string = copy_string;
+            for (i=0; i&lt;json_data.length; i++){
+                //console_log(data.feed.entry[i].title[$t]);
+                converted_string = converted_string.replace(json_data.feed.entry[i].title[$t], 
+                    &lt;a href=+json_data.feed.entry[i].content[$t]+&gt;+json_data.feed.entry[i].title[$t]+&lt;/a&gt;);
+            }  
+            $(#results_box).text(converted_string).html();
+        }
+    });
+
+});//document ready end 
+</code></pre>","<pre><code>console.log(typeof json_data !== undefined
+    ? json_data.length : There is no spoon.);
+</code></pre>
+<p>...or more simply...</p>
+<pre><code>console.log(json_data ? json_data.length : json_data is null or undefined);
+</code></pre>","<p>You are accessing an object that is not defined. </p>
+<p>The solution is check for null or undefined (to see whether the object exists) and only then iterate.</p>"
+https://stackoverflow.com/questions/7839296/using-the-c-sharp-dispatcher-in-wpf-applications,Using the C# Dispatcher in WPF Applications,"<p>Your app has a main UI thread (usually <code>ManagedThreadId==1</code>).  Typically in a chat app your events will come in on other threads (either dedicated socket listen threads or thread pool threads from listening code).  If you want to update the UI from an event that gets pull on some other thread you must use the dispatcher.  A useful test here is the <code>Dispatcher.CheckAccess()</code> method that returns true if code is on UI thread and false if on some other thread.  A typical call looks something like:  </p>
+<pre><code>using System.Windows.Threading; // For Dispatcher.
+
+if (Application.Current.Dispatcher.CheckAccess()) {
+    network_links.Add(new NetworkLinkVM(link, start_node, end_node));
+}
+else {
+    Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new Action(()=&gt;{
+        network_links.Add(new NetworkLinkVM(link, start_node, end_node));
+    }));
+}
+</code></pre>
+<p>If youre in the main window you can use:</p>
+<pre><code>Dispatcher.BeginInvoke(...
+</code></pre>
+<p>If youre in someother context eg a view model then use:</p>
+<pre><code>Application.Current.Dispatcher.BeginInvoke(  
+</code></pre>
+<p><strong>Invoke vs BeginInvoke</strong><br/>
+Use <code>Invoke</code> if you want the current thread to wait until the UI thread has processed the dispatch code or <code>BeginInvoke</code> if you want current thread to continue without waiting for operation to complete on UI thread.</p>
+<p><strong>MessageBox, Dispatchers and Invoke/BeginInvoke:</strong><br/>
+<code>Dispatcher.Invoke</code> will block your thread until the MessageBox is dismissed.<br/>
+<code>Dispatcher.BeginInvoke</code> will allow your thread code to continue to execute while the UI thread will block on the MessageBox call until its dismissed. </p>
+<p><strong>CurrentDispatcher vs Current.Dispatcher!</strong><br/>
+Be ware of <code>Dispatcher.CurrentDispatcher</code> as my understanding of this is that is will return a Dispatcher for the current thread not the UI thread.  Generally are you interested in the dispatcher on the UI thread - <code>Application.Current.Dispatcher</code> always returns this.</p>
+<p><strong>Additional note:</strong><br/>
+If you are finding you are having to check dispatcher CheckAccess often then a useful helper method is:  </p>
+<pre><code>public void DispatchIfNecessary(Action action) {
+    if (!Dispatcher.CheckAccess())
+        Dispatcher.Invoke(action);
+    else
+        action.Invoke();
+}
+</code></pre>
+<p>Which can be called as:</p>
+<pre><code>DispatchIfNecessary(() =&gt; {
+    network_links.Add(new NetworkLinkVM(link, start_node, end_node));
+});
+</code></pre>","<p>I had problems with <code>Application.Current.Dispatcher.BeginInvoke</code> and the <code>object.Invoke()</code> methods.</p>
+<p>This worked for me:</p>
+<pre><code>Dispatcher.CurrentDispatcher.BeginInvoke(new Action(() =&gt;
+{
+     // code...
+}));
+</code></pre>","<p>Something like this (off the top of my head) should work:</p>
+<pre><code>public void LostConnection() 
+{ 
+   myGUI.Invoke
+      ((MethodInvoker)delegate
+   {
+      myGUI.chatBox.AppendText(Lost connection to room: + myGUI.UsernameText.ToString() + \r\n); 
+   });
+}
+</code></pre>"
