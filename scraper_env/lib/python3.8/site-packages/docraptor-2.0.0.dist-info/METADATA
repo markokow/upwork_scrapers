@@ -1,0 +1,33 @@
+Metadata-Version: 2.1
+Name: docraptor
+Version: 2.0.0
+Summary: A wrapper for the DocRaptor HTML to PDF/XLS service.
+Home-page: https://github.com/docraptor/docraptor-python
+Author: Expected Behavior
+Maintainer: DocRaptor Support
+Maintainer-email: support@docraptor.com
+License: Apache V2.0 License
+Keywords: DocRaptor,API,PDF,XLS,XLSX,HTML
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Environment :: Web Environment
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Information Technology
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: Operating System :: POSIX
+Classifier: Operating System :: Unix
+Classifier: Topic :: Internet :: WWW/HTTP :: Dynamic Content
+Classifier: Topic :: Multimedia :: Graphics :: Presentation
+Classifier: Topic :: Office/Business
+Classifier: Topic :: Office/Business :: Financial :: Spreadsheet
+Classifier: Topic :: Printing
+Classifier: Topic :: Text Processing :: Markup :: HTML
+Requires-Dist: certifi (>=2017.4.17)
+Requires-Dist: python-dateutil (>=2.1)
+Requires-Dist: six (>=1.10)
+Requires-Dist: urllib3 (>=1.23)
+
+A native client library for the DocRaptor HTML to PDF/XLS service.
+
+

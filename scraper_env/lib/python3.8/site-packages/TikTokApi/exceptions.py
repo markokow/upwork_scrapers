@@ -1,0 +1,38 @@
+class TikTokCaptchaError(Exception):
+    def __init__(
+        self,
+        message="TikTok blocks this request displaying a Captcha \nTip: Consider using a proxy or a custom_verifyFp as method parameters",
+    ):
+        self.message = message
+        super().__init__(self.message)
+
+
+# TODO: Update this so children are all subclasses of the generic error.
+class GenericTikTokError(Exception):
+    def __init__(self, message):
+        self.message = message
+        super().__init__(self.message)
+
+
+class TikTokNotFoundError(Exception):
+    def __init__(self, message="The requested object does not exists"):
+        self.message = message
+        super().__init__(self.message)
+
+
+class EmptyResponseError(Exception):
+    def __init__(self, message="TikTok sent no data back"):
+        self.message = message
+        super().__init__(self.message)
+
+
+class JSONDecodeFailure(Exception):
+    def __init__(self, message="TikTok sent invalid JSON back"):
+        self.message = message
+        super().__init__(self.message)
+
+
+class TikTokNotAvailableError(Exception):
+    def __init__(self, message="The requested object is not available in this region"):
+        self.message = message
+        super().__init__(self.message)

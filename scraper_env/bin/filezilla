@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+if [[ ! $@ ]]; then
+	python3 -m filezilla -h
+else
+	python3 -m filezilla $@
+fi

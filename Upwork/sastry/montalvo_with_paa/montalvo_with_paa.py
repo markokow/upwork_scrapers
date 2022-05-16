@@ -12,6 +12,7 @@ from dateutil.parser import parse
 from requests_html import HTMLSession
 from os import path
 import glob
+import os
 
 
 class CombinedPaa_Montalvo:
@@ -307,63 +308,99 @@ class CombinedPaa_Montalvo:
 
         print("Scraper is running...")
 
+        _path = "outputs"
+
+        isExist = os.path.exists(_path)
+
+        if not isExist:
+        
+        # Create a new directory because it does not exist 
+            os.makedirs(_path)
+            print("outputs folder is created!")
+            
         if (path.isdir("inputs")):
 
             self.now = str(datetime.today()).replace(':','-')
 
             extension = 'txt'
 
-            data = glob.glob('inputs\*.{}'.format(extension))
+            # lstJson = [f for f in os.listdir(str(self.pathJson)) if f.endswith('.txt')]
+            # print
+            data = glob.glob('inputs/*.{}'.format(extension))
 
             _final_urls: List = []
-
             for dat in data:
             # df = pd.read_csv("montalvo.csv", engine='python')
                 print(dat)
+                filename = dat
                 _urls: List = []
                 with open(dat) as f:
-                    for _ in f.readlines():
-                        _to_add = [_.strip(),dat]
+                    # _size = len(f.readlines())
+                    lines = f.readlines()
+                    _size = len(lines)
+
+                    for line in lines:
+                        _to_add = [line.strip(),filename, _size]
                         _urls.append(_to_add)
                     # _urls = [_.strip() for _ in f.readlines()]
-
                 _final_urls.extend(_urls)
 
             final_res: List = []
             counter = 0
             part = 0
-
-            print(len(_final_urls))
+            current_loc: str = ''
+            file_counter = 0
+            _filename: str = ''
 
             # # for count, dat in enumerate(df.index):
             for count, dat in enumerate(_final_urls):
-                print(dat)
+                file_counter += 1
                 
                 # sleep(randint(2,3))
                 # url = df.iloc[dat,0]
                 url = dat[0]
                 loc = dat[1]
+                _size = dat[2]
+
                 # keyword = df.iloc[dat,1]
                 # print(url, " ", keyword)
+                # file_counter
+
+
                 print(f"scraping: {url} located at: {loc} total urls scraped: {count+1}")
                 montalvo_res = self.sub_motalvo(url = url)
-                
+
+
+                if loc != current_loc:
+                    current_loc = loc
+                    counter = 0
+                    file_counter = 0
+                    part = 0
+
                 output = montalvo_res
 
-                counter += 1
-                final_res.append(output)
+                if output:
+                    final_res.append(output)
+                    counter += 1
+                else:
+                    continue
 
-                if count == len(_urls) - 1:
+                if (count == (len(_final_urls) - 1)) | (file_counter == _size):
+                    part += 1
                     df_out = pd.DataFrame(final_res)
-                    df_out.to_csv(f"{self.now}_part{part}.csv", index = False)
-                    print(f"Saving {self.now}_part{part}.csv")
-                    break
+                    _filename = f"{loc.strip('.txt').replace('inputs', 'outputs')}_part_{part}.csv"
+                    df_out.to_csv(_filename, index = False)
+                    print(f"Saving {_filename}")
+                    if count == (len(_final_urls) - 1):
+                        print("WHAT")
+                        break
                 
                 if (counter % self.max_divisions) == 0:
                     part += 1
                     df_out = pd.DataFrame(final_res)
-                    df_out.to_csv(f"{self.now}_part{part}.csv", index = False)
-                    print(f"Saving {self.now}_part{part}.csv")
+                    _filename = f"{loc.strip('.txt').replace('inputs', 'outputs')}_part_{part}.csv"
+                    df_out.to_csv(_filename, index = False)
+                    print(f"Saving {_filename}")
                     final_res = []
                 else:
                     continue
@@ -374,7 +411,7 @@ class CombinedPaa_Montalvo:
 if __name__ == '__main__':
 
     max_paa: int = 3
-    max_divisions: int = 500
+    max_divisions: int = 5
 
     #Run scraper
     scraper = CombinedPaa_Montalvo(max_paa = max_paa, max_divisions = max_divisions)
