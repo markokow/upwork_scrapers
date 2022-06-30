@@ -1,0 +1,149 @@
+url,title,h2_1,content_1,h2_2,content_2,h2_3,content_3,videos_3,h2_4,content_4,h2_5,content_5,h2_6,content_6,h2_7,content_7,videos_7,h2_8,content_8,h2_9,content_9,h2_10,content_10,h2_11,content_11,videos_11,h2_12,content_12,h2_13,content_13
+https://mgtuts.com/other/how-do-you-select-pinned-elements-in-revit.html,How do you select pinned elements in Revit?,How do you unpin elements in Revit?,"Unpin Elements
+Select the elements to be unpinned, and then click Modify |  tab Modify panel (Unpin).
+Click Modify tab Modify panel (Unpin), select the elements to be unpinned, and then press Enter .
+",How do you select an element in Revit?,"Select Multiple Elements
+While pressing Ctrl , click each of the elements. … 
+Draw a selection box by placing the cursor on one side of the elements to be selected and dragging it diagonally to form a rectangular boundary. … 
+Press Tab to highlight connected elements, and then click to select.
+",How do you select a element by face in Revit?,"Click an icon in the lower right corner of the status bar.
+Select Links. Enable the Select Links option when you want to be able to select linked files and individual elements in the links. … 
+Select Underlay Elements. … 
+Select Pinned Elements. … 
+Select Elements by Face. … 
+Drag Elements on Selection.
+",https://www.youtube.com/embed/DOQqH7vpPcE,How do you highlight elements in Revit?,"Highlighting Elements
+Select a structural element.
+Click Modify  tab Analytical panel Highlight Analytical. The analytical model will highlight.
+",When selecting elements in Revit which option allows you to add elements to a selection?,"10: How to Use Common Selection Methods in Revit CTRL + Left Click – Add singular elements to your current selection. SHIFT + Left Click – Remove Singular Elements from your current selection.
+",How do you use the selection filter in Revit?,"Click Manage tab Selection panel (Edit). In the Edit Filters dialog, you can edit, create new, rename, and delete filters.…
+Click Manage tab Selection panel (Load).
+In the Retrieve Filters dialog, select the filter to use.
+Click OK. The elements are selected in all open views.
+",How do I enable selected links in Revit?,"When working with a linked model, you can select individual elements that are part of the link. If needed, enable the Select Links option. In the drawing area of a view of the host model, move the cursor over the element in the linked model. Press Tab until the desired element is highlighted, and click to select it.
+",https://www.youtube.com/embed/sQm7OgCr_3Y,How do you highlight a line in Revit?,"Create a Line Style
+Click Manage tab Settings panel Additional Settings drop-down Line Styles.
+In the Line Styles dialog, click New, and enter a new name for the line style. … 
+Click the value for Line Weight to choose a line weight.
+Click the value for Line Color to choose a line color.
+",,,,,,,,,,,
+https://mgtuts.com/other/you-asked-can-solidworks-edit-dxf.html,You asked: Can SOLIDWORKS edit DXF?,Can SOLIDWORKS open .DXF Files?,"You can import . dxf and . dwg files to the SOLIDWORKS software by creating a new SOLIDWORKS drawing, or by importing the file as a sketch in a new part. You can also import a file in native format or import 2D DXF/DWG files as reference sketches.
+",Can you convert a DXF to a SOLIDWORKS part?,"dxf). Browse to a file, then click Open. The model is converted immediately into a SOLIDWORKS part, or the DXF/DWG Import Wizard appears. In the DXF/DWG Import Wizard, select Import to a new part, then click Next.
+",Can you edit DXF file?,"With free CAD software, DWG or DXF files can be opened, viewed, edited and even converted into a 3D model. With free CAD software DWG files can be opened and edited.
+",https://www.youtube.com/embed/0NHxBlAs62k,How do I change a drawing from DXF to SOLIDWORKS?,"Exporting Drawings as DXF or DWG
+Click File > Save As.
+In the dialog box, for Save as type, select DXF or DWG.
+Click Options.
+Set options and click OK. … 
+In the Save As dialog box, type the file name and click Save.
+If the SOLIDWORKS to DXF/DWG Mapping dialog box appears, specify mapping options and click OK.
+",Can a DXF file be 3D?,"As mentioned, the DXF file format was made for AutoCAD with cross-platform compatibility. Additionally, DXF files work with CNC and GIS programs. This file type can contain 2D or 3D information, depending on the use.
+",What program will open a DXF file?,"If you stick to the DXF format, there are free file viewers available. Autodesk Viewer is a great option for Windows. Apps such as Adobe Illustrator, AutoCAD, and eDrawings are also available for use on both Windows and Mac computers. To open a DXF file with Autodesk: click File, select Open, and then choose DXF or .
+",Can you import AutoCAD into SOLIDWORKS?,"You can copy and paste entities from an AutoCAD DXF or DWG file into SOLIDWORKS part, assembly, and drawing documents.
+",https://www.youtube.com/embed/A7SooO7mZlQ,How do I convert Dxf to STL?,"The fastest and most direct way to convert your DXF file to an STL is to use the DXF to STL converter at Bear File Converter. All you need to do is upload your file and then select “Convert”.
+",How do I open and edit a DXF file?,"How to open DXF files with CorelDRAW
+Launch CorelDRAW.
+Choose File > Open.
+Find the DXF file you wish to open.
+Select the File(s)
+Edit & Save Your File!
+",What is difference between DWG and DXF file?,"DWG files are more compact than DXF files and can also store a greater variety of files. DWG files use binary code — that is, a computer processing language made of zeroes and ones. DXF files use text-based coding (ASCII). Binary code is more compact, so DWG files tend to be about 25% smaller than DXF.
+",How do I convert an AutoCAD drawing to SOLIDWORKS?,"Exporting Drawings as DXF or DWG
+Click File > Save As.
+In the dialog box, for Save as type, select DXF or DWG.
+Click Options.
+Set options and click OK. … 
+In the Save As dialog box, type the filename and click Save.
+If the SOLIDWORKS to DXF/DWG Mapping dialog box appears, specify mapping options and click OK.
+",https://www.youtube.com/embed/CBst2xEdrHE,How do I add dimensions to a DXF File in SOLIDWORKS?,"Attach Dimensions With an imported . dxf or . dwg file drawing document active, click Tools > Dimensions > Attach Dimensions.
+",How do you save a 3D DXF in SOLIDWORKS?,"DXF 3D Files
+Click File > Open.
+Set Files of type to DXF (*. dxf).
+Browse to a file, then click Open. … 
+In the DXF/DWG Import Wizard, select Import to a new part, then click Next.
+On the Drawing Layer Mapping tab, click Next.
+On the Document Settings tab, select Import this sheet and as 3D curves/model, then click Finish.
+"
+https://mgtuts.com/other/why-cant-i-freeze-a-layer-in-autocad.html,Why can't I freeze a layer in AutoCAD?,Why can’t I freeze a layer in AutoCAD?,"Make sure that the layer is not current before attempting to freeze it. Use the LAYFRZ command instead. It is similar to turning off layers or freezing layers through the Layer Properties Manager, but instead of turning them off by name, you select objects on the layer(s) you wish to freeze.
+",How do I freeze a layer in AutoCAD?,"Click Home tab Layer panel Layer Properties. In the Layer Properties Manager, select the layers to freeze or thaw. Click the icon in the VP Freeze column for the selected layers.
+",How do you freeze an object in AutoCAD?,"Freezing Layers in Specific Viewports with AutoCAD-Based Programs
+Double click on the viewport you want freeze the layer in.
+Type in LAYFRZ.
+Choose an object on the layer to be frozen.
+",https://www.youtube.com/embed/3hKuv_WLaQ0,What is the difference between freeze and lock in AutoCAD?,"You can freeze layers in all viewports, in the current layout viewport, or in new layout viewports as they are created. Locks and unlocks the layers. You cannot edit objects on a locked layer.
+",How do you turn off dynamic input in AutoCAD?,"Solution:
+Press the F12 key to toggle Dynamic Input on and off.
+Change the DYNMODE variable to 1 for on, or 0 for off.
+Toggle the dynamic input icon in the lower-left or lower-right corner of the program:
+",How do I freeze a layer in one viewport?,"Type in LAYFRZ > Settings > Viewports and ensure VPfreeze is selected. VP freeze will freeze layers in selected viewports, Freeze will freeze layers in all the viewports.…To do this:
+Double click on the viewport you want freeze the layer in.
+Type in LAYFRZ.
+Choose an object on the layer to be frozen.
+",What is the difference between a frozen layer and a locked layer?,"You can lock or freeze layers. Objects on locked layers can’t be modified. Frozen layers are temporarily turned off. Layers in each layout viewport can also be frozen.
+",https://www.youtube.com/embed/nkQP2jOXQ-M,How do I lock a layer in a viewport in AutoCAD?,"You can’t freeze a layer and have it then visible (set to “no-freeze”) in a viewport. My suggestion is to thaw all layers (and switch them ON, if you use this switch) before you plot. And every viewport has it’s VP-Freeze options set correct.
+",,,,,,,,,,,
+https://mgtuts.com/other/how-do-you-select-pinned-elements-in-revit.html,How do you select pinned elements in Revit?,How do you unpin elements in Revit?,"Unpin Elements
+Select the elements to be unpinned, and then click Modify |  tab Modify panel (Unpin).
+Click Modify tab Modify panel (Unpin), select the elements to be unpinned, and then press Enter .
+",How do you select an element in Revit?,"Select Multiple Elements
+While pressing Ctrl , click each of the elements. … 
+Draw a selection box by placing the cursor on one side of the elements to be selected and dragging it diagonally to form a rectangular boundary. … 
+Press Tab to highlight connected elements, and then click to select.
+",How do you select a element by face in Revit?,"Click an icon in the lower right corner of the status bar.
+Select Links. Enable the Select Links option when you want to be able to select linked files and individual elements in the links. … 
+Select Underlay Elements. … 
+Select Pinned Elements. … 
+Select Elements by Face. … 
+Drag Elements on Selection.
+",https://www.youtube.com/embed/DOQqH7vpPcE,How do you highlight elements in Revit?,"Highlighting Elements
+Select a structural element.
+Click Modify  tab Analytical panel Highlight Analytical. The analytical model will highlight.
+",When selecting elements in Revit which option allows you to add elements to a selection?,"10: How to Use Common Selection Methods in Revit CTRL + Left Click – Add singular elements to your current selection. SHIFT + Left Click – Remove Singular Elements from your current selection.
+",How do you use the selection filter in Revit?,"Click Manage tab Selection panel (Edit). In the Edit Filters dialog, you can edit, create new, rename, and delete filters.…
+Click Manage tab Selection panel (Load).
+In the Retrieve Filters dialog, select the filter to use.
+Click OK. The elements are selected in all open views.
+",How do I enable selected links in Revit?,"When working with a linked model, you can select individual elements that are part of the link. If needed, enable the Select Links option. In the drawing area of a view of the host model, move the cursor over the element in the linked model. Press Tab until the desired element is highlighted, and click to select it.
+",https://www.youtube.com/embed/sQm7OgCr_3Y,How do you highlight a line in Revit?,"Create a Line Style
+Click Manage tab Settings panel Additional Settings drop-down Line Styles.
+In the Line Styles dialog, click New, and enter a new name for the line style. … 
+Click the value for Line Weight to choose a line weight.
+Click the value for Line Color to choose a line color.
+",,,,,,,,,,,
+https://mgtuts.com/other/you-asked-can-solidworks-edit-dxf.html,You asked: Can SOLIDWORKS edit DXF?,Can SOLIDWORKS open .DXF Files?,"You can import . dxf and . dwg files to the SOLIDWORKS software by creating a new SOLIDWORKS drawing, or by importing the file as a sketch in a new part. You can also import a file in native format or import 2D DXF/DWG files as reference sketches.
+",Can you convert a DXF to a SOLIDWORKS part?,"dxf). Browse to a file, then click Open. The model is converted immediately into a SOLIDWORKS part, or the DXF/DWG Import Wizard appears. In the DXF/DWG Import Wizard, select Import to a new part, then click Next.
+",Can you edit DXF file?,"With free CAD software, DWG or DXF files can be opened, viewed, edited and even converted into a 3D model. With free CAD software DWG files can be opened and edited.
+",https://www.youtube.com/embed/0NHxBlAs62k,How do I change a drawing from DXF to SOLIDWORKS?,"Exporting Drawings as DXF or DWG
+Click File > Save As.
+In the dialog box, for Save as type, select DXF or DWG.
+Click Options.
+Set options and click OK. … 
+In the Save As dialog box, type the file name and click Save.
+If the SOLIDWORKS to DXF/DWG Mapping dialog box appears, specify mapping options and click OK.
+",Can a DXF file be 3D?,"As mentioned, the DXF file format was made for AutoCAD with cross-platform compatibility. Additionally, DXF files work with CNC and GIS programs. This file type can contain 2D or 3D information, depending on the use.
+",What program will open a DXF file?,"If you stick to the DXF format, there are free file viewers available. Autodesk Viewer is a great option for Windows. Apps such as Adobe Illustrator, AutoCAD, and eDrawings are also available for use on both Windows and Mac computers. To open a DXF file with Autodesk: click File, select Open, and then choose DXF or .
+",Can you import AutoCAD into SOLIDWORKS?,"You can copy and paste entities from an AutoCAD DXF or DWG file into SOLIDWORKS part, assembly, and drawing documents.
+",https://www.youtube.com/embed/A7SooO7mZlQ,How do I convert Dxf to STL?,"The fastest and most direct way to convert your DXF file to an STL is to use the DXF to STL converter at Bear File Converter. All you need to do is upload your file and then select “Convert”.
+",How do I open and edit a DXF file?,"How to open DXF files with CorelDRAW
+Launch CorelDRAW.
+Choose File > Open.
+Find the DXF file you wish to open.
+Select the File(s)
+Edit & Save Your File!
+",What is difference between DWG and DXF file?,"DWG files are more compact than DXF files and can also store a greater variety of files. DWG files use binary code — that is, a computer processing language made of zeroes and ones. DXF files use text-based coding (ASCII). Binary code is more compact, so DWG files tend to be about 25% smaller than DXF.
+",How do I convert an AutoCAD drawing to SOLIDWORKS?,"Exporting Drawings as DXF or DWG
+Click File > Save As.
+In the dialog box, for Save as type, select DXF or DWG.
+Click Options.
+Set options and click OK. … 
+In the Save As dialog box, type the filename and click Save.
+If the SOLIDWORKS to DXF/DWG Mapping dialog box appears, specify mapping options and click OK.
+",https://www.youtube.com/embed/CBst2xEdrHE,How do I add dimensions to a DXF File in SOLIDWORKS?,"Attach Dimensions With an imported . dxf or . dwg file drawing document active, click Tools > Dimensions > Attach Dimensions.
+",How do you save a 3D DXF in SOLIDWORKS?,"DXF 3D Files
+Click File > Open.
+Set Files of type to DXF (*. dxf).
+Browse to a file, then click Open. … 
+In the DXF/DWG Import Wizard, select Import to a new part, then click Next.
+On the Drawing Layer Mapping tab, click Next.
+On the Document Settings tab, select Import this sheet and as 3D curves/model, then click Finish.
+"

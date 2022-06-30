@@ -1,0 +1,11 @@
+https://linuxpip.org/category/appimage/
+https://linuxpip.org/category/code-examples/
+https://linuxpip.org/category/how-to-guides/
+https://linuxpip.org/category/linux/
+https://linuxpip.org/category/news/
+https://linuxpip.org/category/open-source-software/
+https://linuxpip.org/category/python/
+https://linuxpip.org/category/r/
+https://linuxpip.org/category/roundups/
+https://linuxpip.org/category/ubuntu/
+https://linuxpip.org/category/uncategorized/

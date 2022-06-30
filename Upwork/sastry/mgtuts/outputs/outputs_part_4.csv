@@ -1,0 +1,76 @@
+url,title,h2_1,content_1,h2_2,content_2,h2_3,content_3,videos_3,h2_4,content_4,h2_5,content_5,h2_6,content_6,h2_7,content_7,videos_7,h2_8,content_8,h2_9,content_9,h2_10,content_10,h2_11,content_11,videos_11,h2_12,content_12,h2_13,content_13
+https://mgtuts.com/other/why-cant-i-freeze-a-layer-in-autocad.html,Why can't I freeze a layer in AutoCAD?,Why can’t I freeze a layer in AutoCAD?,"Make sure that the layer is not current before attempting to freeze it. Use the LAYFRZ command instead. It is similar to turning off layers or freezing layers through the Layer Properties Manager, but instead of turning them off by name, you select objects on the layer(s) you wish to freeze.
+",How do I freeze a layer in AutoCAD?,"Click Home tab Layer panel Layer Properties. In the Layer Properties Manager, select the layers to freeze or thaw. Click the icon in the VP Freeze column for the selected layers.
+",How do you freeze an object in AutoCAD?,"Freezing Layers in Specific Viewports with AutoCAD-Based Programs
+Double click on the viewport you want freeze the layer in.
+Type in LAYFRZ.
+Choose an object on the layer to be frozen.
+",https://www.youtube.com/embed/3hKuv_WLaQ0,What is the difference between freeze and lock in AutoCAD?,"You can freeze layers in all viewports, in the current layout viewport, or in new layout viewports as they are created. Locks and unlocks the layers. You cannot edit objects on a locked layer.
+",How do you turn off dynamic input in AutoCAD?,"Solution:
+Press the F12 key to toggle Dynamic Input on and off.
+Change the DYNMODE variable to 1 for on, or 0 for off.
+Toggle the dynamic input icon in the lower-left or lower-right corner of the program:
+",How do I freeze a layer in one viewport?,"Type in LAYFRZ > Settings > Viewports and ensure VPfreeze is selected. VP freeze will freeze layers in selected viewports, Freeze will freeze layers in all the viewports.…To do this:
+Double click on the viewport you want freeze the layer in.
+Type in LAYFRZ.
+Choose an object on the layer to be frozen.
+",What is the difference between a frozen layer and a locked layer?,"You can lock or freeze layers. Objects on locked layers can’t be modified. Frozen layers are temporarily turned off. Layers in each layout viewport can also be frozen.
+",https://www.youtube.com/embed/nkQP2jOXQ-M,How do I lock a layer in a viewport in AutoCAD?,"You can’t freeze a layer and have it then visible (set to “no-freeze”) in a viewport. My suggestion is to thaw all layers (and switch them ON, if you use this switch) before you plot. And every viewport has it’s VP-Freeze options set correct.
+",,,,,,,,,,,
+https://mgtuts.com/other/what-tablet-is-best-for-cad.html,What tablet is best for CAD?,Can you do CAD on a tablet?,"What are the systems requirements for AutoCAD mobile app? A: The AutoCAD mobile app is available on iOS, Android, and Windows 10 mobile devices, both for smartphone or tablet. For iOS devices, you must have iOS 11.0 or later. The app is compatible with iPhone, iPad, and iPod touch.
+",Can Samsung tablet run AutoCAD?,"You can install it on your Samsung tablet.
+",Do you need a tablet for AutoCAD?,"The AutoCAD ( also support some other architecture programs, You need to check first ) software fully supports drawing tablet, which enables you to quickly sketch an idea or easily modify parts of your drawing.
+",https://www.youtube.com/embed/Yh5A8pgbbzU,Can you run AutoCAD in iPad?,"AutoCAD 360 is fully compatible with the iPad Pro. The AutoCAD 360 Pro version fully supports Apple Pencil, which enables you to quickly sketch an idea or easily modify parts of your drawing.
+",Can I use AutoCAD on Windows tablet?,"Microsoft Surface Pro will only run AutoCAD smoothly if it has the recommended specs. If you want to design 2D models, you will only need a 5th generation version with 8GB RAM and considerable storage space.
+",Can iPad AIR run AutoCAD?,"AutoCAD 360, optimized for iPad Air and iPad mini with Retina display, will be available on the App Store. On the new iPad, AutoCAD 360 opens files faster, and rendering and selection is also twice as fast.
+",Which laptop is best for AutoCAD?,"The best laptop for CAD, AutoCAD and 3D modelling in 2022
+Dell. XPS 15.
+Acer. Aspire 5 A515-56.
+MacBook. Pro 14-inch (2021)
+MacBook. Air (M1 2020)
+LG. Gram 17 (2021)
+HP. Spectre X360 (2021)
+Acer. ConceptD 7.
+Razer. Blade 15 Advanced Model.
+",https://www.youtube.com/embed/Yh5A8pgbbzU,Do architects use drawing tablets?,"Drawing tablets for architects, designers, artists, etc., are crucial for freehand work. Artists, architects, and designers spend hours in front of computer screens in order to create that perfect design. They need powerful drawing devices with specific features to bring their visions to life.
+",,,,,,,,,,,
+https://mgtuts.com/other/your-question-how-do-i-create-an-instance-in-solidworks.html,Your question: How do I create an instance in Solidworks?,How do you create an instance in Solidworks?,"Adding Instances of a Component
+Adding Components by Dragging and Dropping. Within an assembly, you can drag and drop components to create additional instances.
+Copying Components with Mates. When you create additional instances of a component in an assembly, you can include mates from the original instance.
+",How do I create assembly in Solidworks 2020?,"To create an assembly from a part:
+Click Make Assembly from Part/Assembly (Standard toolbar) or File > Make Assembly from Part. An assembly opens with the Insert Component PropertyManager active.
+Click in the graphics area to add the part to the assembly. SOLIDWORKS makes the first component fixed.
+",How do I create a part and assembly in Solidworks?,"To create a part within an assembly:
+Click New Part (Assembly toolbar) or Insert > Component > New Part.
+For externally saved parts, type a name for the new part in the Save As dialog box and click Save.
+Select a plane or planar face (while the pointer is ).
+",https://www.youtube.com/embed/o0_ilAc9Vco,How do you replace an object in Solidworks?,"To replace one or more components:
+Do one of the following: Click Replace Components (Assembly toolbar). Click File > Replace. … 
+Set options as described below, then click . The selected component instances are replaced. If you chose Manually select, choose the configuration to open in the Configurations dialog box.
+",How do you draw an assembly in Solidworks?,"To create a drawing from within a part or assembly document:
+Click Make Drawing from Part/Assembly. (Standard toolbar or New. flyout menu).
+Select options for Sheet Format/Size, then click OK.
+Drag views from the View Palette into the drawing sheet, and set options in the PropertyManager.
+",How do you create an e drawing?,"To create eDrawings files using SOLIDWORKS Save As: In a SOLIDWORKS document, click File > Save As.…Creating eDrawings Files Using SOLIDWORKS Save As
+Part document (*. sldprt). Save as eDrawings (*. eprt)
+Assembly document (*. sldasm). Save as eDrawings (*. easm)
+Drawing document (*. slddrw). Save as eDrawings (*. edrw)
+",What is solidworks composer?,"SOLIDWORKS® Composer allows you to quickly create 2D and 3D graphical content to clearly explain and present your product or process. The tools let you work directly from 3D CAD data to create high-quality illustrations, photorealistic images, and interactive animations, and to import design data. Buy now.
+",https://www.youtube.com/embed/UIVqJvfpK38,How should you create a new part or assembly?,"To create a part within an assembly:
+Click New Part (Assembly toolbar) or Insert > Component > New Part.
+Enter a name for the new part in the Save As dialog box and click Save.
+Select a plane or planar face (while the pointer is ).
+",How do you create a component in Solidworks?,"You can move a component within its degrees of freedom, visualizing the assembly’s behavior. To add a mate: Click Mate (Assembly toolbar), or click Insert > Mate. In the PropertyManager, under Mate Selections, select the entities that you want to mate together for Entities to Mate .
+",What is a virtual component in Solidworks?,"Virtual components are saved internally in the assembly file instead of in separate part or subassembly files. Virtual components are especially useful in top-down design.
+",How do you make a derived part in Solidworks?,"To create a derived part from an assembly component:
+In an assembly document, select a component.
+Click File > Derive Component Part. … 
+Under Transfer, select any combination of items from the seed component to be included in the derived part.
+",https://www.youtube.com/embed/dNysjBXpNDk,What is make independent in Solidworks?,"To save one or more component instances as a new file: In an assembly, in the graphics area or FeatureManager design tree, right-click a component or Ctrl + select multiple components and click Make Independent . In the dialog box, click OK when asked to save the component with a new name.
+",How do you replace a part in a Solidworks drawing?,"Replacing Model in a Drawing View
+Click Replace Model. (Drawing toolbar) or Tools > Replace Model.
+In the PropertyManager, under Selected Views, select a drawing view.
+Under New Model, browse to select a part or an assembly file, and click Open.
+Double-part icon. … 
+Click .
+"

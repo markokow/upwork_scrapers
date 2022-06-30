@@ -1,0 +1,98 @@
+url,title,h2_1,content_1,h2_2,content_2,h2_3,content_3,videos_3,h2_4,content_4,h2_5,content_5,h2_6,content_6,h2_7,content_7,videos_7,h2_8,content_8,h2_9,content_9,h2_10,content_10,h2_11,content_11,videos_11,h2_12,content_12,h2_13,content_13,h2_14,content_14,h2_15,content_15
+https://mgtuts.com/other/quick-answer-how-do-you-add-furniture-to-revit-models.html,Quick Answer: How do you add furniture to Revit models?,How do I add furniture in Revit 2022?,"On the Insert tab, click load Autodesk Family to load the browser. In the browser use the browse tree to narrow the content displayed. Here the furniture category is selected and then further narrowed by selecting seating. Click to select multiple items in the dialog.
+",How do I insert furniture in Revit 2020?,"Open the Family Types dialog, and under Identity Data, click in the Type Image field, and click the browse button to open the Manage Images dialog. Click Add, and navigate to the location of the image you wish to associate with this furniture family. Select the image, and click Open.
+",How do you add furniture in Revit 2020?,"In the Load Family dialogue box, locate the folder that contains the family or families you want to load and select them, as shown.
+Click Open.
+Once the family (or families) is loaded, click Component (Architecture Tab>Build Panel> Component>Place a Component) and select the type you want to use from the Type Selector.
+",https://www.youtube.com/embed/7oQq_L_QDqM,Does Revit have furniture?,"Select a furniture element in the model, and click Modify | Furniture tab Mode panel (Edit Family). Open the Family Types dialog, and under Identity Data, click in the Type Image field, and click the browse button to open the Manage Images dialog.
+",How do you edit furniture in Revit?,"Navigate to Furniture > Tables, hold down CTRL, select the Table-Rectangular. rfa file and the new family file you just created, and click Open. Revit displays the Family Already Exists dialog. Click Overwrite the existing version.
+",How do you create a family in Revit?,"Create a New Family Type in a Project
+In the drawing area, select an element belonging to the desired type.
+On the Properties palette, click (Edit Type).
+In the Type Properties dialog, click Duplicate.
+In the Name dialog, enter a name for the new type and click OK.
+Specify properties for the type, as desired.
+",,,,,,,,,,,,,,,,,,,,
+https://mgtuts.com/other/you-asked-how-do-you-turn-on-the-sheet-grid-in-revit.html,You asked: How do you turn on the sheet grid in Revit?,How do I turn off the grid guide in Revit?,"Set the Guide Grid value to none for the sheet or use Visibility/Graphics in the sheet view to turn it off. If you delete a guide grid you’ll remove it for all the sheets. You should get this warning though in an attempt by Revit to save you from yourself.
+",How do you use guide grids?,"Guide grids help arrange views so that they appear in the same location from sheet to sheet.…
+Open a sheet view.
+Click View tab Sheet Composition panel (Guide Grid).
+In the Assign Guide Grid dialog, select Choose existing, select a guide grid to add to the sheet, and click OK.
+",What are grid lines used for in Revit?,"Grids are annotation elements that help organize your design. Add grid lines to a model to create a reference and framework for the design. Change the grid type during placement or change the type of existing grids in a view. Change the grid value directly in the grid header or in the Name instance property.
+",https://www.youtube.com/embed/mLWu2L-2aS8,How do you make a grid head in Revit?,"Add a new Grid:
+Go to Architecture tab -> Datum panel -> Grid. … 
+Click Modify | Place Grid tab -> Draw panel -> Select a straight line option.
+Grid 1, as per Fig 1, is located at the Top Horizontal boundary line of the site.
+Click the Start point of the Grid line at the top left intersection of the boundary lines.
+",How do you activate a viewport in Revit?,"In the drawing area, select a view on the sheet. Tip: If views on the sheet overlap, press Tab until the correct view highlights. Watch the status bar for the description of the viewport. Click Modify | Viewports tab Viewport panel (Activate View).
+",What is grid guide?,"Welcome to GridGuide! A tool to help you create pixel perfect grids within your designs.
+",,,,,,,,,,,,,,,,,,,,
+https://mgtuts.com/other/quick-answer-what-is-the-full-form-of-com-in-cad-cam.html,Quick Answer: What is the full form of COM in CAD CAM?,Which of the following is the full form of CAD?,"Computer-aided design (CAD) is the use of computers (or workstations) to aid in the creation, modification, analysis, or optimization of a design.
+",What is full form of CAE?,"Computer-Aided Engineering (CAE)
+",What does CAM stand for in DT?,"CAD stands for Computer Aided Design, whereas CAM stands for Computer Aided Manufacture.
+",https://www.youtube.com/embed/7VgOqaLCxd4,What is CAM stand for?,"Computer Aided Manufacturing (CAM) is the use of software and computer-controlled machinery to automate a manufacturing process.
+",What is the full form of CAD class 9th?,"The full form of CAD is Computer-Aided Design. CAD is an advanced software for creating designs and generate technical drawings in 2D and 3D by architects, engineers, drafters & artists. It is a mixture of hardware and software that allows designing and producing anything simpler for a designer.
+",What is the full form of post?,"POST stands for Power On Self Test. It is a series of computer checks run by the computer and its engine when the computer is turned on.
+",What is full form of CBT?,"computer-based training (CBT)
+",https://www.youtube.com/embed/CkoCZaqaXEo,Can Ka full form in computer?,"A campus area network (CAN) is a network of multiple interconnected local area networks (LAN) in a limited geographical area. A CAN is smaller than a wide area network (WAN) or metropolitan area network (MAN). A CAN is also known as a corporate area network (CAN).
+",What does CPE stand for in technology?,"Customer premises equipment (CPE) is telecommunications and information technology equipment kept at the customer’s physical location rather than on the service provider’s premises. Telephone handsets, cable TV set-top boxes and Digital Subscriber Line (DSL) routers are examples of CPEs.
+",What is CAD CAM in DT?,"CAD stands for Computer-Aided Design and CAM stands for Computer-Aided Manufacturing, both of which are used to make things. CAD/CAM software is used to design and manufacture prototypes, finished products, and production runs of products.
+",What is CAM profile?,"[′kam ‚prō‚fīl] (design engineering) The shape of the contoured cam surface by means of which motion is communicated to the follower. Also known as pitch line.
+",https://www.youtube.com/embed/zvHqCP_TEJE,What does CAD stand for in DT?,"Using computer aided design (CAD) and computer aided manufacture (CAM) in a manufacturing setting.
+",Is CAM a word?,"Yes, cam is in the scrabble dictionary.
+",What does CAM mean on TikTok?,"Summary of Key Points. “Computer Aided Manufacturing” is the most common definition for CAM on Snapchat, WhatsApp, Facebook, Twitter, Instagram, and TikTok.
+",What is the difference between CAD and CAM?,"The main difference between CAD and CAM programming is CAD stands for Computer-Aided Design (in some circles, it can refer synonymously to Computer-Aided Drafting), which refers to the design or modification of a digital model while CAM, , is Computer-Aided Manufacturing and controls the machine used to produce a part.
+"
+https://mgtuts.com/other/can-autocad-lt-read-3d.html,Can AutoCAD Lt read 3D?,Can AutoCAD LT open 3D files?,"In AutoCAD LT, you can open and view 3D models created in the full version of AutoCAD, though you can’t create new ones or edit them, other than to move, copy, or delete them. AutoCAD LT is a 2D drafting program, it doesn’t have much visualization or presentation capabilities.
+",Is AutoCAD LT 2D or 3D?,"There are two variants of AutoCAD available: AutoCAD and AutoCAD LT. Both run the same core features. However, AutoCAD offers both 2D and 3D drafting and automation capabilities while AutoCAD LT offers a comprehensive 2D drafting toolset.
+",Can I view 3D with AutoCAD?,"Click the ‘gear’ icon on the status bar and select “3D Basics”. When you are in the 3D Basics workspace, your tool palettes on the ribbon will change. This will make it easier to find tools and icons that you’ll use more often in 3D. The first one we’ll look at is the Visualize Palette.
+",https://www.youtube.com/embed/_ScCPnuN7RY,How do I enable 3D in AutoCAD?,"Open the Workspaces drop-down list on the Quick Access toolbar, or click the Workspace Switching button on the status bar and then choose 3D Modelling.
+",Is AutoCAD LT good enough?,"If your market insists on 3D design and drafting files, AutoCAD LT will not be enough. Similarly, if you work as a partner or subcontractor for another construction company that has standardized on full AutoCAD with 3D, then you may have no option but to make the same choice.
+",Is AutoCAD LT any good?,"Overall, AutoCAD LT is a good software for Drafting, Layout generation and 2D modelling. 1. 2D Modelling and providing dimensions to a drawing is very easy in AutoCAD LT. 2.
+",What is AutoCAD LT used for?,"AutoCAD LT is CAD software that is used for precise 2D drafting, design, and documentation. It includes features to automate tasks and increase productivity such as comparing drawings, counting, adding objects, and creating tables.
+",https://www.youtube.com/embed/4J4okAOtFb8,What does LT mean in AutoCAD?,"LT stands for Lap Top. > > The difference between LT and the full version of AutoCAD is that LT > does not include 3d functions and does not support Lisp. > >
+",What files can AutoCAD LT open?,"AutoCAD LT will load or execute the following file types when they are dragged and dropped onto the AutoCAD LT graphics window: DWG (insert block), DXF (load drawing), LIN (load line type), SCR (run script), SLD (display slide), and TXT (load text).
+",How do I view 3D models in AutoCAD LT?,"3D models can be opened in AutoCAD LT. However, 3D view and navigation tools are not available.…You can also display standard views for 3D models using the following command inputs:
+Isometric view: -VPOINT 1,-1,1.
+Top view: -VPOINT 0,0,1 or PLAN.
+Front view: -VPOINT 0,-1,0.
+Right side view: 1,0,0.
+",How do I view 3D drawings?,"3D Drawing View Mode
+With a drawing view selected, click 3D Drawing View. … 
+Use the tools on the pop-up toolbar to manipulate the drawing view as necessary.
+To create a new view orientation, click Save the view or press the spacebar, then add a named view in the Orientation dialog box. … 
+Click Exit.
+",https://www.youtube.com/embed/FN8ZeQgOQ2A,Does AutoCAD 2021 have 3D?,"“AutoCAD 2021 3D Modeling focuses on the 3D aspects of AutoCAD 2021, providing both new and professional users with step-by-step procedures for creating 3D models and working with AutoCAD’s many features.
+",How do I change from 2D to 3D in AutoCAD?,"Click the “cube” icon at the top right of the canvas and then drag the mouse until the top, right and front sides of the cube are visible. This changes the viewpoint from 2-D to 3-D, allowing you to see the three-dimensionality of the 3-D form that you’ll create from the 2-D model.
+",How do I change from 2D to 3D in AutoCAD 2020?,"To get a plan view, you can click View menu > 3D Views > Plan View > Current UCS. Or you can type PLAN at the Command prompt. To Switch between the 3D and 2D graphics display, click View menu > Visual Styles > 2D Wireframe or 3D Wireframe.
+",,
+https://mgtuts.com/other/how-do-you-align-objects-in-draftsight.html,How do you align objects in Draftsight?,How do you align an object?,"Align an object with other objects
+Hold down Shift , click the objects that you want to align, and then click the Shape Format tab.
+Click Arrange > Align > Align Selected Objects. This is selected by default. If Align Selected Objects is not available. … 
+Click Arrange > Align, and then click the alignment that you want.
+",How do you align objects in AutoCAD?,"Identify which objects you would like to align. Go to the Modify panel, click on the drop down arrow and select the “Align” tool, located on the bottom left side. 2. Select the object that you wish to align and hit “Enter”.
+",How do you align an object in Solidworks?,"To align sketches:
+Select a line or a point in a sketch to be aligned with another sketch.
+Hold Ctrl and select a line or a point in the second sketch to which the first sketch is to be aligned.
+Click Align Sketch (2D to 3D toolbar), or click Tools > Sketch Tools > Align > Sketch.
+",https://www.youtube.com/embed/BNjCgOwC1xA,What can you enable to help align objects on a slide?,"Align objects
+Select the objects you want to align. Press Shift to select multiple objects.
+Select Picture format > Align and select how you want to align them: Align Left, Align Center, or Align Right. Align Top, Align Middle, or Align Bottom. Distribute Horizontally or Distribute Vertically.
+",Where are the commands you need to change the position or alignment of the text block in a shape?,"Position commands. The Position button is located on the Home tab, in the Arrange group. Click the arrow to see commands for aligning, spacing, and orienting selected shapes.
+",How do you scale align?,"To properly scale an image or PDF after inserting into AutoCAD
+Using the ALIGN (Command): Draw a line that is at the proper length (Ex: If the dimension shows 25′, draw a line at that length). Type ALIGN into the command line and press Enter. … 
+Using the SCALE (Command): Type LINE on the command line and press Enter.
+",How do you equally space an object in AutoCAD?,"Click Home tab Modify panel Align drop-down Space Evenly. Select an edge as the axis along which to space all the objects evenly, and specify a start point and an endpoint along the edge; or press Enter, and specify two points between which the objects will be spaced evenly from each other.
+",https://www.youtube.com/embed/yYR-KrOoR_c,How do you use 3D alignment?,"To Align two Objects in 3D
+Click Home tab Modify panel 3D Align. Find.
+Select the objects that you want to align.
+Specify either one, two, or three source points and then the corresponding first, second, or third destination points. The first point is called the base point.
+",How do you align and scale in CAD?,"In AutoCAD, draw a rectangle and a polygon as shown below (Fig 1). From the drop-down menu of the modify panel on the Ribbon, select the Align tool (Fig 2) and then follow the command prompts to align and scale the two objects that you have just drawn. Tip: Hover over the Align tool icon to access a tooltip.
+",How do I center a shape in SolidWorks?,"To sketch center rectangles:
+Click Center Rectangle .
+In the graphics area: Click to define the center. Drag to sketch the rectangle with centerlines. Release to set the four edges.
+Click . Video: Sketching Center Rectangles.
+",How do you center a drawing in SolidWorks?,"Aligning One Drawing View to Another
+Do one of the following: Select a drawing view, and click Tools > Align Drawing View > Horizontal To Another View or Vertical To Another View. … 
+Select the view to which you want to align. The model origins or drawing view centers of the views are aligned along the chosen direction.
+",,,,,,,,,

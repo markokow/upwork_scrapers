@@ -1,0 +1,1316 @@
+{
+  "data": {
+    "feed": {
+      "pageInfo": {
+        "endCursor": "Y3Vyc29yOjE2NTY1NjExNzY=",
+        "hasNextPage": true,
+        "hasPreviousPage": false,
+        "__typename": "PageInfo"
+      },
+      "edges": [
+        {
+          "node": {
+            "id": "cXVlc3Rpb246Mjc5NzkzMTE=",
+            "databaseId": 27979311,
+            "content": "Answer question quickly please!!!!",
+            "pointsForAnswer": 6,
+            "pointsForBestAnswer": 3,
+            "canBeAnswered": true,
+            "created": "2022-06-30T07:16:09.000Z",
+            "author": {
+              "id": "dXNlcjoyMTU4OTYxNQ==",
+              "databaseId": 21589615,
+              "nick": "hpatel04356",
+              "points": 998,
+              "isDeleted": false,
+              "avatar": null,
+              "rank": {
+                "id": "cmFuazoz",
+                "name": "Ambitious",
+                "__typename": "Rank"
+              },
+              "__typename": "User"
+            },
+            "subject": {
+              "id": "c3ViamVjdDo1",
+              "databaseId": 5,
+              "name": "History",
+              "slug": "history",
+              "__typename": "Subject"
+            },
+            "grade": {
+              "id": "Z3JhZGU6NQ==",
+              "databaseId": 5,
+              "name": "High School",
+              "__typename": "Grade"
+            },
+            "attachments": [
+              {
+                "id": "YXR0YWNobWVudDoxMDQxODY3OA==",
+                "databaseId": 10418678,
+                "url": "https://us-static.z-dn.net/files/dc7/09ecbbb0905ea73a8f1a9c21d98479e5.png",
+                "thumbnailUrl": "https://us-static.z-dn.net/files/dc3/63ecdf8f5a4bf30d5522759c714b3462.png",
+                "extension": "png",
+                "__typename": "Attachment"
+              }
+            ],
+            "__typename": "Question",
+            "answers": {
+              "hasVerified": false,
+              "nodes": [
+                {
+                  "id": "YW5zd2VyOjIzODA2ODIx",
+                  "databaseId": 23806821,
+                  "content": "<p><strong>Answer:</strong></p><p> c. contacting representatives directly </p>",
+                  "author": {
+                    "id": "dXNlcjo1NDUwMzcwNw==",
+                    "databaseId": 54503707,
+                    "nick": "Medunno13",
+                    "points": 127209,
+                    "isDeleted": false,
+                    "avatar": {
+                      "id": "YXR0YWNobWVudDo5ODMwMDg1",
+                      "databaseId": 9830085,
+                      "url": "https://us-static.z-dn.net/files/da5/fd0a810ed603f501d10da769d006d4a3.jpg",
+                      "thumbnailUrl": "https://us-static.z-dn.net/files/d80/08682fab42cca01f730d84a77099168a.jpg",
+                      "extension": "jpg",
+                      "__typename": "Attachment"
+                    },
+                    "rank": {
+                      "id": "cmFuazo2",
+                      "name": "Ace",
+                      "__typename": "Rank"
+                    },
+                    "__typename": "User"
+                  },
+                  "points": 6,
+                  "created": "2022-06-30T07:22:03.000Z",
+                  "isConfirmed": false,
+                  "isBest": false,
+                  "attachments": [],
+                  "__typename": "Answer"
+                }
+              ],
+              "__typename": "AnswerConnection"
+            },
+            "isAuthorsFirstQuestion": false
+          },
+          "cursor": "Y3Vyc29yOjE2NTY1NzMzNjk=",
+          "__typename": "FeedItemEdge"
+        },
+        {
+          "node": {
+            "id": "cXVlc3Rpb246Mjc5NzkzMDc=",
+            "databaseId": 27979307,
+            "content": "What was the Bolsheviks' stance on Russian politics and how did this inspire a revolution?\u200b",
+            "pointsForAnswer": 5,
+            "pointsForBestAnswer": 3,
+            "canBeAnswered": true,
+            "created": "2022-06-30T07:13:24.000Z",
+            "author": {
+              "id": "dXNlcjo1OTQ0OTE0MA==",
+              "databaseId": 59449140,
+              "nick": "seocicles",
+              "points": 55,
+              "isDeleted": false,
+              "avatar": null,
+              "rank": {
+                "id": "cmFuazox",
+                "name": "Beginner",
+                "__typename": "Rank"
+              },
+              "__typename": "User"
+            },
+            "subject": {
+              "id": "c3ViamVjdDo1",
+              "databaseId": 5,
+              "name": "History",
+              "slug": "history",
+              "__typename": "Subject"
+            },
+            "grade": {
+              "id": "Z3JhZGU6NQ==",
+              "databaseId": 5,
+              "name": "High School",
+              "__typename": "Grade"
+            },
+            "attachments": [],
+            "__typename": "Question",
+            "answers": {
+              "hasVerified": false,
+              "nodes": [
+                {
+                  "id": "YW5zd2VyOjIzODA2ODE5",
+                  "databaseId": 23806819,
+                  "content": "<p><strong>Answer:</strong></p><p>Bolsheviks were divided in the Petrograd Soviet between the Bolsheviks and the Mensheviks. Bolsheviks were called the Majority and the Mensheviks were called the Minority.</p><p><br />The reason why there was a revolution was that, when the TSAR abdicated, the new provisional government along with the Petrograd Soviets took power, they were nothing but chaos. Therefore Lenin's plan of PEACE, LAND, AND BREAD. were what fueled the communism in Russia.</p>",
+                  "author": {
+                    "id": "dXNlcjo2MDA1MTczNQ==",
+                    "databaseId": 60051735,
+                    "nick": "leopoldkorysong123",
+                    "points": 70,
+                    "isDeleted": false,
+                    "avatar": null,
+                    "rank": {
+                      "id": "cmFuazox",
+                      "name": "Beginner",
+                      "__typename": "Rank"
+                    },
+                    "__typename": "User"
+                  },
+                  "points": 5,
+                  "created": "2022-06-30T07:21:08.000Z",
+                  "isConfirmed": false,
+                  "isBest": false,
+                  "attachments": [],
+                  "__typename": "Answer"
+                }
+              ],
+              "__typename": "AnswerConnection"
+            },
+            "isAuthorsFirstQuestion": true
+          },
+          "cursor": "Y3Vyc29yOjE2NTY1NzMyMDQ=",
+          "__typename": "FeedItemEdge"
+        },
+        {
+          "node": {
+            "id": "cXVlc3Rpb246Mjc5NzkzMDQ=",
+            "databaseId": 27979304,
+            "content": "Which of the following situations accurately describe \"democracy\"?<br />\nSelect one:<br />\nO a. Citizens have the responsibility to choose their officials<br />\nthoughtfully and wisely<br />\nO b. Citizens are free to pursue a better life with all amenities for<br />\na comfortable existence<br />\nc. Citizens exercise their rights to own private property and<br />\ncompete in open markets with little government involvement<br />\nO d. A government applies its laws equally and fairly and not on<br />\nthe whims of a ruler",
+            "pointsForAnswer": 12,
+            "pointsForBestAnswer": 6,
+            "canBeAnswered": true,
+            "created": "2022-06-30T07:12:28.000Z",
+            "author": {
+              "id": "dXNlcjoyMTU4OTYxNQ==",
+              "databaseId": 21589615,
+              "nick": "hpatel04356",
+              "points": 998,
+              "isDeleted": false,
+              "avatar": null,
+              "rank": {
+                "id": "cmFuazoz",
+                "name": "Ambitious",
+                "__typename": "Rank"
+              },
+              "__typename": "User"
+            },
+            "subject": {
+              "id": "c3ViamVjdDo1",
+              "databaseId": 5,
+              "name": "History",
+              "slug": "history",
+              "__typename": "Subject"
+            },
+            "grade": {
+              "id": "Z3JhZGU6NQ==",
+              "databaseId": 5,
+              "name": "High School",
+              "__typename": "Grade"
+            },
+            "attachments": [],
+            "__typename": "Question",
+            "answers": {
+              "hasVerified": false,
+              "nodes": [
+                {
+                  "id": "YW5zd2VyOjIzODA3MDM5",
+                  "databaseId": 23807039,
+                  "content": "<p><strong>Answer:</strong></p><p>D</p><p><strong>Explanation:</strong></p><p>Although I do not professional in history i suggest d for this answer</p>",
+                  "author": {
+                    "id": "dXNlcjo1NjY2MjI1Mw==",
+                    "databaseId": 56662253,
+                    "nick": "hanhtetsan",
+                    "points": 288,
+                    "isDeleted": false,
+                    "avatar": {
+                      "id": "YXR0YWNobWVudDoxMDQxODc1NQ==",
+                      "databaseId": 10418755,
+                      "url": "https://us-static.z-dn.net/files/d77/1be7fd98d216b73e30f0dc61d59c0d06.jpg",
+                      "thumbnailUrl": "https://us-static.z-dn.net/files/d92/1d89af97511952cdddb778328957b5af.jpg",
+                      "extension": "jpg",
+                      "__typename": "Attachment"
+                    },
+                    "rank": {
+                      "id": "cmFuazoz",
+                      "name": "Ambitious",
+                      "__typename": "Rank"
+                    },
+                    "__typename": "User"
+                  },
+                  "points": 12,
+                  "created": "2022-06-30T08:29:43.000Z",
+                  "isConfirmed": false,
+                  "isBest": false,
+                  "attachments": [],
+                  "__typename": "Answer"
+                }
+              ],
+              "__typename": "AnswerConnection"
+            },
+            "isAuthorsFirstQuestion": false
+          },
+          "cursor": "Y3Vyc29yOjE2NTY1NzMxNDg=",
+          "__typename": "FeedItemEdge"
+        },
+        {
+          "node": {
+            "id": "cXVlc3Rpb246Mjc5NzkyNzI=",
+            "databaseId": 27979272,
+            "content": "You are a member of Congress and your aide reports that the inflation rate continues to drop and is below the rate associated with a growing economy. Some economists have begun talking about the possibility of deflation. To address this concern, you vote for the bill that aims to (1 point)<br /><br />\ndecrease spending on grants for small businesses<br /><br />\nincrease taxes on sales of luxury goods<br /><br />\nincrease taxes for large corporations<br /><br />\nreduce taxes for business owners",
+            "pointsForAnswer": 5,
+            "pointsForBestAnswer": 3,
+            "canBeAnswered": true,
+            "created": "2022-06-30T06:45:55.000Z",
+            "author": {
+              "id": "dXNlcjo1OTcwMjY0NQ==",
+              "databaseId": 59702645,
+              "nick": "amandam0906",
+              "points": 45,
+              "isDeleted": false,
+              "avatar": null,
+              "rank": {
+                "id": "cmFuazox",
+                "name": "Beginner",
+                "__typename": "Rank"
+              },
+              "__typename": "User"
+            },
+            "subject": {
+              "id": "c3ViamVjdDo1",
+              "databaseId": 5,
+              "name": "History",
+              "slug": "history",
+              "__typename": "Subject"
+            },
+            "grade": {
+              "id": "Z3JhZGU6Ng==",
+              "databaseId": 6,
+              "name": "College",
+              "__typename": "Grade"
+            },
+            "attachments": [],
+            "__typename": "Question",
+            "answers": {
+              "hasVerified": false,
+              "nodes": [],
+              "__typename": "AnswerConnection"
+            },
+            "isAuthorsFirstQuestion": false
+          },
+          "cursor": "Y3Vyc29yOjE2NTY1NzE1NTU=",
+          "__typename": "FeedItemEdge"
+        },
+        {
+          "node": {
+            "id": "cXVlc3Rpb246Mjc5NzkyNTI=",
+            "databaseId": 27979252,
+            "content": "plsss help In a paragraph of at least five sentences, explain Geraldyn Cobb\u2019s importance to the space program, and describe her later humanitarian contributions.",
+            "pointsForAnswer": 5,
+            "pointsForBestAnswer": 3,
+            "canBeAnswered": true,
+            "created": "2022-06-30T06:36:32.000Z",
+            "author": {
+              "id": "dXNlcjo1OTU3ODk4MQ==",
+              "databaseId": 59578981,
+              "nick": "kelswarzone",
+              "points": 102,
+              "isDeleted": false,
+              "avatar": {
+                "id": "YXR0YWNobWVudDoxMDM4MTQ1MA==",
+                "databaseId": 10381450,
+                "url": "https://us-static.z-dn.net/files/dd6/323d15328f15b6e57426f67576e3e5de.jpg",
+                "thumbnailUrl": "https://us-static.z-dn.net/files/de2/a15e4fd7673862be2e0a47486bc83b37.jpg",
+                "extension": "jpg",
+                "__typename": "Attachment"
+              },
+              "rank": {
+                "id": "cmFuazoy",
+                "name": "Helping Hand",
+                "__typename": "Rank"
+              },
+              "__typename": "User"
+            },
+            "subject": {
+              "id": "c3ViamVjdDo1",
+              "databaseId": 5,
+              "name": "History",
+              "slug": "history",
+              "__typename": "Subject"
+            },
+            "grade": {
+              "id": "Z3JhZGU6NQ==",
+              "databaseId": 5,
+              "name": "High School",
+              "__typename": "Grade"
+            },
+            "attachments": [],
+            "__typename": "Question",
+            "answers": {
+              "hasVerified": false,
+              "nodes": [
+                {
+                  "id": "YW5zd2VyOjIzODA2ODU5",
+                  "databaseId": 23806859,
+                  "content": "I don\u2019t know ask someone else",
+                  "author": {
+                    "id": "dXNlcjo1MzAwNzEzOA==",
+                    "databaseId": 53007138,
+                    "nick": "ruqayayh1243",
+                    "points": 109,
+                    "isDeleted": false,
+                    "avatar": null,
+                    "rank": {
+                      "id": "cmFuazoy",
+                      "name": "Helping Hand",
+                      "__typename": "Rank"
+                    },
+                    "__typename": "User"
+                  },
+                  "points": 5,
+                  "created": "2022-06-30T07:34:03.000Z",
+                  "isConfirmed": false,
+                  "isBest": false,
+                  "attachments": [],
+                  "__typename": "Answer"
+                }
+              ],
+              "__typename": "AnswerConnection"
+            },
+            "isAuthorsFirstQuestion": false
+          },
+          "cursor": "Y3Vyc29yOjE2NTY1NzA5OTI=",
+          "__typename": "FeedItemEdge"
+        },
+        {
+          "node": {
+            "id": "cXVlc3Rpb246Mjc5NzkyNDE=",
+            "databaseId": 27979241,
+            "content": "What were the main goals of settlement houses?<br />\nSelect all correct answers.<br />\n -inspecting factories for abuses<br />\n -lifting immigrants out of poverty<br />\n -promoting child labor<br />\n -banning sweatshops",
+            "pointsForAnswer": 8,
+            "pointsForBestAnswer": 4,
+            "canBeAnswered": true,
+            "created": "2022-06-30T06:33:27.000Z",
+            "author": {
+              "id": "dXNlcjoyNDI2OTE4Mg==",
+              "databaseId": 24269182,
+              "nick": "hayden4206969",
+              "points": 55,
+              "isDeleted": false,
+              "avatar": null,
+              "rank": {
+                "id": "cmFuazox",
+                "name": "Beginner",
+                "__typename": "Rank"
+              },
+              "__typename": "User"
+            },
+            "subject": {
+              "id": "c3ViamVjdDo1",
+              "databaseId": 5,
+              "name": "History",
+              "slug": "history",
+              "__typename": "Subject"
+            },
+            "grade": {
+              "id": "Z3JhZGU6NQ==",
+              "databaseId": 5,
+              "name": "High School",
+              "__typename": "Grade"
+            },
+            "attachments": [],
+            "__typename": "Question",
+            "answers": {
+              "hasVerified": false,
+              "nodes": [],
+              "__typename": "AnswerConnection"
+            },
+            "isAuthorsFirstQuestion": true
+          },
+          "cursor": "Y3Vyc29yOjE2NTY1NzA4MDc=",
+          "__typename": "FeedItemEdge"
+        },
+        {
+          "node": {
+            "id": "cXVlc3Rpb246Mjc5NzkyMzI=",
+            "databaseId": 27979232,
+            "content": "Mexico's increase in crop harvests and cultivation of new plants in the late 20th century were PRIMARILY the result of which of these?<br />\nA) The Green Revolution<br />\nB) The Human Genome Project<br />\nC) Deforestation of the interior<br />\nD) Widespread usage of pesticides",
+            "pointsForAnswer": 5,
+            "pointsForBestAnswer": 3,
+            "canBeAnswered": true,
+            "created": "2022-06-30T06:29:46.000Z",
+            "author": {
+              "id": "dXNlcjo1NzEzNDkxMw==",
+              "databaseId": 57134913,
+              "nick": "manuelcatanotorres74",
+              "points": 75,
+              "isDeleted": false,
+              "avatar": null,
+              "rank": {
+                "id": "cmFuazox",
+                "name": "Beginner",
+                "__typename": "Rank"
+              },
+              "__typename": "User"
+            },
+            "subject": {
+              "id": "c3ViamVjdDo1",
+              "databaseId": 5,
+              "name": "History",
+              "slug": "history",
+              "__typename": "Subject"
+            },
+            "grade": {
+              "id": "Z3JhZGU6Ng==",
+              "databaseId": 6,
+              "name": "College",
+              "__typename": "Grade"
+            },
+            "attachments": [],
+            "__typename": "Question",
+            "answers": {
+              "hasVerified": false,
+              "nodes": [],
+              "__typename": "AnswerConnection"
+            },
+            "isAuthorsFirstQuestion": true
+          },
+          "cursor": "Y3Vyc29yOjE2NTY1NzA1ODY=",
+          "__typename": "FeedItemEdge"
+        },
+        {
+          "node": {
+            "id": "cXVlc3Rpb246Mjc5NzkyMTg=",
+            "databaseId": 27979218,
+            "content": "Samsara hinduism in your own words",
+            "pointsForAnswer": 5,
+            "pointsForBestAnswer": 3,
+            "canBeAnswered": true,
+            "created": "2022-06-30T06:21:28.000Z",
+            "author": {
+              "id": "dXNlcjo1NzY1NTkyNA==",
+              "databaseId": 57655924,
+              "nick": "zellezaragoza1427",
+              "points": 40,
+              "isDeleted": false,
+              "avatar": null,
+              "rank": {
+                "id": "cmFuazox",
+                "name": "Beginner",
+                "__typename": "Rank"
+              },
+              "__typename": "User"
+            },
+            "subject": {
+              "id": "c3ViamVjdDo1",
+              "databaseId": 5,
+              "name": "History",
+              "slug": "history",
+              "__typename": "Subject"
+            },
+            "grade": {
+              "id": "Z3JhZGU6Ng==",
+              "databaseId": 6,
+              "name": "College",
+              "__typename": "Grade"
+            },
+            "attachments": [],
+            "__typename": "Question",
+            "answers": {
+              "hasVerified": false,
+              "nodes": [],
+              "__typename": "AnswerConnection"
+            },
+            "isAuthorsFirstQuestion": true
+          },
+          "cursor": "Y3Vyc29yOjE2NTY1NzAwODg=",
+          "__typename": "FeedItemEdge"
+        },
+        {
+          "node": {
+            "id": "cXVlc3Rpb246Mjc5NzkxOTM=",
+            "databaseId": 27979193,
+            "content": "Question 1<br />\n5 pts<br />\nNew York became the first<br />\nAmerican city to police and<br />\nenforce laws before the<br />\nAmerican Revolution.<br />\nO True<br />\nO False",
+            "pointsForAnswer": 5,
+            "pointsForBestAnswer": 3,
+            "canBeAnswered": true,
+            "created": "2022-06-30T06:04:39.000Z",
+            "author": {
+              "id": "dXNlcjo1ODM0MzA1MA==",
+              "databaseId": 58343050,
+              "nick": "zoiebobby",
+              "points": 65,
+              "isDeleted": false,
+              "avatar": null,
+              "rank": {
+                "id": "cmFuazox",
+                "name": "Beginner",
+                "__typename": "Rank"
+              },
+              "__typename": "User"
+            },
+            "subject": {
+              "id": "c3ViamVjdDo1",
+              "databaseId": 5,
+              "name": "History",
+              "slug": "history",
+              "__typename": "Subject"
+            },
+            "grade": {
+              "id": "Z3JhZGU6NQ==",
+              "databaseId": 5,
+              "name": "High School",
+              "__typename": "Grade"
+            },
+            "attachments": [],
+            "__typename": "Question",
+            "answers": {
+              "hasVerified": false,
+              "nodes": [],
+              "__typename": "AnswerConnection"
+            },
+            "isAuthorsFirstQuestion": true
+          },
+          "cursor": "Y3Vyc29yOjE2NTY1NjkwNzk=",
+          "__typename": "FeedItemEdge"
+        },
+        {
+          "node": {
+            "id": "cXVlc3Rpb246Mjc5NzkxNzU=",
+            "databaseId": 27979175,
+            "content": "Hurry and please be right!!! ",
+            "pointsForAnswer": 13,
+            "pointsForBestAnswer": 7,
+            "canBeAnswered": true,
+            "created": "2022-06-30T05:56:55.000Z",
+            "author": {
+              "id": "dXNlcjoyMTU4OTYxNQ==",
+              "databaseId": 21589615,
+              "nick": "hpatel04356",
+              "points": 998,
+              "isDeleted": false,
+              "avatar": null,
+              "rank": {
+                "id": "cmFuazoz",
+                "name": "Ambitious",
+                "__typename": "Rank"
+              },
+              "__typename": "User"
+            },
+            "subject": {
+              "id": "c3ViamVjdDo1",
+              "databaseId": 5,
+              "name": "History",
+              "slug": "history",
+              "__typename": "Subject"
+            },
+            "grade": {
+              "id": "Z3JhZGU6NQ==",
+              "databaseId": 5,
+              "name": "High School",
+              "__typename": "Grade"
+            },
+            "attachments": [
+              {
+                "id": "YXR0YWNobWVudDoxMDQxODU0NQ==",
+                "databaseId": 10418545,
+                "url": "https://us-static.z-dn.net/files/de7/717e46ce785a47384a2b877954cf5537.png",
+                "thumbnailUrl": "https://us-static.z-dn.net/files/d01/94e051ba6bd1312e833250ebfeac7d9d.png",
+                "extension": "png",
+                "__typename": "Attachment"
+              }
+            ],
+            "__typename": "Question",
+            "answers": {
+              "hasVerified": false,
+              "nodes": [
+                {
+                  "id": "YW5zd2VyOjIzODA2NTc5",
+                  "databaseId": 23806579,
+                  "content": "<p><strong>Answer:</strong></p><p>B I think </p><p><strong>Explanation:</strong></p><p>cause in a book i read it</p>",
+                  "author": {
+                    "id": "dXNlcjo2MDA5NDEyOQ==",
+                    "databaseId": 60094129,
+                    "nick": "umusiokwu",
+                    "points": 118,
+                    "isDeleted": false,
+                    "avatar": null,
+                    "rank": {
+                      "id": "cmFuazoy",
+                      "name": "Helping Hand",
+                      "__typename": "Rank"
+                    },
+                    "__typename": "User"
+                  },
+                  "points": 13,
+                  "created": "2022-06-30T06:03:42.000Z",
+                  "isConfirmed": false,
+                  "isBest": false,
+                  "attachments": [],
+                  "__typename": "Answer"
+                }
+              ],
+              "__typename": "AnswerConnection"
+            },
+            "isAuthorsFirstQuestion": false
+          },
+          "cursor": "Y3Vyc29yOjE2NTY1Njg2MTU=",
+          "__typename": "FeedItemEdge"
+        },
+        {
+          "node": {
+            "id": "cXVlc3Rpb246Mjc5NzkxNjk=",
+            "databaseId": 27979169,
+            "content": "Answer right and be quick!!!!!",
+            "pointsForAnswer": 10,
+            "pointsForBestAnswer": 5,
+            "canBeAnswered": true,
+            "created": "2022-06-30T05:54:53.000Z",
+            "author": {
+              "id": "dXNlcjoyMTU4OTYxNQ==",
+              "databaseId": 21589615,
+              "nick": "hpatel04356",
+              "points": 998,
+              "isDeleted": false,
+              "avatar": null,
+              "rank": {
+                "id": "cmFuazoz",
+                "name": "Ambitious",
+                "__typename": "Rank"
+              },
+              "__typename": "User"
+            },
+            "subject": {
+              "id": "c3ViamVjdDo1",
+              "databaseId": 5,
+              "name": "History",
+              "slug": "history",
+              "__typename": "Subject"
+            },
+            "grade": {
+              "id": "Z3JhZGU6NQ==",
+              "databaseId": 5,
+              "name": "High School",
+              "__typename": "Grade"
+            },
+            "attachments": [
+              {
+                "id": "YXR0YWNobWVudDoxMDQxODUzNw==",
+                "databaseId": 10418537,
+                "url": "https://us-static.z-dn.net/files/d7f/1877c4daea2d2fa5e627539536aa1593.png",
+                "thumbnailUrl": "https://us-static.z-dn.net/files/dc1/c30c2ea62174d1ab7889ce8161e4858b.png",
+                "extension": "png",
+                "__typename": "Attachment"
+              }
+            ],
+            "__typename": "Question",
+            "answers": {
+              "hasVerified": false,
+              "nodes": [
+                {
+                  "id": "YW5zd2VyOjIzODA3ODUy",
+                  "databaseId": 23807852,
+                  "content": "<p><strong>Answer:</strong></p><p>A, B, and D</p><p><strong>Explanation:</strong></p><p>A confederation is like an alliance, so you would have to have every state agree instead of just an entity controlling them.</p><p></p>",
+                  "author": {
+                    "id": "dXNlcjo2MDEwNDY3Mg==",
+                    "databaseId": 60104672,
+                    "nick": "coolioCheer",
+                    "points": 529,
+                    "isDeleted": false,
+                    "avatar": {
+                      "id": "YXR0YWNobWVudDoxMDQxODE3OQ==",
+                      "databaseId": 10418179,
+                      "url": "https://us-static.z-dn.net/files/d7e/d7e71a5eeb333eb22408f3e5570b6387.png",
+                      "thumbnailUrl": "https://us-static.z-dn.net/files/d00/fdc03c036282b07d664e9233d17618a3.png",
+                      "extension": "png",
+                      "__typename": "Attachment"
+                    },
+                    "rank": {
+                      "id": "cmFuazoz",
+                      "name": "Ambitious",
+                      "__typename": "Rank"
+                    },
+                    "__typename": "User"
+                  },
+                  "points": 10,
+                  "created": "2022-06-30T11:50:18.000Z",
+                  "isConfirmed": false,
+                  "isBest": false,
+                  "attachments": [],
+                  "__typename": "Answer"
+                }
+              ],
+              "__typename": "AnswerConnection"
+            },
+            "isAuthorsFirstQuestion": false
+          },
+          "cursor": "Y3Vyc29yOjE2NTY1Njg0OTM=",
+          "__typename": "FeedItemEdge"
+        },
+        {
+          "node": {
+            "id": "cXVlc3Rpb246Mjc5NzkxNjM=",
+            "databaseId": 27979163,
+            "content": "Answer correctly and be quick!!!!!",
+            "pointsForAnswer": 15,
+            "pointsForBestAnswer": 8,
+            "canBeAnswered": true,
+            "created": "2022-06-30T05:50:28.000Z",
+            "author": {
+              "id": "dXNlcjoyMTU4OTYxNQ==",
+              "databaseId": 21589615,
+              "nick": "hpatel04356",
+              "points": 998,
+              "isDeleted": false,
+              "avatar": null,
+              "rank": {
+                "id": "cmFuazoz",
+                "name": "Ambitious",
+                "__typename": "Rank"
+              },
+              "__typename": "User"
+            },
+            "subject": {
+              "id": "c3ViamVjdDo1",
+              "databaseId": 5,
+              "name": "History",
+              "slug": "history",
+              "__typename": "Subject"
+            },
+            "grade": {
+              "id": "Z3JhZGU6NQ==",
+              "databaseId": 5,
+              "name": "High School",
+              "__typename": "Grade"
+            },
+            "attachments": [
+              {
+                "id": "YXR0YWNobWVudDoxMDQxODUyNw==",
+                "databaseId": 10418527,
+                "url": "https://us-static.z-dn.net/files/d33/c773f741f2d693c3404ca7ba378ca952.png",
+                "thumbnailUrl": "https://us-static.z-dn.net/files/de2/5eee0c7bcc7fa2de413f8d31c6ea6e82.png",
+                "extension": "png",
+                "__typename": "Attachment"
+              }
+            ],
+            "__typename": "Question",
+            "answers": {
+              "hasVerified": false,
+              "nodes": [
+                {
+                  "id": "YW5zd2VyOjIzODA2NTUy",
+                  "databaseId": 23806552,
+                  "content": "<p><strong>Answer:</strong></p><p>A</p><p><strong>Explanation:</strong></p><p>loose nation-states follow a central authority, which can make it difficult when the country is large as communication becomes difficult</p>",
+                  "author": {
+                    "id": "dXNlcjoxNzY0ODIxOQ==",
+                    "databaseId": 17648219,
+                    "nick": "breecause",
+                    "points": 573,
+                    "isDeleted": false,
+                    "avatar": null,
+                    "rank": {
+                      "id": "cmFuazoz",
+                      "name": "Ambitious",
+                      "__typename": "Rank"
+                    },
+                    "__typename": "User"
+                  },
+                  "points": 15,
+                  "created": "2022-06-30T05:52:17.000Z",
+                  "isConfirmed": false,
+                  "isBest": false,
+                  "attachments": [],
+                  "__typename": "Answer"
+                }
+              ],
+              "__typename": "AnswerConnection"
+            },
+            "isAuthorsFirstQuestion": false
+          },
+          "cursor": "Y3Vyc29yOjE2NTY1NjgyMjg=",
+          "__typename": "FeedItemEdge"
+        },
+        {
+          "node": {
+            "id": "cXVlc3Rpb246Mjc5NzkxNTI=",
+            "databaseId": 27979152,
+            "content": "The phrase \"Black Power\" was made popular by:<br />\nO A. Stokely Carmichael.<br />\nOB. A. Philip Randolph.<br />\nO C. Martin Luther King Jr.<br />\nD. Malcolm X.",
+            "pointsForAnswer": 5,
+            "pointsForBestAnswer": 3,
+            "canBeAnswered": true,
+            "created": "2022-06-30T05:45:43.000Z",
+            "author": {
+              "id": "dXNlcjoyMzAzODczMA==",
+              "databaseId": 23038730,
+              "nick": "rougeleader72",
+              "points": 1490,
+              "isDeleted": false,
+              "avatar": {
+                "id": "YXR0YWNobWVudDo4NTI4NzIx",
+                "databaseId": 8528721,
+                "url": "https://us-static.z-dn.net/files/d70/daa7a79aed2ff070461246d781737467.jpg",
+                "thumbnailUrl": "https://us-static.z-dn.net/files/de8/c46e38aa978ee85f19838468247a9e37.jpg",
+                "extension": "jpg",
+                "__typename": "Attachment"
+              },
+              "rank": {
+                "id": "cmFuazoz",
+                "name": "Ambitious",
+                "__typename": "Rank"
+              },
+              "__typename": "User"
+            },
+            "subject": {
+              "id": "c3ViamVjdDo1",
+              "databaseId": 5,
+              "name": "History",
+              "slug": "history",
+              "__typename": "Subject"
+            },
+            "grade": {
+              "id": "Z3JhZGU6NQ==",
+              "databaseId": 5,
+              "name": "High School",
+              "__typename": "Grade"
+            },
+            "attachments": [],
+            "__typename": "Question",
+            "answers": {
+              "hasVerified": false,
+              "nodes": [],
+              "__typename": "AnswerConnection"
+            },
+            "isAuthorsFirstQuestion": false
+          },
+          "cursor": "Y3Vyc29yOjE2NTY1Njc5NDM=",
+          "__typename": "FeedItemEdge"
+        },
+        {
+          "node": {
+            "id": "cXVlc3Rpb246Mjc5NzkwOTI=",
+            "databaseId": 27979092,
+            "content": "The battles of El-Alamein, Stalingrad and Midway Island are important events in World War II because all of these battles<br /><br />\nSelect one:<br />\na. saw the use of trench warfare and poison gas.<br />\nb. were Axis wins that showed their strength and expanded their territory.<br />\nc. were turning points that helped the Allies win the war.<br />\nd. were sites where the United States used an atomic bomb.",
+            "pointsForAnswer": 10,
+            "pointsForBestAnswer": 5,
+            "canBeAnswered": true,
+            "created": "2022-06-30T05:17:53.000Z",
+            "author": {
+              "id": "dXNlcjo2MDA4NzYyNQ==",
+              "databaseId": 60087625,
+              "nick": "bobbyhil533",
+              "points": 30,
+              "isDeleted": false,
+              "avatar": null,
+              "rank": {
+                "id": "cmFuazox",
+                "name": "Beginner",
+                "__typename": "Rank"
+              },
+              "__typename": "User"
+            },
+            "subject": {
+              "id": "c3ViamVjdDo1",
+              "databaseId": 5,
+              "name": "History",
+              "slug": "history",
+              "__typename": "Subject"
+            },
+            "grade": {
+              "id": "Z3JhZGU6Ng==",
+              "databaseId": 6,
+              "name": "College",
+              "__typename": "Grade"
+            },
+            "attachments": [],
+            "__typename": "Question",
+            "answers": {
+              "hasVerified": false,
+              "nodes": [],
+              "__typename": "AnswerConnection"
+            },
+            "isAuthorsFirstQuestion": true
+          },
+          "cursor": "Y3Vyc29yOjE2NTY1NjYyNzM=",
+          "__typename": "FeedItemEdge"
+        },
+        {
+          "node": {
+            "id": "cXVlc3Rpb246Mjc5NzkwNzQ=",
+            "databaseId": 27979074,
+            "content": "Which statement best completes the diagram?<br />\nO A. Chinese communists seize control of the country.<br />\nB. The Qing dynasty collapses completely.<br />\nOC. Chiang Kai-shek defeats warlords in northern China.<br />\nOD. Sun Yat-sen is forced to give up power to Yuan Shikai. ",
+            "pointsForAnswer": 5,
+            "pointsForBestAnswer": 3,
+            "canBeAnswered": false,
+            "created": "2022-06-30T05:04:31.000Z",
+            "author": {
+              "id": "dXNlcjo1OTc3MTc2MA==",
+              "databaseId": 59771760,
+              "nick": "stephaniealonso433",
+              "points": 35,
+              "isDeleted": false,
+              "avatar": null,
+              "rank": {
+                "id": "cmFuazox",
+                "name": "Beginner",
+                "__typename": "Rank"
+              },
+              "__typename": "User"
+            },
+            "subject": {
+              "id": "c3ViamVjdDo1",
+              "databaseId": 5,
+              "name": "History",
+              "slug": "history",
+              "__typename": "Subject"
+            },
+            "grade": {
+              "id": "Z3JhZGU6NQ==",
+              "databaseId": 5,
+              "name": "High School",
+              "__typename": "Grade"
+            },
+            "attachments": [
+              {
+                "id": "YXR0YWNobWVudDoxMDQxODQ3Mw==",
+                "databaseId": 10418473,
+                "url": "https://us-static.z-dn.net/files/d16/b691719fcf6ad66dd078ed4665286b38.png",
+                "thumbnailUrl": "https://us-static.z-dn.net/files/d38/20d36e51d81c18457fa409fb708797a8.png",
+                "extension": "png",
+                "__typename": "Attachment"
+              }
+            ],
+            "__typename": "Question",
+            "answers": {
+              "hasVerified": false,
+              "nodes": [
+                {
+                  "id": "YW5zd2VyOjIzODA2NDM2",
+                  "databaseId": 23806436,
+                  "content": "<p>I would guess A but I don't know for sure</p><p></p>",
+                  "author": {
+                    "id": "dXNlcjo2MDA4MDI4OA==",
+                    "databaseId": 60080288,
+                    "nick": "84994824",
+                    "points": 655,
+                    "isDeleted": false,
+                    "avatar": {
+                      "id": "YXR0YWNobWVudDoxMDQxODM0OQ==",
+                      "databaseId": 10418349,
+                      "url": "https://us-static.z-dn.net/files/d6c/fc264d3f341f8cc661985bfef2671d75.jpg",
+                      "thumbnailUrl": "https://us-static.z-dn.net/files/dcc/635cc4699e018cb0c62f71b64b0b755b.jpg",
+                      "extension": "jpg",
+                      "__typename": "Attachment"
+                    },
+                    "rank": {
+                      "id": "cmFuazoz",
+                      "name": "Ambitious",
+                      "__typename": "Rank"
+                    },
+                    "__typename": "User"
+                  },
+                  "points": 5,
+                  "created": "2022-06-30T05:17:57.000Z",
+                  "isConfirmed": false,
+                  "isBest": false,
+                  "attachments": [],
+                  "__typename": "Answer"
+                },
+                {
+                  "id": "YW5zd2VyOjIzODA2NDM3",
+                  "databaseId": 23806437,
+                  "content": "<p><strong>Answer:</strong></p><p>A</p><p><strong>Explanation:</strong></p><p>just did the question and got it right</p><p></p>",
+                  "author": {
+                    "id": "dXNlcjo0MTUwMDM5OQ==",
+                    "databaseId": 41500399,
+                    "nick": "suprememateo12",
+                    "points": 125,
+                    "isDeleted": false,
+                    "avatar": {
+                      "id": "YXR0YWNobWVudDoxMDQxODQ2Mg==",
+                      "databaseId": 10418462,
+                      "url": "https://us-static.z-dn.net/files/d62/3e5645a7b6caf21199cc2a047f64a66f.jpg",
+                      "thumbnailUrl": "https://us-static.z-dn.net/files/d5c/8d2532b150164c140bc303aa2deb231d.jpg",
+                      "extension": "jpg",
+                      "__typename": "Attachment"
+                    },
+                    "rank": {
+                      "id": "cmFuazoy",
+                      "name": "Helping Hand",
+                      "__typename": "Rank"
+                    },
+                    "__typename": "User"
+                  },
+                  "points": 5,
+                  "created": "2022-06-30T05:18:20.000Z",
+                  "isConfirmed": false,
+                  "isBest": false,
+                  "attachments": [],
+                  "__typename": "Answer"
+                }
+              ],
+              "__typename": "AnswerConnection"
+            },
+            "isAuthorsFirstQuestion": true
+          },
+          "cursor": "Y3Vyc29yOjE2NTY1NjU0NzE=",
+          "__typename": "FeedItemEdge"
+        },
+        {
+          "node": {
+            "id": "cXVlc3Rpb246Mjc5NzkwNjk=",
+            "databaseId": 27979069,
+            "content": "What do these images show about US productivity during World War II? Select all that apply. Axis bombers reduced the output of US factories early in the war. US factories produced aircraft for the war effort. By 1944, the United States shipped more resources to the Pacific than to Europe. US troops at the front relied on trucks to keep them supplied.",
+            "pointsForAnswer": 5,
+            "pointsForBestAnswer": 3,
+            "canBeAnswered": true,
+            "created": "2022-06-30T05:00:15.000Z",
+            "author": {
+              "id": "dXNlcjoxNjU1NTk1Mg==",
+              "databaseId": 16555952,
+              "nick": "jamieval8",
+              "points": 1375,
+              "isDeleted": false,
+              "avatar": null,
+              "rank": {
+                "id": "cmFuazoz",
+                "name": "Ambitious",
+                "__typename": "Rank"
+              },
+              "__typename": "User"
+            },
+            "subject": {
+              "id": "c3ViamVjdDo1",
+              "databaseId": 5,
+              "name": "History",
+              "slug": "history",
+              "__typename": "Subject"
+            },
+            "grade": {
+              "id": "Z3JhZGU6Ng==",
+              "databaseId": 6,
+              "name": "College",
+              "__typename": "Grade"
+            },
+            "attachments": [],
+            "__typename": "Question",
+            "answers": {
+              "hasVerified": false,
+              "nodes": [],
+              "__typename": "AnswerConnection"
+            },
+            "isAuthorsFirstQuestion": false
+          },
+          "cursor": "Y3Vyc29yOjE2NTY1NjUyMTU=",
+          "__typename": "FeedItemEdge"
+        },
+        {
+          "node": {
+            "id": "cXVlc3Rpb246Mjc5NzkwMTg=",
+            "databaseId": 27979018,
+            "content": "Select ALL the correct answers.<br />\nWhich are two reasons why the Bill of Rights was included in the Constitution?<br />\nCertain delegates were concerned that federal power was not sufficiently limited.<br />\nGeorge Washington would not agree to become president without its inclusion.<br />\nFederalists believed state constitutions did not sufficiently protect individual rights.<br />\nKey Anti-Federalists would not support ratification if it was not included.<br />\nReset<br />\nNext",
+            "pointsForAnswer": 5,
+            "pointsForBestAnswer": 3,
+            "canBeAnswered": true,
+            "created": "2022-06-30T04:35:05.000Z",
+            "author": {
+              "id": "dXNlcjo1MDA4MTU2OQ==",
+              "databaseId": 50081569,
+              "nick": "greyvoneharell12",
+              "points": 295,
+              "isDeleted": false,
+              "avatar": null,
+              "rank": {
+                "id": "cmFuazoz",
+                "name": "Ambitious",
+                "__typename": "Rank"
+              },
+              "__typename": "User"
+            },
+            "subject": {
+              "id": "c3ViamVjdDo1",
+              "databaseId": 5,
+              "name": "History",
+              "slug": "history",
+              "__typename": "Subject"
+            },
+            "grade": {
+              "id": "Z3JhZGU6NQ==",
+              "databaseId": 5,
+              "name": "High School",
+              "__typename": "Grade"
+            },
+            "attachments": [],
+            "__typename": "Question",
+            "answers": {
+              "hasVerified": false,
+              "nodes": [],
+              "__typename": "AnswerConnection"
+            },
+            "isAuthorsFirstQuestion": true
+          },
+          "cursor": "Y3Vyc29yOjE2NTY1NjM3MDU=",
+          "__typename": "FeedItemEdge"
+        },
+        {
+          "node": {
+            "id": "cXVlc3Rpb246Mjc5Nzg5Njg=",
+            "databaseId": 27978968,
+            "content": "Which conclusion can be drawn from this image to support the argument that<br />\nEuropeans were economically exploiting their American colonies?<br />\nA. For Europeans to produce finished goods, they used monopolies<br />\nto force their colonies to supply them with raw materials.<br />\nB. For Europeans to shift from manufacturing to agricultural<br />\nproduction, they used monopolies to force their colonies to supply<br />\nthem with finished goods.<br />\nOC. For Europeans to produce raw materials, they used monopolies to<br />\nforce their colonies to supply them with slaves to work on farms<br />\nand in mines in Europe.<br />\nD. For Europeans to shift from agricultural production to<br />\nmanufacturing, they used monopolies to force their colonies to<br />\nsupply them with abundant sources of food.",
+            "pointsForAnswer": 5,
+            "pointsForBestAnswer": 3,
+            "canBeAnswered": true,
+            "created": "2022-06-30T04:02:50.000Z",
+            "author": {
+              "id": "dXNlcjo0MzQ2MTMyMQ==",
+              "databaseId": 43461321,
+              "nick": "boysdarly",
+              "points": 355,
+              "isDeleted": false,
+              "avatar": {
+                "id": "YXR0YWNobWVudDo4NTEyODMz",
+                "databaseId": 8512833,
+                "url": "https://us-static.z-dn.net/files/d57/f425e90fdaa557a30091582eb31f5b57.png",
+                "thumbnailUrl": "https://us-static.z-dn.net/files/ded/ae6e9be0eb2b1dbc12605d5c45908ceb.png",
+                "extension": "png",
+                "__typename": "Attachment"
+              },
+              "rank": {
+                "id": "cmFuazoz",
+                "name": "Ambitious",
+                "__typename": "Rank"
+              },
+              "__typename": "User"
+            },
+            "subject": {
+              "id": "c3ViamVjdDo1",
+              "databaseId": 5,
+              "name": "History",
+              "slug": "history",
+              "__typename": "Subject"
+            },
+            "grade": {
+              "id": "Z3JhZGU6NQ==",
+              "databaseId": 5,
+              "name": "High School",
+              "__typename": "Grade"
+            },
+            "attachments": [],
+            "__typename": "Question",
+            "answers": {
+              "hasVerified": false,
+              "nodes": [],
+              "__typename": "AnswerConnection"
+            },
+            "isAuthorsFirstQuestion": false
+          },
+          "cursor": "Y3Vyc29yOjE2NTY1NjE3NzA=",
+          "__typename": "FeedItemEdge"
+        },
+        {
+          "node": {
+            "id": "cXVlc3Rpb246Mjc5Nzg5Njc=",
+            "databaseId": 27978967,
+            "content": "5. Explain how the various ice sheets that<br />\ncovered the eastern portions of Washington<br />\nand northern Idaho caused the formation of<br />\nthe Grand Coulee, Dry Falls, and the Chan-<br />\nneled Scablands.<br />",
+            "pointsForAnswer": 5,
+            "pointsForBestAnswer": 3,
+            "canBeAnswered": true,
+            "created": "2022-06-30T04:02:31.000Z",
+            "author": {
+              "id": "dXNlcjo1NTMzNjk0OA==",
+              "databaseId": 55336948,
+              "nick": "jshaul1971",
+              "points": 60,
+              "isDeleted": false,
+              "avatar": null,
+              "rank": {
+                "id": "cmFuazox",
+                "name": "Beginner",
+                "__typename": "Rank"
+              },
+              "__typename": "User"
+            },
+            "subject": {
+              "id": "c3ViamVjdDo1",
+              "databaseId": 5,
+              "name": "History",
+              "slug": "history",
+              "__typename": "Subject"
+            },
+            "grade": {
+              "id": "Z3JhZGU6Ng==",
+              "databaseId": 6,
+              "name": "College",
+              "__typename": "Grade"
+            },
+            "attachments": [],
+            "__typename": "Question",
+            "answers": {
+              "hasVerified": false,
+              "nodes": [],
+              "__typename": "AnswerConnection"
+            },
+            "isAuthorsFirstQuestion": true
+          },
+          "cursor": "Y3Vyc29yOjE2NTY1NjE3NTE=",
+          "__typename": "FeedItemEdge"
+        },
+        {
+          "node": {
+            "id": "cXVlc3Rpb246Mjc5Nzg5NDY=",
+            "databaseId": 27978946,
+            "content": "The Holy Roman Empire was a European theocracy that survived for 1,000 years. How did the relationship between the government and the general population change as the empire left the age of feudalism?<br /><br />NEED IT ASAP PLSSS",
+            "pointsForAnswer": 9,
+            "pointsForBestAnswer": 5,
+            "canBeAnswered": true,
+            "created": "2022-06-30T03:52:56.000Z",
+            "author": {
+              "id": "dXNlcjoyOTA2NTgwNg==",
+              "databaseId": 29065806,
+              "nick": "mrneedhelp42",
+              "points": 55,
+              "isDeleted": false,
+              "avatar": {
+                "id": "YXR0YWNobWVudDo2MTMxMTE4",
+                "databaseId": 6131118,
+                "url": "https://us-static.z-dn.net/files/d5c/8cc5a41fe4955c0680d3e7af1787285c.jpg",
+                "thumbnailUrl": "https://us-static.z-dn.net/files/dcd/d7cce5a13c33bd51c2272cac8d2d0b5e.jpg",
+                "extension": "jpg",
+                "__typename": "Attachment"
+              },
+              "rank": {
+                "id": "cmFuazox",
+                "name": "Beginner",
+                "__typename": "Rank"
+              },
+              "__typename": "User"
+            },
+            "subject": {
+              "id": "c3ViamVjdDo1",
+              "databaseId": 5,
+              "name": "History",
+              "slug": "history",
+              "__typename": "Subject"
+            },
+            "grade": {
+              "id": "Z3JhZGU6NQ==",
+              "databaseId": 5,
+              "name": "High School",
+              "__typename": "Grade"
+            },
+            "attachments": [],
+            "__typename": "Question",
+            "answers": {
+              "hasVerified": false,
+              "nodes": [],
+              "__typename": "AnswerConnection"
+            },
+            "isAuthorsFirstQuestion": false
+          },
+          "cursor": "Y3Vyc29yOjE2NTY1NjExNzY=",
+          "__typename": "FeedItemEdge"
+        }
+      ],
+      "__typename": "FeedItemConnection"
+    }
+  }
+}
