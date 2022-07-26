@@ -7,6 +7,8 @@ import requests
 import string
 import json
 import time
+import datetime
+
 
 class GoogleSuggestion:
     def __init__(self, *,keywords: List = []) -> None:
@@ -19,6 +21,8 @@ class GoogleSuggestion:
         self.charList = " " + string.ascii_lowercase + string.digits
         self.MAX_WORKERS = 20
         self.csv_headers = [None]
+        self.today = str(datetime.datetime.now()).split('.')[0].replace('-', '_').replace(':', '_').replace(' ', '_')
+
 
     def makeGoogleRequest(self, query):
         # If you make requests too quickly, you may be blocked by google 
@@ -60,17 +64,19 @@ class GoogleSuggestion:
             for result, future in enumerate(concurrent.futures.as_completed(futuresGoogle), start=1):
                 key = futuresGoogle[future]
                 for suggestion in future.result():
+                    print(f"found \"{suggestion}\" for key: \"{key}\"")
                     self.resultList.append([key, suggestion])
 
                 outputDf = pd.DataFrame(self.resultList, columns=['Keyword','Suggestion'])
-                outputDf.to_csv(f'result_{result}.csv', index=False)
+                outputDf.to_csv(f'{self.today}_result_{result}.csv', index=False)
 
                 self.resultList = []
 
 
 if __name__ == '__main__':
     '''Run main file.'''
-    keywords: List = ['is *texas a good place to live?','Does *go bad in fridge?', 'Is it OK to drink an expired *?']
+    file =  open('inputs.txt', 'r', encoding='utf-8')
+    keywords: List = [acc.strip() for acc in file.readlines()]
     #Run scraper
     scraper = GoogleSuggestion(keywords= keywords)
     scraper.run()

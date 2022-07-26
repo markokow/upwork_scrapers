@@ -6,6 +6,7 @@ import requests
 import scrapy
 from scrapy.http import HtmlResponse
 import pandas as pd
+from numpy import random
 
 class GoogleSearch(scrapy.Spider):
     name = 'GoogleSearch'
@@ -25,7 +26,8 @@ class GoogleSearch(scrapy.Spider):
             for input in inputs:
                 print(input)
                 link = f'https://www.google.com/search?q={input}'
-                time.sleep(5)
+                sleeptime = random.uniform(5, 10)
+                time.sleep(sleeptime)
                 header = {"accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9", "accept-language": "en-US,en;q=0.9", "cache-control": "max-age=0", "sec-ch-ua-mobile": "?0", "sec-fetch-dest": "document", "sec-fetch-mode": "navigate", "sec-fetch-site": "none", "sec-fetch-user": "?1", "upgrade-insecure-requests": "1", "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.81 Safari/537.36"}
 
                 yield scrapy.FormRequest(url=link, callback=self.parse, headers=header, meta={'count': count, 'input': input})
@@ -109,7 +111,8 @@ class GoogleSearch(scrapy.Spider):
                     "upgrade-insecure-requests": "1",
                     "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.81 Safari/537.36"}
                 link = f'https://www.google.com/search?q={question[questionNumber]}'
-                time.sleep(5)
+                sleeptime = random.uniform(5, 10)
+                time.sleep(sleeptime)
                 res = ress.get(url=link, headers=header)
                 res = HtmlResponse(url=link, body=res.content)
                 # time.sleep(5)
@@ -136,16 +139,6 @@ class GoogleSearch(scrapy.Spider):
             df = pd.DataFrame(self.currentPost)
             df.to_csv(f'{self.today}_part{self.part}.csv', encoding='utf-8-sig')
         
-        # df = pd.DataFrame(GoogleSearch.postList)
-
-        # size = 5
-        # list_of_dfs = [df.loc[i:i+size-1,:] for i in range(0, len(df),size)]
-
-        # for idx, _df in enumerate(list_of_dfs):
-        #     _df.to_csv(f'{today}_part{idx+1}.csv', encoding='utf-8-sig')
-
-
-
 from scrapy.cmdline import execute
 
 execute(f'scrapy runspider GoogleData.py'.split())

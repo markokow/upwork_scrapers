@@ -124,60 +124,65 @@ class Bing_PAA:
     def run(self):
         '''Run all cases using the keyword'''   
 
-        for keyword in self.keywords:
+        try:
+            for keyword in self.keywords:
 
-            current_total: int  = 0
+                current_total: int  = 0
 
-            self.query = keyword
-            self.keyword = keyword
-            self.snippets_total = [keyword]
-            self.parsed_snippet = []
+                self.query = keyword
+                self.keyword = keyword
+                self.snippets_total = [keyword]
+                self.parsed_snippet = []
 
-            output_dict: dict = {}
-            output_dict['keyword'] = self.query
+                output_dict: dict = {}
+                output_dict['keyword'] = self.query
 
-            while True:
+                while True:
 
-                for snip in self.snippets_total:
-                    if snip not in self.parsed_snippet:
-                        self.keyword = snip
-                        self.parsed_snippet.append(snip)
-                        break
-                    else:
+                    for snip in self.snippets_total:
+                        if snip not in self.parsed_snippet:
+                            self.keyword = snip
+                            self.parsed_snippet.append(snip)
+                            break
+                        else:
+                            continue
+                            
+                    resp = self.fetch()
+
+                    try:
+                        ans = self.parse(html  = resp.content)
+                    except AttributeError:
                         continue
-                        
-                resp = self.fetch()
+                    self.parsed_snippet.append(self.keyword)
 
-                try:
-                    ans = self.parse(html  = resp.content)
-                except AttributeError:
-                    continue
-                self.parsed_snippet.append(self.keyword)
+                    if len(ans) < 50:
+                        continue
 
-                if len(ans) < 50:
-                    continue
+                    if self.keyword == self.query:
+                        # self.store_response(response=resp, page = 0)
+                        continue
+                    else:
+                        current_total += 1
+                        output_dict['question_' + str(current_total)] = self.keyword
+                        output_dict['answer_' + str(current_total)] = ans
 
-                if self.keyword == self.query:
-                    # self.store_response(response=resp, page = 0)
-                    continue
-                else:
-                    current_total += 1
-                    output_dict['question_' + str(current_total)] = self.keyword
-                    output_dict['answer_' + str(current_total)] = ans
+                    if current_total == self.max_questions:
+                        break
 
-                if current_total == self.max_questions:
-                    break
+                    print(self.keyword)
 
-                print(self.keyword)
+                self.result.append(output_dict)
+        
+        except KeyboardInterrupt:
+            pass
 
-            self.result.append(output_dict)
-
-        self.write_csv()
+        finally:
+            self.write_csv()
 
 if __name__ == '__main__':  
     file =  open('keywords.txt', 'r', encoding='utf-8')
     keywords: List = [acc.strip() for acc in file.readlines()]
-    max_questions: int = 15
+    max_questions: int = 5
 
     #Run scraper
     scraper = Bing_PAA(keywords= keywords, max_questions = max_questions)

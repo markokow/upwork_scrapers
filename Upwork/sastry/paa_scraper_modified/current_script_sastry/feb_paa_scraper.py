@@ -236,7 +236,7 @@ if __name__ == '__main__':
     # keywords =  [acc[0].strip() for acc in keywords]
 
     max_questions: int = 5
-    max_divisions: int = 20
+    max_divisions: int = 3
 
     #Run scraper
     scraper = ModifiedPaaScraper(keywords= keywords, max_questions = max_questions, max_division = max_divisions)
