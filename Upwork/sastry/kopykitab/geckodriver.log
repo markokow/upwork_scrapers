@@ -1,0 +1,520 @@
+1665487743475	geckodriver	INFO	Listening on 127.0.0.1:60746
+1665487743931	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "-foreground" "-no-remote" "-profile" "/var/folders/rj/v9r1ln5j50b3v9r3bj8ybglr0000gn/T/rust_mozprofile69MYqL"
+2022-10-11 19:29:06.610 plugin-container[84788:5291251] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-10-11 19:29:06.610 plugin-container[84788:5291251] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2022-10-11 19:29:06.712 plugin-container[84788:5291251] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-10-11 19:29:06.712 plugin-container[84788:5291251] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2022-10-11 19:29:06.712 plugin-container[84788:5291249] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-10-11 19:29:06.712 plugin-container[84788:5291249] nil host used in call to allowsAnyHTTPSCertificateForHost:
+UNSUPPORTED (log once): POSSIBLE ISSUE: unit 1 GLD_TEXTURE_INDEX_2D is unloadable and bound to sampler type (Float) - using zero texture because texture unloadable
+1665487758640	geckodriver	INFO	Listening on 127.0.0.1:60853
+1665487759667	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "-foreground" "-no-remote" "-profile" "/var/folders/rj/v9r1ln5j50b3v9r3bj8ybglr0000gn/T/rust_mozprofileHGiatW"
+2022-10-11 19:29:19.947 plugin-container[84805:5291744] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-10-11 19:29:19.947 plugin-container[84805:5291744] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2022-10-11 19:29:19.949 plugin-container[84805:5291744] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-10-11 19:29:19.949 plugin-container[84805:5291744] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2022-10-11 19:29:19.949 plugin-container[84805:5291750] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-10-11 19:29:19.949 plugin-container[84805:5291750] nil host used in call to allowsAnyHTTPSCertificateForHost:
+1665487759957	Marionette	INFO	Marionette enabled
+1665487760084	Marionette	INFO	Listening on port 60874
+Read port: 60874
+1665487760144	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+UNSUPPORTED (log once): POSSIBLE ISSUE: unit 1 GLD_TEXTURE_INDEX_2D is unloadable and bound to sampler type (Float) - using zero texture because texture unloadable
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/rj/v9r1ln5j50b3v9r3bj8ybglr0000gn/T/rust_mozprofileHGiatW/search.json.mozlz4", (void 0)))
+1665487791379	Marionette	INFO	Stopped listening on port 60874
+JavaScript error: chrome://remote/content/marionette/cert.js, line 57: NS_ERROR_NOT_AVAILABLE: Component returned failure code: 0x80040111 (NS_ERROR_NOT_AVAILABLE) [nsICertOverrideService.setDisableAllSecurityChecksAndLetAttackersInterceptMyData]
+1665487820809	geckodriver	INFO	Listening on 127.0.0.1:61243
+1665487820814	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "-foreground" "-no-remote" "-profile" "/var/folders/rj/v9r1ln5j50b3v9r3bj8ybglr0000gn/T/rust_mozprofileE7Vbpo"
+2022-10-11 19:30:21.159 plugin-container[84917:5293260] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-10-11 19:30:21.159 plugin-container[84917:5293260] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2022-10-11 19:30:21.161 plugin-container[84917:5293260] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-10-11 19:30:21.161 plugin-container[84917:5293260] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2022-10-11 19:30:21.161 plugin-container[84917:5293263] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-10-11 19:30:21.161 plugin-container[84917:5293263] nil host used in call to allowsAnyHTTPSCertificateForHost:
+1665487821179	Marionette	INFO	Marionette enabled
+1665487821207	Marionette	INFO	Listening on port 61255
+Read port: 61255
+1665487821299	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+UNSUPPORTED (log once): POSSIBLE ISSUE: unit 1 GLD_TEXTURE_INDEX_2D is unloadable and bound to sampler type (Float) - using zero texture because texture unloadable
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/rj/v9r1ln5j50b3v9r3bj8ybglr0000gn/T/rust_mozprofileE7Vbpo/search.json.mozlz4", (void 0)))
+JavaScript error: https://www.kopykitab.com/index.php?route=account/login, line 475: SyntaxError: expected expression, got ';'
+1665487830939	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'interactive'.
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://www.kopykitab.com."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://www.kopykitab.com."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://www.kopykitab.com."
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+1665487981671	geckodriver	INFO	Listening on 127.0.0.1:61641
+1665487982684	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "-foreground" "-no-remote" "-profile" "/var/folders/rj/v9r1ln5j50b3v9r3bj8ybglr0000gn/T/rust_mozprofilen7gwMK"
+2022-10-11 19:33:02.968 plugin-container[85662:5299501] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-10-11 19:33:02.968 plugin-container[85662:5299501] nil host used in call to allowsAnyHTTPSCertificateForHost:
+1665487982979	Marionette	INFO	Marionette enabled
+2022-10-11 19:33:03.001 plugin-container[85662:5299501] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-10-11 19:33:03.001 plugin-container[85662:5299501] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2022-10-11 19:33:03.001 plugin-container[85662:5299499] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-10-11 19:33:03.001 plugin-container[85662:5299499] nil host used in call to allowsAnyHTTPSCertificateForHost:
+1665487983112	Marionette	INFO	Listening on port 61662
+Read port: 61662
+1665487983265	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+UNSUPPORTED (log once): POSSIBLE ISSUE: unit 1 GLD_TEXTURE_INDEX_2D is unloadable and bound to sampler type (Float) - using zero texture because texture unloadable
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/rj/v9r1ln5j50b3v9r3bj8ybglr0000gn/T/rust_mozprofilen7gwMK/search.json.mozlz4", (void 0)))
+JavaScript error: https://www.kopykitab.com/index.php?route=account/login, line 477: SyntaxError: expected expression, got ';'
+1665487987947	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'interactive'.
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://www.kopykitab.com."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://www.kopykitab.com."
+console.error: "Unable to find target with innerWindowId:6442450950"
+console.error: "Unable to find target with innerWindowId:6442450951"
+JavaScript error: , line 0: NotFoundError: No such JSWindowActor 'DevToolsFrame'
+JavaScript error: chrome://remote/content/shared/RemoteError.jsm, line 12: ScriptTimeoutError: Timed out after 30000 ms
+Exiting due to channel error.
+[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+1665488384748	geckodriver	INFO	Listening on 127.0.0.1:62394
+1665488385754	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "-foreground" "-no-remote" "-profile" "/var/folders/rj/v9r1ln5j50b3v9r3bj8ybglr0000gn/T/rust_mozprofileEJJfL7"
+1665488386075	Marionette	INFO	Marionette enabled
+2022-10-11 19:39:46.078 plugin-container[87815:5317415] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-10-11 19:39:46.079 plugin-container[87815:5317415] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2022-10-11 19:39:46.082 plugin-container[87815:5317415] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-10-11 19:39:46.082 plugin-container[87815:5317415] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2022-10-11 19:39:46.082 plugin-container[87815:5317413] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-10-11 19:39:46.082 plugin-container[87815:5317413] nil host used in call to allowsAnyHTTPSCertificateForHost:
+1665488386094	Marionette	INFO	Listening on port 62407
+Read port: 62407
+1665488386224	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+UNSUPPORTED (log once): POSSIBLE ISSUE: unit 1 GLD_TEXTURE_INDEX_2D is unloadable and bound to sampler type (Float) - using zero texture because texture unloadable
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/rj/v9r1ln5j50b3v9r3bj8ybglr0000gn/T/rust_mozprofileEJJfL7/search.json.mozlz4", (void 0)))
+1665488390157	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'interactive'.
+JavaScript error: https://www.kopykitab.com/index.php?route=account/login, line 475: SyntaxError: expected expression, got ';'
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://www.kopykitab.com."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://www.kopykitab.com."
+1665488392140	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'interactive'.
+JavaScript error: https://www.kopykitab.com/index.php?route=account/login, line 475: SyntaxError: expected expression, got ';'
+Exiting due to channel error.
+Exiting due to channel error.
+[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+Exiting due to channel error.
+Exiting due to channel error.
+1665488404728	geckodriver	INFO	Listening on 127.0.0.1:62579
+1665488405745	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "-foreground" "-no-remote" "-profile" "/var/folders/rj/v9r1ln5j50b3v9r3bj8ybglr0000gn/T/rust_mozprofile6Gb95w"
+2022-10-11 19:40:05.992 plugin-container[87840:5318037] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-10-11 19:40:05.992 plugin-container[87840:5318037] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2022-10-11 19:40:05.994 plugin-container[87840:5318037] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-10-11 19:40:05.994 plugin-container[87840:5318037] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2022-10-11 19:40:05.994 plugin-container[87840:5318035] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-10-11 19:40:05.994 plugin-container[87840:5318035] nil host used in call to allowsAnyHTTPSCertificateForHost:
+1665488405997	Marionette	INFO	Marionette enabled
+1665488406018	Marionette	INFO	Listening on port 62590
+Read port: 62590
+1665488406120	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+UNSUPPORTED (log once): POSSIBLE ISSUE: unit 1 GLD_TEXTURE_INDEX_2D is unloadable and bound to sampler type (Float) - using zero texture because texture unloadable
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/rj/v9r1ln5j50b3v9r3bj8ybglr0000gn/T/rust_mozprofile6Gb95w/search.json.mozlz4", (void 0)))
+1665488410059	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'interactive'.
+JavaScript error: https://www.kopykitab.com/index.php?route=account/login, line 475: SyntaxError: expected expression, got ';'
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://www.kopykitab.com."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://www.kopykitab.com."
+1665488412894	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'interactive'.
+JavaScript error: https://www.kopykitab.com/index.php?route=account/login, line 475: SyntaxError: expected expression, got ';'
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+1665488441498	geckodriver	INFO	Listening on 127.0.0.1:62854
+1665488442513	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "-foreground" "-no-remote" "-profile" "/var/folders/rj/v9r1ln5j50b3v9r3bj8ybglr0000gn/T/rust_mozprofileOXHb27"
+2022-10-11 19:40:42.750 plugin-container[87863:5318860] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-10-11 19:40:42.750 plugin-container[87863:5318860] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2022-10-11 19:40:42.752 plugin-container[87863:5318860] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-10-11 19:40:42.752 plugin-container[87863:5318860] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2022-10-11 19:40:42.752 plugin-container[87863:5318867] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-10-11 19:40:42.752 plugin-container[87863:5318867] nil host used in call to allowsAnyHTTPSCertificateForHost:
+1665488442754	Marionette	INFO	Marionette enabled
+1665488442775	Marionette	INFO	Listening on port 62866
+Read port: 62866
+1665488442880	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+UNSUPPORTED (log once): POSSIBLE ISSUE: unit 1 GLD_TEXTURE_INDEX_2D is unloadable and bound to sampler type (Float) - using zero texture because texture unloadable
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/rj/v9r1ln5j50b3v9r3bj8ybglr0000gn/T/rust_mozprofileOXHb27/search.json.mozlz4", (void 0)))
+1665488447670	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'interactive'.
+JavaScript error: https://www.kopykitab.com/index.php?route=account/login, line 475: SyntaxError: expected expression, got ';'
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://www.kopykitab.com."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://www.kopykitab.com."
+1665488450552	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'interactive'.
+JavaScript error: https://www.kopykitab.com/index.php?route=account/login, line 475: SyntaxError: expected expression, got ';'
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+1665488461844	geckodriver	INFO	Listening on 127.0.0.1:63052
+1665488462863	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "-foreground" "-no-remote" "-profile" "/var/folders/rj/v9r1ln5j50b3v9r3bj8ybglr0000gn/T/rust_mozprofileqkt9j5"
+2022-10-11 19:41:03.117 plugin-container[87888:5319555] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-10-11 19:41:03.117 plugin-container[87888:5319555] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2022-10-11 19:41:03.119 plugin-container[87888:5319555] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-10-11 19:41:03.119 plugin-container[87888:5319555] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2022-10-11 19:41:03.119 plugin-container[87888:5319557] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-10-11 19:41:03.119 plugin-container[87888:5319557] nil host used in call to allowsAnyHTTPSCertificateForHost:
+1665488463122	Marionette	INFO	Marionette enabled
+1665488463144	Marionette	INFO	Listening on port 63072
+Read port: 63072
+1665488463248	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+UNSUPPORTED (log once): POSSIBLE ISSUE: unit 1 GLD_TEXTURE_INDEX_2D is unloadable and bound to sampler type (Float) - using zero texture because texture unloadable
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/rj/v9r1ln5j50b3v9r3bj8ybglr0000gn/T/rust_mozprofileqkt9j5/search.json.mozlz4", (void 0)))
+1665488466556	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'interactive'.
+JavaScript error: https://www.kopykitab.com/index.php?route=account/login, line 475: SyntaxError: expected expression, got ';'
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+1665488481352	geckodriver	INFO	Listening on 127.0.0.1:63243
+1665488482371	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "-foreground" "-no-remote" "-profile" "/var/folders/rj/v9r1ln5j50b3v9r3bj8ybglr0000gn/T/rust_mozprofileaXr7L9"
+2022-10-11 19:41:22.612 plugin-container[87917:5320228] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-10-11 19:41:22.613 plugin-container[87917:5320228] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2022-10-11 19:41:22.614 plugin-container[87917:5320228] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-10-11 19:41:22.614 plugin-container[87917:5320228] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2022-10-11 19:41:22.614 plugin-container[87917:5320235] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-10-11 19:41:22.614 plugin-container[87917:5320235] nil host used in call to allowsAnyHTTPSCertificateForHost:
+1665488482620	Marionette	INFO	Marionette enabled
+1665488482641	Marionette	INFO	Listening on port 63255
+Read port: 63255
+1665488482742	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+UNSUPPORTED (log once): POSSIBLE ISSUE: unit 1 GLD_TEXTURE_INDEX_2D is unloadable and bound to sampler type (Float) - using zero texture because texture unloadable
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/rj/v9r1ln5j50b3v9r3bj8ybglr0000gn/T/rust_mozprofileaXr7L9/search.json.mozlz4", (void 0)))
+1665488486999	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'interactive'.
+JavaScript error: https://www.kopykitab.com/index.php?route=account/login, line 475: SyntaxError: expected expression, got ';'
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://www.kopykitab.com."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://www.kopykitab.com."
+1665488495309	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'interactive'.
+JavaScript error: https://www.kopykitab.com/index.php?route=account/login, line 475: SyntaxError: expected expression, got ';'
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+1665488531982	geckodriver	INFO	Listening on 127.0.0.1:63534
+1665488532991	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "-foreground" "-no-remote" "-profile" "/var/folders/rj/v9r1ln5j50b3v9r3bj8ybglr0000gn/T/rust_mozprofilezIzilH"
+2022-10-11 19:42:13.222 plugin-container[87950:5321224] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-10-11 19:42:13.222 plugin-container[87950:5321224] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2022-10-11 19:42:13.224 plugin-container[87950:5321224] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-10-11 19:42:13.224 plugin-container[87950:5321224] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2022-10-11 19:42:13.224 plugin-container[87950:5321250] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-10-11 19:42:13.224 plugin-container[87950:5321250] nil host used in call to allowsAnyHTTPSCertificateForHost:
+1665488533228	Marionette	INFO	Marionette enabled
+1665488533252	Marionette	INFO	Listening on port 63554
+Read port: 63554
+1665488533352	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+UNSUPPORTED (log once): POSSIBLE ISSUE: unit 1 GLD_TEXTURE_INDEX_2D is unloadable and bound to sampler type (Float) - using zero texture because texture unloadable
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/rj/v9r1ln5j50b3v9r3bj8ybglr0000gn/T/rust_mozprofilezIzilH/search.json.mozlz4", (void 0)))
+1665488536596	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'interactive'.
+JavaScript error: https://www.kopykitab.com/index.php?route=account/login, line 475: SyntaxError: expected expression, got ';'
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://www.kopykitab.com."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://www.kopykitab.com."
+1665488544420	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'interactive'.
+JavaScript error: https://www.kopykitab.com/index.php?route=account/login, line 475: SyntaxError: expected expression, got ';'
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+1665488638153	geckodriver	INFO	Listening on 127.0.0.1:63912
+1665488638158	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "-foreground" "-no-remote" "-profile" "/var/folders/rj/v9r1ln5j50b3v9r3bj8ybglr0000gn/T/rust_mozprofilex12fnF"
+2022-10-11 19:43:58.352 plugin-container[88016:5323152] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-10-11 19:43:58.352 plugin-container[88016:5323152] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2022-10-11 19:43:58.354 plugin-container[88016:5323152] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-10-11 19:43:58.354 plugin-container[88016:5323152] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2022-10-11 19:43:58.355 plugin-container[88016:5323166] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-10-11 19:43:58.355 plugin-container[88016:5323166] nil host used in call to allowsAnyHTTPSCertificateForHost:
+1665488638361	Marionette	INFO	Marionette enabled
+1665488638398	Marionette	INFO	Listening on port 63921
+Read port: 63921
+1665488638577	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+UNSUPPORTED (log once): POSSIBLE ISSUE: unit 1 GLD_TEXTURE_INDEX_2D is unloadable and bound to sampler type (Float) - using zero texture because texture unloadable
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/rj/v9r1ln5j50b3v9r3bj8ybglr0000gn/T/rust_mozprofilex12fnF/search.json.mozlz4", (void 0)))
+1665488643830	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'interactive'.
+JavaScript error: https://www.kopykitab.com/index.php?route=account/login, line 475: SyntaxError: expected expression, got ';'
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://www.kopykitab.com."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://www.kopykitab.com."
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+Exiting due to channel error.
+Exiting due to channel error.
+1665489048591	geckodriver	INFO	Listening on 127.0.0.1:64647
+1665489049609	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "-foreground" "-no-remote" "-profile" "/var/folders/rj/v9r1ln5j50b3v9r3bj8ybglr0000gn/T/rust_mozprofileae3NmV"
+2022-10-11 19:50:49.881 plugin-container[88876:5331793] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-10-11 19:50:49.881 plugin-container[88876:5331793] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2022-10-11 19:50:49.883 plugin-container[88876:5331793] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-10-11 19:50:49.883 plugin-container[88876:5331793] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2022-10-11 19:50:49.883 plugin-container[88876:5331796] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-10-11 19:50:49.883 plugin-container[88876:5331796] nil host used in call to allowsAnyHTTPSCertificateForHost:
+1665489049885	Marionette	INFO	Marionette enabled
+1665489049905	Marionette	INFO	Listening on port 64666
+Read port: 64666
+1665489050055	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+UNSUPPORTED (log once): POSSIBLE ISSUE: unit 1 GLD_TEXTURE_INDEX_2D is unloadable and bound to sampler type (Float) - using zero texture because texture unloadable
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/rj/v9r1ln5j50b3v9r3bj8ybglr0000gn/T/rust_mozprofileae3NmV/search.json.mozlz4", (void 0)))
+JavaScript error: https://www.kopykitab.com/index.php?route=account/login, line 475: SyntaxError: expected expression, got ';'
+1665489053799	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'interactive'.
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://www.kopykitab.com."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://www.kopykitab.com."
+1665489679814	Marionette	WARN	Ignoring event 'DOMContentLoaded' because document has an invalid readyState of 'complete'.
+JavaScript warning: https://acrobat.uservoice.com/forums/590923-acrobat-for-windows-and-mac/suggestions/35963944-keyboard-shortcut-for-fit-one-full-page-to-window, line 169: unreachable code after return statement
+2022-10-11 12:04:45.657 plugin-container[89076:5344036] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-10-11 12:04:45.657 plugin-container[89076:5344036] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2022-10-11 12:04:45.659 plugin-container[89076:5344036] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-10-11 12:04:45.659 plugin-container[89076:5344036] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2022-10-11 12:04:45.659 plugin-container[89076:5344038] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-10-11 12:04:45.659 plugin-container[89076:5344038] nil host used in call to allowsAnyHTTPSCertificateForHost:
+JavaScript warning: https://www.redditstatic.com/desktop2x/vendors~Chat~Governance~Reddit.fe3619c096d523e32082.js, line 1: Script terminated by timeout at:
+k@https://www.redditstatic.com/desktop2x/vendors~Chat~Governance~Reddit.fe3619c096d523e32082.js:1:717954
+
+[Child 89055, MediaDecoderStateMachine #1] WARNING: Decoder=122c72500 state=DECODING_METADATA Decode metadata failed, shutting down decoder: file /builds/worker/checkouts/gecko/dom/media/MediaDecoderStateMachine.cpp:370
+[Child 89055, MediaDecoderStateMachine #1] WARNING: Decoder=122c72500 Decode error: NS_ERROR_DOM_MEDIA_METADATA_ERR (0x806e0006) - static MP4Metadata::ResultAndByteBuffer mozilla::MP4Metadata::Metadata(mozilla::ByteStream *): Cannot parse metadata: file /builds/worker/checkouts/gecko/dom/media/MediaDecoderStateMachineBase.cpp:151
+JavaScript warning: https://pagead2.googlesyndication.com/bg/LKD9GaYAUlEKqmF0ENHbHL4TSMlp96a1WK2pS7gMh1I.js line 2 > eval line 2646 > eval line 1 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript warning: https://pagead2.googlesyndication.com/bg/LKD9GaYAUlEKqmF0ENHbHL4TSMlp96a1WK2pS7gMh1I.js line 2 > eval line 5666 > eval line 1 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript warning: https://pagead2.googlesyndication.com/bg/LKD9GaYAUlEKqmF0ENHbHL4TSMlp96a1WK2pS7gMh1I.js line 2 > eval line 3801 > eval line 1 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript warning: https://pagead2.googlesyndication.com/bg/LKD9GaYAUlEKqmF0ENHbHL4TSMlp96a1WK2pS7gMh1I.js line 2 > eval line 1661 > eval line 1 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript warning: https://pagead2.googlesyndication.com/bg/LKD9GaYAUlEKqmF0ENHbHL4TSMlp96a1WK2pS7gMh1I.js line 2 > eval line 1363 > eval line 1 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+1665490060579	geckodriver	INFO	Listening on 127.0.0.1:49442
+1665490060585	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "-foreground" "-no-remote" "-profile" "/var/folders/rj/v9r1ln5j50b3v9r3bj8ybglr0000gn/T/rust_mozprofileHZvfj3"
+2022-10-11 20:07:40.853 plugin-container[89161:5346717] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-10-11 20:07:40.853 plugin-container[89161:5346717] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2022-10-11 20:07:40.856 plugin-container[89161:5346717] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-10-11 20:07:40.856 plugin-container[89161:5346717] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2022-10-11 20:07:40.856 plugin-container[89161:5346719] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-10-11 20:07:40.856 plugin-container[89161:5346719] nil host used in call to allowsAnyHTTPSCertificateForHost:
+1665490060864	Marionette	INFO	Marionette enabled
+1665490060889	Marionette	INFO	Listening on port 49451
+Read port: 49451
+1665490060983	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+UNSUPPORTED (log once): POSSIBLE ISSUE: unit 1 GLD_TEXTURE_INDEX_2D is unloadable and bound to sampler type (Float) - using zero texture because texture unloadable
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/rj/v9r1ln5j50b3v9r3bj8ybglr0000gn/T/rust_mozprofileHZvfj3/search.json.mozlz4", (void 0)))
+1665490065710	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'interactive'.
+JavaScript error: https://www.kopykitab.com/index.php?route=account/login, line 477: SyntaxError: expected expression, got ';'
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://www.kopykitab.com."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://www.kopykitab.com."
+JavaScript warning: https://pagead2.googlesyndication.com/bg/LKD9GaYAUlEKqmF0ENHbHL4TSMlp96a1WK2pS7gMh1I.js line 2 > eval line 108 > eval line 1 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript warning: https://pagead2.googlesyndication.com/bg/LKD9GaYAUlEKqmF0ENHbHL4TSMlp96a1WK2pS7gMh1I.js line 2 > eval line 1659 > eval line 1 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://www.google.com."
+JavaScript error: https://www.googletagmanager.com/gtm.js?id=GTM-KM5PFNN, line 35: uncaught exception: [object Object]
+JavaScript error: https://www.googletagmanager.com/gtm.js?id=GTM-KM5PFNN, line 35: uncaught exception: [object Object]
+JavaScript error: https://smallbusiness.chron.com/dist/js/main.js, line 1: ChunkLoadError: Loading chunk inline-references failed.
+(error: https://smallbusiness.chron.com/dist/js/inline-references.js)
+JavaScript error: https://smallbusiness.chron.com/dist/js/main.js, line 1: ChunkLoadError: Loading chunk nav-bar failed.
+(error: https://smallbusiness.chron.com/dist/js/nav-bar.js)
+JavaScript error: https://smallbusiness.chron.com/dist/js/main.js, line 1: ChunkLoadError: Loading chunk infinite-scroll failed.
+(error: https://smallbusiness.chron.com/dist/js/infinite-scroll.js)
+JavaScript error: , line 0: uncaught exception: Object
+1665490888912	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'uninitialized'.
+console.warn: LoginRecipes: "Falling back to a synchronous message for: file://."
+JavaScript error: resource://gre/actors/ControllersChild.jsm, line 60: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIDocShell.doCommandWithParams]
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://www.google.com."
+1665491246479	Marionette	WARN	Ignoring event 'DOMContentLoaded' because document has an invalid readyState of 'complete'.
+JavaScript warning: https://pagead2.googlesyndication.com/bg/LKD9GaYAUlEKqmF0ENHbHL4TSMlp96a1WK2pS7gMh1I.js line 2 > eval line 6671 > eval line 1 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+1665491255152	Marionette	WARN	Ignoring event 'DOMContentLoaded' because document has an invalid readyState of 'complete'.
+JavaScript warning: https://pagead2.googlesyndication.com/bg/LKD9GaYAUlEKqmF0ENHbHL4TSMlp96a1WK2pS7gMh1I.js line 2 > eval line 4709 > eval line 1 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript warning: https://cdn.js7k.com/rq/iv/inside.js, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript warning: https://cdn.js7k.com/rq/iv/inside.js, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+2022-10-11 12:27:56.210 plugin-container[89773:5362190] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-10-11 12:27:56.210 plugin-container[89773:5362190] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2022-10-11 12:27:56.213 plugin-container[89773:5362190] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-10-11 12:27:56.213 plugin-container[89773:5362190] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2022-10-11 12:27:56.213 plugin-container[89773:5362188] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-10-11 12:27:56.213 plugin-container[89773:5362188] nil host used in call to allowsAnyHTTPSCertificateForHost:
+JavaScript warning: https://pagead2.googlesyndication.com/bg/LKD9GaYAUlEKqmF0ENHbHL4TSMlp96a1WK2pS7gMh1I.js line 2 > eval line 2719 > eval line 1 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript warning: https://pagead2.googlesyndication.com/bg/LKD9GaYAUlEKqmF0ENHbHL4TSMlp96a1WK2pS7gMh1I.js line 2 > eval line 3414 > eval line 1 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript warning: https://pagead2.googlesyndication.com/bg/LKD9GaYAUlEKqmF0ENHbHL4TSMlp96a1WK2pS7gMh1I.js line 2 > eval line 6435 > eval line 1 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript warning: https://pagead2.googlesyndication.com/bg/LKD9GaYAUlEKqmF0ENHbHL4TSMlp96a1WK2pS7gMh1I.js line 2 > eval line 3152 > eval line 1 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript warning: https://pagead2.googlesyndication.com/bg/LKD9GaYAUlEKqmF0ENHbHL4TSMlp96a1WK2pS7gMh1I.js line 2 > eval line 1741 > eval line 1 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript error: https://www.geeksforgeeks.org/wp-content/themes/iconic-one/js/gfg.min.js?ver=11.40, line 2: ReferenceError: toggleNineDotMenuImages is not defined
+JavaScript warning: https://pagead2.googlesyndication.com/bg/LKD9GaYAUlEKqmF0ENHbHL4TSMlp96a1WK2pS7gMh1I.js line 2 > eval line 7710 > eval line 1 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+1665491627668	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'uninitialized'.
+1665491627670	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'uninitialized'.
+JavaScript warning: https://pagead2.googlesyndication.com/bg/LKD9GaYAUlEKqmF0ENHbHL4TSMlp96a1WK2pS7gMh1I.js line 2 > eval line 6046 > eval line 1 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+1665491630131	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'uninitialized'.
+1665491630200	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'uninitialized'.
+1665491630201	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'uninitialized'.
+JavaScript error: https://fb7712ac93133bcd369e67142c41ed58.safeframe.googlesyndication.com/safeframe/1-0-38/html/container.html, line 13: TypeError: window._adp is undefined
+1665491631621	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'uninitialized'.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://www.google.com."
+JavaScript warning: https://pagead2.googlesyndication.com/bg/LKD9GaYAUlEKqmF0ENHbHL4TSMlp96a1WK2pS7gMh1I.js line 2 > eval line 1169 > eval line 1 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript warning: https://cdn.js7k.com/rq/iv/inside.js, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript warning: https://cdn.js7k.com/rq/iv/inside-20.js, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript warning: https://cdn.js7k.com/rq/iv/inside-20.js, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript warning: https://cdn.js7k.com/rq/iv/inside.js, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript warning: https://pagead2.googlesyndication.com/bg/LKD9GaYAUlEKqmF0ENHbHL4TSMlp96a1WK2pS7gMh1I.js line 2 > eval line 152 > eval line 1 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+Exiting due to channel error.
+[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+1665491778504	geckodriver	INFO	Listening on 127.0.0.1:51104
+1665491779528	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "-foreground" "-no-remote" "-profile" "/var/folders/rj/v9r1ln5j50b3v9r3bj8ybglr0000gn/T/rust_mozprofile4IwoTL"
+2022-10-11 20:36:19.823 plugin-container[89971:5369954] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-10-11 20:36:19.823 plugin-container[89971:5369954] nil host used in call to allowsAnyHTTPSCertificateForHost:
+1665491779827	Marionette	INFO	Marionette enabled
+2022-10-11 20:36:19.845 plugin-container[89971:5369954] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-10-11 20:36:19.845 plugin-container[89971:5369954] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2022-10-11 20:36:19.845 plugin-container[89971:5369984] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-10-11 20:36:19.845 plugin-container[89971:5369984] nil host used in call to allowsAnyHTTPSCertificateForHost:
+1665491779847	Marionette	INFO	Listening on port 51123
+Read port: 51123
+1665491780028	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+UNSUPPORTED (log once): POSSIBLE ISSUE: unit 1 GLD_TEXTURE_INDEX_2D is unloadable and bound to sampler type (Float) - using zero texture because texture unloadable
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/rj/v9r1ln5j50b3v9r3bj8ybglr0000gn/T/rust_mozprofile4IwoTL/search.json.mozlz4", (void 0)))
+JavaScript error: https://www.kopykitab.com/index.php?route=account/login, line 475: SyntaxError: expected expression, got ';'
+1665491783735	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'interactive'.
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://www.kopykitab.com."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://www.kopykitab.com."
+JavaScript error: resource://gre/modules/XULStore.jsm, line 58: Error: Can't find profile directory.
+1665491854347	Marionette	WARN	Ignoring event 'DOMContentLoaded' because document has an invalid readyState of 'complete'.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+Exiting due to channel error.
+Exiting due to channel error.
+1665491874365	geckodriver	INFO	Listening on 127.0.0.1:51385
+1665491875384	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "-foreground" "-no-remote" "-profile" "/var/folders/rj/v9r1ln5j50b3v9r3bj8ybglr0000gn/T/rust_mozprofilepBa5EL"
+2022-10-11 20:37:55.676 plugin-container[90011:5371437] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-10-11 20:37:55.676 plugin-container[90011:5371437] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2022-10-11 20:37:55.678 plugin-container[90011:5371437] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-10-11 20:37:55.678 plugin-container[90011:5371437] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2022-10-11 20:37:55.678 plugin-container[90011:5371445] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-10-11 20:37:55.678 plugin-container[90011:5371445] nil host used in call to allowsAnyHTTPSCertificateForHost:
+1665491875679	Marionette	INFO	Marionette enabled
+1665491875701	Marionette	INFO	Listening on port 51405
+Read port: 51405
+1665491875877	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+UNSUPPORTED (log once): POSSIBLE ISSUE: unit 1 GLD_TEXTURE_INDEX_2D is unloadable and bound to sampler type (Float) - using zero texture because texture unloadable
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/rj/v9r1ln5j50b3v9r3bj8ybglr0000gn/T/rust_mozprofilepBa5EL/search.json.mozlz4", (void 0)))
+1665491879422	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'interactive'.
+JavaScript error: https://www.kopykitab.com/index.php?route=account/login, line 475: SyntaxError: expected expression, got ';'
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://www.kopykitab.com."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://www.kopykitab.com."
+1665491893788	Marionette	WARN	Ignoring event 'DOMContentLoaded' because document has an invalid readyState of 'complete'.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+1665492434847	geckodriver	INFO	Listening on 127.0.0.1:51780
+1665492434852	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "-foreground" "-no-remote" "-profile" "/var/folders/rj/v9r1ln5j50b3v9r3bj8ybglr0000gn/T/rust_mozprofile6Pp1ys"
+2022-10-11 20:47:15.121 plugin-container[90103:5375221] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-10-11 20:47:15.121 plugin-container[90103:5375221] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2022-10-11 20:47:15.123 plugin-container[90103:5375221] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-10-11 20:47:15.123 plugin-container[90103:5375221] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2022-10-11 20:47:15.123 plugin-container[90103:5375230] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-10-11 20:47:15.123 plugin-container[90103:5375230] nil host used in call to allowsAnyHTTPSCertificateForHost:
+1665492435131	Marionette	INFO	Marionette enabled
+1665492435152	Marionette	INFO	Listening on port 51793
+Read port: 51793
+1665492435248	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+UNSUPPORTED (log once): POSSIBLE ISSUE: unit 1 GLD_TEXTURE_INDEX_2D is unloadable and bound to sampler type (Float) - using zero texture because texture unloadable
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/rj/v9r1ln5j50b3v9r3bj8ybglr0000gn/T/rust_mozprofile6Pp1ys/search.json.mozlz4", (void 0)))
+1665492437788	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'interactive'.
+JavaScript error: https://www.kopykitab.com/index.php?route=account/login, line 475: SyntaxError: expected expression, got ';'
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://www.kopykitab.com."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://www.kopykitab.com."
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+1665493224273	geckodriver	INFO	Listening on 127.0.0.1:52591
+1665493224277	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "-foreground" "-no-remote" "-profile" "/var/folders/rj/v9r1ln5j50b3v9r3bj8ybglr0000gn/T/rust_mozprofilese5unF"
+2022-10-11 21:00:24.554 plugin-container[90443:5385030] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-10-11 21:00:24.554 plugin-container[90443:5385030] nil host used in call to allowsAnyHTTPSCertificateForHost:
+1665493224559	Marionette	INFO	Marionette enabled
+2022-10-11 21:00:24.577 plugin-container[90443:5385030] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-10-11 21:00:24.577 plugin-container[90443:5385030] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2022-10-11 21:00:24.577 plugin-container[90443:5385038] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-10-11 21:00:24.577 plugin-container[90443:5385038] nil host used in call to allowsAnyHTTPSCertificateForHost:
+1665493224582	Marionette	INFO	Listening on port 52603
+Read port: 52603
+1665493224676	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+UNSUPPORTED (log once): POSSIBLE ISSUE: unit 1 GLD_TEXTURE_INDEX_2D is unloadable and bound to sampler type (Float) - using zero texture because texture unloadable
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/rj/v9r1ln5j50b3v9r3bj8ybglr0000gn/T/rust_mozprofilese5unF/search.json.mozlz4", (void 0)))
+1665493227257	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'interactive'.
+JavaScript error: https://www.kopykitab.com/index.php?route=account/login, line 475: SyntaxError: expected expression, got ';'
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://www.kopykitab.com."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://www.kopykitab.com."
+1665493428968	Marionette	INFO	Stopped listening on port 52603
+JavaScript error: chrome://remote/content/marionette/cert.js, line 57: NS_ERROR_NOT_AVAILABLE: Component returned failure code: 0x80040111 (NS_ERROR_NOT_AVAILABLE) [nsICertOverrideService.setDisableAllSecurityChecksAndLetAttackersInterceptMyData]
+1665493446465	geckodriver::marionette	ERROR	Failed to close browser connection: Socket is not connected (os error 57)
+1665493553630	geckodriver	INFO	Listening on 127.0.0.1:53140
+1665493554655	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "-foreground" "-no-remote" "-profile" "/var/folders/rj/v9r1ln5j50b3v9r3bj8ybglr0000gn/T/rust_mozprofilePIj36t"
+2022-10-11 21:05:54.957 plugin-container[90567:5390385] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-10-11 21:05:54.957 plugin-container[90567:5390385] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2022-10-11 21:05:54.959 plugin-container[90567:5390385] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-10-11 21:05:54.959 plugin-container[90567:5390385] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2022-10-11 21:05:54.960 plugin-container[90567:5390387] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-10-11 21:05:54.960 plugin-container[90567:5390387] nil host used in call to allowsAnyHTTPSCertificateForHost:
+1665493554963	Marionette	INFO	Marionette enabled
+1665493554987	Marionette	INFO	Listening on port 53151
+Read port: 53151
+1665493555133	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+UNSUPPORTED (log once): POSSIBLE ISSUE: unit 1 GLD_TEXTURE_INDEX_2D is unloadable and bound to sampler type (Float) - using zero texture because texture unloadable
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/rj/v9r1ln5j50b3v9r3bj8ybglr0000gn/T/rust_mozprofilePIj36t/search.json.mozlz4", (void 0)))
+1665493557548	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'interactive'.
+JavaScript error: https://www.kopykitab.com/index.php?route=account/login, line 475: SyntaxError: expected expression, got ';'
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://www.kopykitab.com."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://www.kopykitab.com."
+JavaScript error: resource://gre/modules/XULStore.jsm, line 58: Error: Can't find profile directory.
+JavaScript error: resource://gre/modules/XULStore.jsm, line 58: Error: Can't find profile directory.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+1665494295767	geckodriver	INFO	Listening on 127.0.0.1:54173
+1665494295772	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "-foreground" "-no-remote" "-profile" "/var/folders/rj/v9r1ln5j50b3v9r3bj8ybglr0000gn/T/rust_mozprofilepKeyM1"
+2022-10-11 21:18:16.068 plugin-container[91004:5403518] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-10-11 21:18:16.068 plugin-container[91004:5403518] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2022-10-11 21:18:16.070 plugin-container[91004:5403518] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-10-11 21:18:16.070 plugin-container[91004:5403518] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2022-10-11 21:18:16.070 plugin-container[91004:5403521] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-10-11 21:18:16.070 plugin-container[91004:5403521] nil host used in call to allowsAnyHTTPSCertificateForHost:
+1665494296072	Marionette	INFO	Marionette enabled
+1665494296096	Marionette	INFO	Listening on port 54182
+Read port: 54182
+1665494296238	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+UNSUPPORTED (log once): POSSIBLE ISSUE: unit 1 GLD_TEXTURE_INDEX_2D is unloadable and bound to sampler type (Float) - using zero texture because texture unloadable
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/rj/v9r1ln5j50b3v9r3bj8ybglr0000gn/T/rust_mozprofilepKeyM1/search.json.mozlz4", (void 0)))
+1665494298691	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'interactive'.
+JavaScript error: https://www.kopykitab.com/index.php?route=account/login, line 475: SyntaxError: expected expression, got ';'
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://www.kopykitab.com."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://www.kopykitab.com."

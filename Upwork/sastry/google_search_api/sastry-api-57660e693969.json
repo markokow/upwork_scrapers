@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "sastry-api",
+  "private_key_id": "57660e693969a491c78bfff08da2975931205142",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQDtIru5Ws02rUih\nFFx5noSkgWuHJrqogvOTQ2v3G5sX98skuQBXcYjTYJlxtykFK9YTI0I1Izlnf5JG\nXlWXC1qNMksbl04zuQEq5yGLLHqxhJgRrTqq720p8m+cs2SvxYoCdnxGnX7LbeXl\n4h4OraivxURUf+WskCI1z1ky/ypckz70YwdfSpnEx8eNTZSXUx7AsMj8PoUzx5JR\nY9NoKGhkqbzWDwhheYwrF3/uTJnNJM5cvDRN8WIRQe9PvUh25J3LmEwR867N9z5K\nGLmwDD9hTL6sDTDwviKl5LYbCkIe0/xVlyN8Sa/JciySjhU1VzRN0+kmoKg4El0W\nrfZbvGs1AgMBAAECggEAC2ZwHtMIJEc6qeKUJ7uj1ewr4Qybv7ypHMZw8w/QChwW\n5DFpqQqGzasQwJtrb/mn+ikOICBZ1hYw6cwHGNkXCOYAhhD+1ZrUCcqgfY1nA50K\nGeimT9ZTvO1dCZJ23KiZcyqPj6FRAAYmd05o0mm6WMlNLBou9QR3EV4VXdyDBJeI\ngbbfPhw/pfQ9YhfJiCULI1Tuqt8h292J/qrmChY8YX2ky0mbYkU1Yu4cDf4SrYqm\nsdX6zCRpW35V9ocOTtxM0t92juF6CktJaFPuAGKvXtEamCC2zhvm+fZihSfUZKMX\nDCQwpYXqcNuFQZVqzvYjXeVpGjadtAh2BGHM5f55QQKBgQD20OzOH7qJ7DSXKeKF\n5DL1oV2LM7PwMT4aCuLTtujeFQbMB1aSWth40Z2PD9d5H42ZXf/MC9zMeG8jFxBm\n7oeUEYXoco+bPNTE1jk+OHFen7vUE8UoBjTuu7eezOtjMzXNc3mLcCulYimllb1h\n+xiy0n1Z2stR+XUO2rySUMuaQQKBgQD19ZifHeA81/62VeAuhRbyrDEkv7zSiwWi\nyVaQVhJzliRQIpgNL9huyNaKzYGCS1pzfe5+Nf9SCedlFfVaDdQ92Uxnx3p1v1U9\nwDDjKks1dlkfgRhbXrHa2iCzjCc8Y3STH2TEv2WuKskQgg9sjzPhMOmClyIVSGeA\n/Uyo7wEL9QKBgQCyJF2m8JOs1MWojVyoEusNCuj/fdPT+1a9aToKYSx2jmqXfHxp\nqhQwL+suxNpa3AFRvtzPo4g8NHjStOTrxiIpJvSlr3ojK6bOY2hxlj+NcnEZQyO8\nHa662NZRUcpbkSy2GzCRCecWuWEh2JAWViufdflvj1HM2uY4UHxmhtZNgQKBgQDr\neTinxTuEJKoHuImLIAHLTM0zyJkm3NAFfEpynuTFYk3bpnL51P+ZeI/ljT/bFPdA\nsKTekiWhTjgJUA94KtsyZ1I93P1Bs28RUmm7YidkxKwofDhsaWlPBBvgqWJ67yCR\nJbIcprzbFL0wH8RSg3sAsgos6zJHO+1T0a1N4puW7QKBgQC37imxFY4zM2WD+8lt\nYuQ0+ApLKBgAWB07Bs9UdrilfA2Cr6pc+L/wrjJcHGzOSpSQv/SWz2gDocNldojr\nuPi+a5OTE0BDL8oHB5q6FPjn5ReBVxlbmLhC6l9mit/IC/1+Wrzn0XooSFAUUV31\n8wJ4EfJqZaenrYxK4SM5vQnu1Q==\n-----END PRIVATE KEY-----\n",
+  "client_email": "google-search-api@sastry-api.iam.gserviceaccount.com",
+  "client_id": "101478361434890014679",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/google-search-api%40sastry-api.iam.gserviceaccount.com"
+}
