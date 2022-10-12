@@ -518,3 +518,5 @@ console.warn: SearchSettings: "get: No settings file exists, new profile?" (new 
 JavaScript error: https://www.kopykitab.com/index.php?route=account/login, line 475: SyntaxError: expected expression, got ';'
 console.warn: LoginRecipes: "Falling back to a synchronous message for: https://www.kopykitab.com."
 console.warn: LoginRecipes: "Falling back to a synchronous message for: https://www.kopykitab.com."
+1665554261979	Marionette	INFO	Stopped listening on port 54182
+JavaScript error: chrome://remote/content/marionette/cert.js, line 57: NS_ERROR_NOT_AVAILABLE: Component returned failure code: 0x80040111 (NS_ERROR_NOT_AVAILABLE) [nsICertOverrideService.setDisableAllSecurityChecksAndLetAttackersInterceptMyData]
